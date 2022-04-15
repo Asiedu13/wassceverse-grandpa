@@ -8,6 +8,7 @@
   font-family: "Rubik", sans-serif;
   /* background: #F2F4EE; */
 }
+
 body {
   background: #f2f4ee;
 }
@@ -24,28 +25,10 @@ header section h1 {
   font-size: 2rem;
 }
 
-main {
+#main {
   width: 100vw;
   height: 100vh;
   @include border(blue);
-
-  #tips {
-    article {
-      width: 350px;
-      height: 100px;
-      background: #fff;
-      margin: 50px 50px;
-      padding: 1rem;
-      box-shadow: rgba(95, 95, 95, 0.432) 1px 2px 20px 2px;
-
-      h3 {
-        color: #d55d21;
-      }
-      p {
-        color: #414844;
-      }
-    }
-  }
 
   #content {
     width: 100vw;
@@ -56,19 +39,11 @@ main {
     justify-content: center;
     align-items: center;
 
-    form {
-      width: 100vw;
-
-      input {
-        width: 200px;
-        height: 50px;
-      }
-    }
     a {
       color: #414844;
     }
 
-    header {
+    .content-header {
       width: 580px;
       h2 {
         @include border(cyan);
@@ -77,7 +52,7 @@ main {
       }
     }
 
-    div {
+    & > div {
       height: 20vh;
       width: 40vw;
       display: flex;
@@ -114,77 +89,20 @@ main {
     }
   }
 
+  @import "question_time";
+
   #cf-context {
     width: 100vw;
-    height: 50px;
+    height: 200px;
     position: relative;
-    // left: 40px;
+    right: 40px;
+    // background: red;
   }
-}
-
-.question_time {
-  background: #414844;
-  color: #d55d21;
-  height: 60vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  @include border(red);
-
-  #confirmation_elems {
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    position: relative;
-    right: 300px;
-    top: 300px;
-    padding: 1.5rem;
-    width: 100%;
-    height: 100vh;
-    @include border(yellow);
-
-    input {
-      padding: 0.5rem;
-      background: rgba(221, 218, 218, 0.788);
-      border: none;
-      border-radius: 5px;
-      height: 20px;
-      width: 340px;
-    }
-  }
-
-  header {
-    position: relative;
-    left: 100px;
-
-    h2 {
-      font-size: 3rem;
-    }
-  }
-  form {
-    input,
-    fieldset {
-      visibility: hidden;
-    }
-    height: 10vh;
-  }
-}
-
-.verification {
-  color: #d55d21;
-  text-decoration: none;
-  @include border(red);
-  width: 200px;
-  height: 200px;
-  font-size: 1.3rem;
-  margin-left: 100px;
 }
 
 #conversational-form {
   height: 80vh;
   width: 60vw;
-  margin: 0 0 0 20px;
+  margin: 0 auto;
   border-radius: 5px;
 }

@@ -1,5 +1,5 @@
 lastUrl = location.href;
-
+let editBtn;
 new MutationObserver(() => {
   const url = location.href;
   if (url !== lastUrl) {
@@ -15,6 +15,11 @@ function onConfirmation(item, replacement) {
   setInputValuesToChatData(chatData);
   item.remove();
   replacement.style.display = "block";
+
+  // Edit Button
+  editBtn = document.querySelector("#edit");
+  console.log(editBtn);
+  editBtn.addEventListener("click", () => enableEditOnInputs());
 }
 
 function setInputValuesToChatData(chatData) {
@@ -35,10 +40,21 @@ function setInputValuesToChatData(chatData) {
     } else {
       console.log("Name not found");
     }
-    console.log(num)
+    console.log(num);
     // console.log(confirmationInputs)
   }
   num = num + 1;
+}
+
+function enableEditOnInputs() {
+  let confirmationInputs = document.querySelectorAll(".confirmationElem");
+  console.log(confirmationInputs);
+
+  for (let i = 0; i < confirmationInputs.length; i++) {
+    console.log(confirmationInputs[i]);
+    confirmationInputs[i].removeAttribute("disabled");
+    confirmationInputs[i].style.background = "white";
+  }
 }
 
 function store(item, replacement) {
@@ -49,7 +65,7 @@ function store(item, replacement) {
   item.remove();
 
   replacement.style.display = "block";
-  console.log( "Store function..." )
+  console.log("Store function...");
   chatData = JSON.parse(localStorage.getItem("chatData"));
 
   axios

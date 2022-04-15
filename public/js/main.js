@@ -50,11 +50,13 @@ function onUrlChange() {
       verifyBtn = document.querySelector(".verification");
       console.log(num);
 
-      verifyBtn.addEventListener("click", (num = 1) =>
-        num <= 1
-          ? onConfirmation(conversationalForm, confirmationElem)
-          : store(conversationalForm, confirmationElem)
+      verifyBtn.addEventListener("click", () =>
+        store(conversationalForm, confirmationElem)
       );
+
+      
+
+      onConfirmation(conversationalForm, confirmationElem);
     },
   });
 }
