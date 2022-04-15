@@ -18,7 +18,7 @@ app.post('/post', function(req, res, next){
 
     const content =JSON.stringify(req.body)
 
-    fs.appendFile("details.json", content, (err) => {
+    fs.appendFile("details.txt", content, (err) => {
       if (err) {
         console.error(err);
         return;
