@@ -40,10 +40,6 @@ function onUrlChange() {
         course: formDataSerialized.course,
         electives: formDataSerialized.electives,
         parentContact: formDataSerialized.parentContact,
-
-
-
-
       };
 
       conversationalForm.addRobotChatResponse(
@@ -52,12 +48,13 @@ function onUrlChange() {
 
       localStorage.setItem("chatData", JSON.stringify(det));
       verifyBtn = document.querySelector(".verification");
-      console.log( num )
-      
-      verifyBtn.addEventListener( 'click', (num=1) => num <= 1 ? onConfirmation( conversationalForm, confirmationElem ) : store() )
-      
-      
-      
+      console.log(num);
+
+      verifyBtn.addEventListener("click", (num = 1) =>
+        num <= 1
+          ? onConfirmation(conversationalForm, confirmationElem)
+          : store(conversationalForm, confirmationElem)
+      );
     },
   });
 }

@@ -4,7 +4,6 @@ new MutationObserver(() => {
   const url = location.href;
   if (url !== lastUrl) {
     lastUrl = url;
-    // onConfirmation();
   }
 }).observe(document, { subtree: true, childList: true });
 
@@ -36,14 +35,21 @@ function setInputValuesToChatData(chatData) {
     } else {
       console.log("Name not found");
     }
-
-    num = num + 1;
     console.log(num)
     // console.log(confirmationInputs)
   }
+  num = num + 1;
 }
 
-function store() {
+function store(item, replacement) {
+  chatData = JSON.parse(localStorage.getItem("chatData"));
+  console.log(chatData);
+
+  setInputValuesToChatData(chatData);
+  item.remove();
+
+  replacement.style.display = "block";
+  console.log( "Store function..." )
   chatData = JSON.parse(localStorage.getItem("chatData"));
 
   axios

@@ -1,18 +1,4 @@
 const fs = require("fs");
-// var http = require('http');
-
-// var nStatic = require('node-static');
-
-// var fileServer = new nStatic.Server('./public');
-
-// http.createServer(function (req, res) {
-//     fileServer.serve(req, res);
-
-//     if ( req.method == 'POST' ) {
-//         console.log(req.body)
-//     }
-
-// }).listen(5500);
 
 var bodyParser = require('body-parser');
 
@@ -42,4 +28,4 @@ app.post('/post', function(req, res, next){
 
 });
 
-app.listen(8080, 'localhost');
+app.listen(8080, 'localhost', ()=> console.log('Running on port 8080'));
