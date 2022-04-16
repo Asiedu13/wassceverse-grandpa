@@ -10,7 +10,7 @@ To run the app, you first need to make sure you have Python 3.10 installed. If y
 
 Then run:
 
-```bash
+```batch
 pip install -r requirements.txt
 ```
 
