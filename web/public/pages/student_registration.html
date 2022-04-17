@@ -41,29 +41,28 @@
           />
 
           <fieldset cf-questions="Any other names?">
-            <input type="radio" name="otherNames" cf-label="Yes" value="yes" />
+            <input type="radio" name="otherNames" cf-label="Yes" value="Yes" />
 
-            <input type="radio" name="otherNames" , cf-label="No" value="no" />
+            <input type="radio" name="otherNames" , cf-label="No" value="No" />
           </fieldset>
 
           <input
-            cf-conditional-otherNames="yes"
+            cf-conditional-otherNames="Yes"
             type="text"
             name="otherNames"
             pattern="^[a-zA-Z ]+$"
-            cf-input-placeholder="example"
+            cf-input-placeholder="Other Names"
             cf-questions="List all other names"
           />
 
           <fieldset cf-questions="Choose your gender">
-            <input type="radio" name="gender" cf-label="Male" value="male" />
+            <input type="radio" name="gender" cf-label="Male" value="Male" />
 
             <input
               type="radio"
               name="gender"
-              ,
               cf-label="Female"
-              value="female"
+              value="Female"
             />
           </fieldset>
           <input
@@ -72,7 +71,7 @@
             title="Date of Birth"
             cf-input-placeholder="DD/MM/YYYY"
             pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"
-            cf-questions="Birth date? (DD/MM/YYYY)"
+            cf-questions="Date of Birth? (DD/MM/YYYY)"
           />
           <input
             type="text"
@@ -81,9 +80,10 @@
             cf-questions="Which school are you from?"
           />
           <input
-            type="number"
+            type="text"
             name="beceIndex"
             minlength="8"
+            maxlength="10"
             pattern="^[0-9]*$"
             cf-questions="What is your BECE index number"
           />
@@ -142,8 +142,8 @@
             <input
               type="checkbox"
               name="electives"
-              cf-label="E-Math"
-              value="E-Math"
+              cf-label="Elective Mathematics"
+              value="Elective Mathematics"
             />
 
             <input
@@ -170,7 +170,7 @@
             <input
               type="checkbox"
               name="electives"
-              cf-label="E-ICT"
+              cf-label="Elective ICT"
               value="E-ICT"
             />
 
@@ -194,26 +194,138 @@
               cf-label="Government"
               value="Government"
             />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="French"
+              value="French"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Economics"
+              value="Economics"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Literature in English"
+              value="Literature in English"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Geography"
+              value="Geography"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="History"
+              value="History"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Religious Studies"
+              value="Religious Studies"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Principles of Costing"
+              value="Principles of Costing"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Textile"
+              value="Textile"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="General Knowledge in Arts"
+              value="General Knowledge in Arts"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Leather Works"
+              value="Leather Works"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Graphic Design"
+              value="Graphic Design"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Basketry"
+              value="Basketry"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Picture Making"
+              value="Picture Making"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Ceramics and Sculpture"
+              value="Ceramics and Sculpture"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Management in Living"
+              value="Management in Living"
+            />
+
+            <input
+              type="checkbox"
+              name="electives"
+              cf-label="Food and Nutrition"
+              value="Food and Nutrition"
+            />
             <input type="checkbox" name="electives" , cf-label="" />
           </fieldset>
 
           <input
-            type="text"
+            type="tel"
             name="parentContact"
             minlength="8"
             maxlength="14"
             pattern="[0-9]*$"
             cf-questions="Your parent's contact number?"
-            cf-input-placeholder="+233"
+            value="+233"
           />
         </form>
 
         <div id="cf-context" role="cf-context" cf-context></div>
 
         <section id="confirmation_elems">
-          <h2>Confirm Your Details</h2> 
+          <h2>Confirm Your Details</h2>
           <span id="edit"> Edit</span>
-          <br>
+          <br />
           <table border="0">
             <!-- First Name row -->
             <tr>
