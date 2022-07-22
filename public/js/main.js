@@ -16,6 +16,25 @@ function onUrlChange() {
     formEl: document.querySelector("form"),
     context: document.getElementById("cf-context"),
     showProgressBar: true,
+    //  flowStepCallback: function(dto, success, error){
+        
+    //     if(dto.tag.id == "firstname"){
+    //         if(dto.tag.value.toLowerCase() === "sherlock"){
+    //             return success();
+    //         }else{
+    //             return error();
+    //         }
+    //         //conversationalForm.stop("Stopping form, but added value");
+    //     }else if(dto.tag.name == "gender"){
+    //         if(dto.tag.value[0] === "male"){
+    //             return success();
+    //         }else{
+    //             return error();
+    //         }
+    //     }
+
+    //     return success();
+    // }
 
     submitCallback: function () {
       conversationalForm.addRobotChatResponse(

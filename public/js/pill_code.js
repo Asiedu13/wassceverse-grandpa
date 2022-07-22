@@ -17,7 +17,7 @@ pill("main", {
   onReady(page, element) {
     // Delay to simulate long content loading
     timeout = setTimeout(() => {
-      indicator.style.display = "none";
+      indicator.style.visibility = "hidden";
     }, 1000);
     populateFormPlugin(element);
   },
