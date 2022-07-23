@@ -68,12 +68,12 @@ function store(item, replacement) {
   console.log("Store function...");
   chatData = JSON.parse(localStorage.getItem("chatData"));
 
-  axios
-    .post("/post", chatData)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  // axios
+  //   .post("localhost:8080/post", chatData)
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 }
