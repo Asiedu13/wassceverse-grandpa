@@ -1,12 +1,17 @@
 from PIL import Image
 from autocrop import Cropper
 
-cropper = Cropper()
+cropper = Cropper(
+    width = 150,
+    height = 200,
+    face_percent = 50
+)
 
 # Get a Numpy array of the cropped image
-cropped_array = cropper.crop('portrait.png')
+img_url = "test_imgs/images.jpg"
+cropped_array = cropper.crop(img_url)
 
 # Save the cropped image with PIL if a face was detected:
-if cropped_array:
+if len(cropped_array) >= 0 :
     cropped_image = Image.fromarray(cropped_array)
-    cropped_image.save('cropped.png')
+    cropped_image.save('test_imgs/test.png')
