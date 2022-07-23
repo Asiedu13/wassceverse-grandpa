@@ -1,0 +1,1 @@
+{"firstName":"Prince","lastName":"Asiedu","otherNames":"Kofi","DOB":"21/02/2013","gender":["male"],"school":"Aggrey Memorial","beceIndex":"01903489384302","yearCompleted":"2019","course":["General Science"],"electives":["E-Math","Physics","Chemistry","Biology"],"parentContact":"+233873298734"}
