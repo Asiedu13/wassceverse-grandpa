@@ -17,7 +17,7 @@ function onUrlChange() {
     context: document.getElementById("cf-context"),
     showProgressBar: true,
     //  flowStepCallback: function(dto, success, error){
-        
+
     //     if(dto.tag.id == "firstname"){
     //         if(dto.tag.value.toLowerCase() === "sherlock"){
     //             return success();
@@ -48,17 +48,17 @@ function onUrlChange() {
       console.log("Formdata, serialized:", formDataSerialized);
 
       let det = {
-        firstName: formDataSerialized.firstName,
-        lastName: formDataSerialized.lastName,
-        otherNames: formDataSerialized.otherNames,
-        DOB: formDataSerialized.DOB,
+        first_name: formDataSerialized.first_name,
+        surname: formDataSerialized.last_name,
+        other_names: formDataSerialized.other_names,
+        date_of_birth: formDataSerialized.date_of_birth,
         gender: formDataSerialized.gender,
         school: formDataSerialized.school,
-        beceIndex: formDataSerialized.beceIndex,
-        yearCompleted: formDataSerialized.yearCompleted,
+        index_number: formDataSerialized.index_number,
+        year_completed: formDataSerialized.year_completed,
         course: formDataSerialized.course,
         electives: formDataSerialized.electives,
-        parentContact: formDataSerialized.parentContact,
+        parent_contact: formDataSerialized.parent_contact,
       };
 
       conversationalForm.addRobotChatResponse(
@@ -72,8 +72,6 @@ function onUrlChange() {
       verifyBtn.addEventListener("click", () =>
         store(conversationalForm, confirmationElem)
       );
-
-      
 
       onConfirmation(conversationalForm, confirmationElem);
     },

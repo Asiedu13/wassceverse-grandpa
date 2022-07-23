@@ -47,7 +47,7 @@
 
             <input
               type="text"
-              name="schoolName"
+              name="school"
               pattern="^[a-zA-Z ]+$"
               cf-input-placeholder="schoolName"
               cf-questions="What is the school's name?"
@@ -55,7 +55,7 @@
             <input
               type="text"
               cf-input-placeholder="lastname"
-              name="lastName"
+              name="surname"
               pattern="^[a-zA-Z ]+$"
               cf-questions="Hi {firstName}, What is your last name?"
             />
@@ -80,7 +80,7 @@
             <input
               cf-conditional-otherNames="yes"
               type="text"
-              name="otherNames"
+              name="other_names"
               pattern="^[a-zA-Z ]+$"
               cf-input-placeholder="example"
               cf-questions="List all other names"
@@ -99,7 +99,7 @@
             </fieldset>
             <input
               type="text"
-              name="DOB"
+              name="date_of_birth"
               title="Date of Birth"
               cf-input-placeholder="DD/MM/YYYY"
               pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"
@@ -113,14 +113,14 @@
             />
             <input
               type="number"
-              name="beceIndex"
+              name="index_number"
               minlength="8"
               pattern="^[0-9]*$"
               cf-questions="What is your BECE index number"
             />
             <input
               type="number"
-              name="yearCompleted"
+              name="year_completed"
               minlength="4"
               pattern="^[0-9]{4}"
               cf-questions="Which year did you complete BECE?"
@@ -230,7 +230,7 @@
 
             <input
               type="text"
-              name="parentContact"
+              name="parent_contact"
               minlength="8"
               maxlength="14"
               pattern="[0-9]*$"
@@ -256,7 +256,7 @@
                   <input
                     id="firstName"
                     class="confirmationElem"
-                    name="firstName"
+                    name="first_name"
                     disabled
                   />
                 </td>
@@ -270,7 +270,7 @@
                 <td>
                   <input
                     id="lastName"
-                    name="lastName"
+                    name="surname"
                     class="confirmationElem"
                     disabled
                   />
@@ -284,7 +284,7 @@
                 <td>
                   <input
                     id="otherNames"
-                    name="otherNames"
+                    name="other_names"
                     class="confirmationElem"
                     disabled
                   />
@@ -299,7 +299,7 @@
                 <td>
                   <input
                     id="DOB"
-                    name="DOB"
+                    name="date_of_birth"
                     class="confirmationElem"
                     disabled
                   />
@@ -343,7 +343,7 @@
                 <td>
                   <input
                     id="beceIndex"
-                    name="beceIndex"
+                    name="index_number"
                     class="confirmationElem"
                     disabled
                   />
@@ -356,7 +356,7 @@
                 <td>
                   <input
                     id="yearCompleted"
-                    name="yearCompleted"
+                    name="year_completed"
                     class="confirmationElem"
                     disabled
                   />
@@ -398,7 +398,7 @@
                 <td>
                   <input
                     id="parentContact"
-                    name="parentContact"
+                    name="parent_contact"
                     class="confirmationElem"
                     disabled
                     minlength="13"
@@ -422,5 +422,19 @@
       </section>
       <!-- Verified :for actual - -->
     </main>
+
+     <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/pill@1/dist/pill.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="../js/pill_code.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/confirmation.js"></script>
   </body>
 </html>

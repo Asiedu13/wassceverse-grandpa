@@ -14,13 +14,16 @@ pill("main", {
   onUnmounting(page, url, element) {
     preserveFormPlugin(element);
   },
-  onReady(page, element) {
-    // Delay to simulate long content loading
-    timeout = setTimeout(() => {
-      indicator.style.visibility = "hidden";
-    }, 1000);
-    populateFormPlugin(element);
+   onReady() {
+    indicator.style.display = 'none'
   },
+  // onReady(page, element) {
+  //   // Delay to simulate long content loading
+  //   timeout = setTimeout(() => {
+  //     indicator.style.visibility = "hidden";
+  //   }, 1000);
+  //   populateFormPlugin(element);
+  // },
   onMounting() {
     console.log("updating content");
   },
