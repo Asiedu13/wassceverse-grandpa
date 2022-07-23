@@ -1,26 +1,12 @@
-import sqlite3
-import os.path
-from os import listdir, getcwd
-from IPython.core.display import Image
+from PIL import Image
+from autocrop import Cropper
 
-def create_or_open_db(db_file):
-    db_is_new = not os.path.exists(db_file)
-    conn = sqlite3.connect(db_file)
-    return conn
+cropper = Cropper()
 
-def insert_picture(conn, picture_file):
-    with open(picture_file, 'rb') as input_file:
-        ablob = input_file.read()
-        base=os.path.basename(picture_file)
-        afile, ext = os.path.splitext(base)
-        sql = """UPDATE student_details
-        SET image = ?
-        WHERE _rowid_ = 2"""
-        conn.execute(sql,[sqlite3.Binary(ablob)]) 
-        conn.commit()
+# Get a Numpy array of the cropped image
+cropped_array = cropper.crop('portrait.png')
 
-
-conn = create_or_open_db('server.db')
-picture_file = "C:/Users/FUJITSU/Desktop/faces/edited/face6.jpg.png"
-insert_picture(conn, picture_file)
-conn.close()
+# Save the cropped image with PIL if a face was detected:
+if cropped_array:
+    cropped_image = Image.fromarray(cropped_array)
+    cropped_image.save('cropped.png')
