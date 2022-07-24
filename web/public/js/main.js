@@ -49,7 +49,7 @@ function onUrlChange() {
 
       let det = {
         first_name: formDataSerialized.first_name,
-        surname: formDataSerialized.last_name,
+        surname: formDataSerialized.surname,
         other_names: formDataSerialized.other_names,
         date_of_birth: formDataSerialized.date_of_birth,
         gender: formDataSerialized.gender,
