@@ -62,18 +62,22 @@ function store(item, replacement) {
   console.log(chatData);
 
   setInputValuesToChatData(chatData);
-  item.remove();
+  // item.remove();
 
-  replacement.style.display = "block";
   console.log("Store function...");
-  chatData = JSON.parse(localStorage.getItem("chatData"));
-
-  // axios
-  //   .post("localhost:8080/post", chatData)
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
+  chatData = JSON.parse( localStorage.getItem( "chatData" ) );
+  
+  axios
+    .post("/post", chatData)
+    .then(function (response) {
+      console.log(response);
+      replacement.style.display = "block";
+      window.location = "/pages/success.html";
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+  
+  
 }
