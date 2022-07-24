@@ -36,8 +36,8 @@ header section h1 {
     @include border(red);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
 
     a {
       color: #414844;
@@ -45,44 +45,98 @@ header section h1 {
 
     .content-header {
       width: 580px;
+      height: 100px;
+      @include border(red);
       h2 {
+        width: 500px;
         @include border(cyan);
-        font-size: 3.5rem;
+        font-size: 1.2rem;
         color: #4e6162;
+        margin: 50px 10px 0 0;
+        font-weight: 100;
+        text-align: right;
       }
     }
 
-    & > div {
-      height: 20vh;
-      width: 40vw;
+    & > section {
+      height: inherit;
+      width: inherit;
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
+
       @include border(orange);
 
-      a {
-        width: 200px;
-        height: 100px;
-        font-size: 1.3rem;
-        text-decoration: none;
-        background: #fff;
+      .search-bar {
         display: flex;
         justify-content: center;
         align-items: center;
-        @include border(green);
-
+        height: 100px;
+        width: inherit;
+        @include border(pink);
         p {
-          width: 200px;
-          height: 100px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 0rem;
-          @include border(green);
-          transition: all 0.5s ease-in-out;
+          font-size: 3rem;
+        }
 
-          &:hover {
-            color: #fff;
-            background: #414844;
+        input {
+          height: 60px;
+          width: 500px;
+          margin: 0 10px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          font-size: 3rem;
+          padding: 0.5rem;
+          color: #808080;
+        }
+      }
+      .results {
+        @include border(blue);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* background-color: #fff; */
+
+        #search_desc {
+          width: 820px;
+          @include border(orange);
+          color: grey;
+          padding: 5px 0;
+        }
+
+        #search_results {
+          width: 820px;
+          background: #fff;
+          height: 300px;
+          display: flex;
+          flex-direction: column;
+          /* justify-content: center; */
+          align-items: center;
+          border-radius: 5px;
+
+          @include border(red);
+
+          .school {
+            margin: 1rem;
+            width: 80%;
+            background: #f2f4ee;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+
+            img {
+              background: #414844;
+              width: 120px;
+              height: inherit;
+              margin-right: 10px;
+            }
+
+            span {
+              font-size: 15px;
+              color: grey;
+            }
           }
         }
       }
@@ -96,7 +150,7 @@ header section h1 {
     height: 200px;
     position: relative;
     right: 40px;
-    // background: red;
+    /* // background: red; */
   }
 }
 
