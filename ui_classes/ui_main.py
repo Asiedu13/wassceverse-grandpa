@@ -1,617 +1,969 @@
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'ui_mainbiSMPF.ui'
+##
+## Created by: Qt User Interface Compiler version 5.14.1
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-                            QRect, QSize, QUrl, Qt)
+    QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-                           QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-                           QRadialGradient)
+    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
+    QRadialGradient)
 from PySide2.QtWidgets import *
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(870, 740)
+        if MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(1000, 600)
+        MainWindow.setMinimumSize(QSize(1000, 0))
         self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setMinimumSize(QSize(870, 740))
-        self.centralwidget.setObjectName("centralwidget")
-        self.centralwidget.setStyleSheet(
-            " QScrollBar:vertical {\n"
-                                "    border: none;\n"
-                                "    background-color: rgb(45, 45, 68);\n"
-                                "    width: 14px;\n"
-                                "    margin: 15px 0 15px 0;\n"
-                                "    border-radius: 0px;\n"
-                                " }\n"
-                                "\n"
-                                "/*  HANDLE BAR VERTICAL */\n"
-                                "QScrollBar::handle:vertical {    \n"
-                                "    background-color: rgb(80, 80, 122);\n"
-                                "    min-height: 30px;\n"
-                                "    border-radius: 7px;\n"
-                                "}\n"
-                                "QScrollBar::handle:vertical:hover{\n"
-                                "    background-color: rgb(92, 84, 112);\n"
-                                "}\n"
-                                "QScrollBar::handle:vertical:pressed {    \n"
-                                "    background-color: rgb(65, 59, 79);\n"
-                                "}\n"
-                                "\n"
-                                "/* BTN TOP - SCROLLBAR */\n"
-                                "QScrollBar::sub-line:vertical {\n"
-                                "    border: none;\n"
-                                "    background-color: rgb(59, 59, 90);\n"
-                                "    height: 15px;\n"
-                                "    border-top-left-radius: 7px;\n"
-                                "    border-top-right-radius: 7px;\n"
-                                "    margin-bottom:2px;\n"
-                                "    subcontrol-position: top;\n"
-                                "    subcontrol-origin: margin;\n"
-                                "}\n"
-                                "QScrollBar::sub-line:vertical:hover {\n"
-                                "    background-color: rgb(92, 84, 112);\n"
-                                "}\n"
-                                "QScrollBar::sub-line:vertical:pressed {    \n"
-                                "    background-color: rgb(65, 59, 79);\n"
-                                "}\n"
-                                "\n"
-                                "/* BTN BOTTOM - SCROLLBAR */\n"
-                                "QScrollBar::add-line:vertical {\n"
-                                "    border: none;\n"
-                                "    background-color: rgb(59, 59, 90);\n"
-                                "    height: 15px;\n"
-                                "    border-bottom-left-radius: 7px;\n"
-                                "    border-bottom-right-radius: 7px;\n"
-                                "    subcontrol-position: bottom;\n"
-                                "    subcontrol-origin: margin;\n"
-                                "}\n"
-                                "QScrollBar::add-line:vertical:hover {    \n"
-                                "    background-color: rgb(92, 84, 112);\n"
-                                "}\n"
-                                "QScrollBar::add-line:vertical:pressed {\n"
-                                "    background-color: rgb(65, 59, 79);\n"
-                                "}\n"
-                                "\n"
-                                "/* RESET ARROW */\n"
-                                "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-                                "    background: none;\n"
-                                "}\n"
-                                "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-                                "    background: none;\n"
-                                "}"
-        )
-        self.drop_shadow_layout = QHBoxLayout(self.centralwidget)
-        self.drop_shadow_layout.setContentsMargins(0, 0, 0, 0)
-        self.drop_shadow_layout.setObjectName("drop_shadow_layout")
-        self.background = QFrame(self.centralwidget)
-        self.background.setMinimumSize(QSize(870, 740))
-        self.background.setStyleSheet("background-color: rgb(42, 36, 56);\n"
-                                      "border-radius:  15px;")
-        self.background.setFrameShape(QFrame.StyledPanel)
-        self.background.setFrameShadow(QFrame.Raised)
-        self.background.setObjectName("background")
-        self.backgroundLayout = QVBoxLayout(self.background)
-        self.backgroundLayout.setContentsMargins(0, 0, 0, 0)
-        self.backgroundLayout.setSpacing(0)
-        self.backgroundLayout.setObjectName("backgroundLayout")
-        self.title_bar = QFrame(self.background)
-        self.title_bar.setMaximumSize(QSize(16777215, 30))
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setStyleSheet(u"border-radius: 16px;")
+        self.centralWidgetLaayout = QVBoxLayout(self.centralwidget)
+        self.centralWidgetLaayout.setSpacing(1)
+        self.centralWidgetLaayout.setObjectName(u"centralWidgetLaayout")
+        self.centralWidgetLaayout.setContentsMargins(0, 0, 0, 0)
+        self.title_bar = QFrame(self.centralwidget)
+        self.title_bar.setObjectName(u"title_bar")
+        self.title_bar.setMinimumSize(QSize(0, 22))
+        self.title_bar.setMaximumSize(QSize(16777215, 22))
+        self.title_bar.setStyleSheet(u"background-color: #f2f4ee;")
         self.title_bar.setFrameShape(QFrame.StyledPanel)
         self.title_bar.setFrameShadow(QFrame.Raised)
-        self.title_bar.setObjectName("title_bar")
-        self.title_barLayout = QHBoxLayout(self.title_bar)
-        self.title_barLayout.setContentsMargins(0, 0, 0, 0)
-        self.title_barLayout.setSpacing(0)
-        self.title_barLayout.setObjectName("title_barLayout")
-        self.frame_title = QFrame(self.title_bar)
-        self.frame_title.setMaximumSize(QSize(16777215, 30))
-        self.frame_title.setFrameShape(QFrame.StyledPanel)
-        self.frame_title.setFrameShadow(QFrame.Raised)
-        self.frame_title.setObjectName("frame_title")
-        self.frame_titleLayout = QVBoxLayout(self.frame_title)
-        self.frame_titleLayout.setContentsMargins(9, 0, 0, 0)
-        self.frame_titleLayout.setSpacing(0)
-        self.frame_titleLayout.setObjectName("frame_titleLayout")
-        self.label_title = QLabel(self.frame_title)
+        self.horizontalLayout_5 = QHBoxLayout(self.title_bar)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.frame_10 = QFrame(self.title_bar)
+        self.frame_10.setObjectName(u"frame_10")
+        self.frame_10.setFrameShape(QFrame.StyledPanel)
+        self.frame_10.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_9 = QVBoxLayout(self.frame_10)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(20, 0, 0, 0)
+        self.label_4 = QLabel(self.frame_10)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_9.addWidget(self.label_4)
+
+
+        self.horizontalLayout_5.addWidget(self.frame_10)
+
+        self.frame_11 = QFrame(self.title_bar)
+        self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setFrameShape(QFrame.StyledPanel)
+        self.frame_11.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_5.addWidget(self.frame_11)
+
+        self.frame_12 = QFrame(self.title_bar)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setMaximumSize(QSize(100, 16777215))
+        self.frame_12.setFrameShape(QFrame.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_6 = QHBoxLayout(self.frame_12)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.btn_minimize = QPushButton(self.frame_12)
+        self.btn_minimize.setObjectName(u"btn_minimize")
+        self.btn_minimize.setMinimumSize(QSize(18, 18))
+        self.btn_minimize.setMaximumSize(QSize(18, 18))
+        self.btn_minimize.setStyleSheet(u"QPushButton {\n"
+"border-radius: 9px;\n"
+"background-color: rgb(0, 189, 91);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgb(0, 255, 119);\n"
+"}")
+
+        self.horizontalLayout_6.addWidget(self.btn_minimize)
+
+        self.btn_maximize = QPushButton(self.frame_12)
+        self.btn_maximize.setObjectName(u"btn_maximize")
+        self.btn_maximize.setMinimumSize(QSize(18, 18))
+        self.btn_maximize.setMaximumSize(QSize(18, 18))
+        self.btn_maximize.setStyleSheet(u"QPushButton {\n"
+"border-radius: 9px;\n"
+"background-color: rgb(0, 133, 200);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgb(0, 170, 255);\n"
+"}")
+        self.btn_maximize.setProperty("Maximized", False)
+
+        self.horizontalLayout_6.addWidget(self.btn_maximize)
+
+        self.btn_close = QPushButton(self.frame_12)
+        self.btn_close.setObjectName(u"btn_close")
+        self.btn_close.setMinimumSize(QSize(18, 18))
+        self.btn_close.setMaximumSize(QSize(18, 18))
+        self.btn_close.setStyleSheet(u"QPushButton {\n"
+"border-radius: 9px;\n"
+"background-color: rgb(227, 20, 20);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgb(255, 22, 22);\n"
+"}")
+
+        self.horizontalLayout_6.addWidget(self.btn_close)
+
+
+        self.horizontalLayout_5.addWidget(self.frame_12)
+
+
+        self.centralWidgetLaayout.addWidget(self.title_bar)
+
+        self.stackedWidget = QStackedWidget(self.centralwidget)
+        self.stackedWidget.setObjectName(u"stackedWidget")
         font = QFont()
-        font.setFamily("Montserrat")
-        self.label_title.setFont(font)
-        self.label_title.setStyleSheet("color: rgb(219, 216, 227);")
-        self.label_title.setOpenExternalLinks(False)
-        self.label_title.setObjectName("label_title")
-        self.frame_titleLayout.addWidget(self.label_title)
-        self.title_barLayout.addWidget(self.frame_title)
-        self.frame_btns = QFrame(self.title_bar)
-        self.frame_btns.setMaximumSize(QSize(120, 30))
-        self.frame_btns.setFrameShape(QFrame.StyledPanel)
-        self.frame_btns.setFrameShadow(QFrame.Raised)
-        self.frame_btns.setObjectName("frame_btns")
-        self.frame_btnsLayout = QHBoxLayout(self.frame_btns)
-        self.frame_btnsLayout.setContentsMargins(-1, 4, -1, 4)
-        self.frame_btnsLayout.setObjectName("frame_btnsLayout")
-        self.btn_minimize = QPushButton(self.frame_btns)
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(4)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.btn_minimize.sizePolicy().hasHeightForWidth())
-        self.btn_minimize.setSizePolicy(sizePolicy)
-        self.btn_minimize.setMinimumSize(QSize(22, 22))
-        self.btn_minimize.setMaximumSize(QSize(22, 22))
-        self.btn_minimize.setStyleSheet("QPushButton {\n"
-                                        "    border: none;\n"
-                                        "    border-radius: 11px;\n"
-                                        "    background-color: rgb(55, 74, 98);\n"
-                                        "}\n"
-                                        "\n"
-                                        "QPushButton:hover {\n"
-                                        "    \n"
-                                        "    background-color: rgb(89, 121, 159);\n"
-                                        "}")
-        self.btn_minimize.setText("")
-        self.btn_minimize.setObjectName("btn_minimize")
-        self.frame_btnsLayout.addWidget(self.btn_minimize)
-        self.btn_maximize = QPushButton(self.frame_btns)
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(4)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.btn_maximize.sizePolicy().hasHeightForWidth())
-        self.btn_maximize.setSizePolicy(sizePolicy)
-        self.btn_maximize.setMinimumSize(QSize(22, 22))
-        self.btn_maximize.setMaximumSize(QSize(22, 22))
-        self.btn_maximize.setStyleSheet("QPushButton {\n"
-                                        "    border: none;\n"
-                                        "    border-radius: 11px;\n"
-                                        "    background-color: rgb(152, 140, 51);\n"
-                                        "}\n"
-                                        "\n"
-                                        "QPushButton:hover {\n"
-                                        "    \n"
-                                        "    background-color: rgb(198, 181, 66);\n"
-                                        "}")
-        self.btn_maximize.setText("")
-        self.btn_maximize.setObjectName("btn_maximize")
-        self.frame_btnsLayout.addWidget(self.btn_maximize)
-        self.btn_close = QPushButton(self.frame_btns)
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(4)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.btn_close.sizePolicy().hasHeightForWidth())
-        self.btn_close.setSizePolicy(sizePolicy)
-        self.btn_close.setMinimumSize(QSize(22, 22))
-        self.btn_close.setMaximumSize(QSize(22, 22))
-        self.btn_close.setStyleSheet("QPushButton {\n"
-                                     "    border: none;\n"
-                                     "    border-radius: 11px;\n"
-                                     "    background-color: rgb(174, 0, 0);\n"
-                                     "}\n"
-                                     "\n"
-                                     "QPushButton:hover {\n"
-                                     "    \n"
-                                     "    background-color: rgb(255, 0, 0);\n"
-                                     "}")
-        self.btn_close.setText("")
-        self.btn_close.setObjectName("btn_close")
-        self.frame_btnsLayout.addWidget(self.btn_close)
-        self.title_barLayout.addWidget(self.frame_btns)
-        self.backgroundLayout.addWidget(self.title_bar)
-        self.content_bar = QFrame(self.background)
-        self.content_bar.setStyleSheet("background-color: none;")
-        self.content_bar.setFrameShape(QFrame.StyledPanel)
-        self.content_bar.setFrameShadow(QFrame.Raised)
-        self.content_bar.setObjectName("content_bar")
-        self.content_barLayout = QHBoxLayout(self.content_bar)
-        self.content_barLayout.setContentsMargins(0, 0, 0, 0)
-        self.content_barLayout.setSpacing(0)
-        self.content_barLayout.setObjectName("content_barLayout")
-        self.frame = QFrame(self.content_bar)
-        self.frame.setMaximumSize(QSize(180, 16777215))
-        self.frame.setStyleSheet("background-color: #352f44;\n"
-                                 "border-radius: 0px;\n"
-                                 "border-bottom-left-radius: 15px;")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.frameLayout = QVBoxLayout(self.frame)
-        self.frameLayout.setContentsMargins(0, 0, 0, 0)
-        self.frameLayout.setObjectName("frameLayout")
-        self.search_box = QPlainTextEdit(self.frame)
-        self.search_box.setMinimumSize(QSize(0, 30))
-        self.search_box.setMaximumSize(QSize(16777215, 30))
-        font = QFont()
-        font.setFamily("Montserrat")
-        font.setPointSize(17)
-        self.search_box.setFont(font)
-        self.search_box.setStyleSheet("QPlainTextEdit {\n"
-                                      "    border: 0;\n"
-                                      "      border-bottom: 1px solid #dbd8e3;\n"
-                                      "      outline: 0;\n"
-                                      "      font-size: 16px;\n"
-                                      "      color: #ffffff;\n"
-                                      "    border-radius: 0;\n"
-                                      "      background: transparent;\n"
-                                      "    margin-left:4px;\n"
-                                      "    margin-right: 4px;\n"
-                                      "}\n"
-                                      "\n"
-                                      "QPlainTextEdit::placeholder {\n"
-                                      "    font-family: Monsterrat;\n"
-                                      "    color: transparent;\n"
-                                      "  }\n"
-                                      "\n"
-                                      "QPlainTextEdit:placeholder-shown {\n"
-                                      "    font-size: 1.3rem;\n"
-                                      "    cursor: text;\n"
-                                      "    top: 20px;\n"
-                                      "  }")
-        self.search_box.setInputMethodHints(Qt.ImhNone)
-        self.search_box.setMidLineWidth(1)
-        self.search_box.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.search_box.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.search_box.setLineWrapMode(QPlainTextEdit.NoWrap)
-        self.search_box.setObjectName("search_box")
-        self.frameLayout.addWidget(self.search_box)
-        self.import_file = QPushButton(self.frame)
-        self.import_file.setMinimumSize(QSize(0, 40))
-        self.import_file.setMaximumSize(QSize(16777215, 40))
-        font = QFont()
-        font.setFamily("Montserrat")
-        font.setPointSize(17)
-        font.setBold(False)
-        font.setWeight(50)
-        self.import_file.setFont(font)
-        self.import_file.setStyleSheet("QPushButton {\n"
-                                       "color: rgb(219, 216, 227);\n"
-                                       "background-color: rgb(92, 84, 112);\n"
-                                       "border-radius: 0;\n"
-                                       "font-size: 16px;\n"
-                                       "}\n"
-                                       "\n"
-                                       "QPushButton:hover {\n"
-                                       "    background-color: rgb(111, 101, 135);\n"
-                                       "}")
-        self.import_file.setObjectName("import_file")
-        self.frameLayout.addWidget(self.import_file)
-        self.import_folder = QPushButton(self.frame)
-        self.import_folder.setMinimumSize(QSize(0, 40))
-        self.import_folder.setMaximumSize(QSize(16777215, 40))
-        font = QFont()
-        font.setFamily("Montserrat")
-        font.setPointSize(17)
-        self.import_folder.setFont(font)
-        self.import_folder.setStyleSheet("QPushButton {\n"
-                                         "color: rgb(219, 216, 227);\n"
-                                         "background-color: rgb(92, 84, 112);\n"
-                                         "border-radius: 0;\n"
-                                         "font-size: 16px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QPushButton:hover {\n"
-                                         "    background-color: rgb(111, 101, 135);\n"
-                                         "}")
-        self.import_folder.setObjectName("import_folder")
-        self.frameLayout.addWidget(self.import_folder)
-        self.server_info = QPushButton(self.frame)
-        self.server_info.setMinimumSize(QSize(0, 40))
-        self.server_info.setMaximumSize(QSize(16777215, 40))
-        font = QFont()
-        font.setFamily("Montserrat")
-        font.setPointSize(17)
-        self.server_info.setFont(font)
-        self.server_info.setStyleSheet("QPushButton {\n"
-                                       "color: rgb(219, 216, 227);\n"
-                                       "background-color: rgb(92, 84, 112);\n"
-                                       "border-radius: 0;\n"
-                                       "font-size: 16px;\n"
-                                       "}\n"
-                                       "\n"
-                                       "QPushButton:hover {\n"
-                                       "    background-color: rgb(111, 101, 135);\n"
-                                       "}")
-        self.server_info.setObjectName("server_info")
-        self.frameLayout.addWidget(self.server_info)
-        self.search_results = QFrame(self.frame)
-        self.search_results.setFrameShape(QFrame.StyledPanel)
-        self.search_results.setFrameShadow(QFrame.Raised)
-        self.search_results.setObjectName("search_results")
-        self.frameLayout.addWidget(self.search_results)
-        self.content_barLayout.addWidget(self.frame)
-        self.frame_2 = QFrame(self.content_bar)
+        font.setFamily(u"Arial")
+        self.stackedWidget.setFont(font)
+        self.stackedWidget.setStyleSheet(u"border-radius: 0 0 20px 20px;\n"
+"background-color:#f2f4ee;")
+        self.signIn = QWidget()
+        self.signIn.setObjectName(u"signIn")
+        self.signIn.setStyleSheet(u"background-color: #f2f4ee;")
+        self.signInLayout = QVBoxLayout(self.signIn)
+        self.signInLayout.setSpacing(0)
+        self.signInLayout.setObjectName(u"signInLayout")
+        self.signInLayout.setContentsMargins(70, 70, 70, 70)
+        self.background = QFrame(self.signIn)
+        self.background.setObjectName(u"background")
+        self.background.setStyleSheet(u"background-color: #ffffff;\n"
+"border-radius: 30px;")
+        self.background.setFrameShape(QFrame.StyledPanel)
+        self.background.setFrameShadow(QFrame.Raised)
+        self.SignInBackgroundLayout = QHBoxLayout(self.background)
+        self.SignInBackgroundLayout.setSpacing(0)
+        self.SignInBackgroundLayout.setObjectName(u"SignInBackgroundLayout")
+        self.SignInBackgroundLayout.setContentsMargins(0, 0, 0, 0)
+        self.SignInInfoFrame = QFrame(self.background)
+        self.SignInInfoFrame.setObjectName(u"SignInInfoFrame")
+        self.SignInInfoFrame.setFrameShape(QFrame.StyledPanel)
+        self.SignInInfoFrame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout = QVBoxLayout(self.SignInInfoFrame)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.signInLeftTopSpacer = QFrame(self.SignInInfoFrame)
+        self.signInLeftTopSpacer.setObjectName(u"signInLeftTopSpacer")
+        self.signInLeftTopSpacer.setFrameShape(QFrame.StyledPanel)
+        self.signInLeftTopSpacer.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout.addWidget(self.signInLeftTopSpacer)
+
+        self.SignInInfoTop = QLabel(self.SignInInfoFrame)
+        self.SignInInfoTop.setObjectName(u"SignInInfoTop")
+        self.SignInInfoTop.setMaximumSize(QSize(16777215, 80))
+        font1 = QFont()
+        font1.setFamily(u"Arial Black")
+        font1.setPointSize(16)
+        self.SignInInfoTop.setFont(font1)
+        self.SignInInfoTop.setTextFormat(Qt.AutoText)
+        self.SignInInfoTop.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+
+        self.verticalLayout.addWidget(self.SignInInfoTop)
+
+        self.SignInInfoBottom = QLabel(self.SignInInfoFrame)
+        self.SignInInfoBottom.setObjectName(u"SignInInfoBottom")
+        font2 = QFont()
+        font2.setFamily(u"Arial")
+        font2.setPointSize(9)
+        font2.setKerning(True)
+        self.SignInInfoBottom.setFont(font2)
+        self.SignInInfoBottom.setLineWidth(1)
+        self.SignInInfoBottom.setMidLineWidth(0)
+        self.SignInInfoBottom.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.SignInInfoBottom.setMargin(9)
+
+        self.verticalLayout.addWidget(self.SignInInfoBottom)
+
+        self.signInLeftBottomSpacer = QFrame(self.SignInInfoFrame)
+        self.signInLeftBottomSpacer.setObjectName(u"signInLeftBottomSpacer")
+        self.signInLeftBottomSpacer.setFrameShape(QFrame.StyledPanel)
+        self.signInLeftBottomSpacer.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout.addWidget(self.signInLeftBottomSpacer)
+
+
+        self.SignInBackgroundLayout.addWidget(self.SignInInfoFrame)
+
+        self.divider = QFrame(self.background)
+        self.divider.setObjectName(u"divider")
+        self.divider.setMaximumSize(QSize(3, 16777215))
+        self.divider.setSizeIncrement(QSize(0, 0))
+        self.divider.setAutoFillBackground(False)
+        self.divider.setStyleSheet(u"background-color:#414844;\n"
+"border-radius:3px;\n"
+"margin-top: 20px;\n"
+"margin-bottom: 20px;")
+        self.divider.setFrameShape(QFrame.StyledPanel)
+        self.divider.setFrameShadow(QFrame.Raised)
+        self.divider.setLineWidth(0)
+
+        self.SignInBackgroundLayout.addWidget(self.divider)
+
+        self.SignInFrame = QFrame(self.background)
+        self.SignInFrame.setObjectName(u"SignInFrame")
+        self.SignInFrame.setMinimumSize(QSize(0, 350))
+        self.SignInFrame.setFrameShape(QFrame.StyledPanel)
+        self.SignInFrame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.SignInFrame)
+        self.verticalLayout_2.setSpacing(10)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(9, -1, 9, -1)
+        self.frame_9 = QFrame(self.SignInFrame)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setMinimumSize(QSize(400, 0))
+        self.frame_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.frame_9)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.label_10 = QLabel(self.frame_9)
+        self.label_10.setObjectName(u"label_10")
+        font3 = QFont()
+        font3.setFamily(u"Arial Black")
+        font3.setPointSize(22)
+        self.label_10.setFont(font3)
+        self.label_10.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_15.addWidget(self.label_10)
+
+
+        self.verticalLayout_2.addWidget(self.frame_9)
+
+        self.SchoolNameFrame = QFrame(self.SignInFrame)
+        self.SchoolNameFrame.setObjectName(u"SchoolNameFrame")
+        self.SchoolNameFrame.setMinimumSize(QSize(400, 70))
+        self.SchoolNameFrame.setMaximumSize(QSize(16777215, 70))
+        self.SchoolNameFrame.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameFrame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_3 = QVBoxLayout(self.SchoolNameFrame)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.SchoolNameSignInLabel = QLabel(self.SchoolNameFrame)
+        self.SchoolNameSignInLabel.setObjectName(u"SchoolNameSignInLabel")
+        self.SchoolNameSignInLabel.setMaximumSize(QSize(16777215, 19))
+        font4 = QFont()
+        font4.setFamily(u"Arial")
+        font4.setPointSize(10)
+        self.SchoolNameSignInLabel.setFont(font4)
+
+        self.verticalLayout_3.addWidget(self.SchoolNameSignInLabel)
+
+        self.SchoolNameBorder = QFrame(self.SchoolNameFrame)
+        self.SchoolNameBorder.setObjectName(u"SchoolNameBorder")
+        self.SchoolNameBorder.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.SchoolNameBorder)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(1, 1, 1, 1)
+        self.frame_2 = QFrame(self.SchoolNameBorder)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMaximumSize(QSize(16777215, 35))
+        self.frame_2.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.frame_2Layout = QVBoxLayout(self.frame_2)
-        self.frame_2Layout.setContentsMargins(-1, 0, 0, 0)
-        self.frame_2Layout.setSpacing(0)
-        self.frame_2Layout.setObjectName("frame_2Layout")
-        self.frame_3 = QFrame(self.frame_2)
-        self.frame_3.setMinimumSize(QSize(610, 200))
-        self.frame_3.setMaximumSize(QSize(16777215, 220))
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
-        self.frame_3.setObjectName("frame_3")
-        self.frame_3Layout = QHBoxLayout(self.frame_3)
-        self.frame_3Layout.setSpacing(20)
-        self.frame_3Layout.setObjectName("frame_3Layout")
-        self.frame_5 = QFrame(self.frame_3)
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.frame_5.setObjectName("frame_5")
-        self.frame_3Layout.addWidget(self.frame_5)
-        self.previous_arrow = QPushButton(self.frame_3)
-        self.previous_arrow.setMinimumSize(QSize(70, 70))
-        self.previous_arrow.setMaximumSize(QSize(70, 70))
-        self.previous_arrow.setStyleSheet("QPushButton {\n"
-                                          "color: rgb(219, 216, 227);\n"
-                                          "background-color: rgb(92, 84, 112);\n"
-                                          "border-radius: 15px;\n"
-                                          "font-size: 14px;\n"
-                                          "font-family: Montserrat;\n"
-                                          "}\n"
-                                          "\n"
-                                          "QPushButton:hover {\n"
-                                          "    background-color: rgb(111, 101, 135);\n"
-                                          "}")
-        self.previous_arrow.setObjectName("previous_arrow")
-        self.frame_3Layout.addWidget(self.previous_arrow)
-        self.pic = QLabel(self.frame_3)
-        sizePolicy = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+        self.verticalLayout_4 = QVBoxLayout(self.frame_2)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(5, 5, 5, 5)
+        self.schoolNameSignIn = QPlainTextEdit(self.frame_2)
+        self.schoolNameSignIn.setObjectName(u"schoolNameSignIn")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pic.sizePolicy().hasHeightForWidth())
-        self.pic.setSizePolicy(sizePolicy)
-        self.pic.setMaximumSize(QSize(150, 200))
-        self.pic.setText("")
-        self.pic.setPixmap(QPixmap(
-            "Include/img/user-sign-icon-person-symbol-human-avatar-vector-12693195.jpg"))
-        self.pic.setScaledContents(True)
-        self.pic.setObjectName("pic")
-        self.frame_3Layout.addWidget(self.pic)
-        self.next_arrow = QPushButton(self.frame_3)
-        self.next_arrow.setMinimumSize(QSize(70, 70))
-        self.next_arrow.setMaximumSize(QSize(70, 70))
-        self.next_arrow.setStyleSheet("QPushButton {\n"
-                                      "color: rgb(219, 216, 227);\n"
-                                      "background-color: rgb(92, 84, 112);\n"
-                                      "border-radius: 15px;\n"
-                                      "font-size: 14px;\n"
-                                      "font-family: Montserrat;\n"
-                                      "}\n"
-                                      "\n"
-                                      "QPushButton:hover {\n"
-                                      "    background-color: rgb(111, 101, 135);\n"
-                                      "}")
-        self.next_arrow.setObjectName("next_arrow")
-        self.frame_3Layout.addWidget(self.next_arrow)
-        self.frame_6 = QFrame(self.frame_3)
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Raised)
-        self.frame_6.setObjectName("frame_6")
-        self.frame_3Layout.addWidget(self.frame_6)
-        self.frame_2Layout.addWidget(self.frame_3)
-        self.student_info = QFrame(self.frame_2)
-        self.student_info.setStyleSheet("font-size:17px;font-family: Montserrat;\n"
-                                        "color: rgb(219, 216, 227);")
-        self.student_info.setFrameShape(QFrame.StyledPanel)
-        self.student_info.setFrameShadow(QFrame.Raised)
-        self.student_info.setObjectName("student_info")
-        self.student_infoLayout = QVBoxLayout(self.student_info)
-        self.student_infoLayout.setContentsMargins(2, 2, 2, 2)
-        self.student_infoLayout.setSpacing(2)
-        self.student_infoLayout.setObjectName("student_infoLayout")
-        self.info = QListWidget(self.student_info)
-        self.info.setStyleSheet("QListWidget {\n"
-                                "    background-color: rgb(42, 36, 56);\n"
-                                "    color: rgb(219, 216, 227);\n"
-                                "}\n"
-                                "\n"
-                                )
-        self.info.setSelectionMode(QAbstractItemView.NoSelection)
-        self.info.setObjectName("info")
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        item = QListWidgetItem()
-        self.info.addItem(item)
-        self.student_infoLayout.addWidget(self.info)
-        self.signature_frame = QFrame(self.student_info)
-        self.signature_frame.setMaximumSize(QSize(16777215, 100))
-        self.signature_frame.setMinimumSize(QSize(16777215, 100))
-        self.signature_frame.setFrameShape(QFrame.StyledPanel)
-        self.signature_frame.setFrameShadow(QFrame.Raised)
-        self.signature_frame.setObjectName("signature_frame")
-        self.signature_frameLayout = QVBoxLayout(self.signature_frame)
-        self.signature_frameLayout.setContentsMargins(0, 0, 0, 0)
-        self.signature_frameLayout.setSpacing(0)
-        self.signature_frameLayout.setObjectName("signature_frameLayout")
-        self.signature_text = QLabel(self.signature_frame)
-        self.signature_text.setObjectName("signature_text")
-        self.signature_text.setMaximumSize(QSize(16777215, 40))
-        self.signature_text.setMinimumSize(QSize(0, 40))
-        self.signature_frameLayout.addWidget(self.signature_text)
-        self.frame_4 = QFrame(self.signature_frame)
-        self.frame_4.setMinimumSize(QSize(0, 60))
-        self.frame_4.setMaximumSize(QSize(16777215, 60))
+        sizePolicy.setHeightForWidth(self.schoolNameSignIn.sizePolicy().hasHeightForWidth())
+        self.schoolNameSignIn.setSizePolicy(sizePolicy)
+        self.schoolNameSignIn.setMaximumSize(QSize(16777215, 25))
+        self.schoolNameSignIn.setFont(font4)
+        self.schoolNameSignIn.setStyleSheet(u"background-color: none;\n"
+"border-color: none;")
+        self.schoolNameSignIn.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.verticalLayout_4.addWidget(self.schoolNameSignIn)
+
+
+        self.horizontalLayout.addWidget(self.frame_2)
+
+
+        self.verticalLayout_3.addWidget(self.SchoolNameBorder)
+
+        self.SchoolNameBorder.raise_()
+        self.SchoolNameSignInLabel.raise_()
+
+        self.verticalLayout_2.addWidget(self.SchoolNameFrame)
+
+        self.EmailSignInFrame = QFrame(self.SignInFrame)
+        self.EmailSignInFrame.setObjectName(u"EmailSignInFrame")
+        self.EmailSignInFrame.setMinimumSize(QSize(400, 70))
+        self.EmailSignInFrame.setMaximumSize(QSize(16777215, 70))
+        self.EmailSignInFrame.setFrameShape(QFrame.StyledPanel)
+        self.EmailSignInFrame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_8 = QVBoxLayout(self.EmailSignInFrame)
+        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.label_3 = QLabel(self.EmailSignInFrame)
+        self.label_3.setObjectName(u"label_3")
+        font5 = QFont()
+        font5.setPointSize(10)
+        self.label_3.setFont(font5)
+
+        self.verticalLayout_8.addWidget(self.label_3)
+
+        self.SchoolNameBorder_3 = QFrame(self.EmailSignInFrame)
+        self.SchoolNameBorder_3.setObjectName(u"SchoolNameBorder_3")
+        self.SchoolNameBorder_3.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder_3.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder_3.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_3 = QHBoxLayout(self.SchoolNameBorder_3)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(1, 1, 1, 1)
+        self.frame_4 = QFrame(self.SchoolNameBorder_3)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMaximumSize(QSize(600, 35))
+        self.frame_4.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
-        self.frame_4.setObjectName("frame_4")
-        self.frame_4Layout = QVBoxLayout(self.frame_4)
-        self.frame_4Layout.setObjectName("frame_4Layout")
-        self.label = QLabel(self.frame_4)
-        sizePolicy = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.frame_4Layout.addWidget(
-            self.label, 0, Qt.AlignHCenter | Qt.AlignVCenter)
-        self.signature_frameLayout.addWidget(self.frame_4)
-        self.student_infoLayout.addWidget(self.signature_frame)
-        self.fingerprint_frame = QFrame(self.student_info)
-        self.fingerprint_frame.setFrameShape(QFrame.StyledPanel)
-        self.fingerprint_frame.setFrameShadow(QFrame.Raised)
-        self.fingerprint_frame.setObjectName("fingerprint_frame")
-        self.frameLayout_7 = QVBoxLayout(self.fingerprint_frame)
-        self.frameLayout_7.setObjectName("frameLayout_7")
-        self.fingerprint_text = QLabel(self.fingerprint_frame)
-        self.fingerprint_text.setObjectName("fingerprint_text")
-        self.frameLayout_7.addWidget(self.fingerprint_text)
-        self.frame_7 = QFrame(self.fingerprint_frame)
-        self.frame_7.setMinimumSize(QSize(0, 100))
+        self.verticalLayout_7 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(5, 5, 5, 5)
+        self.emailSignIn = QPlainTextEdit(self.frame_4)
+        self.emailSignIn.setObjectName(u"emailSignIn")
+        sizePolicy.setHeightForWidth(self.emailSignIn.sizePolicy().hasHeightForWidth())
+        self.emailSignIn.setSizePolicy(sizePolicy)
+        self.emailSignIn.setMaximumSize(QSize(16777215, 25))
+        self.emailSignIn.setFont(font4)
+        self.emailSignIn.setStyleSheet(u"background-color: none;\n"
+"border-color: none;")
+        self.emailSignIn.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.verticalLayout_7.addWidget(self.emailSignIn)
+
+
+        self.horizontalLayout_3.addWidget(self.frame_4)
+
+
+        self.verticalLayout_8.addWidget(self.SchoolNameBorder_3)
+
+
+        self.verticalLayout_2.addWidget(self.EmailSignInFrame)
+
+        self.PasswordSignInFrame = QFrame(self.SignInFrame)
+        self.PasswordSignInFrame.setObjectName(u"PasswordSignInFrame")
+        self.PasswordSignInFrame.setMinimumSize(QSize(400, 70))
+        self.PasswordSignInFrame.setMaximumSize(QSize(16777215, 70))
+        self.PasswordSignInFrame.setFrameShape(QFrame.StyledPanel)
+        self.PasswordSignInFrame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.PasswordSignInFrame)
+        self.verticalLayout_6.setSpacing(0)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.PasswordSignInFrame)
+        self.label.setObjectName(u"label")
+
+        self.verticalLayout_6.addWidget(self.label)
+
+        self.SchoolNameBorder_2 = QFrame(self.PasswordSignInFrame)
+        self.SchoolNameBorder_2.setObjectName(u"SchoolNameBorder_2")
+        self.SchoolNameBorder_2.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder_2.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder_2.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.SchoolNameBorder_2)
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(1, 1, 1, 1)
+        self.frame_3 = QFrame(self.SchoolNameBorder_2)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setMaximumSize(QSize(16777215, 35))
+        self.frame_3.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_3)
+        self.verticalLayout_5.setSpacing(0)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(5, 5, 5, 5)
+        self.passwordSignIn = QPlainTextEdit(self.frame_3)
+        self.passwordSignIn.setObjectName(u"passwordSignIn")
+        sizePolicy.setHeightForWidth(self.passwordSignIn.sizePolicy().hasHeightForWidth())
+        self.passwordSignIn.setSizePolicy(sizePolicy)
+        self.passwordSignIn.setMaximumSize(QSize(16777215, 25))
+        self.passwordSignIn.setFont(font4)
+        self.passwordSignIn.setStyleSheet(u"background-color: none;\n"
+"border-color: none;")
+        self.passwordSignIn.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.verticalLayout_5.addWidget(self.passwordSignIn)
+
+
+        self.horizontalLayout_2.addWidget(self.frame_3)
+
+
+        self.verticalLayout_6.addWidget(self.SchoolNameBorder_2)
+
+
+        self.verticalLayout_2.addWidget(self.PasswordSignInFrame)
+
+        self.frame_5 = QFrame(self.SignInFrame)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setMinimumSize(QSize(400, 0))
+        self.frame_5.setMaximumSize(QSize(16777215, 70))
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.label_2 = QLabel(self.frame_5)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setMaximumSize(QSize(63, 16777215))
+        self.label_2.setFont(font4)
+
+        self.horizontalLayout_4.addWidget(self.label_2)
+
+        self.SignUpButton = QPushButton(self.frame_5)
+        self.SignUpButton.setObjectName(u"SignUpButton")
+        self.SignUpButton.setMaximumSize(QSize(108, 16777215))
+        self.SignUpButton.setFont(font4)
+        self.SignUpButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.SignUpButton.setStyleSheet(u"color:#414844;")
+        self.SignUpButton.setFlat(True)
+
+        self.horizontalLayout_4.addWidget(self.SignUpButton)
+
+        self.frame_6 = QFrame(self.frame_5)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_4.addWidget(self.frame_6)
+
+        self.SignInSubmit = QPushButton(self.frame_5)
+        self.SignInSubmit.setObjectName(u"SignInSubmit")
+        self.SignInSubmit.setMinimumSize(QSize(80, 40))
+        self.SignInSubmit.setMaximumSize(QSize(80, 16777215))
+        font6 = QFont()
+        font6.setFamily(u"Arial Black")
+        font6.setPointSize(10)
+        self.SignInSubmit.setFont(font6)
+        self.SignInSubmit.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(213, 93, 33);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 20px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(185, 80, 28);\n"
+"}")
+
+        self.horizontalLayout_4.addWidget(self.SignInSubmit)
+
+        self.frame_7 = QFrame(self.frame_5)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setMaximumSize(QSize(90, 16777215))
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
-        self.frame_7.setObjectName("frame_7")
-        self.title_barLayout_6 = QHBoxLayout(self.frame_7)
-        self.title_barLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.title_barLayout_6.setObjectName("title_barLayout_6")
-        self.left_thumb = QLabel(self.frame_7)
-        self.left_thumb.setMinimumSize(QSize(0, 100))
-        self.left_thumb.setMaximumSize(QSize(100, 100))
-        self.left_thumb.setObjectName("left_thumb")
-        self.left_thumb.setPixmap(QPixmap("Include/img/finger-left.jpg"))
-        self.left_thumb.setScaledContents(True)
-        self.title_barLayout_6.addWidget(
-            self.left_thumb, 0, Qt.AlignHCenter | Qt.AlignVCenter)
-        self.right_thumb = QLabel(self.frame_7)
-        self.right_thumb.setMinimumSize(QSize(0, 100))
-        self.right_thumb.setMaximumSize(QSize(100, 100))
-        self.right_thumb.setObjectName("right_thumb")
-        self.right_thumb.setPixmap(QPixmap("Include/img/finger-right.jpg"))
-        self.right_thumb.setScaledContents(True)
-        self.title_barLayout_6.addWidget(
-            self.right_thumb, 0, Qt.AlignHCenter | Qt.AlignVCenter)
-        self.frameLayout_7.addWidget(self.frame_7)
-        self.student_infoLayout.addWidget(self.fingerprint_frame)
-        self.edit_btn = QPushButton(self.student_info)
-        self.edit_btn.setMinimumSize(QSize(0, 50))
-        self.edit_btn.setMaximumSize(QSize(16777215, 50))
-        self.edit_btn.setStyleSheet("QPushButton {\n"
-                                    "color: rgb(219, 216, 227);\n"
-                                    "background-color: rgb(92, 84, 112);\n"
-                                    "}\n"
-                                    "\n"
-                                    "QPushButton:hover {\n"
-                                    "    background-color: rgb(109, 100, 145);\n"
-                                    "}")
-        self.edit_btn.setObjectName("edit_btn")
-        self.student_infoLayout.addWidget(self.edit_btn)
-        self.frame_2Layout.addWidget(self.student_info)
-        self.content_barLayout.addWidget(self.frame_2)
-        self.backgroundLayout.addWidget(self.content_bar)
-        self.drop_shadow_layout.addWidget(self.background)
 
-        self.credits_bar = QFrame(self.background)
-        self.credits_bar.setObjectName(u"credits_bar")
-        self.credits_bar.setMaximumSize(QSize(16777215, 30))
-        self.credits_bar.setStyleSheet(
-            u"background-color: rgb(42, 36, 56); border-radius: 0px; border-bottom-left-radius: 15px;")
-        self.credits_bar.setFrameShape(QFrame.NoFrame)
-        self.credits_bar.setFrameShadow(QFrame.Raised)
-        self.credits_barLayout = QHBoxLayout(self.credits_bar)
-        self.credits_barLayout.setSpacing(0)
-        self.credits_barLayout.setObjectName(u"credits_barLayout")
-        self.credits_barLayout.setContentsMargins(0, 0, 0, 0)
-        self.frame_label_credits = QFrame(self.credits_bar)
-        self.frame_label_credits.setObjectName(u"frame_label_credits")
-        self.frame_label_credits.setFrameShape(QFrame.StyledPanel)
-        self.frame_label_credits.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4.addWidget(self.frame_7)
 
-        self.frame_grip = QFrame(self.credits_bar)
-        self.frame_grip.setObjectName(u"frame_grip")
-        self.frame_grip.setMinimumSize(QSize(30, 30))
-        self.frame_grip.setMaximumSize(QSize(30, 30))
-        self.frame_grip.setStyleSheet(u"padding: 5px;")
-        self.frame_grip.setFrameShape(QFrame.StyledPanel)
-        self.frame_grip.setFrameShadow(QFrame.Raised)
 
-        self.credits_barLayout.addWidget(self.frame_grip)
+        self.verticalLayout_2.addWidget(self.frame_5)
 
-        self.backgroundLayout.addWidget(self.credits_bar)
+        self.frame_8 = QFrame(self.SignInFrame)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Raised)
 
-        self.drop_shadow_layout.addWidget(self.background)
+        self.verticalLayout_2.addWidget(self.frame_8)
+
+
+        self.SignInBackgroundLayout.addWidget(self.SignInFrame, 0, Qt.AlignHCenter)
+
+
+        self.signInLayout.addWidget(self.background)
+
+        self.stackedWidget.addWidget(self.signIn)
+        self.signUp = QWidget()
+        self.signUp.setObjectName(u"signUp")
+        self.horizontalLayout_11 = QHBoxLayout(self.signUp)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(70, 70, 70, 70)
+        self.background_2 = QFrame(self.signUp)
+        self.background_2.setObjectName(u"background_2")
+        self.background_2.setStyleSheet(u"background-color: #ffffff;\n"
+"border-radius: 30px;")
+        self.background_2.setFrameShape(QFrame.StyledPanel)
+        self.background_2.setFrameShadow(QFrame.Raised)
+        self.SignInBackgroundLayout_2 = QHBoxLayout(self.background_2)
+        self.SignInBackgroundLayout_2.setSpacing(0)
+        self.SignInBackgroundLayout_2.setObjectName(u"SignInBackgroundLayout_2")
+        self.SignInBackgroundLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.SignInFrame_2 = QFrame(self.background_2)
+        self.SignInFrame_2.setObjectName(u"SignInFrame_2")
+        self.SignInFrame_2.setFrameShape(QFrame.StyledPanel)
+        self.SignInFrame_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_11 = QVBoxLayout(self.SignInFrame_2)
+        self.verticalLayout_11.setSpacing(20)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(9, -1, 9, -1)
+        self.frame_13 = QFrame(self.SignInFrame_2)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setFrameShape(QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_14 = QHBoxLayout(self.frame_13)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.label_9 = QLabel(self.frame_13)
+        self.label_9.setObjectName(u"label_9")
+
+        self.horizontalLayout_14.addWidget(self.label_9)
+
+
+        self.verticalLayout_11.addWidget(self.frame_13)
+
+        self.SchoolNameFrame_2 = QFrame(self.SignInFrame_2)
+        self.SchoolNameFrame_2.setObjectName(u"SchoolNameFrame_2")
+        self.SchoolNameFrame_2.setMaximumSize(QSize(420, 90))
+        self.SchoolNameFrame_2.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameFrame_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_12 = QVBoxLayout(self.SchoolNameFrame_2)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.SchoolNameSignInLabel_2 = QLabel(self.SchoolNameFrame_2)
+        self.SchoolNameSignInLabel_2.setObjectName(u"SchoolNameSignInLabel_2")
+        self.SchoolNameSignInLabel_2.setMaximumSize(QSize(16777215, 19))
+        self.SchoolNameSignInLabel_2.setFont(font4)
+
+        self.verticalLayout_12.addWidget(self.SchoolNameSignInLabel_2)
+
+        self.SchoolNameBorder_4 = QFrame(self.SchoolNameFrame_2)
+        self.SchoolNameBorder_4.setObjectName(u"SchoolNameBorder_4")
+        self.SchoolNameBorder_4.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder_4.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder_4.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder_4.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.SchoolNameBorder_4)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(1, 1, 1, 1)
+        self.frame_14 = QFrame(self.SchoolNameBorder_4)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setMaximumSize(QSize(16777215, 35))
+        self.frame_14.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
+        self.frame_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_13 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_13.setSpacing(0)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(5, 5, 5, 5)
+        self.schoolNameSignUp = QPlainTextEdit(self.frame_14)
+        self.schoolNameSignUp.setObjectName(u"schoolNameSignUp")
+        sizePolicy.setHeightForWidth(self.schoolNameSignUp.sizePolicy().hasHeightForWidth())
+        self.schoolNameSignUp.setSizePolicy(sizePolicy)
+        self.schoolNameSignUp.setMaximumSize(QSize(16777215, 25))
+        self.schoolNameSignUp.setFont(font4)
+        self.schoolNameSignUp.setStyleSheet(u"background-color: none;\n"
+"border-color: none;")
+        self.schoolNameSignUp.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.verticalLayout_13.addWidget(self.schoolNameSignUp)
+
+
+        self.horizontalLayout_7.addWidget(self.frame_14)
+
+
+        self.verticalLayout_12.addWidget(self.SchoolNameBorder_4)
+
+
+        self.verticalLayout_11.addWidget(self.SchoolNameFrame_2)
+
+        self.EmailSignInFrame_2 = QFrame(self.SignInFrame_2)
+        self.EmailSignInFrame_2.setObjectName(u"EmailSignInFrame_2")
+        self.EmailSignInFrame_2.setMaximumSize(QSize(420, 90))
+        self.EmailSignInFrame_2.setFrameShape(QFrame.StyledPanel)
+        self.EmailSignInFrame_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_14 = QVBoxLayout(self.EmailSignInFrame_2)
+        self.verticalLayout_14.setSpacing(0)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.label_5 = QLabel(self.EmailSignInFrame_2)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setFont(font5)
+
+        self.verticalLayout_14.addWidget(self.label_5)
+
+        self.SchoolNameBorder_5 = QFrame(self.EmailSignInFrame_2)
+        self.SchoolNameBorder_5.setObjectName(u"SchoolNameBorder_5")
+        self.SchoolNameBorder_5.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder_5.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder_5.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder_5.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.SchoolNameBorder_5)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(1, 1, 1, 1)
+        self.frame_15 = QFrame(self.SchoolNameBorder_5)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setMaximumSize(QSize(600, 35))
+        self.frame_15.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
+        self.frame_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_15 = QVBoxLayout(self.frame_15)
+        self.verticalLayout_15.setSpacing(0)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_15.setContentsMargins(5, 5, 5, 5)
+        self.emailSignUp = QPlainTextEdit(self.frame_15)
+        self.emailSignUp.setObjectName(u"emailSignUp")
+        sizePolicy.setHeightForWidth(self.emailSignUp.sizePolicy().hasHeightForWidth())
+        self.emailSignUp.setSizePolicy(sizePolicy)
+        self.emailSignUp.setMaximumSize(QSize(16777215, 25))
+        self.emailSignUp.setFont(font4)
+        self.emailSignUp.setStyleSheet(u"background-color: none;\n"
+"border-color: none;")
+        self.emailSignUp.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.verticalLayout_15.addWidget(self.emailSignUp)
+
+
+        self.horizontalLayout_8.addWidget(self.frame_15)
+
+
+        self.verticalLayout_14.addWidget(self.SchoolNameBorder_5)
+
+
+        self.verticalLayout_11.addWidget(self.EmailSignInFrame_2)
+
+        self.frame_21 = QFrame(self.SignInFrame_2)
+        self.frame_21.setObjectName(u"frame_21")
+        sizePolicy.setHeightForWidth(self.frame_21.sizePolicy().hasHeightForWidth())
+        self.frame_21.setSizePolicy(sizePolicy)
+        self.frame_21.setMaximumSize(QSize(420, 16777215))
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.frame_21)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.PasswordSignInFrame_2 = QFrame(self.frame_21)
+        self.PasswordSignInFrame_2.setObjectName(u"PasswordSignInFrame_2")
+        self.PasswordSignInFrame_2.setMaximumSize(QSize(200, 90))
+        self.PasswordSignInFrame_2.setFrameShape(QFrame.StyledPanel)
+        self.PasswordSignInFrame_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_16 = QVBoxLayout(self.PasswordSignInFrame_2)
+        self.verticalLayout_16.setSpacing(0)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.label_6 = QLabel(self.PasswordSignInFrame_2)
+        self.label_6.setObjectName(u"label_6")
+
+        self.verticalLayout_16.addWidget(self.label_6)
+
+        self.SchoolNameBorder_6 = QFrame(self.PasswordSignInFrame_2)
+        self.SchoolNameBorder_6.setObjectName(u"SchoolNameBorder_6")
+        self.SchoolNameBorder_6.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder_6.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder_6.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder_6.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.SchoolNameBorder_6)
+        self.horizontalLayout_9.setSpacing(0)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(1, 1, 1, 1)
+        self.frame_16 = QFrame(self.SchoolNameBorder_6)
+        self.frame_16.setObjectName(u"frame_16")
+        self.frame_16.setMaximumSize(QSize(16777215, 35))
+        self.frame_16.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
+        self.frame_16.setFrameShape(QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_17 = QVBoxLayout(self.frame_16)
+        self.verticalLayout_17.setSpacing(0)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.verticalLayout_17.setContentsMargins(5, 5, 5, 5)
+        self.schoolTelSignUp = QPlainTextEdit(self.frame_16)
+        self.schoolTelSignUp.setObjectName(u"schoolTelSignUp")
+        sizePolicy.setHeightForWidth(self.schoolTelSignUp.sizePolicy().hasHeightForWidth())
+        self.schoolTelSignUp.setSizePolicy(sizePolicy)
+        self.schoolTelSignUp.setMaximumSize(QSize(16777215, 25))
+        self.schoolTelSignUp.setFont(font4)
+        self.schoolTelSignUp.setStyleSheet(u"background-color: none;\n"
+"border-color: none;")
+        self.schoolTelSignUp.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.verticalLayout_17.addWidget(self.schoolTelSignUp)
+
+
+        self.horizontalLayout_9.addWidget(self.frame_16)
+
+
+        self.verticalLayout_16.addWidget(self.SchoolNameBorder_6)
+
+
+        self.horizontalLayout_13.addWidget(self.PasswordSignInFrame_2)
+
+        self.PasswordSignInFrame_3 = QFrame(self.frame_21)
+        self.PasswordSignInFrame_3.setObjectName(u"PasswordSignInFrame_3")
+        self.PasswordSignInFrame_3.setMaximumSize(QSize(200, 90))
+        self.PasswordSignInFrame_3.setFrameShape(QFrame.StyledPanel)
+        self.PasswordSignInFrame_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_18 = QVBoxLayout(self.PasswordSignInFrame_3)
+        self.verticalLayout_18.setSpacing(0)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
+        self.label_8 = QLabel(self.PasswordSignInFrame_3)
+        self.label_8.setObjectName(u"label_8")
+
+        self.verticalLayout_18.addWidget(self.label_8)
+
+        self.SchoolNameBorder_7 = QFrame(self.PasswordSignInFrame_3)
+        self.SchoolNameBorder_7.setObjectName(u"SchoolNameBorder_7")
+        self.SchoolNameBorder_7.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder_7.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder_7.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder_7.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.SchoolNameBorder_7)
+        self.horizontalLayout_12.setSpacing(0)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_12.setContentsMargins(1, 1, 1, 1)
+        self.frame_22 = QFrame(self.SchoolNameBorder_7)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setMaximumSize(QSize(16777215, 35))
+        self.frame_22.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
+        self.frame_22.setFrameShape(QFrame.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_19 = QVBoxLayout(self.frame_22)
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(5, 5, 5, 5)
+        self.passwordSignIn_3 = QPlainTextEdit(self.frame_22)
+        self.passwordSignIn_3.setObjectName(u"passwordSignIn_3")
+        sizePolicy.setHeightForWidth(self.passwordSignIn_3.sizePolicy().hasHeightForWidth())
+        self.passwordSignIn_3.setSizePolicy(sizePolicy)
+        self.passwordSignIn_3.setMaximumSize(QSize(16777215, 25))
+        self.passwordSignIn_3.setFont(font4)
+        self.passwordSignIn_3.setStyleSheet(u"background-color: none;\n"
+"border-color: none;")
+        self.passwordSignIn_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.verticalLayout_19.addWidget(self.passwordSignIn_3)
+
+
+        self.horizontalLayout_12.addWidget(self.frame_22)
+
+
+        self.verticalLayout_18.addWidget(self.SchoolNameBorder_7)
+
+
+        self.horizontalLayout_13.addWidget(self.PasswordSignInFrame_3)
+
+
+        self.verticalLayout_11.addWidget(self.frame_21)
+
+        self.frame_17 = QFrame(self.SignInFrame_2)
+        self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setMaximumSize(QSize(420, 70))
+        self.frame_17.setFrameShape(QFrame.StyledPanel)
+        self.frame_17.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_17)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.label_7 = QLabel(self.frame_17)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setMaximumSize(QSize(100, 16777215))
+        self.label_7.setFont(font4)
+
+        self.horizontalLayout_10.addWidget(self.label_7)
+
+        self.SignUpButton_2 = QPushButton(self.frame_17)
+        self.SignUpButton_2.setObjectName(u"SignUpButton_2")
+        self.SignUpButton_2.setMinimumSize(QSize(80, 0))
+        self.SignUpButton_2.setMaximumSize(QSize(80, 16777215))
+        self.SignUpButton_2.setFont(font4)
+        self.SignUpButton_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.SignUpButton_2.setStyleSheet(u"color:#414844;")
+        self.SignUpButton_2.setFlat(True)
+
+        self.horizontalLayout_10.addWidget(self.SignUpButton_2)
+
+        self.frame_18 = QFrame(self.frame_17)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setMinimumSize(QSize(200, 0))
+        self.frame_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_10.addWidget(self.frame_18)
+
+        self.SignInSubmit_2 = QPushButton(self.frame_17)
+        self.SignInSubmit_2.setObjectName(u"SignInSubmit_2")
+        self.SignInSubmit_2.setMinimumSize(QSize(80, 40))
+        self.SignInSubmit_2.setMaximumSize(QSize(80, 16777215))
+        self.SignInSubmit_2.setFont(font6)
+        self.SignInSubmit_2.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(213, 93, 33);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 20px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(185, 80, 28);\n"
+"}")
+
+        self.horizontalLayout_10.addWidget(self.SignInSubmit_2)
+
+
+        self.verticalLayout_11.addWidget(self.frame_17)
+
+        self.frame_20 = QFrame(self.SignInFrame_2)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_11.addWidget(self.frame_20)
+
+
+        self.SignInBackgroundLayout_2.addWidget(self.SignInFrame_2, 0, Qt.AlignHCenter)
+
+        self.divider_2 = QFrame(self.background_2)
+        self.divider_2.setObjectName(u"divider_2")
+        self.divider_2.setMaximumSize(QSize(3, 16777215))
+        self.divider_2.setSizeIncrement(QSize(0, 0))
+        self.divider_2.setAutoFillBackground(False)
+        self.divider_2.setStyleSheet(u"background-color:#414844;\n"
+"border-radius:3px;\n"
+"margin-top: 20px;\n"
+"margin-bottom: 20px;")
+        self.divider_2.setFrameShape(QFrame.StyledPanel)
+        self.divider_2.setFrameShadow(QFrame.Raised)
+        self.divider_2.setLineWidth(0)
+
+        self.SignInBackgroundLayout_2.addWidget(self.divider_2)
+
+        self.SignInInfoFrame_2 = QFrame(self.background_2)
+        self.SignInInfoFrame_2.setObjectName(u"SignInInfoFrame_2")
+        self.SignInInfoFrame_2.setMinimumSize(QSize(250, 0))
+        self.SignInInfoFrame_2.setMaximumSize(QSize(16777215, 600))
+        self.SignInInfoFrame_2.setFrameShape(QFrame.StyledPanel)
+        self.SignInInfoFrame_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_10 = QVBoxLayout(self.SignInInfoFrame_2)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.signInLeftTopSpacer_2 = QFrame(self.SignInInfoFrame_2)
+        self.signInLeftTopSpacer_2.setObjectName(u"signInLeftTopSpacer_2")
+        self.signInLeftTopSpacer_2.setFrameShape(QFrame.StyledPanel)
+        self.signInLeftTopSpacer_2.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_10.addWidget(self.signInLeftTopSpacer_2)
+
+        self.SignInInfoTop_2 = QLabel(self.SignInInfoFrame_2)
+        self.SignInInfoTop_2.setObjectName(u"SignInInfoTop_2")
+        self.SignInInfoTop_2.setMaximumSize(QSize(16777215, 80))
+        self.SignInInfoTop_2.setFont(font1)
+        self.SignInInfoTop_2.setTextFormat(Qt.AutoText)
+        self.SignInInfoTop_2.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+
+        self.verticalLayout_10.addWidget(self.SignInInfoTop_2)
+
+        self.SignInInfoBottom_2 = QLabel(self.SignInInfoFrame_2)
+        self.SignInInfoBottom_2.setObjectName(u"SignInInfoBottom_2")
+        self.SignInInfoBottom_2.setFont(font2)
+        self.SignInInfoBottom_2.setLineWidth(1)
+        self.SignInInfoBottom_2.setMidLineWidth(0)
+        self.SignInInfoBottom_2.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.SignInInfoBottom_2.setMargin(9)
+
+        self.verticalLayout_10.addWidget(self.SignInInfoBottom_2)
+
+        self.signInLeftBottomSpacer_2 = QFrame(self.SignInInfoFrame_2)
+        self.signInLeftBottomSpacer_2.setObjectName(u"signInLeftBottomSpacer_2")
+        self.signInLeftBottomSpacer_2.setFrameShape(QFrame.StyledPanel)
+        self.signInLeftBottomSpacer_2.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_10.addWidget(self.signInLeftBottomSpacer_2)
+
+
+        self.SignInBackgroundLayout_2.addWidget(self.SignInInfoFrame_2)
+
+
+        self.horizontalLayout_11.addWidget(self.background_2)
+
+        self.stackedWidget.addWidget(self.signUp)
+
+        self.centralWidgetLaayout.addWidget(self.stackedWidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.btn_close.clicked.connect(MainWindow.close)
+        self.btn_maximize.clicked.connect(MainWindow.showMaximized)
+        self.btn_minimize.clicked.connect(MainWindow.showMinimized)
+
+        self.stackedWidget.setCurrentIndex(1)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        _translate = QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_title.setText(_translate("MainWindow", "AppName"))
-        self.search_box.setPlaceholderText(
-            _translate("MainWindow", "Search Student"))
-        self.import_file.setText(_translate("MainWindow", "Import File"))
-        self.import_folder.setText(_translate("MainWindow", "Import Folder"))
-        self.server_info.setText(_translate("MainWindow", "Get From Server"))
-        self.previous_arrow.setText(_translate("MainWindow", "Previous"))
-        self.next_arrow.setText(_translate("MainWindow", "Next"))
-        __sortingEnabled = self.info.isSortingEnabled()
-        self.info.setSortingEnabled(False)
-        item = self.info.item(0)
-        item.setTextAlignment(Qt.AlignHCenter)
-        item.setTextColor(QColor(47,174,195))
-        item.setText(_translate("MainWindow", "Name:"))
-        item = self.info.item(1)
-        item.setText(_translate("MainWindow", "School:"))
-        item = self.info.item(2)
-        item.setText(_translate("MainWindow", "Class:"))
-        item = self.info.item(3)
-        item.setText(_translate("MainWindow", "Course:"))
-        item = self.info.item(4)
-        item.setText(_translate("MainWindow", "Electives:"))
-        item = self.info.item(5)
-        item.setText(_translate("MainWindow", "    Elective 1"))
-        item = self.info.item(6)
-        item.setText(_translate("MainWindow", "    Elective 2"))
-        item = self.info.item(7)
-        item.setText(_translate("MainWindow", "    Elective 3"))
-        item = self.info.item(8)
-        item.setText(_translate("MainWindow", "    Elective 4"))
-        item = self.info.item(9)
-        item.setText(_translate("MainWindow", "Date of Birth:"))
-        item = self.info.item(10)
-        item.setText(_translate("MainWindow", "Gender:"))
-        item = self.info.item(11)
-        item.setText(_translate("MainWindow", "BECE Index Number:"))
-        item = self.info.item(12)
-        item.setText(_translate("MainWindow", "Parent\'s Contact:"))
-        self.info.setSortingEnabled(__sortingEnabled)
-        self.signature_text.setText(_translate("MainWindow", "Signature:"))
-        self.label.setText(_translate("MainWindow", "TextLabel"))
-        self.fingerprint_text.setText(_translate("MainWindow", "Fingerprint"))
-        self.edit_btn.setText(_translate("MainWindow", "Edit"))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#414844;\">WASSCEVerse</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.btn_minimize.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Minimize</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.btn_minimize.setText("")
+#if QT_CONFIG(tooltip)
+        self.btn_maximize.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Maximize</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.btn_maximize.setText("")
+#if QT_CONFIG(tooltip)
+        self.btn_close.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Close</p></body></html>", None))
+#endif // QT_CONFIG(tooltip)
+        self.btn_close.setText("")
+        self.SignInInfoTop.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt; color:#414844;\">WELOME BACK!</span></p></body></html>", None))
+        self.SignInInfoBottom.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; color:#000000;\">To keep connected with us</span><span style=\" font-size:12pt;\"><br/></span><span style=\" font-size:12pt; color:#000000;\">Please sign in with your</span><span style=\" font-size:12pt;\"><br/></span><span style=\" font-size:12pt; color:#000000;\">personal info</span><span style=\" font-size:12pt;\"/></p></body></html>", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
+        self.SchoolNameSignInLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Email:</span></p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Password:</span></p></body></html>", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"New User?", None))
+        self.SignUpButton.setText(QCoreApplication.translate("MainWindow", u"Create an Account", None))
+        self.SignInSubmit.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; color:#414844;\">Create Account</span></p></body></html>", None))
+        self.SchoolNameSignInLabel_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Email:</span></p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">School Tel:</span></p></body></html>", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Password:</span></p></body></html>", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Already A User?", None))
+        self.SignUpButton_2.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
+        self.SignInSubmit_2.setText(QCoreApplication.translate("MainWindow", u"Next", None))
+        self.SignInInfoTop_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">HELLO, ADMIN!</span></p></body></html>", None))
+        self.SignInInfoBottom_2.setText(QCoreApplication.translate("MainWindow", u"<html>\n"
+"<head/>\n"
+"<body>\n"
+"<p  style=\"line-height: 1\">\n"
+"<span align=\"center\" style=\" color:black;\">Enter school details to start</span><br>\n"
+"<span align=\"center\" style=\" color:black;\">your journey with us</span>\n"
+"</p>\n"
+"</body>\n"
+"</html>", None))
+    # retranslateUi
 
-
-if __name__ == "__main__":
-    import sys
-    app = QApplication(sys.argv)
-    MainWindow = QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
