@@ -82,7 +82,7 @@ app.post("/api/student/create", function (req, res, next) {
 
 // Get all the registered schools from the database
 app.get("/api/schools", (req, res, next) => {
-  let sql = `SELECT * FROM registered_schools WHERE school_email IS NOT ""`;
+  let sql = `SELECT * FROM registered_schools WHERE school_email IS NOT " "`;
   let requestedData = [];
   db.all(sql, [], (err, rows) => {
     if (err) console.error(err.message);
