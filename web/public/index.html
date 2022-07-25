@@ -37,27 +37,19 @@
           <!-- The search bar goes here -->
           <div class="search-bar">
             <p>I am a</p>
-            <input type="text" id="search" />
+            <input type="text" id="search" oninput="inputChange(this)" />
             <p>student</p>
           </div>
           <div class="results">
             <!-- Search result descriptions -->
             <div id="search_desc">
               <span>Schools found: </span>
-              <span>1</span>
+              <span class="search_data_count" >1</span>
             </div>
 
             <!-- Actual Search results -->
             <div id="search_results">
-              <article class="school">
-                <div class="sch_img">
-                  <img src="imagenotfound.gif" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
-                </div>
-                <div class="sch_desc">
-                  <h4 class="sch_name">Presbyterian Boy's Secondary School</h4>
-                  <span>Location: </span><span>Legon</span>
-                </div>
-              </article>
+              <!-- The results appear here from main.js -->
             </div>
           </div>
         </section>

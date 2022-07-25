@@ -1,26 +1,30 @@
-
 let lastUrl = location.href;
 let num = 1;
+let schools;
 
 window.onload = async () => {
-  let res = await axios.get("/api/schools");
-  schools = res.data
-  console.log( res.data );
+  axios.get("/api/schools").then((res) => {
+    // Get schools data
+    schools = res.data;
+    console.log(res.data);
 
-  schools.forEach((school) => {
-    let html_to_be_added = ` <article class="school">
-    <div class="sch_img">
-    <img src="${school.logo}" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
-    </div>
-    <div class="sch_desc">
-    <h4 class="sch_name">${school.school_name}</h4>
-    <span>Location: </span><span>${school.location}</span>
-    </div>
-    </article>
-    `;
+    // Get parent Element
+    let parent = document.getElementById("search_results");
+    let count_display = document.querySelector(".search_data_count");
+
+    // Get the number of elements in the array
+    count_display.innerHTML = schools.length;
+    console.log(parent);
+
+    upDateSchoolsList(schools, parent, "article", "school");
   });
+  console.log(parent);
+
+  // Add event listeners
 };
 
+let main_input = document.querySelector("#search");
+main_input.addEventListener("input", (e) => inputChange(e, schools));
 new MutationObserver(() => {
   const url = location.href;
   if (url !== lastUrl) {
@@ -97,4 +101,68 @@ function onUrlChange() {
       onConfirmation(conversationalForm, confirmationElem);
     },
   });
+}
+
+function upDateSchoolsList(schools_list, parent, parentElem, className) {
+  // Check if there are child elements in the parent
+  if (parent.childElementCount > 0) {
+    parent.innerHTML = ""; 
+
+    // Do the same thing again for the else
+    schools_list.forEach((school) => {
+      if (school.school_name != "") {
+        let html_to_be_added = `
+        
+           <div class="sch_img">
+              <img src="${school.school_logo}" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
+          </div>
+          <div class="sch_desc">
+          <h4 class="sch_name">${school.school_name}</h4>
+          <span>Location: </span><span>${school.location}</span>
+          </div>
+      `;
+        var div = document.createElement(`${parentElem}`);
+
+        div.innerHTML = html_to_be_added;
+        div.setAttribute("class", `${className}`);
+        console.log(html_to_be_added);
+        parent.appendChild(div);
+      }
+    });
+  } else {
+    schools_list.forEach((school) => {
+      if (school.school_name != "") {
+        let html_to_be_added = `
+        
+           <div class="sch_img">
+              <img src="${school.school_logo}" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
+          </div>
+          <div class="sch_desc">
+          <h4 class="sch_name">${school.school_name}</h4>
+          <span>Location: </span><span>${school.location}</span>
+          </div>
+      `;
+        var div = document.createElement(`${parentElem}`);
+
+        div.innerHTML = html_to_be_added;
+        div.setAttribute("class", `${className}`);
+        console.log(html_to_be_added);
+        parent.appendChild(div);
+      }
+    });
+  }
+}
+
+function inputChange(e, schools_list) {
+  let search_value = e.target.value;
+  let parent = document.getElementById("search_results");
+  // let search_value;
+  console.log(search_value);
+
+  newSchoolList = schools_list.filter((school) => {
+    return school.school_name.includes(search_value);
+  });
+  console.log(newSchoolList);
+
+  upDateSchoolsList(newSchoolList, parent, "article", "school");
 }
