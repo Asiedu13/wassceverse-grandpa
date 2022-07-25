@@ -1,3 +1,4 @@
+import sqlite3
 import sys
 import platform
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -35,6 +36,14 @@ class MainWindow(QMainWindow):
             password = self.ui.passwordSignIn.toPlainText()
             return schoolName, email, password
 
+        # CHECK INFO
+        def signIn(schoolName: str, email: str, password: str, db: str):
+            connection = sqlite3.connect(db)
+            cursor = connection.cursor()
+
+            sql = """
+            SELECT * FROM 
+            """
 
         # SET TITLE BAR
         self.ui.title_bar.mouseMoveEvent = moveWindow
