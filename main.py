@@ -66,21 +66,20 @@ class MainWindow(QMainWindow):
             connection = sqlite3.connect(db)
             cursor = connection.cursor()
 
-            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}' AND school_email = '{email}'"
+            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}'"
             cursor.execute(sql)
             data = cursor.fetchone()
             print(data)
 
-            if len(data) == 1:
-                "TODO"
-                # if password != data[6]:
-                #     dialog = PasswordIncorrectDialog(self)
-                #     dialog.exec()
-                # else:
-                #     "TODO"
-            else:
-                dialog = FailDialogOne(self)
-                dialog.exec()
+            # if len(data) == 1:
+            #     if password != data[6]:
+            #         dialog = PasswordIncorrectDialog(self)
+            #         dialog.exec()
+            #     else:
+            #         "TODO"
+            # else:
+            #     dialog = FailDialogOne(self)
+            #     dialog.exec()
 
         # SET TITLE BAR
         self.ui.title_bar.mouseMoveEvent = moveWindow
