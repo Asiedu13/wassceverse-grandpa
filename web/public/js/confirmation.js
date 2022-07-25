@@ -68,7 +68,7 @@ function store(item, replacement) {
   chatData = JSON.parse( localStorage.getItem( "chatData" ) );
   
   axios
-    .post("/post", chatData)
+    .post("/api/student/create/", chatData)
     .then(function (response) {
       console.log(response);
       replacement.style.display = "block";
