@@ -1,4 +1,5 @@
 import json
+from multiprocessing.connection import Connection
 import sys
 import glob
 import os
@@ -29,7 +30,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        def getId(connection):
+        def getId(connection: Connection):
             cursor = connection.cursor()
             num = self.ui.info.item(11).text().replace(
                 "BECE Index Number: ", "")
@@ -38,7 +39,7 @@ class MainWindow(QMainWindow):
             id = cursor.fetchall()[0][0]
             return id
 
-        def getRows(connection):
+        def getRows(connection: Connection):
             cursor = connection.cursor()
             num = self.ui.info.item(11).text().replace(
                 "BECE Index Number: ", "")
