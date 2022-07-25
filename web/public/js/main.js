@@ -1,13 +1,13 @@
-const { response } = require("express");
 
 let lastUrl = location.href;
 let num = 1;
 
 window.onload = async () => {
   let res = await axios.get("/api/schools");
-  console.log(res.data);
+  schools = res.data
+  console.log( res.data );
 
-  res.forEach((school) => {
+  schools.forEach((school) => {
     let html_to_be_added = ` <article class="school">
     <div class="sch_img">
     <img src="${school.logo}" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
