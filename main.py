@@ -12,24 +12,6 @@ from ui_classes.ui_main import Ui_MainWindow
 # IMPORT FUNCTIONS
 from ui_functions import *
 
-
-class SignInFailedDialog(QDialog):
-    def __init__(self):
-        super().__init__()
-
-        self.setWindowTitle("Alert!")
-
-        QBtn = QDialogButtonBox.Ok
-
-        self.buttonBox = QDialogButtonBox(QBtn)
-        self.buttonBox.accepted.connect(self.accept)
-
-        self.layout = QVBoxLayout()
-        message = QLabel("Some or all of your credentials are incorrect, please try again.")
-        self.layout.addWidget(message)
-        self.layout.addWidget(self.buttonBox)
-        self.setLayout(self.layout)
-
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -60,37 +42,30 @@ class MainWindow(QMainWindow):
                 self.move(self.pos() + event.globalPos() - self.dragPos)
                 self.dragPos = event.globalPos()
                 event.accept()
-        # GET DATA FROM TEXTEDITS
-        def getSignInInfo():
+
+        # CHECK INFO
+        def signIn(db: str):
             schoolName = self.ui.schoolNameSignIn.text()
             email = self.ui.emailSignIn.text()
             password = self.ui.passwordSignIn.text()
-            return schoolName, email, password
-
-        # CHECK INFO
-        def signIn(schoolName: str, email: str, password: str, db: str):
             connection = sqlite3.connect(db)
             cursor = connection.cursor()
 
-            sql = """
-            SELECT * FROM registered_schools WHERE school_name = "{schoolName}" AND school_email = "{email}"
-            """
+            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}'"
             cursor.execute(sql)
             data = cursor.fetchall()
             print(data)
 
             if len(data) > 0:
-                "TODO"
-
-        def submitSignIn(db: str):
-            schoolName, email, password = getSignInInfo()
-            signIn(schoolName, email, password, db)
+                print("TODO")
+            else:
+                self.createDialog()
 
         # SET TITLE BAR
         self.ui.title_bar.mouseMoveEvent = moveWindow
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
         self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
-        self.ui.SignInSubmit.clicked.connect(lambda: submitSignIn("server2.db"))
+        self.ui.SignInSubmit.clicked.connect(lambda: signIn("server2.db"))
 
         def switch_screen(screen: int):
             self.ui.stackedWidget.setCurrentIndex(screen)
@@ -105,6 +80,11 @@ class MainWindow(QMainWindow):
 
     ## APP EVENTS
     ########################################################################
+    def createDialog(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("I have a question!")
+        dlg.setText("This is a simple dialog")
+
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
 
