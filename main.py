@@ -6,11 +6,26 @@ from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTi
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
-# GUI FILE
+# GUI FILES
 from ui_classes.ui_main import Ui_MainWindow
+from ui_classes.signInFailedOneDialog import Ui_signInFailedOneDialog
+from ui_classes.ui_incorrectDialog import Ui_incorrectDialog
+
 
 # IMPORT FUNCTIONS
 from ui_functions import *
+
+class PasswordIncorrectDialog(QDialog):
+    def __init__(self, parent = None):
+        super().__init__(parent)
+        self.ui = Ui_incorrectDialog()
+        self.ui.setupUi(self)
+
+class FailDialogOne(QDialog):
+   def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_signInFailedOneDialog()
+        self.ui.setupUi(self)
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -53,13 +68,16 @@ class MainWindow(QMainWindow):
 
             sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}'"
             cursor.execute(sql)
-            data = cursor.fetchall()
+            data = cursor.fetchall()[0]
             print(data)
 
-            if len(data) > 0:
-                print("TODO")
+            if len(data) == 0:
+                if password != data[6]:
+                    dialog = PasswordIncorrectDialog(self)
+                    dialog.exec()
             else:
-                self.createDialog()
+                dialog = FailDialogOne(self)
+                dialog.exec()
 
         # SET TITLE BAR
         self.ui.title_bar.mouseMoveEvent = moveWindow
@@ -80,10 +98,6 @@ class MainWindow(QMainWindow):
 
     ## APP EVENTS
     ########################################################################
-    def createDialog(self):
-        dlg = QMessageBox(self)
-        dlg.setWindowTitle("I have a question!")
-        dlg.setText("This is a simple dialog")
 
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
