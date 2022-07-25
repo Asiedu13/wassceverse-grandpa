@@ -16,7 +16,7 @@ window.onload = async () => {
     count_display.innerHTML = schools.length;
     console.log(parent);
 
-    upDateSchoolsList(schools, parent, "article", "school");
+    upDateSchoolsList(schools, parent, count_display, "article", "school");
   });
   console.log(parent);
 
@@ -103,11 +103,18 @@ function onUrlChange() {
   });
 }
 
-function upDateSchoolsList(schools_list, parent, parentElem, className) {
+function upDateSchoolsList(
+  schools_list,
+  parent,
+  count_display,
+  parentElem,
+  className
+) {
   // Check if there are child elements in the parent
   if (parent.childElementCount > 0) {
-    parent.innerHTML = ""; 
-
+    parent.innerHTML = "";
+    // Get the number of elements in the array
+    count_display.innerHTML = schools_list.length;
     // Do the same thing again for the else
     schools_list.forEach((school) => {
       if (school.school_name != "") {
@@ -158,11 +165,14 @@ function inputChange(e, schools_list) {
   let parent = document.getElementById("search_results");
   // let search_value;
   console.log(search_value);
+  let count_display = document.querySelector(".search_data_count");
 
   newSchoolList = schools_list.filter((school) => {
-    return school.school_name.includes(search_value);
+    return school.school_name
+      .toLowerCase()
+      .includes(search_value.toLowerCase());
   });
   console.log(newSchoolList);
 
-  upDateSchoolsList(newSchoolList, parent, "article", "school");
+  upDateSchoolsList(newSchoolList, parent, count_display, "article", "school");
 }
