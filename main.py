@@ -42,13 +42,21 @@ class MainWindow(QMainWindow):
             cursor = connection.cursor()
 
             sql = """
-            SELECT * FROM 
+            SELECT * FROM registered_schools WHERE schoolName = "?" AND email = "?"
             """
+            cursor.execute(sql, (schoolName, email))
+            data = cursor.fetchall()
+            print(data)
+
+        def submitSignIn(db: str):
+            schoolName, email, password = getSignInInfo()
+            signIn(schoolName, email, password, db)
 
         # SET TITLE BAR
         self.ui.title_bar.mouseMoveEvent = moveWindow
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
         self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
+        self.ui.SignInSubmit.clicked.connect(lambda: submitSignIn("server2.db"))
 
         def switch_screen(screen: int):
             self.ui.stackedWidget.setCurrentIndex(screen)
