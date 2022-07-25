@@ -82,7 +82,7 @@ app.post("/api/student/create", function (req, res, next) {
 
 // Get all the registered schools from the database
 app.get("/api/schools", (req, res, next) => {
-  let sql = `SELECT * FROM registered_schools`;
+  let sql = `SELECT * FROM registered_schools WHERE name IS NOT NULL`;
   let requestedData = [];
   db.all(sql, [], (err, rows) => {
     if (err) console.error(err.message);
@@ -90,8 +90,8 @@ app.get("/api/schools", (req, res, next) => {
       console.log(row);
       requestedData.push(row);
     });
+    res.json(requestedData);
   });
-  res.json(requestedData);
 });
 
 app.listen(8080, () => console.log("listening on localhost 8080"));

@@ -2,7 +2,9 @@ let lastUrl = location.href;
 let num = 1;
 
 window.onload = async() => {
-  let res = await axios.get('/api/')
+  let res = await axios.get( '/api/schools' )
+  console.log( res.data );
+
 }
 
 
