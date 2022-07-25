@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 let lastUrl = location.href;
 let num = 1;
