@@ -1,12 +1,20 @@
 let lastUrl = location.href;
 let num = 1;
-new MutationObserver(() => {
+
+window.onload = async() => {
+  let res = await axios.get('/api/')
+}
+
+
+new MutationObserver( () => {
   const url = location.href;
   if (url !== lastUrl) {
     lastUrl = url;
     onUrlChange();
   }
 }).observe(document, { subtree: true, childList: true });
+
+
 
 function onUrlChange() {
   let confirmationElem = document.getElementById("confirmation_elems");

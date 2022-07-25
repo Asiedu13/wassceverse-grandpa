@@ -1,5 +1,5 @@
 // ----------------- Variables and Objects --------------
-const fs = require( "fs" );
+const fs = require("fs");
 const sql = require("sqlite3").verbose();
 
 var bodyParser = require("body-parser");
@@ -41,17 +41,16 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // --------- Server Requests ---------------
-app.post( "/api/student/create", function ( req, res, next ) {
-  
+app.post("/api/student/create", function (req, res, next) {
   // Adding data to databse goes here...
 
   console.log(req.body); // req.body contains the parsed body of the request.
 
   let content = req.body;
 
-  let sql = "INSERT INTO student_details (surname,first_name, other_names,course, class, index_number, year_completed, electives, school, gender, parent_contact, date_of_birth, signature, 'image', fingerprint ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  let sql =
+    "INSERT INTO student_details (surname,first_name, other_names,course, class, index_number, year_completed, electives, school, gender, parent_contact, date_of_birth, signature, 'image', fingerprint ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
   db.run(
     sql,
@@ -79,10 +78,20 @@ app.post( "/api/student/create", function ( req, res, next ) {
 
   // End Request
   res.send("Data received");
-} );
+});
 
-app.get( '/api/schools', ( req, res ) => {
-  res.send( "The data is being sent to the client" );
-})
+// Get all the registered schools from the database
+app.get("/api/schools", (req, res, next) => {
+  let sql = `SELECT * FROM registered_schools`;
+  let requestedData = [];
+  db.all(sql, [], (err, rows) => {
+    if (err) console.error(err.message);
+    rows.forEach((row) => {
+      console.log(row);
+      requestedData.push(row);
+    });
+  });
+  res.json(requestedData);
+});
 
 app.listen(8080, () => console.log("listening on localhost 8080"));
