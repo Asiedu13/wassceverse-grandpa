@@ -1,5 +1,26 @@
+const { response } = require("express");
+
 let lastUrl = location.href;
 let num = 1;
+
+window.onload = async () => {
+  let res = await axios.get("/api/schools");
+  console.log(res.data);
+
+  res.forEach((school) => {
+    let html_to_be_added = ` <article class="school">
+    <div class="sch_img">
+    <img src="${school.logo}" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
+    </div>
+    <div class="sch_desc">
+    <h4 class="sch_name">${school.school_name}</h4>
+    <span>Location: </span><span>${school.location}</span>
+    </div>
+    </article>
+    `;
+  });
+};
+
 new MutationObserver(() => {
   const url = location.href;
   if (url !== lastUrl) {
