@@ -609,31 +609,15 @@ border-radius: 8px;</string>
                         <number>5</number>
                        </property>
                        <item>
-                        <widget class="QPlainTextEdit" name="schoolNameSignIn">
+                        <widget class="QLineEdit" name="schoolNameSignIn">
                          <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
                          </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: none;
-border-color: none;</string>
-                         </property>
-                         <property name="verticalScrollBarPolicy">
-                          <enum>Qt::ScrollBarAlwaysOff</enum>
+                         <property name="cursorMoveStyle">
+                          <enum>Qt::VisualMoveStyle</enum>
                          </property>
                         </widget>
                        </item>
@@ -765,31 +749,17 @@ border-radius: 8px;</string>
                         <number>5</number>
                        </property>
                        <item>
-                        <widget class="QPlainTextEdit" name="emailSignIn">
+                        <widget class="QLineEdit" name="emailSignIn">
                          <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
                          </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>25</height>
-                          </size>
-                         </property>
                          <property name="font">
                           <font>
-                           <family>Arial</family>
-                           <pointsize>10</pointsize>
+                           <stylestrategy>PreferDefault</stylestrategy>
                           </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: none;
-border-color: none;</string>
-                         </property>
-                         <property name="verticalScrollBarPolicy">
-                          <enum>Qt::ScrollBarAlwaysOff</enum>
                          </property>
                         </widget>
                        </item>
@@ -914,31 +884,15 @@ border-radius: 8px;</string>
                         <number>5</number>
                        </property>
                        <item>
-                        <widget class="QPlainTextEdit" name="passwordSignIn">
+                        <widget class="QLineEdit" name="passwordSignIn">
                          <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
                          </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: none;
-border-color: none;</string>
-                         </property>
-                         <property name="verticalScrollBarPolicy">
-                          <enum>Qt::ScrollBarAlwaysOff</enum>
+                         <property name="echoMode">
+                          <enum>QLineEdit::Password</enum>
                          </property>
                         </widget>
                        </item>
@@ -1307,31 +1261,18 @@ border-radius: 8px;</string>
                         <number>5</number>
                        </property>
                        <item>
-                        <widget class="QPlainTextEdit" name="schoolNameSignUp">
+                        <widget class="QLineEdit" name="schoolNameSignUp">
                          <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
                          </property>
-                         <property name="maximumSize">
+                         <property name="minimumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>0</width>
                            <height>25</height>
                           </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: none;
-border-color: none;</string>
-                         </property>
-                         <property name="verticalScrollBarPolicy">
-                          <enum>Qt::ScrollBarAlwaysOff</enum>
                          </property>
                         </widget>
                        </item>
@@ -1455,31 +1396,12 @@ border-radius: 8px;</string>
                         <number>5</number>
                        </property>
                        <item>
-                        <widget class="QPlainTextEdit" name="emailSignUp">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="maximumSize">
+                        <widget class="QLineEdit" name="emailSignUp">
+                         <property name="minimumSize">
                           <size>
-                           <width>16777215</width>
+                           <width>0</width>
                            <height>25</height>
                           </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Arial</family>
-                           <pointsize>10</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background-color: none;
-border-color: none;</string>
-                         </property>
-                         <property name="verticalScrollBarPolicy">
-                          <enum>Qt::ScrollBarAlwaysOff</enum>
                          </property>
                         </widget>
                        </item>
@@ -1631,31 +1553,12 @@ border-radius: 8px;</string>
                            <number>5</number>
                           </property>
                           <item>
-                           <widget class="QPlainTextEdit" name="schoolTelSignUp">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="maximumSize">
+                           <widget class="QLineEdit" name="schoolTelSignUp">
+                            <property name="minimumSize">
                              <size>
-                              <width>16777215</width>
+                              <width>0</width>
                               <height>25</height>
                              </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>Arial</family>
-                              <pointsize>10</pointsize>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">background-color: none;
-border-color: none;</string>
-                            </property>
-                            <property name="verticalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAlwaysOff</enum>
                             </property>
                            </widget>
                           </item>
@@ -1774,31 +1677,15 @@ border-radius: 8px;</string>
                            <number>5</number>
                           </property>
                           <item>
-                           <widget class="QPlainTextEdit" name="passwordSignIn_3">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="maximumSize">
+                           <widget class="QLineEdit" name="passwordSignUp">
+                            <property name="minimumSize">
                              <size>
-                              <width>16777215</width>
+                              <width>0</width>
                               <height>25</height>
                              </size>
                             </property>
-                            <property name="font">
-                             <font>
-                              <family>Arial</family>
-                              <pointsize>10</pointsize>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">background-color: none;
-border-color: none;</string>
-                            </property>
-                            <property name="verticalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAlwaysOff</enum>
+                            <property name="echoMode">
+                             <enum>QLineEdit::Password</enum>
                             </property>
                            </widget>
                           </item>

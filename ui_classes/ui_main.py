@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainbiSMPF.ui'
+## Form generated from reading UI file 'ui_mainsVwzhF.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -280,18 +280,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(5, 5, 5, 5)
-        self.schoolNameSignIn = QPlainTextEdit(self.frame_2)
+        self.schoolNameSignIn = QLineEdit(self.frame_2)
         self.schoolNameSignIn.setObjectName(u"schoolNameSignIn")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.schoolNameSignIn.sizePolicy().hasHeightForWidth())
         self.schoolNameSignIn.setSizePolicy(sizePolicy)
-        self.schoolNameSignIn.setMaximumSize(QSize(16777215, 25))
-        self.schoolNameSignIn.setFont(font4)
-        self.schoolNameSignIn.setStyleSheet(u"background-color: none;\n"
-"border-color: none;")
-        self.schoolNameSignIn.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.schoolNameSignIn.setCursorMoveStyle(Qt.VisualMoveStyle)
 
         self.verticalLayout_4.addWidget(self.schoolNameSignIn)
 
@@ -346,15 +342,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(5, 5, 5, 5)
-        self.emailSignIn = QPlainTextEdit(self.frame_4)
+        self.emailSignIn = QLineEdit(self.frame_4)
         self.emailSignIn.setObjectName(u"emailSignIn")
         sizePolicy.setHeightForWidth(self.emailSignIn.sizePolicy().hasHeightForWidth())
         self.emailSignIn.setSizePolicy(sizePolicy)
-        self.emailSignIn.setMaximumSize(QSize(16777215, 25))
-        self.emailSignIn.setFont(font4)
-        self.emailSignIn.setStyleSheet(u"background-color: none;\n"
-"border-color: none;")
-        self.emailSignIn.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        font6 = QFont()
+        font6.setStyleStrategy(QFont.PreferDefault)
+        self.emailSignIn.setFont(font6)
 
         self.verticalLayout_7.addWidget(self.emailSignIn)
 
@@ -404,15 +398,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(5, 5, 5, 5)
-        self.passwordSignIn = QPlainTextEdit(self.frame_3)
+        self.passwordSignIn = QLineEdit(self.frame_3)
         self.passwordSignIn.setObjectName(u"passwordSignIn")
         sizePolicy.setHeightForWidth(self.passwordSignIn.sizePolicy().hasHeightForWidth())
         self.passwordSignIn.setSizePolicy(sizePolicy)
-        self.passwordSignIn.setMaximumSize(QSize(16777215, 25))
-        self.passwordSignIn.setFont(font4)
-        self.passwordSignIn.setStyleSheet(u"background-color: none;\n"
-"border-color: none;")
-        self.passwordSignIn.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.passwordSignIn.setEchoMode(QLineEdit.Password)
 
         self.verticalLayout_5.addWidget(self.passwordSignIn)
 
@@ -461,10 +451,10 @@ class Ui_MainWindow(object):
         self.SignInSubmit.setObjectName(u"SignInSubmit")
         self.SignInSubmit.setMinimumSize(QSize(80, 40))
         self.SignInSubmit.setMaximumSize(QSize(80, 16777215))
-        font6 = QFont()
-        font6.setFamily(u"Arial Black")
-        font6.setPointSize(10)
-        self.SignInSubmit.setFont(font6)
+        font7 = QFont()
+        font7.setFamily(u"Arial Black")
+        font7.setPointSize(10)
+        self.SignInSubmit.setFont(font7)
         self.SignInSubmit.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(213, 93, 33);\n"
 "color: rgb(255, 255, 255);\n"
@@ -576,15 +566,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(5, 5, 5, 5)
-        self.schoolNameSignUp = QPlainTextEdit(self.frame_14)
+        self.schoolNameSignUp = QLineEdit(self.frame_14)
         self.schoolNameSignUp.setObjectName(u"schoolNameSignUp")
         sizePolicy.setHeightForWidth(self.schoolNameSignUp.sizePolicy().hasHeightForWidth())
         self.schoolNameSignUp.setSizePolicy(sizePolicy)
-        self.schoolNameSignUp.setMaximumSize(QSize(16777215, 25))
-        self.schoolNameSignUp.setFont(font4)
-        self.schoolNameSignUp.setStyleSheet(u"background-color: none;\n"
-"border-color: none;")
-        self.schoolNameSignUp.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.schoolNameSignUp.setMinimumSize(QSize(0, 25))
 
         self.verticalLayout_13.addWidget(self.schoolNameSignUp)
 
@@ -599,7 +585,7 @@ class Ui_MainWindow(object):
 
         self.EmailSignInFrame_2 = QFrame(self.SignInFrame_2)
         self.EmailSignInFrame_2.setObjectName(u"EmailSignInFrame_2")
-        self.EmailSignInFrame_2.setMaximumSize(QSize(420, 90))
+        self.EmailSignInFrame_2.setMaximumSize(QSize(600, 90))
         self.EmailSignInFrame_2.setFrameShape(QFrame.StyledPanel)
         self.EmailSignInFrame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_14 = QVBoxLayout(self.EmailSignInFrame_2)
@@ -634,15 +620,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setSpacing(0)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(5, 5, 5, 5)
-        self.emailSignUp = QPlainTextEdit(self.frame_15)
+        self.emailSignUp = QLineEdit(self.frame_15)
         self.emailSignUp.setObjectName(u"emailSignUp")
-        sizePolicy.setHeightForWidth(self.emailSignUp.sizePolicy().hasHeightForWidth())
-        self.emailSignUp.setSizePolicy(sizePolicy)
-        self.emailSignUp.setMaximumSize(QSize(16777215, 25))
-        self.emailSignUp.setFont(font4)
-        self.emailSignUp.setStyleSheet(u"background-color: none;\n"
-"border-color: none;")
-        self.emailSignUp.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.emailSignUp.setMinimumSize(QSize(0, 25))
 
         self.verticalLayout_15.addWidget(self.emailSignUp)
 
@@ -657,8 +637,11 @@ class Ui_MainWindow(object):
 
         self.frame_21 = QFrame(self.SignInFrame_2)
         self.frame_21.setObjectName(u"frame_21")
-        sizePolicy.setHeightForWidth(self.frame_21.sizePolicy().hasHeightForWidth())
-        self.frame_21.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.frame_21.sizePolicy().hasHeightForWidth())
+        self.frame_21.setSizePolicy(sizePolicy1)
         self.frame_21.setMaximumSize(QSize(420, 16777215))
         self.frame_21.setFrameShape(QFrame.StyledPanel)
         self.frame_21.setFrameShadow(QFrame.Raised)
@@ -701,15 +684,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setSpacing(0)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(5, 5, 5, 5)
-        self.schoolTelSignUp = QPlainTextEdit(self.frame_16)
+        self.schoolTelSignUp = QLineEdit(self.frame_16)
         self.schoolTelSignUp.setObjectName(u"schoolTelSignUp")
-        sizePolicy.setHeightForWidth(self.schoolTelSignUp.sizePolicy().hasHeightForWidth())
-        self.schoolTelSignUp.setSizePolicy(sizePolicy)
-        self.schoolTelSignUp.setMaximumSize(QSize(16777215, 25))
-        self.schoolTelSignUp.setFont(font4)
-        self.schoolTelSignUp.setStyleSheet(u"background-color: none;\n"
-"border-color: none;")
-        self.schoolTelSignUp.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.schoolTelSignUp.setMinimumSize(QSize(0, 25))
 
         self.verticalLayout_17.addWidget(self.schoolTelSignUp)
 
@@ -758,17 +735,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setSpacing(0)
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.verticalLayout_19.setContentsMargins(5, 5, 5, 5)
-        self.passwordSignIn_3 = QPlainTextEdit(self.frame_22)
-        self.passwordSignIn_3.setObjectName(u"passwordSignIn_3")
-        sizePolicy.setHeightForWidth(self.passwordSignIn_3.sizePolicy().hasHeightForWidth())
-        self.passwordSignIn_3.setSizePolicy(sizePolicy)
-        self.passwordSignIn_3.setMaximumSize(QSize(16777215, 25))
-        self.passwordSignIn_3.setFont(font4)
-        self.passwordSignIn_3.setStyleSheet(u"background-color: none;\n"
-"border-color: none;")
-        self.passwordSignIn_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.passwordSignUp = QLineEdit(self.frame_22)
+        self.passwordSignUp.setObjectName(u"passwordSignUp")
+        self.passwordSignUp.setMinimumSize(QSize(0, 25))
+        self.passwordSignUp.setEchoMode(QLineEdit.Password)
 
-        self.verticalLayout_19.addWidget(self.passwordSignIn_3)
+        self.verticalLayout_19.addWidget(self.passwordSignUp)
 
 
         self.horizontalLayout_12.addWidget(self.frame_22)
@@ -819,7 +791,7 @@ class Ui_MainWindow(object):
         self.SignInSubmit_2.setObjectName(u"SignInSubmit_2")
         self.SignInSubmit_2.setMinimumSize(QSize(80, 40))
         self.SignInSubmit_2.setMaximumSize(QSize(80, 16777215))
-        self.SignInSubmit_2.setFont(font6)
+        self.SignInSubmit_2.setFont(font7)
         self.SignInSubmit_2.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(213, 93, 33);\n"
 "color: rgb(255, 255, 255);\n"
@@ -917,7 +889,7 @@ class Ui_MainWindow(object):
         self.btn_maximize.clicked.connect(MainWindow.showMaximized)
         self.btn_minimize.clicked.connect(MainWindow.showMinimized)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

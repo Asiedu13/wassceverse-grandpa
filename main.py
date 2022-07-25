@@ -12,11 +12,42 @@ from ui_classes.ui_main import Ui_MainWindow
 # IMPORT FUNCTIONS
 from ui_functions import *
 
+
+class SignInFailedDialog(QDialog):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Alert!")
+
+        QBtn = QDialogButtonBox.Ok
+
+        self.buttonBox = QDialogButtonBox(QBtn)
+        self.buttonBox.accepted.connect(self.accept)
+
+        self.layout = QVBoxLayout()
+        message = QLabel("Some or all of your credentials are incorrect, please try again.")
+        self.layout.addWidget(message)
+        self.layout.addWidget(self.buttonBox)
+        self.setLayout(self.layout)
+
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        connection = sqlite3.connect("server2.db")
+        cursor = connection.cursor()
+        statement = "SELECT school_name from registered_schools"
+        cursor.execute(statement)
+        data = cursor.fetchall()
+        schools = []
+        for d in data:
+            schools.append(d[0])
+        cursor.close()
+        print(schools)
+        completer = QCompleter(schools)
+        self.ui.schoolNameSignIn.setCompleter(completer)
 
         # MOVE WINDOW
         def moveWindow(event):
@@ -31,9 +62,9 @@ class MainWindow(QMainWindow):
                 event.accept()
         # GET DATA FROM TEXTEDITS
         def getSignInInfo():
-            schoolName = self.ui.schoolNameSignIn.toPlainText()
-            email = self.ui.emailSignIn.toPlainText()
-            password = self.ui.passwordSignIn.toPlainText()
+            schoolName = self.ui.schoolNameSignIn.text()
+            email = self.ui.emailSignIn.text()
+            password = self.ui.passwordSignIn.text()
             return schoolName, email, password
 
         # CHECK INFO
@@ -42,11 +73,14 @@ class MainWindow(QMainWindow):
             cursor = connection.cursor()
 
             sql = """
-            SELECT * FROM registered_schools WHERE schoolName = "?" AND email = "?"
+            SELECT * FROM registered_schools WHERE school_name = "{schoolName}" AND school_email = "{email}"
             """
-            cursor.execute(sql, (schoolName, email))
+            cursor.execute(sql)
             data = cursor.fetchall()
             print(data)
+
+            if len(data) > 0:
+                "TODO"
 
         def submitSignIn(db: str):
             schoolName, email, password = getSignInInfo()
