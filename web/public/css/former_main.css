@@ -21,11 +21,11 @@ header section h1 {
 #main {
   width: 100vw;
   height: 100vh;
-  border: 1px solid blue; }
+  border: 1px solid transparent; }
   #main #content {
     width: 100vw;
     height: 80vh;
-    border: 1px solid red;
+    border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +35,7 @@ header section h1 {
     #main #content .content-header {
       width: 580px; }
       #main #content .content-header h2 {
-        border: 1px solid cyan;
+        border: 1px solid transparent;
         font-size: 3.5rem;
         color: #4e6162; }
     #main #content > div {
@@ -43,7 +43,7 @@ header section h1 {
       width: 40vw;
       display: flex;
       justify-content: space-around;
-      border: 1px solid orange; }
+      border: 1px solid transparent; }
       #main #content > div a {
         width: 200px;
         height: 100px;
@@ -53,7 +53,7 @@ header section h1 {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid green; }
+        border: 1px solid transparent; }
         #main #content > div a p {
           width: 200px;
           height: 100px;
@@ -61,7 +61,7 @@ header section h1 {
           justify-content: center;
           align-items: center;
           padding: 0rem;
-          border: 1px solid green;
+          border: 1px solid transparent;
           transition: all 0.5s ease-in-out; }
           #main #content > div a p:hover {
             color: #fff;
@@ -91,7 +91,7 @@ header section h1 {
     color: #d55d21;
     padding: 1rem 2rem; }
   #main .might-interest h2 {
-    border: 1px solid 1px solid red; }
+    border: 1px solid transparent; }
   #main .might-interest {
     display: flex;
     flex-direction: column;
@@ -99,7 +99,7 @@ header section h1 {
     padding: 1rem; }
     #main .might-interest h2 {
       color: #d55d21;
-      border: 1px solid 1px solid red; }
+      border: 1px solid transparent; }
     #main .might-interest p {
       color: #414844; }
     #main .might-interest #might-interest-tips article {
@@ -126,7 +126,7 @@ header section h1 {
     width: 100%;
     height: 100vh;
     border-radius: 5px;
-    border: 1px solid yellow; }
+    border: 1px solid transparent; }
   #main #confirmation_elems input {
     padding: 0.5rem;
     background: rgba(221, 218, 218, 0.788);
@@ -138,7 +138,7 @@ header section h1 {
   #main .verification {
     color: #d55d21;
     text-decoration: none;
-    border: 1px solid red;
+    border: 1px solid transparent;
     width: 200px;
     height: 50px;
     font-size: 1.3rem; }
@@ -158,7 +158,7 @@ header section h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid red; }
+    border: 1px solid transparent; }
   #main #question-time-form {
     width: 30vw;
     height: 10vh; }

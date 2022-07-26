@@ -73,6 +73,7 @@ header section h1 {
         height: 100px;
         width: inherit;
         @include border(pink);
+        color: #808080;
         p {
           font-size: 3rem;
         }
@@ -86,7 +87,40 @@ header section h1 {
           border: none;
           font-size: 3rem;
           padding: 0.5rem;
+          
+        }
+      }
+      .index_number_input {
+        @include border(orange);
+         display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        p {
+          font-size: 3rem;
           color: #808080;
+          
+        }
+        input{
+         height: 60px;
+          width: 500px;
+          margin: 0 10px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          font-size: 3rem;
+          padding: 0.5rem;
+          color: #000;
+        }
+        button {
+          width: 70px;
+          height: 70px;
+          border-radius: 70px;
+          background: #f05455;
+          color: #fff;
+          border: none;
+          font-size: 2.5rem;
         }
       }
       .results {
@@ -104,7 +138,7 @@ header section h1 {
           color: grey;
           padding: 5px 0;
         }
-
+        
         #search_results {
           width: 820px;
           background: #fff;

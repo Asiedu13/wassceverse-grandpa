@@ -4,15 +4,15 @@ let schools;
 
 window.onload = async () => {
   axios.get("/api/schools").then((res) => {
-    // Get schools data
+    // -------- Get schools data --------
     schools = res.data;
     console.log(res.data);
 
-    // Get parent Element
+    // -------- Get parent Element ----
     let parent = document.getElementById("search_results");
     let count_display = document.querySelector(".search_data_count");
 
-    // Get the number of elements in the array
+    // ------ Get the number of elements in the array ---------
     count_display.innerHTML = schools.length;
     console.log(parent);
 
@@ -20,7 +20,7 @@ window.onload = async () => {
   });
   console.log(parent);
 
-  // Add event listeners
+  // ---------- Add event listeners ------
 };
 
 let main_input = document.querySelector("#search");
@@ -41,6 +41,7 @@ function onUrlChange() {
     formEl: document.querySelector("form"),
     context: document.getElementById("cf-context"),
     showProgressBar: true,
+    // FIXME
     //  flowStepCallback: function(dto, success, error){
 
     //     if(dto.tag.id == "firstname"){
@@ -132,6 +133,7 @@ function upDateSchoolsList(
 
         div.innerHTML = html_to_be_added;
         div.setAttribute("class", `${className}`);
+        div.setAttribute("onClick", `schoolSelected(this)`);
         console.log(html_to_be_added);
         parent.appendChild(div);
       }
@@ -153,12 +155,15 @@ function upDateSchoolsList(
 
         div.innerHTML = html_to_be_added;
         div.setAttribute("class", `${className}`);
+        div.setAttribute("onClick", `schoolSelected(this)`);
         console.log(html_to_be_added);
         parent.appendChild(div);
       }
     });
   }
 }
+
+// ----------- When the search input is edited ---
 
 function inputChange(e, schools_list) {
   let search_value = e.target.value;
@@ -175,4 +180,46 @@ function inputChange(e, schools_list) {
   console.log(newSchoolList);
 
   upDateSchoolsList(newSchoolList, parent, count_display, "article", "school");
+}
+
+// --------- When the user taps on a school ------
+
+function schoolSelected(e) {
+  // -- School selection code goes here...
+  console.log("A school has been clicked!");
+  console.log(e);
+  let selected_school = e;
+
+  // ---------- Get school name ----------
+  let selectedSchoolName = e.children[1].children[0].innerText;
+  console.log(selectedSchoolName);
+  // ------ Set input to school name ------
+  main_input.value = selectedSchoolName;
+
+  // ------ Disable input element ---------
+  main_input.setAttribute("disabled", "disabled");
+
+  // ------ Remove search results section ------
+
+  let resultsParent = document.querySelector(".results");
+  resultsParent.remove();
+
+  // ------ Replace search results section with other elements
+
+  let replacementHtml = `     
+            <p>and my B.E.C.E index number was </p>
+            <input type="text" minlength="10" maxlength="13 id="indexNumber" />  
+            <button>GO!</button>    
+  
+  `;
+  let schoolSelector = document.querySelector("#school_selector");
+  let parentReplacementHtml = document.createElement("div");
+  parentReplacementHtml.setAttribute("class", "index_number_input");
+  parentReplacementHtml.innerHTML = replacementHtml;
+  schoolSelector.appendChild(parentReplacementHtml);
+}
+
+
+function continueToChat() {
+  
 }
