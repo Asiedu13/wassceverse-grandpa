@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainXrQtnJ.ui'
+## Form generated from reading UI file 'ui_mainFTxNve.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -903,12 +903,14 @@ class Ui_MainWindow(object):
         self.label_11 = QLabel(self.frame)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setMaximumSize(QSize(100, 16777215))
+        self.label_11.setVisible(False)
 
         self.horizontalLayout_16.addWidget(self.label_11)
 
         self.comboBox = QComboBox(self.frame)
         self.comboBox.setObjectName(u"comboBox")
         self.comboBox.setMinimumSize(QSize(200, 0))
+        self.comboBox.setVisible(False)
         self.comboBox.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
         self.horizontalLayout_16.addWidget(self.comboBox)

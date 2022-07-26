@@ -7,6 +7,8 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFo
 from PySide2.QtWidgets import *
 import cv2
 import numpy as np
+import os
+
 
 # GUI FILES
 from ui_classes.ui_main import Ui_MainWindow
@@ -70,13 +72,11 @@ class MainWindow(QMainWindow):
         completer = QCompleter(schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
         ports = self.list_camera_ports()
-        for port in ports:
-            self.ui.comboBox.addItem(str(port))
-        self.ui.comboBox.s
+
         self.thread = VideoThread(0)
+
         self.thread.change_pixmap_signal.connect(self.update_image)
         self.thread.start()
-
         # MOVE WINDOW
         def moveWindow(event):
             # RESTORE BEFORE MOVE

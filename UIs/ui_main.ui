@@ -2020,6 +2020,9 @@ margin-bottom: 20px;</string>
                <height>16777215</height>
               </size>
              </property>
+             <property name="visible">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Select Your Camera</string>
              </property>
@@ -2032,6 +2035,9 @@ margin-bottom: 20px;</string>
                <width>200</width>
                <height>0</height>
               </size>
+             </property>
+             <property name="visible">
+              <bool>false</bool>
              </property>
              <property name="styleSheet">
               <string notr="true">background-color: rgb(255, 255, 255);</string>
