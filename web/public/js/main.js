@@ -217,7 +217,7 @@ function schoolSelected(e) {
   let replacementHtml = `     
             <p>and my B.E.C.E index number was </p>
             <input type="text" minlength="10" maxlength="13 id="indexNumber" onInput="updateIndexNumber(this)" placeholder="eg. 0101050901619" />  
-            <button onClick="continueToChat()">GO!</button>    
+            <a href="/pages/student_registration.html" id="continueC" onClick="continueToChat()">GO!</a>    
   
   `;
   let schoolSelector = document.querySelector("#school_selector");
@@ -232,37 +232,47 @@ function updateIndexNumber(e) {
   console.log(userData);
 }
 
-
-
 async function continueToChat() {
-  let result = await getStudentName( userData.school, userData.index_number );
-  console.log( 'Async working' )
-  console.log( result )
-  
-  // TODO: Continue to chat
-  window.location = '/pages/student_registration.html'
+  // console.log()
+  localStorage.setItem(
+    "username",
+    `${userData.first_name} ${userData.surname} `
+  );
 
- 
+  let result = await getStudentName(userData.school, userData.index_number);
+  console.log("Async working");
+  console.log(result);
+
+  // TODO: Continue to chat
+  // window.location = '/pages/student_registration.html'
 }
 
+function finallyMoveOn() {
+  let continueLink = document.querySelector("#continueC");
+  continueLink.setAttribute("href", "/pages/student_registration.html");
+}
 // Get student name from DB
-function getStudentName( school, index_number ) {
-  return new Promise( ( resolve, reject ) => {
+function getStudentName(school, index_number) {
+  return new Promise((resolve, reject) => {
     axios
       .get(
         `/api/student/getStudent?school=${school}&index_number=${index_number}`
       )
-      .then( ( res ) => {
-        console.log( res );
+      .then((res) => {
+        console.log(res);
         userData.first_name = res.data.first_name;
         userData.surname = res.data.surname;
-        console.log( userData );
-        resolve( true)
-      } )
-      .catch( ( err ) => {
-        console.error( err.message );
-        reject(false)
-      } );
-  }
-  )
+        console.log(userData);
+        // let continueLink = document.querySelector("#continueC");
+        // continueLink.setAttribute("onClick", "finallyMoveOn()");
+        let questions = document.querySelector(".show");
+        console.log(questions);
+
+        resolve(true);
+      })
+      .catch((err) => {
+        console.error(err.message);
+        reject(false);
+      });
+  });
 }

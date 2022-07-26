@@ -89,7 +89,7 @@ header section h1 {
           font-size: 3rem;
           padding: 0.5rem;
           color: #000; }
-        #main #content > section .index_number_input button {
+        #main #content > section .index_number_input a {
           width: 70px;
           height: 70px;
           border-radius: 70px;
