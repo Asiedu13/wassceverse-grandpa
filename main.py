@@ -1,6 +1,7 @@
 import sqlite3
 import sys
 import platform
+from turtle import width
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
@@ -8,6 +9,8 @@ from PySide2.QtWidgets import *
 import cv2
 import numpy as np
 import os
+from PIL import Image
+from autocrop import Cropper
 
 
 # GUI FILES

@@ -8,7 +8,7 @@ cropper = Cropper(
 )
 
 # Get a Numpy array of the cropped image
-img_url = "test_imgs/images.jpg"
+img_url = "test_imgs/test.jpg"
 cropped_array = cropper.crop(img_url)
 
 # Save the cropped image with PIL if a face was detected:
