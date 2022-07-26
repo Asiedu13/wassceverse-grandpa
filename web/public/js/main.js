@@ -111,7 +111,7 @@ function upDateSchoolsList(
   parentElem,
   className
 ) {
-  // Check if there are child elements in the parent
+  // --- Check if there are child elements in the parent
   if (parent.childElementCount > 0) {
     parent.innerHTML = "";
     // Get the number of elements in the array
@@ -221,5 +221,5 @@ function schoolSelected(e) {
 
 
 function continueToChat() {
-  
+
 }
