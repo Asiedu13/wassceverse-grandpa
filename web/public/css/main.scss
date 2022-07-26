@@ -95,6 +95,7 @@ header section h1 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 300px;
         /* background-color: #fff; */
 
         #search_desc {
@@ -107,13 +108,13 @@ header section h1 {
         #search_results {
           width: 820px;
           background: #fff;
-          height: fit-content;
+          height: 90%;
           display: flex;
           flex-direction: column;
           /* justify-content: center; */
           align-items: center;
           border-radius: 5px;
-          overflow-y: auto;
+          overflow-y: scroll;
 
           @include border(red);
 
@@ -126,6 +127,8 @@ header section h1 {
             display: flex;
             align-items: center;
             padding: 1rem;
+            cursor: pointer;
+
 
             img {
               background: #414844;
