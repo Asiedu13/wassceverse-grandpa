@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainsVwzhF.ui'
+## Form generated from reading UI file 'ui_mainXrQtnJ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1000, 600)
+        MainWindow.resize(1000, 611)
         MainWindow.setMinimumSize(QSize(1000, 0))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -879,17 +879,161 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.addWidget(self.background_2)
 
         self.stackedWidget.addWidget(self.signUp)
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.stackedWidget.addWidget(self.page)
+        self.camera = QWidget()
+        self.camera.setObjectName(u"camera")
+        self.verticalLayout_20 = QVBoxLayout(self.camera)
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.frame = QFrame(self.camera)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMaximumSize(QSize(16777215, 40))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.frame)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.frame_29 = QFrame(self.frame)
+        self.frame_29.setObjectName(u"frame_29")
+        self.frame_29.setFrameShape(QFrame.StyledPanel)
+        self.frame_29.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_16.addWidget(self.frame_29)
+
+        self.label_11 = QLabel(self.frame)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_16.addWidget(self.label_11)
+
+        self.comboBox = QComboBox(self.frame)
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setMinimumSize(QSize(200, 0))
+        self.comboBox.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+
+        self.horizontalLayout_16.addWidget(self.comboBox)
+
+        self.frame_30 = QFrame(self.frame)
+        self.frame_30.setObjectName(u"frame_30")
+        self.frame_30.setFrameShape(QFrame.StyledPanel)
+        self.frame_30.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_16.addWidget(self.frame_30)
+
+
+        self.verticalLayout_20.addWidget(self.frame)
+
+        self.frame_19 = QFrame(self.camera)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setFrameShape(QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_21 = QVBoxLayout(self.frame_19)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.frame_23 = QFrame(self.frame_19)
+        self.frame_23.setObjectName(u"frame_23")
+        self.frame_23.setFrameShape(QFrame.StyledPanel)
+        self.frame_23.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_18 = QHBoxLayout(self.frame_23)
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.frame_24 = QFrame(self.frame_23)
+        self.frame_24.setObjectName(u"frame_24")
+        self.frame_24.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_24.setFrameShape(QFrame.StyledPanel)
+        self.frame_24.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_18.addWidget(self.frame_24)
+
+        self.camera_input = QLabel(self.frame_23)
+        self.camera_input.setObjectName(u"camera_input")
+        self.camera_input.setMinimumSize(QSize(600, 0))
+
+        self.horizontalLayout_18.addWidget(self.camera_input)
+
+        self.frame_25 = QFrame(self.frame_23)
+        self.frame_25.setObjectName(u"frame_25")
+        self.frame_25.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_25.setFrameShape(QFrame.StyledPanel)
+        self.frame_25.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_18.addWidget(self.frame_25)
+
+
+        self.verticalLayout_21.addWidget(self.frame_23)
+
+        self.frame_26 = QFrame(self.frame_19)
+        self.frame_26.setObjectName(u"frame_26")
+        self.frame_26.setMaximumSize(QSize(16777215, 80))
+        self.frame_26.setFrameShape(QFrame.StyledPanel)
+        self.frame_26.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_19 = QHBoxLayout(self.frame_26)
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.frame_27 = QFrame(self.frame_26)
+        self.frame_27.setObjectName(u"frame_27")
+        self.frame_27.setFrameShape(QFrame.StyledPanel)
+        self.frame_27.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_19.addWidget(self.frame_27)
+
+        self.capture = QFrame(self.frame_26)
+        self.capture.setObjectName(u"capture")
+        self.capture.setMinimumSize(QSize(400, 0))
+        self.capture.setMaximumSize(QSize(400, 60))
+        self.capture.setCursor(QCursor(Qt.PointingHandCursor))
+        self.capture.setStyleSheet(u"background-color: #707070;\n"
+"border-radius: 30px;")
+        self.capture.setFrameShape(QFrame.StyledPanel)
+        self.capture.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_17 = QHBoxLayout(self.capture)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.label_13 = QLabel(self.capture)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setMinimumSize(QSize(40, 40))
+        self.label_13.setMaximumSize(QSize(50, 50))
+        self.label_13.setCursor(QCursor(Qt.PointingHandCursor))
+        self.label_13.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border-top-color: rgb(255, 255, 255);")
+        self.label_13.setFrameShadow(QFrame.Plain)
+        self.label_13.setPixmap(QPixmap(u"../Include/img/camera.png"))
+        self.label_13.setScaledContents(True)
+        self.label_13.setMargin(0)
+
+        self.horizontalLayout_17.addWidget(self.label_13)
+
+
+        self.horizontalLayout_19.addWidget(self.capture)
+
+        self.frame_28 = QFrame(self.frame_26)
+        self.frame_28.setObjectName(u"frame_28")
+        self.frame_28.setFrameShape(QFrame.StyledPanel)
+        self.frame_28.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_19.addWidget(self.frame_28)
+
+
+        self.verticalLayout_21.addWidget(self.frame_26)
+
+
+        self.verticalLayout_20.addWidget(self.frame_19)
+
+        self.stackedWidget.addWidget(self.camera)
+        self.page_3 = QWidget()
+        self.page_3.setObjectName(u"page_3")
+        self.stackedWidget.addWidget(self.page_3)
 
         self.centralWidgetLaayout.addWidget(self.stackedWidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
+#if QT_CONFIG(shortcut)
+        self.label_2.setBuddy(self.SignUpButton)
+        self.label_7.setBuddy(self.SignUpButton_2)
+#endif // QT_CONFIG(shortcut)
 
         self.retranslateUi(MainWindow)
         self.btn_close.clicked.connect(MainWindow.close)
         self.btn_maximize.clicked.connect(MainWindow.showMaximized)
         self.btn_minimize.clicked.connect(MainWindow.showMinimized)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -897,7 +1041,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#414844;\">WASSCEVerse</span></p></body></html>", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#414844;\">WASSCEVERSE</span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.btn_minimize.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Minimize</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
@@ -937,5 +1081,8 @@ class Ui_MainWindow(object):
 "</p>\n"
 "</body>\n"
 "</html>", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Select Your Camera", None))
+        self.camera_input.setText("")
+        self.label_13.setText("")
     # retranslateUi
 
