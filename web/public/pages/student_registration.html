@@ -45,7 +45,7 @@
 
             <cf-robot-message cf-questions="Hello student!"></cf-robot-message>
 
-            <input
+            <!-- <input
               type="text"
               name="first_name"
               pattern="^[a-zA-Z ]+$"
@@ -58,8 +58,8 @@
               name="surname"
               pattern="^[a-zA-Z ]+$"
               cf-questions="Hi {first_name}, What is your last name?"
-            />
-
+            /> -->
+            <!-- FIXME:IF no extra names are added, ignore -->
             <!-- <fieldset cf-questions="Any other names?">
               <input
                 type="radio"
@@ -237,14 +237,12 @@
             />
           </form>
 
-          <div id="cf-context" role="cf-context" cf-context>
-           
-          </div>
+          <div id="cf-context" role="cf-context" cf-context></div>
 
           <!-------- Confirmation Section  ------------>
           <section id="confirmation_elems">
             <h2>Confirm Your Details</h2>
-            <button id="edit"> Edit</button>
+            <button id="edit">Edit</button>
             <br />
             <table border="0">
               <!-- First Name row -->
@@ -411,11 +409,10 @@
               <tr>
                 <td>&nbsp;</td>
                 <td>
-                    <button class="verification" onClick="store()">Submit</button>
+                  <button class="verification" onClick="store()">Submit</button>
                 </td>
               </tr>
             </table>
-           
           </section>
           <!-- Verified :for confirmation elem section - -->
         </section>
@@ -424,7 +421,7 @@
       <!-- Verified :for actual - -->
     </main>
 
-     <script
+    <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js"
       crossorigin

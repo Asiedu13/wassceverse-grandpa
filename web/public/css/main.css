@@ -96,7 +96,8 @@ header section h1 {
           background: #f05455;
           color: #fff;
           border: none;
-          font-size: 2.5rem; }
+          font-size: 2.5rem;
+          cursor: pointer; }
       #main #content > section .results {
         border: 1px solid transparent;
         display: flex;

@@ -1,6 +1,12 @@
 let lastUrl = location.href;
 let num = 1;
 let schools;
+let userData = {
+  school: "",
+  index_number: "",
+  first_name: "",
+  surname: "",
+};
 
 window.onload = async () => {
   axios.get("/api/schools").then((res) => {
@@ -41,7 +47,7 @@ function onUrlChange() {
     formEl: document.querySelector("form"),
     context: document.getElementById("cf-context"),
     showProgressBar: true,
-    // FIXME
+    // FIXME: Remove the comments when done and this is still not necessary.
     //  flowStepCallback: function(dto, success, error){
 
     //     if(dto.tag.id == "firstname"){
@@ -196,6 +202,8 @@ function schoolSelected(e) {
   // ------ Set input to school name ------
   main_input.value = selectedSchoolName;
 
+  // ------ Save school name ------
+  userData.school = selectedSchoolName;
   // ------ Disable input element ---------
   main_input.setAttribute("disabled", "disabled");
 
@@ -208,8 +216,8 @@ function schoolSelected(e) {
 
   let replacementHtml = `     
             <p>and my B.E.C.E index number was </p>
-            <input type="text" minlength="10" maxlength="13 id="indexNumber" />  
-            <button>GO!</button>    
+            <input type="text" minlength="10" maxlength="13 id="indexNumber" onInput="updateIndexNumber(this)" placeholder="eg. 0101050901619" />  
+            <button onClick="continueToChat()">GO!</button>    
   
   `;
   let schoolSelector = document.querySelector("#school_selector");
@@ -219,7 +227,42 @@ function schoolSelected(e) {
   schoolSelector.appendChild(parentReplacementHtml);
 }
 
+function updateIndexNumber(e) {
+  userData.index_number = e.value;
+  console.log(userData);
+}
 
-function continueToChat() {
 
+
+async function continueToChat() {
+  let result = await getStudentName( userData.school, userData.index_number );
+  console.log( 'Async working' )
+  console.log( result )
+  
+  // TODO: Continue to chat
+  window.location = '/pages/student_registration.html'
+
+ 
+}
+
+// Get student name from DB
+function getStudentName( school, index_number ) {
+  return new Promise( ( resolve, reject ) => {
+    axios
+      .get(
+        `/api/student/getStudent?school=${school}&index_number=${index_number}`
+      )
+      .then( ( res ) => {
+        console.log( res );
+        userData.first_name = res.data.first_name;
+        userData.surname = res.data.surname;
+        console.log( userData );
+        resolve( true)
+      } )
+      .catch( ( err ) => {
+        console.error( err.message );
+        reject(false)
+      } );
+  }
+  )
 }
