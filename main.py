@@ -1,11 +1,15 @@
 import sqlite3
 import sys
+import pathlib
 import platform
-from turtle import width
+import time
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtMultimedia import QCameraInfo, QCamera, QCameraImageCapture
+from PySide2.QtMultimediaWidgets import QCameraViewfinder
 from PySide2.QtWidgets import *
+
 import cv2
 import numpy as np
 import os
@@ -22,28 +26,12 @@ from ui_classes.ui_incorrectDialog import Ui_incorrectDialog
 # IMPORT FUNCTIONS
 from ui_functions import *
 
-class VideoThread(QThread):
-    change_pixmap_signal = Signal(np.ndarray)
+BASE_DIR = pathlib.Path().home()
+FOLDER_NAME = '.TEMP'
 
-    def __init__(self, port):
-        super().__init__()
-        self.port = port
-        self._run_flag = True
+SAVE_PATH = BASE_DIR / FOLDER_NAME
+SAVE_PATH.mkdir(exist_ok=True, parents=True)
 
-    def run(self):
-        # capture from web cam
-        cap = cv2.VideoCapture(self.port)
-        while self._run_flag:
-            ret, cv_img = cap.read()
-            if ret:
-                self.change_pixmap_signal.emit(cv_img)
-        # shut down capture system
-        cap.release()
-
-    def stop(self):
-        """Sets run flag to False and waits for thread to finish"""
-        self._run_flag = False
-        self.wait()
 
 class PasswordIncorrectDialog(QDialog):
     def __init__(self, parent = None):
@@ -62,7 +50,13 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
+        self.availableCameras = QCameraInfo.availableCameras()
+        self.viewFinder = self.ui.camera_input
+        self.school_name = ""
+        self.selectCamera(0)
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.comboBox.addItems([camera.description()
+                                 for camera in self.availableCameras])
         connection = sqlite3.connect("server2.db")
         self.cursor = connection.cursor()
         statement = "SELECT school_name from registered_schools"
@@ -74,23 +68,6 @@ class MainWindow(QMainWindow):
         print(schools)
         completer = QCompleter(schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
-        ports = self.list_camera_ports()
-
-        self.thread = VideoThread(0)
-
-        self.thread.change_pixmap_signal.connect(self.update_image)
-        self.thread.start()
-        # MOVE WINDOW
-        def moveWindow(event):
-            # RESTORE BEFORE MOVE
-            if UIFunctions.returnStatus() == 1:
-                UIFunctions.maximize_restore(self)
-
-            # IF LEFT CLICK MOVE WINDOW
-            if event.buttons() == Qt.LeftButton:
-                self.move(self.pos() + event.globalPos() - self.dragPos)
-                self.dragPos = event.globalPos()
-                event.accept()
 
         # CHECK INFO
         def signIn(db: str):
@@ -99,23 +76,25 @@ class MainWindow(QMainWindow):
             password = self.ui.passwordSignIn.text()
             cursor = self.cursor
 
-            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}'"
+            sql = f"""--sql
+            SELECT * FROM registered_schools WHERE school_name = "{schoolName}" AND school_email = '{email}'
+            """
             cursor.execute(sql)
-            data = cursor.fetchone()
+            data = cursor.fetchall()
             print(data)
 
-            if len(data) == 1:
-                if password != data[6]:
+            if len(data) > 1:
+                if password != data[0][6]:
                     dialog = PasswordIncorrectDialog(self)
                     dialog.exec()
                 else:
-                    "TODO"
+                    self.school_name = schoolName
+                    switch_screen(3)
             else:
                 dialog = FailDialogOne(self)
                 dialog.exec()
 
         # SET TITLE BAR
-        self.ui.title_bar.mouseMoveEvent = moveWindow
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
         self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
         self.ui.SignInSubmit.clicked.connect(lambda: signIn("server2.db"))
@@ -125,7 +104,6 @@ class MainWindow(QMainWindow):
 
         ## ==> SET UI DEFINITIONS
         UIFunctions.uiDefinitions(self)
-        self.ui.stackedWidget.setCurrentIndex(5)
 
         ## SHOW ==> MAIN WINDOW
         ########################################################################
@@ -134,42 +112,38 @@ class MainWindow(QMainWindow):
     ## APP EVENTS
     ########################################################################
 
+    def selectCamera(self, i):
+        self.camera = QCamera(self.availableCameras[i])
+        self.camera.setViewfinder(self.viewFinder)
+        self.camera.setCaptureMode(QCamera.CaptureStillImage)
+        self.camera.error.connect(lambda:
+                                  self.alert(self.camera.errorString()))
+        self.camera.start()
+        self.capture = QCameraImageCapture(self.camera)
+        self.capture.error.connect(lambda d, i:
+                                   self.status.showMessage(
+                                       f'Image Captured {str(self.saveSeq)}'))
+        self.currentCameraName = self.availableCameras[i].description()
+        self.saveSeq = 0
+
+    def clickPhoto(self):
+        timeStamp = time.strftime('Date %d %b %Y Time %H %M %S')
+        fileName = f'Webcam {self.currentCameraName} {timeStamp} .jpg'
+        if self.savePath:
+            savePath = self.savePath / fileName
+        else:
+            savePath = SAVE_PATH / fileName
+        self.saveImage(str(savePath))
+        print('Image saved on ', str(savePath))
+        self.saveSeq += 1
+
+    def alert(self, msg):
+        error = QErrorMessage(self)
+        error.showMessage(msg)
+
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
 
-    def closeEvent(self, event):
-        self.thread.stop()
-        event.accept()
-
-    def list_camera_ports(self):
-        non_working_ports = []
-        test_port = 0
-        available_ports = []
-
-        while len(non_working_ports) < 6:
-            camera = cv2.VideoCapture(test_port)
-            if not camera.isOpened():
-                non_working_ports.append(test_port)
-            else:
-                available_ports.append(test_port)
-            test_port += 1
-        return available_ports
-
-
-    @Slot(np.ndarray)
-    def update_image(self, cv_img):
-        """Updates the camera_input with a new opencv image"""
-        qt_img = self.convert_cv_qt(cv_img)
-        self.ui.camera_input.setPixmap(qt_img)
-
-    def convert_cv_qt(self, cv_img):
-        """Convert from an opencv image to QPixmap"""
-        rgb_image = cv2.cvtColor(cv_img, cv2.COLOR_BGR2RGB)
-        h, w, ch = rgb_image.shape
-        bytes_per_line = ch * w
-        convert_to_Qt_format = QtGui.QImage(rgb_image.data, w, h, bytes_per_line, QtGui.QImage.Format_RGB888)
-        p = convert_to_Qt_format.scaled(self.ui.camera_input.geometry().width(), self.ui.camera_input.geometry().height(), Qt.KeepAspectRatio)
-        return QPixmap.fromImage(p)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

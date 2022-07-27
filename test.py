@@ -12,6 +12,6 @@ img_url = "test_imgs/test.jpg"
 cropped_array = cropper.crop(img_url)
 
 # Save the cropped image with PIL if a face was detected:
-if len(cropped_array) >= 0 :
+if cropped_array != None :
     cropped_image = Image.fromarray(cropped_array)
     cropped_image.save('test_imgs/test.png')
