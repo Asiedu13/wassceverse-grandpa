@@ -219,7 +219,7 @@ function schoolSelected(e) {
   let replacementHtml = `     
             <p>and my B.E.C.E index number was </p>
             <input type="text" minlength="10" maxlength="13 id="indexNumber" onInput="updateIndexNumber(this)" placeholder="eg. 0101050901619" />  
-            <button id="continueC" onClick="continueToChat()">Confirm</button>
+            <button id="continueC" onClick="continueToChat()">Save</button>
   `;
   let schoolSelector = document.querySelector("#school_selector");
   let parentReplacementHtml = document.createElement("div");
@@ -234,7 +234,6 @@ function updateIndexNumber(e) {
 }
 
 async function continueToChat() {
-  // TODO: Continue to chat
   let schoolSelector = document.querySelector("#school_selector");
 
   let result = await getStudentName(userData.school, userData.index_number);
@@ -248,20 +247,11 @@ async function continueToChat() {
 
   specifiedUser = username;
   let theLink = `
-      <a href="/pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Fill Data</a>`;
+      <a id="continues" href="/pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Continue</a>`;
   continueLink.innerHTML = theLink;
   schoolSelector.appendChild(continueLink);
-
-  localStorage.setItem(
-    "username",
-    `${userData.first_name} ${userData.surname} `
-  );
 }
 
-function finallyMoveOn() {
-  let continueLink = document.querySelector("#continueC");
-  continueLink.setAttribute("href", "/pages/student_registration.html");
-}
 // Get student name from DB
 function getStudentName(school, index_number) {
   return new Promise((resolve, reject) => {
@@ -271,14 +261,10 @@ function getStudentName(school, index_number) {
       )
       .then((res) => {
         console.log(res.data);
+        console.log("Saving in userData object");
         userData.first_name = res.data.first_name;
         userData.surname = res.data.surname;
         console.log(userData);
-        // let continueLink = document.querySelector("#continueC");
-        // continueLink.setAttribute("onClick", "finallyMoveOn()");
-        // let questions = document.querySelector(".show");
-        // console.log(questions);
-
         resolve(true);
       })
       .catch((err) => {

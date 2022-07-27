@@ -47,6 +47,8 @@ app.get("/api/student/getStudent", (req, res) => {
   let index_number = req.query.index_number;
   let sql = `SELECT * FROM student_details WHERE student_details.index_number=? AND student_details.school=? `;
   console.log( sql );
+  console.log( 'THe student' )
+  
   
   db.get( sql, [index_number, school], ( err, row ) => {
     if(err) console.error(err.message)
