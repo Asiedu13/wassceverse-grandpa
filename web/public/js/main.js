@@ -1,3 +1,5 @@
+// import { specifiedUser } from "./globals";
+
 let lastUrl = location.href;
 let num = 1;
 let schools;
@@ -80,12 +82,12 @@ function onUrlChange() {
       console.log("Formdata, serialized:", formDataSerialized);
 
       let det = {
-        first_name: formDataSerialized.first_name,
-        surname: formDataSerialized.surname,
+        first_name: userData.first_name,
+        surname: userData.surname,
         other_names: formDataSerialized.other_names,
         date_of_birth: formDataSerialized.date_of_birth,
         gender: formDataSerialized.gender,
-        school: formDataSerialized.school,
+        school: userData.school,
         index_number: formDataSerialized.index_number,
         year_completed: formDataSerialized.year_completed,
         course: formDataSerialized.course,
@@ -217,8 +219,7 @@ function schoolSelected(e) {
   let replacementHtml = `     
             <p>and my B.E.C.E index number was </p>
             <input type="text" minlength="10" maxlength="13 id="indexNumber" onInput="updateIndexNumber(this)" placeholder="eg. 0101050901619" />  
-            <a href="/pages/student_registration.html" id="continueC" onClick="continueToChat()">GO!</a>    
-  
+            <button id="continueC" onClick="continueToChat()">Confirm</button>
   `;
   let schoolSelector = document.querySelector("#school_selector");
   let parentReplacementHtml = document.createElement("div");
@@ -233,18 +234,28 @@ function updateIndexNumber(e) {
 }
 
 async function continueToChat() {
-  // console.log()
-  localStorage.setItem(
-    "username",
-    `${userData.first_name} ${userData.surname} `
-  );
+  // TODO: Continue to chat
+  let schoolSelector = document.querySelector("#school_selector");
 
   let result = await getStudentName(userData.school, userData.index_number);
   console.log("Async working");
   console.log(result);
 
-  // TODO: Continue to chat
-  // window.location = '/pages/student_registration.html'
+  // Pass data to URL or local storage
+  console.log(schoolSelector);
+  let continueLink = document.createElement("div");
+  let username = `${userData.first_name} ${userData.surname}`;
+
+  specifiedUser = username;
+  let theLink = `
+      <a href="/pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Fill Data</a>`;
+  continueLink.innerHTML = theLink;
+  schoolSelector.appendChild(continueLink);
+
+  localStorage.setItem(
+    "username",
+    `${userData.first_name} ${userData.surname} `
+  );
 }
 
 function finallyMoveOn() {
@@ -259,14 +270,14 @@ function getStudentName(school, index_number) {
         `/api/student/getStudent?school=${school}&index_number=${index_number}`
       )
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         userData.first_name = res.data.first_name;
         userData.surname = res.data.surname;
         console.log(userData);
         // let continueLink = document.querySelector("#continueC");
         // continueLink.setAttribute("onClick", "finallyMoveOn()");
-        let questions = document.querySelector(".show");
-        console.log(questions);
+        // let questions = document.querySelector(".show");
+        // console.log(questions);
 
         resolve(true);
       })
