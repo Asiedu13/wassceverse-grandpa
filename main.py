@@ -1,3 +1,4 @@
+from operator import contains
 import sqlite3
 import sys
 import pathlib
@@ -53,15 +54,16 @@ class MainWindow(QMainWindow):
         self.availableCameras = QCameraInfo.availableCameras()
         self.viewFinder = self.ui.camera_input
         self.school_name = ""
-        self.selectCamera(0)
+        self.students = []
+        self.currentStudentId = 0
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.comboBox.addItems([camera.description()
                                  for camera in self.availableCameras])
         connection = sqlite3.connect("server2.db")
-        self.cursor = connection.cursor()
+        cursor = connection.cursor()
         statement = "SELECT school_name from registered_schools"
-        self.cursor.execute(statement)
-        data = self.cursor.fetchall()
+        cursor.execute(statement)
+        data = cursor.fetchall()
         schools = []
         for d in data:
             schools.append(d[0])
@@ -69,21 +71,26 @@ class MainWindow(QMainWindow):
         completer = QCompleter(schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
 
+        def camera_screen():
+            self.selectCamera(0)
+            self.ui.stackedWidget.setCurrentIndex(3)
+
         # CHECK INFO
         def signIn(db: str):
             schoolName = self.ui.schoolNameSignIn.text()
+            if "'" in schoolName:
+                schoolName = schoolName.replace("'", "''")
             email = self.ui.emailSignIn.text()
             password = self.ui.passwordSignIn.text()
-            cursor = self.cursor
+            conn = sqlite3.connect(db)
+            cursor = conn.cursor()
 
-            sql = f"""--sql
-            SELECT * FROM registered_schools WHERE school_name = "{schoolName}" AND school_email = '{email}'
-            """
+            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}' AND school_email = '{email}'"
             cursor.execute(sql)
             data = cursor.fetchall()
             print(data)
 
-            if len(data) > 1:
+            if len(data) != 0:
                 if password != data[0][6]:
                     dialog = PasswordIncorrectDialog(self)
                     dialog.exec()
@@ -93,6 +100,32 @@ class MainWindow(QMainWindow):
             else:
                 dialog = FailDialogOne(self)
                 dialog.exec()
+
+        def getStudent(id = self.currentStudentId):
+            sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}' AND _rowid_ = {id}"
+            cursor.execute(sql)
+            data = cursor.fetchall()
+            if len(data) != 0:
+                name = f"{data[0][0]} {data[0][1]} {data[0][2]}"
+                self.ui.student_name.setText(name.strip())
+                self.ui.student_school.setText(data[0][8])
+                self.ui.student_class.setText(data[0][4])
+                self.ui.student_course.setText(data[0][3])
+                self.ui.student_gender.setText(data[0])
+            else:
+                getStudent(1)
+
+
+        def nextStudent():
+            id = self.currentStudentId + 1
+            getStudent(id)
+
+        def previousStudent():
+            if self.currentStudentId > 1:
+                id = self.currentStudentId - 1
+            getStudent(id)
+
+
 
         # SET TITLE BAR
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
