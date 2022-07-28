@@ -43,43 +43,11 @@
               <option value="Wesley Girls Senior High School"></option>
             </datalist>
 
-            <cf-robot-message cf-questions="Hello student!"></cf-robot-message>
-
-            <input
-              type="text"
-              name="first_name"
-              pattern="^[a-zA-Z ]+$"
-              cf-input-placeholder="firstname"
-              cf-questions="What is your first name?"
-            />
-            <input
-              type="text"
-              cf-input-placeholder="lastname"
-              name="surname"
-              pattern="^[a-zA-Z ]+$"
-              cf-questions="Hi {first_name}, What is your last name?"
-            />
-
-            <!-- <fieldset cf-questions="Any other names?">
-              <input
-                type="radio"
-                name="other_names"
-                cf-label="Yes"
-                value="yes"
-              />
-
-              <input
-                type="radio"
-                name="other_names"
-                cf-label="No"
-                value="no"
-              />
-            </fieldset> -->
+            <cf-robot-message cf-questions="Hello student!">Helo</cf-robot-message>
 
             <input
               type="text"
               name="other_names"
-              pattern="^[a-zA-Z ]+$"
               cf-input-placeholder="example"
               cf-questions="List all other names"
             />
@@ -237,14 +205,12 @@
             />
           </form>
 
-          <div id="cf-context" role="cf-context" cf-context>
-           
-          </div>
+          <div id="cf-context" role="cf-context" cf-context></div>
 
           <!-------- Confirmation Section  ------------>
           <section id="confirmation_elems">
             <h2>Confirm Your Details</h2>
-            <button id="edit"> Edit</button>
+            <button id="edit">Edit</button>
             <br />
             <table border="0">
               <!-- First Name row -->
@@ -411,20 +377,23 @@
               <tr>
                 <td>&nbsp;</td>
                 <td>
-                    <button class="verification" onClick="store()">Submit</button>
+                  <button class="verification" onClick="store()">Submit</button>
                 </td>
               </tr>
             </table>
-           
           </section>
           <!-- Verified :for confirmation elem section - -->
         </section>
         <!-- Verified :for question time - -->
       </section>
       <!-- Verified :for actual - -->
+      <script>
+        console.log("I just loaded")
+  
+      </script>
     </main>
 
-     <script
+    <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js"
       crossorigin
@@ -437,5 +406,6 @@
     <script src="js/pill_code.js"></script>
     <script src="js/main.js"></script>
     <script src="js/confirmation.js"></script>
+
   </body>
 </html>

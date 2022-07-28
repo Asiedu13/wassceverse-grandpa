@@ -1,4 +1,7 @@
 /* globals pill */
+
+// import { specifiedUser } from "./globals";
+
 /* eslint-disable no-console */
 const indicator = document.getElementById("loader");
 
@@ -14,16 +17,32 @@ pill("main", {
   onUnmounting(page, url, element) {
     preserveFormPlugin(element);
   },
-   onReady() {
-    indicator.style.display = 'none'
+  onReady() {
+    indicator.style.display = "none";
+    //  Get the chat element and attach username to it
+    console.log(specifiedUser);
+
+    let question =
+      document.querySelector("cf-robot-message") || "Nothing found";
+    console.log(question.outerHTML);
+
+    // Search URL for username query and set to it to question tag
+    const urlParams = new URLSearchParams(location.search);
+    let p_name = "";
+
+    for (const [key, value] of urlParams) {
+      console.log(key, value);
+      if (key == "username") {
+        p_name = value;
+      } else {
+        continue;
+      }
+    }
+
+    //  This was the only way I could change the question being displayed since all cf elements are hiding the actual html (p) tags being displayed on the page for some reason
+    question.outerHTML = `<cf-robot-message cf-questions=\"Hello ${p_name}!\" tabindex=\"-1\">Helo</cf-robot-message>`;
   },
-  // onReady(page, element) {
-  //   // Delay to simulate long content loading
-  //   timeout = setTimeout(() => {
-  //     indicator.style.visibility = "hidden";
-  //   }, 1000);
-  //   populateFormPlugin(element);
-  // },
+
   onMounting() {
     console.log("updating content");
   },

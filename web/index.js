@@ -42,6 +42,21 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // --------- Server Requests ---------------
+app.get("/api/student/getStudent", (req, res) => {
+  let school = req.query.school;
+  let index_number = req.query.index_number;
+  let sql = `SELECT * FROM student_details WHERE student_details.index_number=? AND student_details.school=? `;
+  console.log( sql );
+  console.log( 'THe student' )
+  
+  
+  db.get( sql, [index_number, school], ( err, row ) => {
+    if(err) console.error(err.message)
+    console.log(row);
+    res.json(row);
+  });
+});
+
 app.post("/api/student/create", function (req, res, next) {
   // Adding data to databse goes here...
 
@@ -82,6 +97,7 @@ app.post("/api/student/create", function (req, res, next) {
 
 // Get all the registered schools from the database
 app.get("/api/schools", (req, res, next) => {
+  // FIXME: Edit condition to retrieve only verified schools from the database.
   let sql = `SELECT * FROM registered_schools WHERE school_email IS NOT " "`;
   let requestedData = [];
   db.all(sql, [], (err, rows) => {
