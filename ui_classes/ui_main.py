@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_maindPFZoF.ui'
+## Form generated from reading UI file 'ui_mainuiKqqX.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1084,23 +1084,21 @@ class Ui_MainWindow(object):
         self.frame_30.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_21 = QHBoxLayout(self.frame_30)
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.previous_data_frame = QFrame(self.frame_30)
-        self.previous_data_frame.setObjectName(u"previous_data_frame")
-        self.previous_data_frame.setMaximumSize(QSize(50, 16777215))
-        self.previous_data_frame.setStyleSheet(u"QFrame {\n"
+        self.previous_data_widget = QWidget(self.frame_30)
+        self.previous_data_widget.setObjectName(u"previous_data_widget")
+        self.previous_data_widget.setMaximumSize(QSize(50, 16777215))
+        self.previous_data_widget.setStyleSheet(u"QWidget {\n"
 "background-color: rgb(112, 112, 112);\n"
 "padding: 0px;\n"
 "}\n"
 "\n"
-"QFrame:hover {\n"
+"QWidget:hover {\n"
 "	background-color: rgb(168, 168, 168);\n"
 "}")
-        self.previous_data_frame.setFrameShape(QFrame.StyledPanel)
-        self.previous_data_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_22 = QHBoxLayout(self.previous_data_frame)
+        self.horizontalLayout_22 = QHBoxLayout(self.previous_data_widget)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
         self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
-        self.previous_data = QLabel(self.previous_data_frame)
+        self.previous_data = QLabel(self.previous_data_widget)
         self.previous_data.setObjectName(u"previous_data")
         self.previous_data.setMinimumSize(QSize(45, 45))
         self.previous_data.setMaximumSize(QSize(45, 45))
@@ -1111,7 +1109,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.addWidget(self.previous_data, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
-        self.horizontalLayout_21.addWidget(self.previous_data_frame)
+        self.horizontalLayout_21.addWidget(self.previous_data_widget)
 
         self.frame_33 = QFrame(self.frame_30)
         self.frame_33.setObjectName(u"frame_33")
@@ -1650,21 +1648,21 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_20.addWidget(self.frame_31)
 
-        self.next_button_frame = QFrame(self.frame_29)
-        self.next_button_frame.setObjectName(u"next_button_frame")
-        self.next_button_frame.setMaximumSize(QSize(50, 16777215))
-        self.next_button_frame.setStyleSheet(u"QFrame {\n"
+        self.next_button_widget = QWidget(self.frame_29)
+        self.next_button_widget.setObjectName(u"next_button_widget")
+        self.next_button_widget.setMaximumSize(QSize(50, 16777215))
+        self.next_button_widget.setStyleSheet(u"QWidget {\n"
 "background-color: rgb(112, 112, 112);\n"
 "padding: 0px;\n"
 "}\n"
 "\n"
-"QFrame:hover {\n"
+"QWidget:hover {\n"
 "	background-color: rgb(168, 168, 168);\n"
 "}")
-        self.verticalLayout_24 = QVBoxLayout(self.next_button_frame)
+        self.verticalLayout_24 = QVBoxLayout(self.next_button_widget)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.verticalLayout_24.setContentsMargins(0, 0, 0, 0)
-        self.next_button = QLabel(self.next_button_frame)
+        self.next_button = QLabel(self.next_button_widget)
         self.next_button.setObjectName(u"next_button")
         self.next_button.setMinimumSize(QSize(45, 45))
         self.next_button.setMaximumSize(QSize(45, 45))
@@ -1675,7 +1673,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.addWidget(self.next_button, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
-        self.horizontalLayout_20.addWidget(self.next_button_frame)
+        self.horizontalLayout_20.addWidget(self.next_button_widget)
 
 
         self.verticalLayout_22.addWidget(self.frame_29)
@@ -1683,6 +1681,100 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.student_details)
         self.search_screen = QWidget()
         self.search_screen.setObjectName(u"search_screen")
+        self.verticalLayout_38 = QVBoxLayout(self.search_screen)
+        self.verticalLayout_38.setSpacing(0)
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
+        self.verticalLayout_38.setContentsMargins(0, 0, 0, 0)
+        self.search_frame_2 = QFrame(self.search_screen)
+        self.search_frame_2.setObjectName(u"search_frame_2")
+        self.search_frame_2.setMaximumSize(QSize(16777215, 60))
+        self.search_frame_2.setStyleSheet(u"background-color:#f2f4ee;")
+        self.search_frame_2.setFrameShape(QFrame.StyledPanel)
+        self.search_frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_38 = QHBoxLayout(self.search_frame_2)
+        self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
+        self.SchoolNameBorder_9 = QFrame(self.search_frame_2)
+        self.SchoolNameBorder_9.setObjectName(u"SchoolNameBorder_9")
+        self.SchoolNameBorder_9.setMaximumSize(QSize(600, 35))
+        self.SchoolNameBorder_9.setStyleSheet(u"background-color: #414844;\n"
+"border-radius:8px;")
+        self.SchoolNameBorder_9.setFrameShape(QFrame.StyledPanel)
+        self.SchoolNameBorder_9.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_39 = QHBoxLayout(self.SchoolNameBorder_9)
+        self.horizontalLayout_39.setSpacing(0)
+        self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
+        self.horizontalLayout_39.setContentsMargins(1, 1, 1, 1)
+        self.frame_57 = QFrame(self.SchoolNameBorder_9)
+        self.frame_57.setObjectName(u"frame_57")
+        self.frame_57.setMaximumSize(QSize(600, 35))
+        self.frame_57.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"border-radius: 8px;")
+        self.frame_57.setFrameShape(QFrame.StyledPanel)
+        self.frame_57.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_40 = QHBoxLayout(self.frame_57)
+        self.horizontalLayout_40.setSpacing(0)
+        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
+        self.horizontalLayout_40.setContentsMargins(5, 5, 5, 5)
+        self.searchbar_main_2 = QLineEdit(self.frame_57)
+        self.searchbar_main_2.setObjectName(u"searchbar_main_2")
+        sizePolicy.setHeightForWidth(self.searchbar_main_2.sizePolicy().hasHeightForWidth())
+        self.searchbar_main_2.setSizePolicy(sizePolicy)
+        self.searchbar_main_2.setFont(font6)
+        self.searchbar_main_2.setCursor(QCursor(Qt.IBeamCursor))
+        self.searchbar_main_2.setFocusPolicy(Qt.ClickFocus)
+
+        self.horizontalLayout_40.addWidget(self.searchbar_main_2)
+
+        self.close_search_2 = QLabel(self.frame_57)
+        self.close_search_2.setObjectName(u"close_search_2")
+        self.close_search_2.setMinimumSize(QSize(25, 25))
+        self.close_search_2.setMaximumSize(QSize(25, 25))
+        self.close_search_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.close_search_2.setPixmap(QPixmap(u"Include/img/close.jpg"))
+        self.close_search_2.setScaledContents(True)
+
+        self.horizontalLayout_40.addWidget(self.close_search_2, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+
+
+        self.horizontalLayout_39.addWidget(self.frame_57)
+
+
+        self.horizontalLayout_38.addWidget(self.SchoolNameBorder_9)
+
+
+        self.verticalLayout_38.addWidget(self.search_frame_2)
+
+        self.frame_58 = QFrame(self.search_screen)
+        self.frame_58.setObjectName(u"frame_58")
+        self.frame_58.setFrameShape(QFrame.StyledPanel)
+        self.frame_58.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_39 = QVBoxLayout(self.frame_58)
+        self.verticalLayout_39.setObjectName(u"verticalLayout_39")
+        self.scrollArea = QScrollArea(self.frame_58)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1262, 706))
+        self.verticalLayout_40 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
+        self.frame_59 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_59.setObjectName(u"frame_59")
+        self.frame_59.setMinimumSize(QSize(0, 90))
+        self.frame_59.setMaximumSize(QSize(16777215, 90))
+        self.frame_59.setFrameShape(QFrame.StyledPanel)
+        self.frame_59.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_40.addWidget(self.frame_59, 0, Qt.AlignTop)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.verticalLayout_39.addWidget(self.scrollArea)
+
+
+        self.verticalLayout_38.addWidget(self.frame_58)
+
         self.stackedWidget.addWidget(self.search_screen)
 
         self.centralWidgetLaayout.addWidget(self.stackedWidget)
@@ -1785,5 +1877,7 @@ class Ui_MainWindow(object):
         self.delete_student_button.setText(QCoreApplication.translate("MainWindow", u"Delete Student Record", None))
         self.add_student_button.setText(QCoreApplication.translate("MainWindow", u"Add Student Record", None))
         self.next_button.setText("")
+        self.searchbar_main_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Student", None))
+        self.close_search_2.setText("")
     # retranslateUi
 

@@ -50,6 +50,7 @@ class MainWindow(QMainWindow):
         self.school_name = ""
         self.students = []
         self.currentStudentId = 0
+        self.studentsNo = 0
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.comboBox.addItems([camera.description()
                                   for camera in self.availableCameras])
@@ -108,13 +109,13 @@ class MainWindow(QMainWindow):
                    dialog.exec()
                else:
                    self.school_name = schoolName
-                   getStudent(1)
+                   getStudent(0)
                    switch_screen(3)
            else:
                dialog = FailDialogOne(self)
                dialog.exec()
 
-        def signUp():
+        def signUp(db: str):
             school_name = self.ui.schoolNameSignUp.text().replace("'","''")
             email = self.ui.emailSignUp.text()
             school_code = self.ui.schoolCodeSignUp.text()
@@ -146,23 +147,26 @@ class MainWindow(QMainWindow):
                     self.ui.password_error.setHidden(True)
 
                 else:
+                    conn = sqlite3.connect(db)
                     sql = f"INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES ('{school_name}', {school_code}, '{email}', '{password}', 1, 'Ghana', 'nowhere')"
                     print(sql)
                     cursor.execute(sql)
+                    conn.commit()
                     switch_screen(0)
 
         def getStudent(id = self.currentStudentId):
-            sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}' AND _rowid_ = {id}"
+            sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}'"
             cursor.execute(sql)
             data = cursor.fetchall()
+            self.studentsNo = len(data)
             if len(data) != 0:
-                name = f"{data[0][0]} {data[0][1]} {data[0][2]}"
+                name = f"{data[id][0]} {data[id][1]} {data[id][2]}"
                 self.ui.student_name.setText(name.strip())
-                self.ui.student_school.setText(data[0][8])
-                self.ui.student_class.setText(data[0][4])
-                self.ui.student_course.setText(data[0][3])
-                self.ui.student_gender.setText(data[0][9].title())
-                date = data[0][11]
+                self.ui.student_school.setText(data[id][8])
+                self.ui.student_class.setText(data[id][4])
+                self.ui.student_course.setText(data[id][3])
+                self.ui.student_gender.setText(data[id][9].title())
+                date = data[id][11]
                 date = date.split("/")
                 day = int(date[0])
                 suffix = ""
@@ -174,6 +178,7 @@ class MainWindow(QMainWindow):
 
                 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
                 month = months[int(date[1])-1]
+                self.currentStudentId = id
 
                 date = f"{day} {month} {date[2]}"
                 self.ui.date_of_birth_label.setText(date)
@@ -196,9 +201,11 @@ class MainWindow(QMainWindow):
             getStudent(id)
 
         # SET TITLE BAR
-        self.ui.SignInSubmit_2.clicked.connect(lambda: signUp())
-        self.ui.next_button_frame.mousePressEvent = nextStudent()
-        self.ui.previous_data_frame.mousePressEvent = previousStudent()
+        if self.currentStudentId == 0:
+            self.ui.next_button_widget.setStyleSheet("")
+        self.ui.SignInSubmit_2.clicked.connect(lambda: signUp("server2.db"))
+        self.ui.next_button_widget.mousePressEvent = nextStudent()
+        self.ui.previous_data_widget.mousePressEvent = previousStudent()
         self.ui.take_photo.clicked.connect(lambda: camera_screen())
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
         self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
