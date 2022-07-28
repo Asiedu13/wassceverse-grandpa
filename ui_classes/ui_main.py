@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainQwhSqS.ui'
+## Form generated from reading UI file 'ui_maincBafqT.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1021,6 +1021,8 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.searchbar_main.sizePolicy().hasHeightForWidth())
         self.searchbar_main.setSizePolicy(sizePolicy)
         self.searchbar_main.setFont(font6)
+        self.searchbar_main.setCursor(QCursor(Qt.IBeamCursor))
+        self.searchbar_main.setFocusPolicy(Qt.ClickFocus)
 
         self.horizontalLayout_37.addWidget(self.searchbar_main)
 
@@ -1453,11 +1455,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_28.addWidget(self.label_25)
 
-        self.student_name_3 = QLabel(self.frame_47)
-        self.student_name_3.setObjectName(u"student_name_3")
-        self.student_name_3.setFont(font11)
+        self.date_of_birth_label = QLabel(self.frame_47)
+        self.date_of_birth_label.setObjectName(u"date_of_birth_label")
+        self.date_of_birth_label.setFont(font11)
 
-        self.horizontalLayout_28.addWidget(self.student_name_3)
+        self.horizontalLayout_28.addWidget(self.date_of_birth_label)
 
 
         self.verticalLayout_33.addWidget(self.frame_47)
@@ -1475,11 +1477,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_29.addWidget(self.label_26)
 
-        self.student_name_4 = QLabel(self.frame_50)
-        self.student_name_4.setObjectName(u"student_name_4")
-        self.student_name_4.setFont(font11)
+        self.parent_contact = QLabel(self.frame_50)
+        self.parent_contact.setObjectName(u"parent_contact")
+        self.parent_contact.setFont(font11)
 
-        self.horizontalLayout_29.addWidget(self.student_name_4)
+        self.horizontalLayout_29.addWidget(self.parent_contact)
 
 
         self.verticalLayout_33.addWidget(self.frame_50)
@@ -1497,11 +1499,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_30.addWidget(self.label_27)
 
-        self.student_name_5 = QLabel(self.frame_49)
-        self.student_name_5.setObjectName(u"student_name_5")
-        self.student_name_5.setFont(font11)
+        self.index_number_bece = QLabel(self.frame_49)
+        self.index_number_bece.setObjectName(u"index_number_bece")
+        self.index_number_bece.setFont(font11)
 
-        self.horizontalLayout_30.addWidget(self.student_name_5)
+        self.horizontalLayout_30.addWidget(self.index_number_bece)
 
 
         self.verticalLayout_33.addWidget(self.frame_49)
@@ -1522,29 +1524,29 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_34.addWidget(self.label_28)
 
-        self.student_gender_2 = QLabel(self.frame_45)
-        self.student_gender_2.setObjectName(u"student_gender_2")
-        self.student_gender_2.setFont(font11)
+        self.elective_1 = QLabel(self.frame_45)
+        self.elective_1.setObjectName(u"elective_1")
+        self.elective_1.setFont(font11)
 
-        self.verticalLayout_34.addWidget(self.student_gender_2)
+        self.verticalLayout_34.addWidget(self.elective_1)
 
-        self.student_gender_5 = QLabel(self.frame_45)
-        self.student_gender_5.setObjectName(u"student_gender_5")
-        self.student_gender_5.setFont(font11)
+        self.elective_2 = QLabel(self.frame_45)
+        self.elective_2.setObjectName(u"elective_2")
+        self.elective_2.setFont(font11)
 
-        self.verticalLayout_34.addWidget(self.student_gender_5)
+        self.verticalLayout_34.addWidget(self.elective_2)
 
-        self.student_gender_4 = QLabel(self.frame_45)
-        self.student_gender_4.setObjectName(u"student_gender_4")
-        self.student_gender_4.setFont(font11)
+        self.elective_3 = QLabel(self.frame_45)
+        self.elective_3.setObjectName(u"elective_3")
+        self.elective_3.setFont(font11)
 
-        self.verticalLayout_34.addWidget(self.student_gender_4)
+        self.verticalLayout_34.addWidget(self.elective_3)
 
-        self.student_gender_3 = QLabel(self.frame_45)
-        self.student_gender_3.setObjectName(u"student_gender_3")
-        self.student_gender_3.setFont(font11)
+        self.elective_4 = QLabel(self.frame_45)
+        self.elective_4.setObjectName(u"elective_4")
+        self.elective_4.setFont(font11)
 
-        self.verticalLayout_34.addWidget(self.student_gender_3)
+        self.verticalLayout_34.addWidget(self.elective_4)
 
 
         self.horizontalLayout_25.addWidget(self.frame_45)
@@ -1643,6 +1645,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_22.addWidget(self.frame_29)
 
         self.stackedWidget.addWidget(self.student_details)
+        self.search_screen = QWidget()
+        self.search_screen.setObjectName(u"search_screen")
+        self.stackedWidget.addWidget(self.search_screen)
 
         self.centralWidgetLaayout.addWidget(self.stackedWidget)
 
@@ -1726,16 +1731,16 @@ class Ui_MainWindow(object):
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Gender:</span></p></body></html>", None))
         self.student_gender.setText(QCoreApplication.translate("MainWindow", u"Male", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Date of Birth:</span></p></body></html>", None))
-        self.student_name_3.setText(QCoreApplication.translate("MainWindow", u"3rd April 2003", None))
+        self.date_of_birth_label.setText(QCoreApplication.translate("MainWindow", u"3rd April 2003", None))
         self.label_26.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Parent's Contact:</span></p></body></html>", None))
-        self.student_name_4.setText(QCoreApplication.translate("MainWindow", u"+233 XXX XXX XXXX", None))
+        self.parent_contact.setText(QCoreApplication.translate("MainWindow", u"+233 XXX XXX XXXX", None))
         self.label_27.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">BECE Index Number:</span></p></body></html>", None))
-        self.student_name_5.setText(QCoreApplication.translate("MainWindow", u"XXXXXXXXXX", None))
-        self.label_28.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#646464;\">Electives</span></p></body></html>", None))
-        self.student_gender_2.setText(QCoreApplication.translate("MainWindow", u"Elective ICT", None))
-        self.student_gender_5.setText(QCoreApplication.translate("MainWindow", u"Elective Mathematics", None))
-        self.student_gender_4.setText(QCoreApplication.translate("MainWindow", u"Chemistry", None))
-        self.student_gender_3.setText(QCoreApplication.translate("MainWindow", u"Physics", None))
+        self.index_number_bece.setText(QCoreApplication.translate("MainWindow", u"XXXXXXXXXX", None))
+        self.label_28.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#646464;\">Electives</span></p></body></html>", None))
+        self.elective_1.setText(QCoreApplication.translate("MainWindow", u"Elective ICT", None))
+        self.elective_2.setText(QCoreApplication.translate("MainWindow", u"Elective Mathematics", None))
+        self.elective_3.setText(QCoreApplication.translate("MainWindow", u"Chemistry", None))
+        self.elective_4.setText(QCoreApplication.translate("MainWindow", u"Physics", None))
         self.edit_student_button.setText(QCoreApplication.translate("MainWindow", u"Edit Student Record", None))
         self.delete_student_button.setText(QCoreApplication.translate("MainWindow", u"Delete Student Record", None))
         self.add_student_button.setText(QCoreApplication.translate("MainWindow", u"Add Student Record", None))

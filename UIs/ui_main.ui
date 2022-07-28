@@ -2285,6 +2285,12 @@ border-radius: 8px;</string>
                      <stylestrategy>PreferDefault</stylestrategy>
                     </font>
                    </property>
+                   <property name="cursor">
+                    <cursorShape>IBeamCursor</cursorShape>
+                   </property>
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="placeholderText">
                     <string>Search Student</string>
                    </property>
@@ -3186,7 +3192,7 @@ margin-right:20px;</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QLabel" name="student_name_3">
+                           <widget class="QLabel" name="date_of_birth_label">
                             <property name="font">
                              <font>
                               <family>JetBrains Mono Medium</family>
@@ -3229,7 +3235,7 @@ margin-right:20px;</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QLabel" name="student_name_4">
+                           <widget class="QLabel" name="parent_contact">
                             <property name="font">
                              <font>
                               <family>JetBrains Mono Medium</family>
@@ -3272,7 +3278,7 @@ margin-right:20px;</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QLabel" name="student_name_5">
+                           <widget class="QLabel" name="index_number_bece">
                             <property name="font">
                              <font>
                               <family>JetBrains Mono Medium</family>
@@ -3313,12 +3319,12 @@ margin-right:20px;</string>
                           </font>
                          </property>
                          <property name="text">
-                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#646464;&quot;&gt;Electives&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; color:#646464;&quot;&gt;Electives&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="student_gender_2">
+                        <widget class="QLabel" name="elective_1">
                          <property name="font">
                           <font>
                            <family>JetBrains Mono Medium</family>
@@ -3331,7 +3337,7 @@ margin-right:20px;</string>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="student_gender_5">
+                        <widget class="QLabel" name="elective_2">
                          <property name="font">
                           <font>
                            <family>JetBrains Mono Medium</family>
@@ -3344,7 +3350,7 @@ margin-right:20px;</string>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="student_gender_4">
+                        <widget class="QLabel" name="elective_3">
                          <property name="font">
                           <font>
                            <family>JetBrains Mono Medium</family>
@@ -3357,7 +3363,7 @@ margin-right:20px;</string>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="student_gender_3">
+                        <widget class="QLabel" name="elective_4">
                          <property name="font">
                           <font>
                            <family>JetBrains Mono Medium</family>
@@ -3560,6 +3566,7 @@ QFrame:hover {
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="search_screen"/>
      </widget>
     </item>
    </layout>

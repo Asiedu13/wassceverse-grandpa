@@ -1,4 +1,3 @@
-from operator import contains
 import sqlite3
 import sys
 import pathlib
@@ -27,13 +26,6 @@ from ui_classes.ui_incorrectDialog import Ui_incorrectDialog
 # IMPORT FUNCTIONS
 from ui_functions import *
 
-BASE_DIR = pathlib.Path().home()
-FOLDER_NAME = '.TEMP'
-
-SAVE_PATH = BASE_DIR / FOLDER_NAME
-SAVE_PATH.mkdir(exist_ok=True, parents=True)
-
-
 class PasswordIncorrectDialog(QDialog):
     def __init__(self, parent = None):
         super().__init__(parent)
@@ -58,15 +50,14 @@ class MainWindow(QMainWindow):
         self.currentStudentId = 0
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.comboBox.addItems([camera.description()
-                                 for camera in self.availableCameras])
+                                  for camera in self.availableCameras])
         connection = sqlite3.connect("server2.db")
         cursor = connection.cursor()
         statement = "SELECT school_name from registered_schools"
         cursor.execute(statement)
         data = cursor.fetchall()
-        schools = []
-        for d in data:
-            schools.append(d[0])
+        schools = [d[0]
+        for d in data]
         print(schools)
         completer = QCompleter(schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
@@ -77,29 +68,30 @@ class MainWindow(QMainWindow):
 
         # CHECK INFO
         def signIn(db: str):
-            schoolName = self.ui.schoolNameSignIn.text()
-            if "'" in schoolName:
-                schoolName = schoolName.replace("'", "''")
-            email = self.ui.emailSignIn.text()
-            password = self.ui.passwordSignIn.text()
-            conn = sqlite3.connect(db)
-            cursor = conn.cursor()
+           schoolName = self.ui.schoolNameSignIn.text()
+           if "'" in schoolName:
+               schoolName = schoolName.replace("'", "''")
+           email = self.ui.emailSignIn.text()
+           password = self.ui.passwordSignIn.text()
+           conn = sqlite3.connect(db)
+           cursor = conn.cursor()
 
-            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}' AND school_email = '{email}'"
-            cursor.execute(sql)
-            data = cursor.fetchall()
-            print(data)
+           sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}' AND school_email = '{email}'"
+           cursor.execute(sql)
+           data = cursor.fetchall()
+           print(data)
 
-            if len(data) != 0:
-                if password != data[0][6]:
-                    dialog = PasswordIncorrectDialog(self)
-                    dialog.exec()
-                else:
-                    self.school_name = schoolName
-                    switch_screen(3)
-            else:
-                dialog = FailDialogOne(self)
-                dialog.exec()
+           if len(data) != 0:
+               if password != data[0][6]:
+                   dialog = PasswordIncorrectDialog(self)
+                   dialog.exec()
+               else:
+                   self.school_name = schoolName
+                   getStudent(1)
+                   switch_screen(3)
+           else:
+               dialog = FailDialogOne(self)
+               dialog.exec()
 
         def getStudent(id = self.currentStudentId):
             sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}' AND _rowid_ = {id}"
@@ -111,23 +103,38 @@ class MainWindow(QMainWindow):
                 self.ui.student_school.setText(data[0][8])
                 self.ui.student_class.setText(data[0][4])
                 self.ui.student_course.setText(data[0][3])
-                self.ui.student_gender.setText(data[0])
-            else:
-                getStudent(1)
+                self.ui.student_gender.setText(data[0][9].title())
+                date = data[0][11]
+                date = date.split("/")
+                day = int(date[0])
+                suffix = ""
+                if 11 <= (day % 100) <= 13:
+                    suffix = 'th'
+                else:
+                    suffix = ['th', 'st', 'nd', 'rd', 'th'][min(day % 10, 4)]
+                day = f"{str(day)}{suffix}"
 
+                months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                month = months[int(date[1])-1]
+
+                date = f"{day} {month} {date[2]}"
+                self.ui.date_of_birth_label.setText(date)
+                print(date)
 
         def nextStudent():
             id = self.currentStudentId + 1
             getStudent(id)
 
         def previousStudent():
+            id = 0
             if self.currentStudentId > 1:
                 id = self.currentStudentId - 1
             getStudent(id)
 
-
-
         # SET TITLE BAR
+        self.ui.next_button_frame.mousePressEvent = nextStudent()
+        self.ui.previous_data_frame.mousePressEvent = previousStudent()
+        self.ui.take_photo.clicked.connect(lambda: camera_screen())
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
         self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
         self.ui.SignInSubmit.clicked.connect(lambda: signIn("server2.db"))
@@ -160,15 +167,7 @@ class MainWindow(QMainWindow):
         self.saveSeq = 0
 
     def clickPhoto(self):
-        timeStamp = time.strftime('Date %d %b %Y Time %H %M %S')
-        fileName = f'Webcam {self.currentCameraName} {timeStamp} .jpg'
-        if self.savePath:
-            savePath = self.savePath / fileName
-        else:
-            savePath = SAVE_PATH / fileName
-        self.saveImage(str(savePath))
-        print('Image saved on ', str(savePath))
-        self.saveSeq += 1
+        "TODO"
 
     def alert(self, msg):
         error = QErrorMessage(self)
