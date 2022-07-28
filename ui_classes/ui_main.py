@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_maincBafqT.ui'
+## Form generated from reading UI file 'ui_maindPFZoF.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -560,6 +560,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.SchoolNameBorder_4)
 
+        self.school_name_error = QLabel(self.SchoolNameFrame_2)
+        self.school_name_error.setObjectName(u"school_name_error")
+        self.school_name_error.setStyleSheet(u"color: rgb(255, 0, 0);")
+
+        self.verticalLayout_12.addWidget(self.school_name_error)
+
 
         self.verticalLayout_11.addWidget(self.SchoolNameFrame_2)
 
@@ -611,6 +617,12 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_14.addWidget(self.SchoolNameBorder_5)
+
+        self.email_error = QLabel(self.EmailSignInFrame_2)
+        self.email_error.setObjectName(u"email_error")
+        self.email_error.setStyleSheet(u"color: rgb(255, 0, 0);")
+
+        self.verticalLayout_14.addWidget(self.email_error)
 
 
         self.verticalLayout_11.addWidget(self.EmailSignInFrame_2)
@@ -665,17 +677,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setSpacing(0)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(5, 5, 5, 5)
-        self.schoolTelSignUp = QLineEdit(self.frame_16)
-        self.schoolTelSignUp.setObjectName(u"schoolTelSignUp")
-        self.schoolTelSignUp.setMinimumSize(QSize(0, 25))
+        self.schoolCodeSignUp = QLineEdit(self.frame_16)
+        self.schoolCodeSignUp.setObjectName(u"schoolCodeSignUp")
+        self.schoolCodeSignUp.setMinimumSize(QSize(0, 25))
 
-        self.verticalLayout_17.addWidget(self.schoolTelSignUp)
+        self.verticalLayout_17.addWidget(self.schoolCodeSignUp)
 
 
         self.horizontalLayout_9.addWidget(self.frame_16)
 
 
         self.verticalLayout_16.addWidget(self.SchoolNameBorder_6)
+
+        self.school_code_error = QLabel(self.PasswordSignInFrame_2)
+        self.school_code_error.setObjectName(u"school_code_error")
+        self.school_code_error.setStyleSheet(u"color: rgb(255, 0, 0);")
+
+        self.verticalLayout_16.addWidget(self.school_code_error)
 
 
         self.horizontalLayout_13.addWidget(self.PasswordSignInFrame_2)
@@ -728,6 +746,13 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_18.addWidget(self.SchoolNameBorder_7)
+
+        self.password_error = QLabel(self.PasswordSignInFrame_3)
+        self.password_error.setObjectName(u"password_error")
+        self.password_error.setStyleSheet(u"color: rgb(255, 0, 0);\n"
+"")
+
+        self.verticalLayout_18.addWidget(self.password_error)
 
 
         self.horizontalLayout_13.addWidget(self.PasswordSignInFrame_3)
@@ -1557,17 +1582,28 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_23.addWidget(self.frame_40)
 
+        self.frame_56 = QFrame(self.frame_31)
+        self.frame_56.setObjectName(u"frame_56")
+        self.frame_56.setFrameShape(QFrame.StyledPanel)
+        self.frame_56.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_23.addWidget(self.frame_56)
+
         self.frame_37 = QFrame(self.frame_31)
         self.frame_37.setObjectName(u"frame_37")
+        self.frame_37.setMinimumSize(QSize(0, 90))
         self.frame_37.setFrameShape(QFrame.StyledPanel)
         self.frame_37.setFrameShadow(QFrame.Raised)
         self.verticalLayout_37 = QVBoxLayout(self.frame_37)
+        self.verticalLayout_37.setSpacing(1)
         self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+        self.verticalLayout_37.setContentsMargins(0, 0, 0, 0)
         self.frame_39 = QFrame(self.frame_37)
         self.frame_39.setObjectName(u"frame_39")
         self.frame_39.setFrameShape(QFrame.StyledPanel)
         self.frame_39.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_34 = QHBoxLayout(self.frame_39)
+        self.horizontalLayout_34.setSpacing(1)
         self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
         self.horizontalLayout_34.setContentsMargins(0, 0, 0, 0)
         self.edit_student_button = QPushButton(self.frame_39)
@@ -1689,9 +1725,13 @@ class Ui_MainWindow(object):
         self.SignInSubmit.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; color:#414844;\">Create Account</span></p></body></html>", None))
         self.SchoolNameSignInLabel_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
+        self.school_name_error.setText(QCoreApplication.translate("MainWindow", u"This school already exists", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Email:</span></p></body></html>", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">School Tel:</span></p></body></html>", None))
+        self.email_error.setText(QCoreApplication.translate("MainWindow", u"This email has been used", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">School Code:</span></p></body></html>", None))
+        self.school_code_error.setText(QCoreApplication.translate("MainWindow", u"This school code is already in use", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Password:</span></p></body></html>", None))
+        self.password_error.setText(QCoreApplication.translate("MainWindow", u"Try a stronger password", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Already A User?", None))
         self.SignUpButton_2.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
         self.SignInSubmit_2.setText(QCoreApplication.translate("MainWindow", u"Next", None))

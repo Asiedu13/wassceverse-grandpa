@@ -12,5 +12,7 @@ class UIFunctions(MainWindow):
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.showMaximized()
 
-        # CLOSE
-        self.ui.btn_close.clicked.connect(lambda: self.close())
+        self.ui.email_error.setHidden(True)
+        self.ui.school_name_error.setHidden(True)
+        self.ui.school_code_error.setHidden(True)
+        self.ui.password_error.setHidden(True)

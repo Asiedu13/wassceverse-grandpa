@@ -228,7 +228,7 @@ background-color: rgb(255, 22, 22);
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
@@ -1246,6 +1246,16 @@ border-radius: 8px;</string>
                    </layout>
                   </widget>
                  </item>
+                 <item>
+                  <widget class="QLabel" name="school_name_error">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 0, 0);</string>
+                   </property>
+                   <property name="text">
+                    <string>This school already exists</string>
+                   </property>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
@@ -1375,6 +1385,16 @@ border-radius: 8px;</string>
                    </layout>
                   </widget>
                  </item>
+                 <item>
+                  <widget class="QLabel" name="email_error">
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 0, 0);</string>
+                   </property>
+                   <property name="text">
+                    <string>This email has been used</string>
+                   </property>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
@@ -1447,7 +1467,7 @@ border-radius: 8px;</string>
                     <item>
                      <widget class="QLabel" name="label_6">
                       <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#414844;&quot;&gt;School Tel:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#414844;&quot;&gt;School Code:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                      </widget>
                     </item>
@@ -1520,7 +1540,7 @@ border-radius: 8px;</string>
                            <number>5</number>
                           </property>
                           <item>
-                           <widget class="QLineEdit" name="schoolTelSignUp">
+                           <widget class="QLineEdit" name="schoolCodeSignUp">
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
@@ -1533,6 +1553,16 @@ border-radius: 8px;</string>
                         </widget>
                        </item>
                       </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="school_code_error">
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(255, 0, 0);</string>
+                      </property>
+                      <property name="text">
+                       <string>This school code is already in use</string>
+                      </property>
                      </widget>
                     </item>
                    </layout>
@@ -1660,6 +1690,17 @@ border-radius: 8px;</string>
                         </widget>
                        </item>
                       </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="password_error">
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(255, 0, 0);
+</string>
+                      </property>
+                      <property name="text">
+                       <string>Try a stronger password</string>
+                      </property>
                      </widget>
                     </item>
                    </layout>
@@ -3385,7 +3426,23 @@ margin-right:20px;</string>
                </widget>
               </item>
               <item>
+               <widget class="QFrame" name="frame_56">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QFrame" name="frame_37">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>90</height>
+                 </size>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -3393,6 +3450,21 @@ margin-right:20px;</string>
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_37">
+                 <property name="spacing">
+                  <number>1</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <widget class="QFrame" name="frame_39">
                    <property name="frameShape">
@@ -3402,6 +3474,9 @@ margin-right:20px;</string>
                     <enum>QFrame::Raised</enum>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_34">
+                    <property name="spacing">
+                     <number>1</number>
+                    </property>
                     <property name="leftMargin">
                      <number>0</number>
                     </property>

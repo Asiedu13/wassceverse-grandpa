@@ -1,8 +1,6 @@
-import sqlite3
-import sys
-import pathlib
-import platform
-import time
+import re
+from PIL import Image
+from autocrop import Cropper
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
@@ -10,11 +8,15 @@ from PySide2.QtMultimedia import QCameraInfo, QCamera, QCameraImageCapture
 from PySide2.QtMultimediaWidgets import QCameraViewfinder
 from PySide2.QtWidgets import *
 
+import email
+import sqlite3
+import sys
+import pathlib
+import platform
+import time
 import cv2
 import numpy as np
 import os
-from PIL import Image
-from autocrop import Cropper
 
 
 # GUI FILES
@@ -56,10 +58,15 @@ class MainWindow(QMainWindow):
         statement = "SELECT school_name from registered_schools"
         cursor.execute(statement)
         data = cursor.fetchall()
-        schools = [d[0]
+        self.schools = [d[0]
         for d in data]
-        print(schools)
-        completer = QCompleter(schools)
+        statement = "SELECT school_code from registered_schools"
+        cursor.execute(statement)
+        data = cursor.fetchall()
+        self.codes = [d[0]
+        for d in data]
+        print(self.codes)
+        completer = QCompleter(self.schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
 
         def camera_screen():
@@ -93,6 +100,41 @@ class MainWindow(QMainWindow):
                dialog = FailDialogOne(self)
                dialog.exec()
 
+        def signUp():
+            school_name = self.ui.schoolNameSignUp.text().replace("'","''")
+            email = self.ui.emailSignUp.text()
+            school_code = self.ui.schoolCodeSignUp.text()
+            password = self.ui.passwordSignUp.text().replace("'", "''")
+            if len(password) <= 6:
+                self.ui.password_error.setHidden(False)
+                self.ui.school_name_error.setHidden(True)
+                self.ui.school_code_error.setHidden(True)
+            elif len(email) > 0 and len(school_name) > 0 and len(school_code) > 0:
+                regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+                if not re.search(regex, email):
+                    self.ui.email_error.setHidden(False)
+                    self.ui.school_name_error.setHidden(True)
+                    self.ui.school_code_error.setHidden(True)
+                    self.ui.password_error.setHidden(True)
+                elif school_name in self.schools:
+                    self.ui.school_name_error.setHidden(False)
+                    self.ui.email_error.setHidden(True)
+                    self.ui.school_code_error.setHidden(True)
+                    self.ui.password_error.setHidden(True)
+                elif (not school_code.isnumeric()):
+                    "TODO"
+                elif school_code in self.codes:
+                    self.ui.email_error.setHidden(True)
+                    self.ui.school_name_error.setHidden(True)
+                    self.ui.school_code_error.setHidden(False)
+                    self.ui.password_error.setHidden(True)
+
+                else:
+                    sql = f"INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES ('{school_name}', {school_code}, '{email}', '{password}', 1, 'Ghana', 'nowhere')"
+                    print(sql)
+                    cursor.execute(sql)
+                    switch_screen(0)
+
         def getStudent(id = self.currentStudentId):
             sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}' AND _rowid_ = {id}"
             cursor.execute(sql)
@@ -119,7 +161,13 @@ class MainWindow(QMainWindow):
 
                 date = f"{day} {month} {date[2]}"
                 self.ui.date_of_birth_label.setText(date)
-                print(date)
+                self.ui.parent_contact.setText(data[0][10])
+                self.ui.index_number_bece.setText(data[0][5])
+                electives_array = data[0][7].split(",")
+                self.ui.elective_1.setText(electives_array[0])
+                self.ui.elective_2.setText(electives_array[1])
+                self.ui.elective_3.setText(electives_array[2])
+                self.ui.elective_4.setText(electives_array[3])
 
         def nextStudent():
             id = self.currentStudentId + 1
@@ -132,6 +180,7 @@ class MainWindow(QMainWindow):
             getStudent(id)
 
         # SET TITLE BAR
+        self.ui.SignInSubmit_2.clicked.connect(lambda: signUp())
         self.ui.next_button_frame.mousePressEvent = nextStudent()
         self.ui.previous_data_frame.mousePressEvent = previousStudent()
         self.ui.take_photo.clicked.connect(lambda: camera_screen())
