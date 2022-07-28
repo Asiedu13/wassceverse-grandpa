@@ -14,7 +14,11 @@ window.onload = async () => {
   axios.get("/api/schools").then((res) => {
     // -------- Get schools data --------
     schools = res.data;
-    console.log(res.data);
+    console.log( res.data );
+    
+    
+  let indicator = document.getElementById("loader");
+  indicator.style.display = "none";
 
     // -------- Get parent Element ----
     let parent = document.getElementById("search_results");
