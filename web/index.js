@@ -18,7 +18,7 @@ const db = new sql.Database("../server2.db", (err) => {
 // --------------- Middleware --------------------
 
 db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS student_details (  
+  db.run(`CREATE TABLE IF NOT EXISTS registered_students (  
         surname text not null,
         first_name text not null,
         other_names text,
@@ -42,21 +42,33 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // --------- Server Requests ---------------
-app.get("/api/student/getStudent", (req, res) => {
+// TODO: Change api to "verifyStudent"
+app.get("/api/student/verifyStudent", (req, res) => {
   let school = req.query.school;
   let index_number = req.query.index_number;
   let sql = `SELECT * FROM student_details WHERE student_details.index_number=? AND student_details.school=? `;
-  console.log( sql );
-  console.log( 'THe student' )
-  
-  
-  db.get( sql, [index_number, school], ( err, row ) => {
-    if(err) console.error(err.message)
+  console.log(sql);
+  console.log("THe student");
+
+  db.get(sql, [index_number, school], (err, row) => {
+    if (err) console.error(err.message);
     console.log(row);
     res.json(row);
   });
 });
+app.get("/api/student/registered", (req, res) => {
+  let sql = `SELECT * FROM registered_students`;
+  db.all(sql, [], (err, rows) => {
+    if (err) console.error(err.message);
+    let requestedData = [];
+    rows.forEach((row) => {
+      requestedData.push(row);
+    });
+    res.json(requestedData);
+  });
+});
 
+// ------ --- Register Students ------------
 app.post("/api/student/create", function (req, res, next) {
   // Adding data to databse goes here...
 
@@ -65,7 +77,7 @@ app.post("/api/student/create", function (req, res, next) {
   let content = req.body;
 
   let sql =
-    "INSERT INTO student_details (surname,first_name, other_names,course, class, index_number, year_completed, electives, school, gender, parent_contact, date_of_birth, signature, 'image', fingerprint ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO registered_students (surname,first_name, other_names,course, class, index_number, year_completed, electives, school, gender, parent_contact, date_of_birth, signature, 'image', fingerprint ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
   db.run(
     sql,
