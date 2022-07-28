@@ -1,5 +1,3 @@
-
-
 lastUrl = location.href;
 let editBtn;
 new MutationObserver(() => {
@@ -67,8 +65,8 @@ function store(item, replacement) {
   // item.remove();
 
   console.log("Store function...");
-  chatData = JSON.parse( localStorage.getItem( "chatData" ) );
-  
+  chatData = JSON.parse(localStorage.getItem("chatData"));
+
   axios
     .post("/api/student/create/", chatData)
     .then(function (response) {
@@ -79,7 +77,4 @@ function store(item, replacement) {
     .catch(function (error) {
       console.log(error);
     });
-  
-  
-  
 }

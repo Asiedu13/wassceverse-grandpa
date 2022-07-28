@@ -32,17 +32,6 @@
 
         <section class="question-time">
           <form id="question-time-form">
-            <datalist id="schools">
-              <option
-                value="Presbyterian Boys Secondary School, Legon"
-              ></option>
-              <option value="Achimota Senior Secondary High School"></option>
-              <option value="Mfantsipim Senior Secondary"></option>
-              <option value="Adisadel College"></option>
-              <option value="Aggrey Memorial"></option>
-              <option value="Wesley Girls Senior High School"></option>
-            </datalist>
-
             <cf-robot-message cf-questions="Hello student!">Helo</cf-robot-message>
 
             <input
@@ -70,12 +59,6 @@
               cf-input-placeholder="DD/MM/YYYY"
               pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"
               cf-questions="Birth date? (DD/MM/YYYY)"
-            />
-            <input
-              type="text"
-              name="school"
-              list="schools"
-              cf-questions="Which school are you from?"
             />
             <input
               type="number"

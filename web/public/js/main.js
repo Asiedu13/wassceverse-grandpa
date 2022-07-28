@@ -257,7 +257,7 @@ function getStudentName(school, index_number) {
   return new Promise((resolve, reject) => {
     axios
       .get(
-        `/api/student/getStudent?school=${school}&index_number=${index_number}`
+        `/api/student/verifyStudent?school=${school}&index_number=${index_number}`
       )
       .then((res) => {
         console.log(res.data);
