@@ -55,17 +55,31 @@ class MainWindow(QMainWindow):
                                   for camera in self.availableCameras])
         connection = sqlite3.connect("server2.db")
         cursor = connection.cursor()
+
         statement = "SELECT school_name from registered_schools"
         cursor.execute(statement)
         data = cursor.fetchall()
         self.schools = [d[0]
         for d in data]
+        print(self.schools)
+
+
         statement = "SELECT school_code from registered_schools"
         cursor.execute(statement)
         data = cursor.fetchall()
         self.codes = [d[0]
         for d in data]
         print(self.codes)
+
+
+        statement = "SELECT school_email from registered_schools"
+        cursor.execute(statement)
+        data = cursor.fetchall()
+        self.emails = [d[0]
+        for d in data]
+        print(self.emails)
+
+
         completer = QCompleter(self.schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
 
@@ -111,7 +125,9 @@ class MainWindow(QMainWindow):
                 self.ui.school_code_error.setHidden(True)
             elif len(email) > 0 and len(school_name) > 0 and len(school_code) > 0:
                 regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-                if not re.search(regex, email):
+                if (not re.search(regex, email)):
+                    "TODO"
+                elif email in self.emails:
                     self.ui.email_error.setHidden(False)
                     self.ui.school_name_error.setHidden(True)
                     self.ui.school_code_error.setHidden(True)
