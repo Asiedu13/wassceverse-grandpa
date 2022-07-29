@@ -1,0 +1,19 @@
+☐ Build UIs
+    ✔ Build Sign In UI @done (7/27/2022, 12:23:47 AM)
+        ✔ Add Sign In Functionality @done (7/27/2022, 12:23:37 AM)
+        ✔ Add AutoComplete Feature @done (7/27/2022, 12:23:38 AM)
+    ✔ Build Sign Up UI @done (7/27/2022, 12:23:52 AM)
+        ✔ Add Duplicate Data Checking @done (7/28/2022, 5:10:49 PM)
+        ☐ Add Email Verification
+    ✔ Build Student Data UI @done (7/27/2022, 4:14:27 PM)
+        ☐ Add 'Edit Information' Functionality
+        ☐ Add 'Add to Record Functionality'
+        ☐ Add 'Delete Record' Feature
+        ☐ Link 'Screen to Database'
+        ☐ Cycle between records Feature
+        ☐ Search Functionality
+    ☐ Build Search UI
+    ✔ Build Camera UI @done (7/27/2022, 12:23:58 AM)
+        ✔ Scan for Available Cameras Feature @done (7/27/2022, 12:24:01 AM)
+        ✔ Capture Functionality @done (7/27/2022, 4:14:37 PM)
+        ☐ Send Data to Server Functionality

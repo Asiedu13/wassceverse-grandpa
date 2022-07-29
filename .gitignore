@@ -1,0 +1,9 @@
+Lib/
+Scripts/
+share/
+test_imgs/
+web/node_modules/
+mockup/
+.vscode/
+__pycache__/
+App Development Goals.todo
