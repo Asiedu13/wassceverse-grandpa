@@ -54,28 +54,28 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.comboBox.addItems([camera.description()
                                   for camera in self.availableCameras])
-        connection = sqlite3.connect("server2.db")
-        cursor = connection.cursor()
+        self.connection = sqlite3.connect("server2.db")
+        self.cursor = self.connection.cursor()
 
         statement = "SELECT school_name from registered_schools"
-        cursor.execute(statement)
-        data = cursor.fetchall()
+        self.cursor.execute(statement)
+        data = self.cursor.fetchall()
         self.schools = [d[0]
         for d in data]
         print(self.schools)
 
 
         statement = "SELECT school_code from registered_schools"
-        cursor.execute(statement)
-        data = cursor.fetchall()
+        self.cursor.execute(statement)
+        data = self.cursor.fetchall()
         self.codes = [d[0]
         for d in data]
         print(self.codes)
 
 
         statement = "SELECT school_email from registered_schools"
-        cursor.execute(statement)
-        data = cursor.fetchall()
+        self.cursor.execute(statement)
+        data = self.cursor.fetchall()
         self.emails = [d[0]
         for d in data]
         print(self.emails)
@@ -95,12 +95,10 @@ class MainWindow(QMainWindow):
                schoolName = schoolName.replace("'", "''")
            email = self.ui.emailSignIn.text()
            password = self.ui.passwordSignIn.text()
-           conn = sqlite3.connect(db)
-           cursor = conn.cursor()
 
            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}' AND school_email = '{email}'"
-           cursor.execute(sql)
-           data = cursor.fetchall()
+           self.cursor.execute(sql)
+           data = self.cursor.fetchall()
            print(data)
 
            if len(data) != 0:
@@ -147,18 +145,45 @@ class MainWindow(QMainWindow):
                     self.ui.password_error.setHidden(True)
 
                 else:
-                    conn = sqlite3.connect(db)
                     sql = f"INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES ('{school_name}', {school_code}, '{email}', '{password}', 1, 'Ghana', 'nowhere')"
                     print(sql)
-                    cursor.execute(sql)
-                    conn.commit()
+                    self.cursor.execute(sql)
+                    self.connection.commit()
                     switch_screen(0)
 
         def getStudent(id = self.currentStudentId):
             sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}'"
-            cursor.execute(sql)
-            data = cursor.fetchall()
+            self.cursor.execute(sql)
+            data = self.cursor.fetchall()
             self.studentsNo = len(data)
+            if self.currentStudentId == 0:
+                self.ui.previous_data_button.setStyleSheet("background-color: rgb(200, 200, 200);")
+            else:
+                self.ui.previous_data_button.setStyleSheet("""QWidget {
+                        background-color: rgb(112, 112, 112);
+                        padding: 0px;
+                        }
+
+                        QWidget:hover {
+                            background-color: rgb(168, 168, 168);
+                        }
+                    """
+                )
+
+            if self.currentStudentId == self.studentsNo:
+                self.ui.next_data_button.setStyleSheet("background-color: rgb(70, 70, 70);")
+            else:
+                self.ui.next_data_button.setStyleSheet("""QWidget {
+                        background-color: rgb(112, 112, 112);
+                        padding: 0px;
+                        }
+
+                        QWidget:hover {
+                            background-color: rgb(168, 168, 168);
+                        }
+                    """
+                )
+
             if len(data) != 0:
                 name = f"{data[id][0]} {data[id][1]} {data[id][2]}"
                 self.ui.student_name.setText(name.strip())
@@ -200,12 +225,10 @@ class MainWindow(QMainWindow):
                 id = self.currentStudentId - 1
             getStudent(id)
 
-        # SET TITLE BAR
-        if self.currentStudentId == 0:
-            self.ui.next_button_widget.setStyleSheet("")
+
         self.ui.SignInSubmit_2.clicked.connect(lambda: signUp("server2.db"))
-        self.ui.next_button_widget.mousePressEvent = nextStudent()
-        self.ui.previous_data_widget.mousePressEvent = previousStudent()
+        self.ui.next_data_button.clicked.connect(lambda: nextStudent())
+        self.ui.previous_data_button.clicked.connect(lambda: previousStudent())
         self.ui.take_photo.clicked.connect(lambda: camera_screen())
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
         self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
@@ -225,18 +248,19 @@ class MainWindow(QMainWindow):
     ########################################################################
 
     def selectCamera(self, i):
-        self.camera = QCamera(self.availableCameras[i])
-        self.camera.setViewfinder(self.viewFinder)
-        self.camera.setCaptureMode(QCamera.CaptureStillImage)
-        self.camera.error.connect(lambda:
-                                  self.alert(self.camera.errorString()))
-        self.camera.start()
-        self.capture = QCameraImageCapture(self.camera)
-        self.capture.error.connect(lambda d, i:
-                                   self.status.showMessage(
-                                       f'Image Captured {str(self.saveSeq)}'))
-        self.currentCameraName = self.availableCameras[i].description()
-        self.saveSeq = 0
+        # self.camera = QCamera(self.availableCameras[i])
+        # self.camera.setViewfinder(self.viewFinder)
+        # self.camera.setCaptureMode(QCamera.CaptureStillImage)
+        # self.camera.error.connect(lambda:
+        #                           self.alert(self.camera.errorString()))
+        # self.camera.start()
+        # self.capture = QCameraImageCapture(self.camera)
+        # self.capture.error.connect(lambda d, i:
+        #                            self.status.showMessage(
+        #                                f'Image Captured {str(self.saveSeq)}'))
+        # self.currentCameraName = self.availableCameras[i].description()
+        # self.saveSeq = 0
+        "TODO"
 
     def clickPhoto(self):
         "TODO"

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainuiKqqX.ui'
+## Form generated from reading UI file 'ui_mainGCGVFH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1084,32 +1084,24 @@ class Ui_MainWindow(object):
         self.frame_30.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_21 = QHBoxLayout(self.frame_30)
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.previous_data_widget = QWidget(self.frame_30)
-        self.previous_data_widget.setObjectName(u"previous_data_widget")
-        self.previous_data_widget.setMaximumSize(QSize(50, 16777215))
-        self.previous_data_widget.setStyleSheet(u"QWidget {\n"
+        self.previous_data_button = QPushButton(self.frame_30)
+        self.previous_data_button.setObjectName(u"previous_data_button")
+        self.previous_data_button.setMinimumSize(QSize(0, 650))
+        self.previous_data_button.setMaximumSize(QSize(100, 16777215))
+        font8 = QFont()
+        font8.setFamily(u"JetBrains Mono NL SemiBold")
+        font8.setPointSize(15)
+        self.previous_data_button.setFont(font8)
+        self.previous_data_button.setStyleSheet(u"QPushButton {\n"
+"color: #ffffff;\n"
 "background-color: rgb(112, 112, 112);\n"
-"padding: 0px;\n"
 "}\n"
 "\n"
-"QWidget:hover {\n"
+"QPushButton:hover {\n"
 "	background-color: rgb(168, 168, 168);\n"
 "}")
-        self.horizontalLayout_22 = QHBoxLayout(self.previous_data_widget)
-        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
-        self.previous_data = QLabel(self.previous_data_widget)
-        self.previous_data.setObjectName(u"previous_data")
-        self.previous_data.setMinimumSize(QSize(45, 45))
-        self.previous_data.setMaximumSize(QSize(45, 45))
-        self.previous_data.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);")
-        self.previous_data.setPixmap(QPixmap(u"Include/img/arrow_left.png"))
-        self.previous_data.setScaledContents(True)
 
-        self.horizontalLayout_22.addWidget(self.previous_data, 0, Qt.AlignHCenter|Qt.AlignVCenter)
-
-
-        self.horizontalLayout_21.addWidget(self.previous_data_widget)
+        self.horizontalLayout_21.addWidget(self.previous_data_button)
 
         self.frame_33 = QFrame(self.frame_30)
         self.frame_33.setObjectName(u"frame_33")
@@ -1141,9 +1133,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
         self.take_photo = QPushButton(self.frame_32)
         self.take_photo.setObjectName(u"take_photo")
-        font8 = QFont()
-        font8.setFamily(u"JetBrains Mono NL Medium")
-        self.take_photo.setFont(font8)
+        font9 = QFont()
+        font9.setFamily(u"JetBrains Mono NL Medium")
+        self.take_photo.setFont(font9)
         self.take_photo.setCursor(QCursor(Qt.PointingHandCursor))
         self.take_photo.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(66, 72, 68);\n"
@@ -1155,7 +1147,7 @@ class Ui_MainWindow(object):
 
         self.import_file = QPushButton(self.frame_32)
         self.import_file.setObjectName(u"import_file")
-        self.import_file.setFont(font8)
+        self.import_file.setFont(font9)
         self.import_file.setCursor(QCursor(Qt.PointingHandCursor))
         self.import_file.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(66, 72, 68);\n"
@@ -1193,10 +1185,10 @@ class Ui_MainWindow(object):
         self.label71.setObjectName(u"label71")
         self.label71.setMaximumSize(QSize(90, 16777215))
         self.label71.setSizeIncrement(QSize(0, 0))
-        font9 = QFont()
-        font9.setFamily(u"JetBrains Mono Medium")
-        font9.setPointSize(10)
-        self.label71.setFont(font9)
+        font10 = QFont()
+        font10.setFamily(u"JetBrains Mono Medium")
+        font10.setPointSize(10)
+        self.label71.setFont(font10)
 
         self.horizontalLayout_31.addWidget(self.label71)
 
@@ -1229,9 +1221,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_32.setContentsMargins(0, 0, 0, 0)
         self.label_29 = QLabel(self.frame_53)
         self.label_29.setObjectName(u"label_29")
-        font10 = QFont()
-        font10.setFamily(u"JetBrains Mono NL ExtraBold")
-        self.label_29.setFont(font10)
+        font11 = QFont()
+        font11.setFamily(u"JetBrains Mono NL ExtraBold")
+        self.label_29.setFont(font11)
 
         self.horizontalLayout_32.addWidget(self.label_29)
 
@@ -1288,13 +1280,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
         self.label_18 = QLabel(self.student_details_name)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font10)
+        self.label_18.setFont(font11)
 
         self.verticalLayout_25.addWidget(self.label_18)
 
         self.student_name = QLabel(self.student_details_name)
         self.student_name.setObjectName(u"student_name")
-        self.student_name.setFont(font9)
+        self.student_name.setFont(font10)
 
         self.verticalLayout_25.addWidget(self.student_name)
 
@@ -1310,13 +1302,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.label_19 = QLabel(self.frame_35)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setFont(font10)
+        self.label_19.setFont(font11)
 
         self.verticalLayout_29.addWidget(self.label_19)
 
         self.student_school = QLabel(self.frame_35)
         self.student_school.setObjectName(u"student_school")
-        self.student_school.setFont(font9)
+        self.student_school.setFont(font10)
 
         self.verticalLayout_29.addWidget(self.student_school)
 
@@ -1340,13 +1332,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.label_20 = QLabel(self.frame_34)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font10)
+        self.label_20.setFont(font11)
 
         self.verticalLayout_30.addWidget(self.label_20)
 
         self.student_class = QLabel(self.frame_34)
         self.student_class.setObjectName(u"student_class")
-        self.student_class.setFont(font9)
+        self.student_class.setFont(font10)
 
         self.verticalLayout_30.addWidget(self.student_class)
 
@@ -1361,13 +1353,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.label_22 = QLabel(self.frame_43)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setFont(font10)
+        self.label_22.setFont(font11)
 
         self.verticalLayout_31.addWidget(self.label_22)
 
         self.student_course = QLabel(self.frame_43)
         self.student_course.setObjectName(u"student_course")
-        self.student_course.setFont(font9)
+        self.student_course.setFont(font10)
 
         self.verticalLayout_31.addWidget(self.student_course)
 
@@ -1393,7 +1385,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.label_23 = QLabel(self.frame_41)
         self.label_23.setObjectName(u"label_23")
-        self.label_23.setFont(font10)
+        self.label_23.setFont(font11)
         self.label_23.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
 
         self.verticalLayout_32.addWidget(self.label_23)
@@ -1433,7 +1425,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
         self.label_21 = QLabel(self.frame_46)
         self.label_21.setObjectName(u"label_21")
-        self.label_21.setFont(font10)
+        self.label_21.setFont(font11)
 
         self.horizontalLayout_26.addWidget(self.label_21)
 
@@ -1449,16 +1441,16 @@ class Ui_MainWindow(object):
         self.label_24 = QLabel(self.frame_48)
         self.label_24.setObjectName(u"label_24")
         self.label_24.setMaximumSize(QSize(190, 16777215))
-        self.label_24.setFont(font10)
+        self.label_24.setFont(font11)
 
         self.horizontalLayout_27.addWidget(self.label_24)
 
         self.student_gender = QLabel(self.frame_48)
         self.student_gender.setObjectName(u"student_gender")
-        font11 = QFont()
-        font11.setFamily(u"JetBrains Mono Medium")
-        font11.setPointSize(11)
-        self.student_gender.setFont(font11)
+        font12 = QFont()
+        font12.setFamily(u"JetBrains Mono Medium")
+        font12.setPointSize(11)
+        self.student_gender.setFont(font12)
 
         self.horizontalLayout_27.addWidget(self.student_gender)
 
@@ -1474,13 +1466,13 @@ class Ui_MainWindow(object):
         self.label_25 = QLabel(self.frame_47)
         self.label_25.setObjectName(u"label_25")
         self.label_25.setMaximumSize(QSize(190, 16777215))
-        self.label_25.setFont(font10)
+        self.label_25.setFont(font11)
 
         self.horizontalLayout_28.addWidget(self.label_25)
 
         self.date_of_birth_label = QLabel(self.frame_47)
         self.date_of_birth_label.setObjectName(u"date_of_birth_label")
-        self.date_of_birth_label.setFont(font11)
+        self.date_of_birth_label.setFont(font12)
 
         self.horizontalLayout_28.addWidget(self.date_of_birth_label)
 
@@ -1496,13 +1488,13 @@ class Ui_MainWindow(object):
         self.label_26 = QLabel(self.frame_50)
         self.label_26.setObjectName(u"label_26")
         self.label_26.setMaximumSize(QSize(190, 16777215))
-        self.label_26.setFont(font10)
+        self.label_26.setFont(font11)
 
         self.horizontalLayout_29.addWidget(self.label_26)
 
         self.parent_contact = QLabel(self.frame_50)
         self.parent_contact.setObjectName(u"parent_contact")
-        self.parent_contact.setFont(font11)
+        self.parent_contact.setFont(font12)
 
         self.horizontalLayout_29.addWidget(self.parent_contact)
 
@@ -1518,13 +1510,13 @@ class Ui_MainWindow(object):
         self.label_27 = QLabel(self.frame_49)
         self.label_27.setObjectName(u"label_27")
         self.label_27.setMaximumSize(QSize(190, 16777215))
-        self.label_27.setFont(font10)
+        self.label_27.setFont(font11)
 
         self.horizontalLayout_30.addWidget(self.label_27)
 
         self.index_number_bece = QLabel(self.frame_49)
         self.index_number_bece.setObjectName(u"index_number_bece")
-        self.index_number_bece.setFont(font11)
+        self.index_number_bece.setFont(font12)
 
         self.horizontalLayout_30.addWidget(self.index_number_bece)
 
@@ -1543,31 +1535,31 @@ class Ui_MainWindow(object):
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.label_28 = QLabel(self.frame_45)
         self.label_28.setObjectName(u"label_28")
-        self.label_28.setFont(font10)
+        self.label_28.setFont(font11)
 
         self.verticalLayout_34.addWidget(self.label_28)
 
         self.elective_1 = QLabel(self.frame_45)
         self.elective_1.setObjectName(u"elective_1")
-        self.elective_1.setFont(font11)
+        self.elective_1.setFont(font12)
 
         self.verticalLayout_34.addWidget(self.elective_1)
 
         self.elective_2 = QLabel(self.frame_45)
         self.elective_2.setObjectName(u"elective_2")
-        self.elective_2.setFont(font11)
+        self.elective_2.setFont(font12)
 
         self.verticalLayout_34.addWidget(self.elective_2)
 
         self.elective_3 = QLabel(self.frame_45)
         self.elective_3.setObjectName(u"elective_3")
-        self.elective_3.setFont(font11)
+        self.elective_3.setFont(font12)
 
         self.verticalLayout_34.addWidget(self.elective_3)
 
         self.elective_4 = QLabel(self.frame_45)
         self.elective_4.setObjectName(u"elective_4")
-        self.elective_4.setFont(font11)
+        self.elective_4.setFont(font12)
 
         self.verticalLayout_34.addWidget(self.elective_4)
 
@@ -1607,10 +1599,10 @@ class Ui_MainWindow(object):
         self.edit_student_button = QPushButton(self.frame_39)
         self.edit_student_button.setObjectName(u"edit_student_button")
         self.edit_student_button.setMaximumSize(QSize(16777215, 40))
-        font12 = QFont()
-        font12.setFamily(u"JetBrains Mono NL Medium")
-        font12.setPointSize(10)
-        self.edit_student_button.setFont(font12)
+        font13 = QFont()
+        font13.setFamily(u"JetBrains Mono NL Medium")
+        font13.setPointSize(10)
+        self.edit_student_button.setFont(font13)
         self.edit_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(107, 107, 107);\n"
 "border-top-left-radius: 20px;")
@@ -1620,7 +1612,7 @@ class Ui_MainWindow(object):
         self.delete_student_button = QPushButton(self.frame_39)
         self.delete_student_button.setObjectName(u"delete_student_button")
         self.delete_student_button.setMaximumSize(QSize(16777215, 40))
-        self.delete_student_button.setFont(font12)
+        self.delete_student_button.setFont(font13)
         self.delete_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(107, 107, 107);\n"
 "border-top-right-radius: 20px;")
@@ -1633,7 +1625,7 @@ class Ui_MainWindow(object):
         self.add_student_button = QPushButton(self.frame_37)
         self.add_student_button.setObjectName(u"add_student_button")
         self.add_student_button.setMaximumSize(QSize(16777215, 50))
-        self.add_student_button.setFont(font12)
+        self.add_student_button.setFont(font13)
         self.add_student_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.add_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(213, 93, 33);\n"
@@ -1648,32 +1640,21 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_20.addWidget(self.frame_31)
 
-        self.next_button_widget = QWidget(self.frame_29)
-        self.next_button_widget.setObjectName(u"next_button_widget")
-        self.next_button_widget.setMaximumSize(QSize(50, 16777215))
-        self.next_button_widget.setStyleSheet(u"QWidget {\n"
+        self.next_data_button = QPushButton(self.frame_29)
+        self.next_data_button.setObjectName(u"next_data_button")
+        self.next_data_button.setMinimumSize(QSize(0, 650))
+        self.next_data_button.setMaximumSize(QSize(90, 16777215))
+        self.next_data_button.setFont(font8)
+        self.next_data_button.setStyleSheet(u"QPushButton {\n"
+"color: #ffffff;\n"
 "background-color: rgb(112, 112, 112);\n"
-"padding: 0px;\n"
 "}\n"
 "\n"
-"QWidget:hover {\n"
+"QPushButton:hover {\n"
 "	background-color: rgb(168, 168, 168);\n"
 "}")
-        self.verticalLayout_24 = QVBoxLayout(self.next_button_widget)
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.verticalLayout_24.setContentsMargins(0, 0, 0, 0)
-        self.next_button = QLabel(self.next_button_widget)
-        self.next_button.setObjectName(u"next_button")
-        self.next_button.setMinimumSize(QSize(45, 45))
-        self.next_button.setMaximumSize(QSize(45, 45))
-        self.next_button.setStyleSheet(u"background-color: rgba(255, 255, 255, 0);")
-        self.next_button.setPixmap(QPixmap(u"Include/img/arrow_right.png"))
-        self.next_button.setScaledContents(True)
 
-        self.verticalLayout_24.addWidget(self.next_button, 0, Qt.AlignHCenter|Qt.AlignVCenter)
-
-
-        self.horizontalLayout_20.addWidget(self.next_button_widget)
+        self.horizontalLayout_20.addWidget(self.next_data_button, 0, Qt.AlignVCenter)
 
 
         self.verticalLayout_22.addWidget(self.frame_29)
@@ -1756,7 +1737,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1262, 706))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 65, 108))
         self.verticalLayout_40 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_40.setObjectName(u"verticalLayout_40")
         self.frame_59 = QFrame(self.scrollAreaWidgetContents)
@@ -1841,7 +1822,7 @@ class Ui_MainWindow(object):
         self.label_13.setText("")
         self.searchbar_main.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Student", None))
         self.close_search.setText("")
-        self.previous_data.setText("")
+        self.previous_data_button.setText(QCoreApplication.translate("MainWindow", u"Previous", None))
         self.label_12.setText("")
         self.take_photo.setText(QCoreApplication.translate("MainWindow", u"Take A Picture", None))
         self.import_file.setText(QCoreApplication.translate("MainWindow", u"Import File", None))
@@ -1876,7 +1857,7 @@ class Ui_MainWindow(object):
         self.edit_student_button.setText(QCoreApplication.translate("MainWindow", u"Edit Student Record", None))
         self.delete_student_button.setText(QCoreApplication.translate("MainWindow", u"Delete Student Record", None))
         self.add_student_button.setText(QCoreApplication.translate("MainWindow", u"Add Student Record", None))
-        self.next_button.setText("")
+        self.next_data_button.setText(QCoreApplication.translate("MainWindow", u"Next", None))
         self.searchbar_main_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Student", None))
         self.close_search_2.setText("")
     # retranslateUi
