@@ -262,7 +262,7 @@ async function continueToChat() {
 
   let theMainLink = ` <a id="continues" href="/pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Continue</a>`;
 
-  continueLink.innerHTML = theLink;
+  continueLink.innerHTML = theMainLink;
   schoolSelector.appendChild(continueLink);
 }
 
