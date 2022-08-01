@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>597</width>
-    <height>729</height>
+    <height>728</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -249,22 +249,25 @@
          </item>
          <item>
           <widget class="QDateEdit" name="dateEdit">
+           <property name="correctionMode">
+            <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+           </property>
            <property name="maximumDate">
             <date>
-             <year>2022</year>
+             <year>2080</year>
              <month>12</month>
              <day>31</day>
             </date>
            </property>
            <property name="minimumDate">
             <date>
-             <year>1900</year>
-             <month>9</month>
-             <day>14</day>
+             <year>1980</year>
+             <month>1</month>
+             <day>1</day>
             </date>
            </property>
            <property name="displayFormat">
-            <string>dd/mm/yyyy</string>
+            <string>dd/MM/yyyy</string>
            </property>
            <property name="calendarPopup">
             <bool>true</bool>
@@ -276,64 +279,6 @@
             <enum>Qt::LocalTime</enum>
            </property>
           </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="frame_9">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_11">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="minimumSize">
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>School:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit_6"/>
          </item>
         </layout>
        </widget>
@@ -651,7 +596,7 @@
             <item row="5" column="4" rowspan="3">
              <widget class="QCheckBox" name="checkBox_21">
               <property name="text">
-               <string>Accounting</string>
+               <string>Financial Accounting</string>
               </property>
              </widget>
             </item>
@@ -791,76 +736,14 @@
               </property>
              </widget>
             </item>
+            <item row="14" column="4">
+             <widget class="QCheckBox" name="checkBox_15">
+              <property name="text">
+               <string>Elective ICT</string>
+              </property>
+             </widget>
+            </item>
            </layout>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="frame_10">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_10">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="minimumSize">
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>110</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Picture:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton">
-           <property name="text">
-            <string>Select File</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_19">
-           <property name="minimumSize">
-            <size>
-             <width>140</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>140</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>image path</string>
-           </property>
           </widget>
          </item>
         </layout>
@@ -1052,7 +935,7 @@
          <item>
           <widget class="QPushButton" name="pushButton_2">
            <property name="text">
-            <string>Select Image</string>
+            <string>Record Signature</string>
            </property>
           </widget>
          </item>
@@ -1146,7 +1029,7 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_16">
+     <layout class="QHBoxLayout" name="horizontalLayout_10">
       <item>
        <widget class="QPushButton" name="save">
         <property name="text">
@@ -1155,9 +1038,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="cancel">
+       <widget class="QPushButton" name="close">
         <property name="text">
-         <string>Cancel</string>
+         <string>Close</string>
         </property>
        </widget>
       </item>

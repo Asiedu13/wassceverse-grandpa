@@ -14,11 +14,10 @@ window.onload = async () => {
   axios.get("/api/schools").then((res) => {
     // -------- Get schools data --------
     schools = res.data;
-    console.log( res.data );
-    
-    
-  let indicator = document.getElementById("loader");
-  indicator.style.display = "none";
+    console.log(res.data);
+
+    let indicator = document.getElementById("loader");
+    indicator.style.display = "none";
 
     // -------- Get parent Element ----
     let parent = document.getElementById("search_results");
@@ -31,6 +30,7 @@ window.onload = async () => {
     upDateSchoolsList(schools, parent, count_display, "article", "school");
   });
   console.log(parent);
+  openCvReady();
 
   // ---------- Add event listeners ------
 };
@@ -46,74 +46,78 @@ new MutationObserver(() => {
 }).observe(document, { subtree: true, childList: true });
 
 function onUrlChange() {
+  console.log("on url change");
+  openCvReady();
   let confirmationElem = document.getElementById("confirmation_elems");
-  confirmationElem.style.display = "none";
+  if (confirmationElem) {
+    confirmationElem.style.display = "none";
 
-  var conversationalForm = window.cf.ConversationalForm.startTheConversation({
-    formEl: document.querySelector("form"),
-    context: document.getElementById("cf-context"),
-    showProgressBar: true,
-    // FIXME: Remove the comments when done and this is still not necessary.
-    //  flowStepCallback: function(dto, success, error){
+    var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+      formEl: document.querySelector("form") || " ",
+      context: document.getElementById("cf-context") || " ",
+      showProgressBar: true,
+      // FIXME: Remove the comments when done and this is still not necessary.
+      //  flowStepCallback: function(dto, success, error){
 
-    //     if(dto.tag.id == "firstname"){
-    //         if(dto.tag.value.toLowerCase() === "sherlock"){
-    //             return success();
-    //         }else{
-    //             return error();
-    //         }
-    //         //conversationalForm.stop("Stopping form, but added value");
-    //     }else if(dto.tag.name == "gender"){
-    //         if(dto.tag.value[0] === "male"){
-    //             return success();
-    //         }else{
-    //             return error();
-    //         }
-    //     }
+      //     if(dto.tag.id == "firstname"){
+      //         if(dto.tag.value.toLowerCase() === "sherlock"){
+      //             return success();
+      //         }else{
+      //             return error();
+      //         }
+      //         //conversationalForm.stop("Stopping form, but added value");
+      //     }else if(dto.tag.name == "gender"){
+      //         if(dto.tag.value[0] === "male"){
+      //             return success();
+      //         }else{
+      //             return error();
+      //         }
+      //     }
 
-    //     return success();
-    // }
+      //     return success();
+      // }
 
-    submitCallback: function () {
-      conversationalForm.addRobotChatResponse(
-        "Your data is being processed..."
-      );
+      submitCallback: function () {
+        conversationalForm.addRobotChatResponse(
+          "Your data is being processed..."
+        );
 
-      // Display form data
-      var formData = conversationalForm.getFormData();
-      var formDataSerialized = conversationalForm.getFormData(true);
-      console.log("Formdata:", formData);
-      console.log("Formdata, serialized:", formDataSerialized);
+        // Display form data
+        var formData = conversationalForm.getFormData();
+        var formDataSerialized = conversationalForm.getFormData(true);
+        console.log("Formdata:", formData);
+        console.log("Formdata, serialized:", formDataSerialized);
 
-      let det = {
-        first_name: userData.first_name,
-        surname: userData.surname,
-        other_names: formDataSerialized.other_names,
-        date_of_birth: formDataSerialized.date_of_birth,
-        gender: formDataSerialized.gender,
-        school: userData.school,
-        index_number: formDataSerialized.index_number,
-        year_completed: formDataSerialized.year_completed,
-        course: formDataSerialized.course,
-        electives: formDataSerialized.electives,
-        parent_contact: formDataSerialized.parent_contact,
-      };
+        let det = {
+          first_name: userData.first_name,
+          surname: userData.surname,
+          other_names: formDataSerialized.other_names,
+          date_of_birth: formDataSerialized.date_of_birth,
+          gender: formDataSerialized.gender,
+          school: userData.school,
+          index_number: formDataSerialized.index_number,
+          year_completed: formDataSerialized.year_completed,
+          course: formDataSerialized.course,
+          electives: formDataSerialized.electives,
+          parent_contact: formDataSerialized.parent_contact,
+        };
 
-      conversationalForm.addRobotChatResponse(
-        "Click 'verify details' to confirm your data"
-      );
+        conversationalForm.addRobotChatResponse(
+          "Click 'verify details' to confirm your data"
+        );
 
-      localStorage.setItem("chatData", JSON.stringify(det));
-      verifyBtn = document.querySelector(".verification");
-      console.log(num);
+        localStorage.setItem("chatData", JSON.stringify(det));
+        verifyBtn = document.querySelector(".verification");
+        console.log(num);
 
-      verifyBtn.addEventListener("click", () =>
-        store(conversationalForm, confirmationElem)
-      );
+        verifyBtn.addEventListener("click", () =>
+          store(conversationalForm, confirmationElem)
+        );
 
-      onConfirmation(conversationalForm, confirmationElem);
-    },
-  });
+        onConfirmation(conversationalForm, confirmationElem);
+      },
+    });
+  }
 }
 
 function upDateSchoolsList(
@@ -223,8 +227,11 @@ function schoolSelected(e) {
   let replacementHtml = `     
             <p>and my B.E.C.E index number was </p>
             <input type="text" minlength="10" maxlength="13 id="indexNumber" onInput="updateIndexNumber(this)" placeholder="eg. 0101050901619" />  
-            <button id="continueC" onClick="continueToChat()">Save</button>
+              <button id="continueC" onClick="continueToChat()">Save</button>
+           
   `;
+  let someVar = `
+   <button id="continueC" onClick="continueToChat()">Save</button>`;
   let schoolSelector = document.querySelector("#school_selector");
   let parentReplacementHtml = document.createElement("div");
   parentReplacementHtml.setAttribute("class", "index_number_input");
@@ -251,8 +258,11 @@ async function continueToChat() {
 
   specifiedUser = username;
   let theLink = `
-      <a id="continues" href="/pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Continue</a>`;
-  continueLink.innerHTML = theLink;
+      <a id="continue" href="/pages/auto_photo.html" onClick="openCvReady()">Take Photo</a>`;
+
+  let theMainLink = ` <a id="continues" href="/pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Continue</a>`;
+
+  continueLink.innerHTML = theMainLink;
   schoolSelector.appendChild(continueLink);
 }
 

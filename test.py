@@ -1,26 +1,17 @@
-import sqlite3
-import os.path
-from os import listdir, getcwd
-from IPython.core.display import Image
+from PIL import Image
+from autocrop import Cropper
 
-def create_or_open_db(db_file):
-    db_is_new = not os.path.exists(db_file)
-    conn = sqlite3.connect(db_file)
-    return conn
+cropper = Cropper(
+    width = 150,
+    height = 200,
+    face_percent = 50
+)
 
-def insert_picture(conn, picture_file):
-    with open(picture_file, 'rb') as input_file:
-        ablob = input_file.read()
-        base=os.path.basename(picture_file)
-        afile, ext = os.path.splitext(base)
-        sql = """UPDATE student_details
-        SET image = ?
-        WHERE _rowid_ = 2"""
-        conn.execute(sql,[sqlite3.Binary(ablob)]) 
-        conn.commit()
+# Get a Numpy array of the cropped image
+img_url = ".TEMP\Webcam HP Truevision HD Date 30 Jul 2022 Time 20 29 06 .jpg"
+cropped_array = cropper.crop(img_url)
 
-
-conn = create_or_open_db('server.db')
-picture_file = "C:/Users/FUJITSU/Desktop/faces/edited/face6.jpg.png"
-insert_picture(conn, picture_file)
-conn.close()
+# Save the cropped image with PIL if a face was detected:
+if len(cropped_array) != 0 :
+    cropped_image = Image.fromarray(cropped_array)
+    cropped_image.save('.TEMP\Webcam HP Truevision HD Date 30 Jul 2022 Time 20 29 06.jpg')
