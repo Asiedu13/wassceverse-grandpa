@@ -16,7 +16,6 @@ import pathlib
 import platform
 import time
 import cv2
-from django.db import connection
 import numpy as np
 import os
 
@@ -118,7 +117,7 @@ class EditStudentInformation(QDialog):
             cursor = connection.cursor()
 
             sql = f"UPDATE student_details SET surname = '{surname}', first_name = '{first_name}', other_names = '{other_names}', course = '{course}', class = '{class_}', index_number = '{index_number}', electives = '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', gender = '{gender}', parent_contact = '{parent_contact}' WHERE _rowid_ = {self.index}"
-            cursor.execute(sql)
+            connection.execute(sql)
             print(sql)
             connection.commit()
             connection.close()
@@ -267,10 +266,10 @@ class MainWindow(QMainWindow):
 
                 else:
                     connection = sqlite3.connect("server2.db")
-                    cursor = connection.cursor()
+                    # cursor = connection.cursor()
                     sql = f"INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES ('{school_name}', {school_code}, '{email}', '{password}', 1, 'Ghana', 'nowhere')"
                     print(sql)
-                    cursor.execute(sql)
+                    connection.execute(sql)
                     connection.commit()
                     connection.close()
                     switch_screen(0)
@@ -434,7 +433,6 @@ class MainWindow(QMainWindow):
         print('Image saved on ',str(savePath))
         self.saveSeq += 1
 
-
     def closeCamera(self):
         if self.savePath == None:
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -454,15 +452,18 @@ class MainWindow(QMainWindow):
                 if len(cropped_array) != 0 :
                     cropped_image = Image.fromarray(cropped_array)
                     cropped_image.save(self.savePath)
-                with open(self.savePath, 'rb') as file:
-                    blobData = file.read()
-                self.savePath = None
-                connection = sqlite3.connect("server2.db")
-                cursor = connection.cursor()
-                sql = f"UPDATE student_details SET image = {blobData} WHERE _rowid_ = {self.currentStudentId}"
-                cursor.execute(sql)
-                connection.commit()
-                connection.close()
+                with open(self.savePath, 'rb') as input_file:
+                    ablob = input_file.read()
+                    base=os.path.basename(self.savePath)
+                    afile, ext = os.path.splitext(base)
+                    sql = """UPDATE student_details
+                    SET image = ?
+                    WHERE _rowid_ = {self.currentStudentId}"""
+                    connection = sqlite3.connect("server2.db")
+                    # cursor = connection.cursor()
+                    connection.execute(sql)
+                    connection.commit()
+                    connection.close()
                 self.savePath = None
             except TypeError:
                 self.savePath = None
