@@ -1,274 +1,384 @@
-import re
-from PIL import Image
-from autocrop import Cropper
-from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
-from PySide2.QtMultimedia import QCameraInfo, QCamera, QCameraImageCapture
-from PySide2.QtMultimediaWidgets import QCameraViewfinder
-from PySide2.QtWidgets import *
-
-import email
-import sqlite3
+import json
 import sys
-import pathlib
-import platform
-import time
-import cv2
-import numpy as np
+import glob
 import os
+import sqlite3
+import cv2
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime,
+                            QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase,
+                           QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
+from numpy import double
 
-
-# GUI FILES
+# GUI FILE
+import ui_classes.edit
 from ui_classes.ui_main import Ui_MainWindow
-from ui_classes.signInFailedOneDialog import Ui_signInFailedOneDialog
-from ui_classes.ui_incorrectDialog import Ui_incorrectDialog
-
 
 # IMPORT FUNCTIONS
 from ui_functions import *
 
-class PasswordIncorrectDialog(QDialog):
-    def __init__(self, parent = None):
-        super().__init__(parent)
-        self.ui = Ui_incorrectDialog()
-        self.ui.setupUi(self)
+rows_ = None
+edit_pic_path = ""
 
-class FailDialogOne(QDialog):
-   def __init__(self, parent=None):
-        super().__init__(parent)
-        self.ui = Ui_signInFailedOneDialog()
-        self.ui.setupUi(self)
 
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.availableCameras = QCameraInfo.availableCameras()
-        self.viewFinder = self.ui.camera_input
-        self.school_name = ""
-        self.students = []
-        self.currentStudentId = 0
-        self.studentsNo = 0
-        self.ui.stackedWidget.setCurrentIndex(0)
-        self.ui.comboBox.addItems([camera.description()
-                                  for camera in self.availableCameras])
-        self.connection = sqlite3.connect("server2.db")
-        self.cursor = self.connection.cursor()
 
-        statement = "SELECT school_name from registered_schools"
-        self.cursor.execute(statement)
-        data = self.cursor.fetchall()
-        self.schools = [d[0]
-        for d in data]
-        print(self.schools)
+        def getId(connection):
+            cursor = connection.cursor()
+            num = self.ui.info.item(11).text().replace(
+                "BECE Index Number: ", "")
+            cursor.execute(
+                f"SELECT id from student_details WHERE indexNum = '{num}'")
+            id = cursor.fetchall()[0][0]
+            return id
 
+        def getRows(connection):
+            cursor = connection.cursor()
+            num = self.ui.info.item(11).text().replace(
+                "BECE Index Number: ", "")
+            cursor.execute(
+                f"SELECT id from student_details")
+            length = cursor.fetchall()
+            return len(length)
 
-        statement = "SELECT school_code from registered_schools"
-        self.cursor.execute(statement)
-        data = self.cursor.fetchall()
-        self.codes = [d[0]
-        for d in data]
-        print(self.codes)
-
-
-        statement = "SELECT school_email from registered_schools"
-        self.cursor.execute(statement)
-        data = self.cursor.fetchall()
-        self.emails = [d[0]
-        for d in data]
-        print(self.emails)
-
-
-        completer = QCompleter(self.schools)
-        self.ui.schoolNameSignIn.setCompleter(completer)
-
-        def camera_screen():
-            self.selectCamera(0)
-            self.ui.stackedWidget.setCurrentIndex(3)
-
-        # CHECK INFO
-        def signIn(db: str):
-           schoolName = self.ui.schoolNameSignIn.text()
-           if "'" in schoolName:
-               schoolName = schoolName.replace("'", "''")
-           email = self.ui.emailSignIn.text()
-           password = self.ui.passwordSignIn.text()
-
-           sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}' AND school_email = '{email}'"
-           self.cursor.execute(sql)
-           data = self.cursor.fetchall()
-           print(data)
-
-           if len(data) != 0:
-               if password != data[0][6]:
-                   dialog = PasswordIncorrectDialog(self)
-                   dialog.exec()
-               else:
-                   self.school_name = schoolName
-                   getStudent(0)
-                   switch_screen(3)
-           else:
-               dialog = FailDialogOne(self)
-               dialog.exec()
-
-        def signUp(db: str):
-            school_name = self.ui.schoolNameSignUp.text().replace("'","''")
-            email = self.ui.emailSignUp.text()
-            school_code = self.ui.schoolCodeSignUp.text()
-            password = self.ui.passwordSignUp.text().replace("'", "''")
-            if len(password) <= 6:
-                self.ui.password_error.setHidden(False)
-                self.ui.school_name_error.setHidden(True)
-                self.ui.school_code_error.setHidden(True)
-            elif len(email) > 0 and len(school_name) > 0 and len(school_code) > 0:
-                regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-                if (not re.search(regex, email)):
-                    "TODO"
-                elif email in self.emails:
-                    self.ui.email_error.setHidden(False)
-                    self.ui.school_name_error.setHidden(True)
-                    self.ui.school_code_error.setHidden(True)
-                    self.ui.password_error.setHidden(True)
-                elif school_name in self.schools:
-                    self.ui.school_name_error.setHidden(False)
-                    self.ui.email_error.setHidden(True)
-                    self.ui.school_code_error.setHidden(True)
-                    self.ui.password_error.setHidden(True)
-                elif (not school_code.isnumeric()):
-                    "TODO"
-                elif school_code in self.codes:
-                    self.ui.email_error.setHidden(True)
-                    self.ui.school_name_error.setHidden(True)
-                    self.ui.school_code_error.setHidden(False)
-                    self.ui.password_error.setHidden(True)
-
-                else:
-                    sql = f"INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES ('{school_name}', {school_code}, '{email}', '{password}', 1, 'Ghana', 'nowhere')"
-                    print(sql)
-                    self.cursor.execute(sql)
-                    self.connection.commit()
-                    switch_screen(0)
-
-        def getStudent(id = self.currentStudentId):
-            sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}'"
-            self.cursor.execute(sql)
-            data = self.cursor.fetchall()
-            self.studentsNo = len(data)
-            if self.currentStudentId == 0:
-                self.ui.previous_data_button.setStyleSheet("background-color: rgb(200, 200, 200);")
+        def ButtonGone(id, connection):
+            if getRows(connection) <= 1:
+                self.ui.previous_arrow.setStyleSheet(
+                    "QPushButton {\n"
+                    "color: rgb(219, 216, 227);\n"
+                    "background-color: rgb(104, 105, 107);\n"
+                    "border-radius: 15px;\n"
+                    "font-size: 14px;\n"
+                    "font-family: Montserrat;\n"
+                    "}\n")
+                self.ui.next_arrow.setStyleSheet(
+                    "QPushButton {\n"
+                    "color: rgb(219, 216, 227);\n"
+                    "background-color: rgb(104, 105, 107);\n"
+                    "border-radius: 15px;\n"
+                    "font-size: 14px;\n"
+                    "font-family: Montserrat;\n"
+                    "}\n")
             else:
-                self.ui.previous_data_button.setStyleSheet("""QWidget {
-                        background-color: rgb(112, 112, 112);
-                        padding: 0px;
-                        }
-
-                        QWidget:hover {
-                            background-color: rgb(168, 168, 168);
-                        }
-                    """
-                )
-
-            if self.currentStudentId == self.studentsNo:
-                self.ui.next_data_button.setStyleSheet("background-color: rgb(70, 70, 70);")
-            else:
-                self.ui.next_data_button.setStyleSheet("""QWidget {
-                        background-color: rgb(112, 112, 112);
-                        padding: 0px;
-                        }
-
-                        QWidget:hover {
-                            background-color: rgb(168, 168, 168);
-                        }
-                    """
-                )
-
-            if len(data) != 0:
-                name = f"{data[id][0]} {data[id][1]} {data[id][2]}"
-                self.ui.student_name.setText(name.strip())
-                self.ui.student_school.setText(data[id][8])
-                self.ui.student_class.setText(data[id][4])
-                self.ui.student_course.setText(data[id][3])
-                self.ui.student_gender.setText(data[id][9].title())
-                date = data[id][11]
-                date = date.split("/")
-                day = int(date[0])
-                suffix = ""
-                if 11 <= (day % 100) <= 13:
-                    suffix = 'th'
+                if id == 1:
+                    self.ui.previous_arrow.setStyleSheet(
+                        "QPushButton {\n"
+                        "color: rgb(219, 216, 227);\n"
+                        "background-color: rgb(104, 105, 107);\n"
+                        "border-radius: 15px;\n"
+                        "font-size: 14px;\n"
+                        "font-family: Montserrat;\n"
+                        "}\n")
+                    self.ui.next_arrow.setStyleSheet("QPushButton {\n"
+                                                     "color: rgb(219, 216, 227);\n"
+                                                     "background-color: rgb(92, 84, 112);\n"
+                                                     "border-radius: 15px;\n"
+                                                     "font-size: 14px;\n"
+                                                     "font-family: Montserrat;\n"
+                                                     "}\n"
+                                                     "\n"
+                                                     "QPushButton:hover {\n"
+                                                     "    background-color: rgb(111, 101, 135);\n"
+                                                     "}")
+                elif id == getRows(connection):
+                    self.ui.next_arrow.setStyleSheet(
+                        "QPushButton {\n"
+                        "color: rgb(219, 216, 227);\n"
+                        "background-color: rgb(104, 105, 107);\n"
+                        "border-radius: 15px;\n"
+                        "font-size: 14px;\n"
+                        "font-family: Montserrat;\n"
+                        "}\n")
+                    self.ui.previous_arrow.setStyleSheet("QPushButton {\n"
+                                                         "color: rgb(219, 216, 227);\n"
+                                                         "background-color: rgb(92, 84, 112);\n"
+                                                         "border-radius: 15px;\n"
+                                                         "font-size: 14px;\n"
+                                                         "font-family: Montserrat;\n"
+                                                         "}\n"
+                                                         "\n"
+                                                         "QPushButton:hover {\n"
+                                                         "    background-color: rgb(111, 101, 135);\n"
+                                                         "}")
                 else:
-                    suffix = ['th', 'st', 'nd', 'rd', 'th'][min(day % 10, 4)]
-                day = f"{str(day)}{suffix}"
+                    self.ui.previous_arrow.setStyleSheet("QPushButton {\n"
+                                                         "color: rgb(219, 216, 227);\n"
+                                                         "background-color: rgb(92, 84, 112);\n"
+                                                         "border-radius: 15px;\n"
+                                                         "font-size: 14px;\n"
+                                                         "font-family: Montserrat;\n"
+                                                         "}\n"
+                                                         "\n"
+                                                         "QPushButton:hover {\n"
+                                                         "    background-color: rgb(111, 101, 135);\n"
+                                                         "}")
+                    self.ui.next_arrow.setStyleSheet("QPushButton {\n"
+                                                     "color: rgb(219, 216, 227);\n"
+                                                     "background-color: rgb(92, 84, 112);\n"
+                                                     "border-radius: 15px;\n"
+                                                     "font-size: 14px;\n"
+                                                     "font-family: Montserrat;\n"
+                                                     "}\n"
+                                                     "\n"
+                                                     "QPushButton:hover {\n"
+                                                     "    background-color: rgb(111, 101, 135);\n"
+                                                     "}")
 
-                months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-                month = months[int(date[1])-1]
-                self.currentStudentId = id
+        def getFromServer(connection, id=1):
+            global rows_
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM student_details")
+            rows = cursor.fetchall()
+            rows_ = rows
+            pic_data = rows[id-1][9]
+            qImg = QtGui.QImage.fromData(pic_data)
+            pixmap = QtGui.QPixmap.fromImage(qImg)
 
-                date = f"{day} {month} {date[2]}"
-                self.ui.date_of_birth_label.setText(date)
-                self.ui.parent_contact.setText(data[0][10])
-                self.ui.index_number_bece.setText(data[0][5])
-                electives_array = data[0][7].split(",")
-                self.ui.elective_1.setText(electives_array[0])
-                self.ui.elective_2.setText(electives_array[1])
-                self.ui.elective_3.setText(electives_array[2])
-                self.ui.elective_4.setText(electives_array[3])
+            self.ui.pic.setPixmap(pixmap)
+            self.ui.info.item(0).setText(QCoreApplication.translate(
+                "MainWindow", f"Name: {rows[id-1][0]} {rows[id-1][1]} {rows[id-1][2]}"))
+            self.ui.info.item(1).setText(QCoreApplication.translate(
+                "MainWindow", f"School: {rows[id-1][10]}"))
+            self.ui.info.item(2).setText(QCoreApplication.translate(
+                "MainWindow", f"Class: {rows[id-1][5]}"))
+            self.ui.info.item(3).setText(QCoreApplication.translate(
+                "MainWindow", f"Course: {rows[id-1][4]}"))
+            list_ = rows[id-1][8].strip('][').split(', ')
+            self.ui.info.item(5).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[0]}"))
+            self.ui.info.item(6).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[1]}"))
+            self.ui.info.item(7).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[2]}"))
+            self.ui.info.item(8).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[3]}"))
+            self.ui.info.item(9).setText(QCoreApplication.translate(
+                "MainWindow", f"Date of Birth: {rows[id-1][3]}"))
+            self.ui.info.item(10).setText(QCoreApplication.translate(
+                "MainWindow", f"Gender: {rows[id-1][11]}"))
+            self.ui.info.item(11).setText(QCoreApplication.translate(
+                "MainWindow", f"BECE Index Number: {rows[id-1][6]}"))
+            self.ui.info.item(12).setText(QCoreApplication.translate(
+                "MainWindow", f"Parent's Contact: {rows[id-1][12]}"))
+            ButtonGone(getId(connection), connection)
 
-        def nextStudent():
-            id = self.currentStudentId + 1
-            getStudent(id)
+        try:
+            connection = sqlite3.connect('server.db')
+            cursor = connection.cursor()
+            jsonFile = open("web/details.txt", "r")
+            jsonContent = jsonFile.readlines()
+            for line in jsonContent:
+                dict_ = json.loads(line)
+                surname = dict_['lastName']
+                first_name = dict_['firstName']
+                other_names = dict_['otherNames']
+                dob = dict_['DOB']
+                course = dict_['course'][0]
+                class_ = None
+                indexNum = dict_['beceIndex']
+                yearCompleted = dict_['yearCompleted']
+                electives = dict_['electives']
+                image_ = None
+                school = dict_['school']
+                gender = dict_['gender'][0].title()
+                parent_contact = dict_['parentContact']
+                signature = None
+                fingerprint = None
+                if line != "":
+                    cursor.execute(
+                        f"INSERT INTO student_details (surname, first_name, other_names, date_of_birth, course, class, indexNum, yearCompleted, electives, school, gender, parents_contact) VALUES ({surname}, {first_name}, {other_names}, {dob}, {course}, {class_}, {indexNum}, {yearCompleted}, {electives}, {school}', {gender}, {parent_contact});")
 
-        def previousStudent():
-            id = 0
-            if self.currentStudentId > 1:
-                id = self.currentStudentId - 1
-            getStudent(id)
+        except sqlite3.Error:
+            print(sqlite3.Error)
+        getFromServer(connection)
 
+        def cropFile(mode="normal"):
+            global edit_pic_path
+            fname = QFileDialog.getOpenFileName(self, 'Select file',
+                                                'c:\\', "Image files (*.jpg *.png *.tiff)")
+            fpath = fname[0]
 
-        self.ui.SignInSubmit_2.clicked.connect(lambda: signUp("server2.db"))
-        self.ui.next_data_button.clicked.connect(lambda: nextStudent())
-        self.ui.previous_data_button.clicked.connect(lambda: previousStudent())
-        self.ui.take_photo.clicked.connect(lambda: camera_screen())
-        self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
-        self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
-        self.ui.SignInSubmit.clicked.connect(lambda: signIn("server2.db"))
+            img = cv2.imread(fpath)
 
-        def switch_screen(screen: int):
-            self.ui.stackedWidget.setCurrentIndex(screen)
+            width, height = 150, 200
+            imgResized = cv2.resize(img, (width, height))
+            if os.path.isdir(os.path.dirname(fpath)+"/edited/") == False:
+                os.makedirs(os.path.dirname(fpath)+"/edited/")
+            new_path = os.path.dirname(
+                fpath)+"/edited/"+fpath.replace(os.path.dirname(fpath)+"/", "")+".png"
+            cv2.imwrite(new_path, imgResized)
 
-        ## ==> SET UI DEFINITIONS
+        def cropFolder():
+            fname = QFileDialog.getExistingDirectory(
+                self, 'Select Folder', 'c:\\')
+            print(fname)
+            files = glob.glob(f'{fname}/**/*.jpg', recursive=True) + \
+                glob.glob(f'{fname}/**/*.png', recursive=True) + \
+                glob.glob(f'{fname}/**/*.', recursive=True)
+
+            # For each image
+            for file in files:
+                fpath = file.replace("\\", "/")
+                print(fpath)
+                img = cv2.imread(fpath)
+
+                width, height = 150, 200
+                imgResized = cv2.resize(img, (width, height))
+                if os.path.isdir(os.path.dirname(fpath)+"/edited/") == False:
+                    os.makedirs(os.path.dirname(fpath)+"/edited/")
+                new_path = os.path.dirname(
+                    fpath)+"/edited/"+fpath.replace(os.path.dirname(fpath)+"/.temp/", "")+".png"
+                cv2.imwrite(new_path, imgResized)
+
+        def save(connection, id):
+            cursor = connection.cursor()
+            dlg = QtWidgets.QDialog()
+            dlg.ui = ui_classes.edit.Ui_Dialog()
+            surname = dlg.ui.plainTextEdit.text()
+            first_name = dlg.ui.plainTextEdit_2.text()
+            other_names = dlg.ui.plainTextEdit_3.text()
+            school = dlg.ui.plainTextEdit_6.text()
+            date = str(dlg.ui.dateEdit.date())
+            """index = dlg.ui.comboBox.findText(
+                f"{row[id-1][4]}", QtCore.Qt.MatchFixedString)
+            if index >= 0:
+                dlg.ui.comboBox.setCurrentIndex(index)
+            dlg.ui.textEdit.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][5]}"))
+            dlg.ui.plainTextEdit_4.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][6]}"))
+            year = int(row[id-1][7])
+            dlg.ui.dateEdit.setDate(
+                QDate(year, 0, 0))
+            checks = dlg.ui.frame_20.findChildren(QCheckBox)
+            elect = row[id-1][8].strip('][').split(', ')
+            for check in checks:
+                if check.text() in elect:
+                    check.setChecked(True)
+                else:
+                    check.setChecked(False)
+            radio = dlg.ui.frame_8.findChildren(QRadioButton)
+            for r in radio:
+                if r.text() == row[id-1][11]:
+                    r.setChecked(True)
+                else:
+                    r.setChecked(False)
+            dlg.ui.plainTextEdit_5.setPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][12]}"))"""
+
+        def edit(connection, id, row):
+            print("click")
+            dlg = QtWidgets.QDialog()
+            dlg.ui = ui_classes.edit.Ui_Dialog()
+            dlg.ui.setupUi(dlg)
+            print(row[id-1][1])
+
+            def editCropFile():
+                global edit_pic_path
+                fname = QFileDialog.getOpenFileName(self, 'Select file',
+                                                    'c:\\', "Image files (*.jpg *.png *.tiff)")
+                fpath = fname[0]
+
+                img = cv2.imread(fpath)
+
+                width, height = 150, 200
+                imgResized = cv2.resize(img, (width, height))
+                if os.path.isdir(os.path.dirname(fpath)+"/edited/") == False:
+                    os.makedirs(os.path.dirname(fpath)+"/edited/")
+                new_path = os.path.dirname(
+                    fpath)+"/edited/"+fpath.replace(os.path.dirname(fpath)+"/", "")+".png"
+                cv2.imwrite(new_path, imgResized)
+                dlg.ui.label_19.setText(QCoreApplication.translate(
+                    "Dialog", f"{new_path}"))
+            getFromServer(connection, id)
+            dlg.ui.plainTextEdit.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][0]}"))
+            dlg.ui.plainTextEdit_2.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][1]}"))
+            dlg.ui.plainTextEdit_3.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][2]}"))
+            dlg.ui.plainTextEdit_6.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][10]}"))
+            date = row[id-1][3].split("/")
+            dlg.ui.dateEdit.setDate(
+                QDate(int(date[2]), int(date[1]), int(date[0])))
+            index = dlg.ui.comboBox.findText(
+                f"{row[id-1][4]}", QtCore.Qt.MatchFixedString)
+            if index >= 0:
+                dlg.ui.comboBox.setCurrentIndex(index)
+            dlg.ui.textEdit.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][5]}"))
+            dlg.ui.plainTextEdit_4.insertPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][6]}"))
+            year = int(row[id-1][7])
+            dlg.ui.dateEdit.setDate(
+                QDate(year, 0, 0))
+            checks = dlg.ui.frame_20.findChildren(QCheckBox)
+            elect = row[id-1][8].strip('][').split(', ')
+            for check in checks:
+                if check.text() in elect:
+                    check.setChecked(True)
+                else:
+                    check.setChecked(False)
+            radio = dlg.ui.frame_8.findChildren(QRadioButton)
+            for r in radio:
+                if r.text() == row[id-1][11]:
+                    r.setChecked(True)
+                else:
+                    r.setChecked(False)
+            dlg.ui.plainTextEdit_5.setPlainText(QCoreApplication.translate(
+                "Dialog", f"{row[id-1][12]}"))
+            dlg.ui.pushButton.clicked.connect(lambda: editCropFile())
+
+            dlg.ui.buttonBox.clicked.connect(dlg.accept)
+            dlg.ui.buttonBox.accepted.connect(
+                lambda: save(connection, getId(connection)))
+            dlg.ui.buttonBox.rejected.connect(dlg.reject)
+
+            dlg.exec_()
+            dlg.show()
+        # MOVE WINDOW
+
+        def moveWindow(event):
+            # RESTORE BEFORE MOVE
+            if UIFunctions.returnStatus() == 1:
+                UIFunctions.maximize_restore(self)
+
+            # IF LEFT CLICK MOVE WINDOW
+            if event.buttons() == Qt.LeftButton:
+                self.move(self.pos() + event.globalPos() - self.dragPos)
+                self.dragPos = event.globalPos()
+                event.accept()
+
+        # SET TITLE BAR
+        self.ui.title_bar.mouseMoveEvent = moveWindow
+
+        # SET BUTTON FUNCTIONS
+        self.ui.import_file.clicked.connect(lambda: cropFile())
+        self.ui.import_folder.clicked.connect(lambda: cropFolder())
+        self.ui.server_info.clicked.connect(lambda: getFromServer(connection))
+        self.ui.previous_arrow.clicked.connect(
+            lambda: getFromServer(connection, (getId(connection) - 1) if getId(connection) > 1 else 1))
+        self.ui.next_arrow.clicked.connect(
+            lambda: getFromServer(connection, (getId(connection) + 1) if getRows(connection) < getId(connection) else getRows(connection)))
+        self.ui.edit_btn.clicked.connect(
+            lambda: edit(connection, getId(connection), rows_))
+
+        # ==> SET UI DEFINITIONS
         UIFunctions.uiDefinitions(self)
 
-        ## SHOW ==> MAIN WINDOW
+        # SHOW ==> MAIN WINDOW
         ########################################################################
         self.show()
 
-    ## APP EVENTS
+    # APP EVENTS
     ########################################################################
-
-    def selectCamera(self, i):
-        # self.camera = QCamera(self.availableCameras[i])
-        # self.camera.setViewfinder(self.viewFinder)
-        # self.camera.setCaptureMode(QCamera.CaptureStillImage)
-        # self.camera.error.connect(lambda:
-        #                           self.alert(self.camera.errorString()))
-        # self.camera.start()
-        # self.capture = QCameraImageCapture(self.camera)
-        # self.capture.error.connect(lambda d, i:
-        #                            self.status.showMessage(
-        #                                f'Image Captured {str(self.saveSeq)}'))
-        # self.currentCameraName = self.availableCameras[i].description()
-        # self.saveSeq = 0
-        "TODO"
-
-    def clickPhoto(self):
-        "TODO"
-
-    def alert(self, msg):
-        error = QErrorMessage(self)
-        error.showMessage(msg)
-
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
 
