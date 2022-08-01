@@ -117,9 +117,11 @@ class EditStudentInformation(QDialog):
 
             connection = sqlite3.connect("server2.db")
 
-            sql = f"UPDATE student_details SET surname = '{surname}', first_name = '{first_name}', other_names = '{other_names}', course = '{course}', class = '{class_}', index_number = '{index_number}', electives = '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', gender = '{gender}', parent_contact = '{parent_contact}' WHERE _rowid_ = {self.index}"
+            sql = f"DELETE FROM student_details WHERE id = {self.index}"
             connection.execute(sql)
-            print(sql)
+
+            sql = f"UPDATE student_details SET surname = '{surname}', first_name = '{first_name}', other_names = '{other_names}', course = '{course}', class = '{class_}', index_number = '{index_number}', electives = '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', gender = '{gender}', parent_contact = '{parent_contact}' WHERE id = {self.index}"
+
             connection.commit()
             connection.close()
 
