@@ -1869,4 +1869,3 @@ class Ui_MainWindow(object):
         self.searchbar_main.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Student", None))
         self.close_search.setText(QCoreApplication.translate("MainWindow", u"X", None))
     # retranslateUi
-

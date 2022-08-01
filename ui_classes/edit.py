@@ -578,4 +578,3 @@ class Ui_Dialog(object):
         self.save.setText(QCoreApplication.translate("Dialog", u"Save", None))
         self.close.setText(QCoreApplication.translate("Dialog", u"Close", None))
     # retranslateUi
-
