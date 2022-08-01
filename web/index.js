@@ -18,7 +18,7 @@ const db = new sql.Database("../server2.db", (err) => {
 // --------------- Middleware --------------------
 
 db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS registered_students (  
+  db.run(`CREATE TABLE IF NOT EXISTS registered_students (
         surname text not null,
         first_name text not null,
         other_names text,

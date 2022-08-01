@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>790</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -102,7 +102,7 @@
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#414844;&quot;&gt;WASSCEVERSE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#414844;&quot;&gt;WASSCEVERSE.COM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -2028,6 +2028,41 @@ margin-bottom: 20px;</string>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_16">
               <item>
+               <widget class="QPushButton" name="close_camera">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>15</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+	color: rgb(95, 95, 95);
+}
+QPushButton:hover {
+	
+	background-color: rgb(200, 200, 200);
+}</string>
+                </property>
+                <property name="text">
+                 <string>x</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QFrame" name="frame_24">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -2124,11 +2159,11 @@ margin-bottom: 20px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="capture">
+               <widget class="QPushButton" name="capture">
                 <property name="minimumSize">
                  <size>
                   <width>400</width>
-                  <height>0</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -2137,59 +2172,25 @@ margin-bottom: 20px;</string>
                   <height>60</height>
                  </size>
                 </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
+                <property name="font">
+                 <font>
+                  <family>Digital Camera Symbols</family>
+                  <pointsize>35</pointsize>
+                 </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: #707070;
-border-radius: 30px;</string>
+                 <string notr="true">QPushButton{
+color: #fff;
+background-color: #707070;
+border-radius: 30px;
+}
+QPushButton:hover{
+background-color: rgb(152, 152, 152);
+}</string>
                 </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
+                <property name="text">
+                 <string>,</string>
                 </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_17">
-                 <item>
-                  <widget class="QLabel" name="label_13">
-                   <property name="minimumSize">
-                    <size>
-                     <width>40</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>50</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(255, 255, 255);
-border-top-color: rgb(255, 255, 255);</string>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Plain</enum>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>Include/img/camera.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                   <property name="margin">
-                    <number>0</number>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
                </widget>
               </item>
               <item>
@@ -2247,6 +2248,12 @@ border-top-color: rgb(255, 255, 255);</string>
           <layout class="QHBoxLayout" name="horizontalLayout_36">
            <item>
             <widget class="QFrame" name="SchoolNameBorder_8">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>600</width>
@@ -2314,54 +2321,23 @@ border-radius: 8px;</string>
                   <number>5</number>
                  </property>
                  <item>
-                  <widget class="QLineEdit" name="searchbar_main">
+                  <widget class="QPushButton" name="search_student_button">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
-                   <property name="font">
-                    <font>
-                     <stylestrategy>PreferDefault</stylestrategy>
-                    </font>
-                   </property>
                    <property name="cursor">
                     <cursorShape>IBeamCursor</cursorShape>
                    </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="placeholderText">
-                    <string>Search Student</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                  <widget class="QLabel" name="close_search">
-                   <property name="minimumSize">
-                    <size>
-                     <width>25</width>
-                     <height>25</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>25</width>
-                     <height>25</height>
-                    </size>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
+                   <property name="styleSheet">
+                    <string notr="true">padding-left: 10px;
+text-align: left;
+color: rgb(165, 165, 165);</string>
                    </property>
                    <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>Include/img/close.jpg</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
+                    <string>Search Student</string>
                    </property>
                   </widget>
                  </item>
@@ -2405,7 +2381,7 @@ border-radius: 8px;</string>
                <widget class="QPushButton" name="previous_data_button">
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
+                  <width>80</width>
                   <height>650</height>
                  </size>
                 </property>
@@ -2417,8 +2393,8 @@ border-radius: 8px;</string>
                 </property>
                 <property name="font">
                  <font>
-                  <family>JetBrains Mono NL SemiBold</family>
-                  <pointsize>15</pointsize>
+                  <family>Californian FB</family>
+                  <pointsize>100</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -2432,7 +2408,7 @@ QPushButton:hover {
 }</string>
                 </property>
                 <property name="text">
-                 <string>Previous</string>
+                 <string>&lt;</string>
                 </property>
                </widget>
               </item>
@@ -3470,6 +3446,9 @@ margin-right:20px;</string>
                         <pointsize>10</pointsize>
                        </font>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(107, 107, 107);
@@ -3493,6 +3472,9 @@ border-top-left-radius: 20px;</string>
                         <family>JetBrains Mono NL Medium</family>
                         <pointsize>10</pointsize>
                        </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">color: rgb(255, 255, 255);
@@ -3545,20 +3527,20 @@ border-bottom-right-radius: 20px; </string>
             <widget class="QPushButton" name="next_data_button">
              <property name="minimumSize">
               <size>
-               <width>0</width>
+               <width>80</width>
                <height>650</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>90</width>
+               <width>80</width>
                <height>16777215</height>
               </size>
              </property>
              <property name="font">
               <font>
-               <family>JetBrains Mono NL SemiBold</family>
-               <pointsize>15</pointsize>
+               <family>Californian FB</family>
+               <pointsize>100</pointsize>
               </font>
              </property>
              <property name="styleSheet">
@@ -3572,7 +3554,7 @@ QPushButton:hover {
 }</string>
              </property>
              <property name="text">
-              <string>Next</string>
+              <string>&gt;</string>
              </property>
             </widget>
            </item>
@@ -3603,7 +3585,7 @@ QPushButton:hover {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>60</height>
+            <height>85</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -3616,6 +3598,9 @@ QPushButton:hover {
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_38">
+           <property name="topMargin">
+            <number>25</number>
+           </property>
            <item>
             <widget class="QFrame" name="SchoolNameBorder_9">
              <property name="maximumSize">
@@ -3685,7 +3670,7 @@ border-radius: 8px;</string>
                   <number>5</number>
                  </property>
                  <item>
-                  <widget class="QLineEdit" name="searchbar_main_2">
+                  <widget class="QLineEdit" name="searchbar_main">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -3708,8 +3693,8 @@ border-radius: 8px;</string>
                    </property>
                   </widget>
                  </item>
-                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                  <widget class="QLabel" name="close_search_2">
+                 <item>
+                  <widget class="QPushButton" name="close_search">
                    <property name="minimumSize">
                     <size>
                      <width>25</width>
@@ -3722,17 +3707,16 @@ border-radius: 8px;</string>
                      <height>25</height>
                     </size>
                    </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
+                   <property name="font">
+                    <font>
+                     <family>Arial</family>
+                     <pointsize>11</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
                    </property>
                    <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>Include/img/close.jpg</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
+                    <string>X</string>
                    </property>
                   </widget>
                  </item>
@@ -3767,8 +3751,8 @@ border-radius: 8px;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>65</width>
-                <height>108</height>
+                <width>982</width>
+                <height>670</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_40">

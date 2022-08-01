@@ -8,10 +8,10 @@ cropper = Cropper(
 )
 
 # Get a Numpy array of the cropped image
-img_url = "test_imgs/test.jpg"
+img_url = ".TEMP\Webcam HP Truevision HD Date 30 Jul 2022 Time 20 29 06 .jpg"
 cropped_array = cropper.crop(img_url)
 
 # Save the cropped image with PIL if a face was detected:
-if cropped_array != None :
+if len(cropped_array) != 0 :
     cropped_image = Image.fromarray(cropped_array)
-    cropped_image.save('test_imgs/test.png')
+    cropped_image.save('.TEMP\Webcam HP Truevision HD Date 30 Jul 2022 Time 20 29 06.jpg')
