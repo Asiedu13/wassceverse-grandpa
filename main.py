@@ -3,8 +3,10 @@ from tkinter import dialog
 from PIL import Image
 from autocrop import Cropper
 from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject,
+                            QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase,
+                           QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtMultimedia import *
 from PySide2.QtMultimediaWidgets import *
 from PySide2.QtWidgets import *
@@ -37,8 +39,9 @@ FOLDER_NAME = '.TEMP'
 SAVE_PATH = BASE_DIR / FOLDER_NAME
 SAVE_PATH.mkdir(exist_ok=True, parents=True)
 
+
 class EditStudentInformation(QDialog):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
@@ -99,7 +102,6 @@ class EditStudentInformation(QDialog):
             class_ = self.ui.textEdit.toPlainText().replace("'", "''")
             index_number = self.ui.plainTextEdit_4.toPlainText().replace("'", "''")
             # year_completed = str(self.ui.dateEdit_2.date().year())
-
             elective = []
             for checkbox in self.checkboxes:
                 if checkbox.isChecked():
@@ -121,12 +123,12 @@ class EditStudentInformation(QDialog):
             connection.commit()
             connection.close()
 
-
         self.ui.plainTextEdit.setPlainText(data[0])
         self.ui.plainTextEdit_2.setPlainText(data[1])
         self.ui.plainTextEdit_3.setPlainText(data[2])
         date = data[11].split("/")
-        self.ui.dateEdit.setDate(QDate(int(date[2]), int(date[1]), int(date[0])))
+        self.ui.dateEdit.setDate(
+            QDate(int(date[2]), int(date[1]), int(date[0])))
         self.ui.comboBox.setCurrentText(data[3])
         self.ui.textEdit.setText(data[4])
         self.ui.plainTextEdit_4.setPlainText(data[5])
@@ -136,22 +138,87 @@ class EditStudentInformation(QDialog):
 
 
 class AddStudentInformation(QDialog):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
+        def insert():
+            surname = self.ui.plainTextEdit.toPlainText().replace("'", "''")
+            first_name = self.ui.plainTextEdit_2.toPlainText().replace("'", "''")
+            other_names = self.ui.plainTextEdit_3.toPlainText().replace("'", "''")
+            course = self.ui.comboBox.currentText().replace("'", "''")
+            class_ = self.ui.textEdit.toPlainText().replace("'", "''")
+            index_number = self.ui.plainTextEdit_4.toPlainText().replace("'", "''")
+            # year_completed = str(self.ui.dateEdit_2.date().year())
+
+            self.checkboxes = [
+            self.ui.checkBox,
+            self.ui.checkBox_2,
+            self.ui.checkBox_3,
+            self.ui.checkBox_4,
+            self.ui.checkBox_5,
+            self.ui.checkBox_6,
+            self.ui.checkBox_7,
+            self.ui.checkBox_8,
+            self.ui.checkBox_9,
+            self.ui.checkBox_10,
+            self.ui.checkBox_11,
+            self.ui.checkBox_12,
+            self.ui.checkBox_13,
+            self.ui.checkBox_14,
+            self.ui.checkBox_15,
+            self.ui.checkBox_16,
+            self.ui.checkBox_17,
+            self.ui.checkBox_18,
+            self.ui.checkBox_19,
+            self.ui.checkBox_20,
+            self.ui.checkBox_21,
+            self.ui.checkBox_22,
+            self.ui.checkBox_23,
+            self.ui.checkBox_24
+        ]
+
+            self.radios = [self.ui.radioButton, self.ui.radioButton_2]
+
+
+            elective = []
+            for checkbox in self.checkboxes:
+                if checkbox.isChecked():
+                    elective.append(checkbox.text())
+
+            gender = ""
+            for radio in self.radios:
+                if radio.isChecked:
+                    gender = radio.text()
+
+            parent_contact = self.ui.plainTextEdit_5.toPlainText().replace("'", "''")
+            # dob = str(self.ui.dateEdit_2.date())
+
+            connection = sqlite3.connect("server2.db")
+
+            sql = f"INSERT INTO student_details (surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact) VALUES ('{surname}', '{first_name}', '{other_names}', '{course}', '{class_}', '{index_number}', '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', '{gender}', '{parent_contact}')"
+            connection.execute(sql)
+            print(sql)
+            connection.commit()
+            connection.close()
+
+        self.ui.save.clicked.connect(lambda: insert())
+
+
 class PasswordIncorrectDialog(QDialog):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_incorrectDialog()
         self.ui.setupUi(self)
 
+
 class FailDialogOne(QDialog):
-   def __init__(self, parent=None):
+    def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_signInFailedOneDialog()
         self.ui.setupUi(self)
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -176,26 +243,23 @@ class MainWindow(QMainWindow):
         cursor.execute(statement)
         data = cursor.fetchall()
         self.schools = [d[0]
-        for d in data]
+                        for d in data]
         print(self.schools)
-
 
         statement = "SELECT school_code from registered_schools"
         cursor.execute(statement)
         data = cursor.fetchall()
         self.codes = [d[0]
-        for d in data]
+                      for d in data]
         print(self.codes)
-
 
         statement = "SELECT school_email from registered_schools"
         cursor.execute(statement)
         data = cursor.fetchall()
         self.emails = [d[0]
-        for d in data]
+                       for d in data]
         print(self.emails)
         connection.close()
-
 
         completer = QCompleter(self.schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
@@ -233,7 +297,7 @@ class MainWindow(QMainWindow):
                 dialog.exec()
 
         def signUp(db: str):
-            school_name = self.ui.schoolNameSignUp.text().replace("'","''")
+            school_name = self.ui.schoolNameSignUp.text().replace("'", "''")
             email = self.ui.emailSignUp.text()
             school_code = self.ui.schoolCodeSignUp.text()
             password = self.ui.passwordSignUp.text().replace("'", "''")
@@ -273,7 +337,7 @@ class MainWindow(QMainWindow):
                     connection.close()
                     switch_screen(0)
 
-        def getStudent(id = self.currentStudentId):
+        def getStudent(id=self.currentStudentId):
             connection = sqlite3.connect("server2.db")
             cursor = connection.cursor()
             sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}'"
@@ -284,9 +348,11 @@ class MainWindow(QMainWindow):
             self.currentStudentId = id
             print("Number of students: ", self.studentsNo)
             print("Current student S/N: ", self.currentStudentId)
+
             def previous_block():
                 if self.currentStudentId == 0:
-                    self.ui.previous_data_button.setStyleSheet("background-color: rgb(200, 200, 200);")
+                    self.ui.previous_data_button.setStyleSheet(
+                        "background-color: rgb(200, 200, 200);")
                     self.ui.previous_data_button.setDisabled(True)
                 else:
                     self.ui.previous_data_button.setStyleSheet("""QWidget {
@@ -298,7 +364,7 @@ class MainWindow(QMainWindow):
                                 background-color: rgb(168, 168, 168);
                             }
                         """
-                    )
+                                                               )
                     self.ui.previous_data_button.setDisabled(False)
 
             def next_block():
@@ -312,10 +378,11 @@ class MainWindow(QMainWindow):
                                 background-color: rgb(168, 168, 168);
                             }
                         """
-                    )
+                                                           )
                     self.ui.next_data_button.setDisabled(False)
                 elif self.currentStudentId == self.studentsNo - 1:
-                    self.ui.next_data_button.setStyleSheet("background-color: rgb(70, 70, 70);")
+                    self.ui.next_data_button.setStyleSheet(
+                        "background-color: rgb(70, 70, 70);")
                     self.ui.next_data_button.setDisabled(True)
 
             next_block()
@@ -338,7 +405,8 @@ class MainWindow(QMainWindow):
                     suffix = ['th', 'st', 'nd', 'rd', 'th'][min(day % 10, 4)]
                 day = f"{str(day)}{suffix}"
 
-                months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+                months = ["January", "February", "March", "April", "May", "June",
+                          "July", "August", "September", "October", "November", "December"]
                 month = months[int(date[1])-1]
                 self.currentStudentId = id
 
@@ -389,24 +457,26 @@ class MainWindow(QMainWindow):
         self.ui.take_photo.clicked.connect(lambda: camera_screen())
         self.ui.capture.clicked.connect(lambda: self.clickPhoto())
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
-        self.ui.SignUpButton_2.clicked.connect(lambda:switch_screen(0))
+        self.ui.SignUpButton_2.clicked.connect(lambda: switch_screen(0))
         self.ui.close_camera.clicked.connect(lambda: self.closeCamera())
         self.ui.SignInSubmit.clicked.connect(lambda: signIn("server2.db"))
-        self.ui.edit_student_button.clicked.connect(lambda: edit_student_dialog())
-        self.ui.add_student_button.clicked.connect(lambda: add_student_dialog())
+        self.ui.edit_student_button.clicked.connect(
+            lambda: edit_student_dialog())
+        self.ui.add_student_button.clicked.connect(
+            lambda: add_student_dialog())
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
 
         def switch_screen(screen: int):
             self.ui.stackedWidget.setCurrentIndex(screen)
 
-        ## ==> SET UI DEFINITIONS
+        # ==> SET UI DEFINITIONS
         UIFunctions.uiDefinitions(self)
 
-        ## SHOW ==> MAIN WINDOW
+        # SHOW ==> MAIN WINDOW
         ########################################################################
         self.show()
 
-    ## APP EVENTS
+    # APP EVENTS
     ########################################################################
 
     def selectCamera(self, i):
@@ -429,7 +499,7 @@ class MainWindow(QMainWindow):
         savePath = SAVE_PATH / fileName
         self.savePath = savePath
         self.saveImage(str(savePath))
-        print('Image saved on ',str(savePath))
+        print('Image saved on ', str(savePath))
         self.saveSeq += 1
 
     def closeCamera(self):
@@ -437,9 +507,9 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget.setCurrentIndex(3)
         else:
             cropper = Cropper(
-                width = 150,
-                height = 200,
-                face_percent = 40
+                width=150,
+                height=200,
+                face_percent=40
             )
 
             # Get a Numpy array of the cropped image
@@ -448,12 +518,12 @@ class MainWindow(QMainWindow):
 
             # Save the cropped image with PIL if a face was detected:
             try:
-                if len(cropped_array) != 0 :
+                if len(cropped_array) != 0:
                     cropped_image = Image.fromarray(cropped_array)
                     cropped_image.save(self.savePath)
                 with open(self.savePath, 'rb') as input_file:
                     ablob = input_file.read()
-                    base=os.path.basename(self.savePath)
+                    base = os.path.basename(self.savePath)
                     afile, ext = os.path.splitext(base)
                     sql = """UPDATE student_details
                     SET image = ?
@@ -468,9 +538,7 @@ class MainWindow(QMainWindow):
                 self.savePath = None
                 self.ui.stackedWidget.setCurrentIndex(3)
 
-
-
-    def saveImage(self, savePath:str):
+    def saveImage(self, savePath: str):
         self.capture.capture(savePath)
 
     def alert(self, msg):
