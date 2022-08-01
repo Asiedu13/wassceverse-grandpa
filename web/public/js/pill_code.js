@@ -3,7 +3,7 @@
 // import { specifiedUser } from "./globals";
 
 /* eslint-disable no-console */
-const indicator = document.getElementById("loader");
+let indicator = document.getElementById("loader");
 
 let timeout = 10;
 pill("main", {
@@ -18,12 +18,11 @@ pill("main", {
     preserveFormPlugin(element);
   },
   onReady() {
-    indicator.style.display = "none";
     //  Get the chat element and attach username to it
     console.log(specifiedUser);
 
     let question =
-      document.querySelector("cf-robot-message") || "Nothing found";
+      document.querySelector("cf-robot-message") || `<div></div>`;
     console.log(question.outerHTML);
 
     // Search URL for username query and set to it to question tag

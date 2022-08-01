@@ -14,15 +14,20 @@ from PySide2.QtWidgets import *
 import email
 import sqlite3
 import sys
-import pathlib
-import platform
-import time
-import cv2
-import numpy as np
+import glob
 import os
+import sqlite3
+import cv2
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime,
+                            QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase,
+                           QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
+from numpy import double
 
-
-# GUI FILES
+# GUI FILE
+import ui_classes.edit
 from ui_classes.ui_main import Ui_MainWindow
 from ui_classes.signInFailedOneDialog import Ui_signInFailedOneDialog
 from ui_classes.ui_incorrectDialog import Ui_incorrectDialog
@@ -404,23 +409,61 @@ class MainWindow(QMainWindow):
                 if 11 <= (day % 100) <= 13:
                     suffix = 'th'
                 else:
-                    suffix = ['th', 'st', 'nd', 'rd', 'th'][min(day % 10, 4)]
-                day = f"{str(day)}{suffix}"
+                    self.ui.previous_arrow.setStyleSheet("QPushButton {\n"
+                                                         "color: rgb(219, 216, 227);\n"
+                                                         "background-color: rgb(92, 84, 112);\n"
+                                                         "border-radius: 15px;\n"
+                                                         "font-size: 14px;\n"
+                                                         "font-family: Montserrat;\n"
+                                                         "}\n"
+                                                         "\n"
+                                                         "QPushButton:hover {\n"
+                                                         "    background-color: rgb(111, 101, 135);\n"
+                                                         "}")
+                    self.ui.next_arrow.setStyleSheet("QPushButton {\n"
+                                                     "color: rgb(219, 216, 227);\n"
+                                                     "background-color: rgb(92, 84, 112);\n"
+                                                     "border-radius: 15px;\n"
+                                                     "font-size: 14px;\n"
+                                                     "font-family: Montserrat;\n"
+                                                     "}\n"
+                                                     "\n"
+                                                     "QPushButton:hover {\n"
+                                                     "    background-color: rgb(111, 101, 135);\n"
+                                                     "}")
 
                 months = ["January", "February", "March", "April", "May", "June",
                           "July", "August", "September", "October", "November", "December"]
                 month = months[int(date[1])-1]
                 self.currentStudentId = id
 
-                date = f"{day} {month} {date[2]}"
-                self.ui.date_of_birth_label.setText(date)
-                self.ui.parent_contact.setText(data[0][10])
-                self.ui.index_number_bece.setText(data[0][5])
-                electives_array = data[0][7].split(",")
-                self.ui.elective_1.setText(electives_array[0])
-                self.ui.elective_2.setText(electives_array[1])
-                self.ui.elective_3.setText(electives_array[2])
-                self.ui.elective_4.setText(electives_array[3])
+            self.ui.pic.setPixmap(pixmap)
+            self.ui.info.item(0).setText(QCoreApplication.translate(
+                "MainWindow", f"Name: {rows[id-1][0]} {rows[id-1][1]} {rows[id-1][2]}"))
+            self.ui.info.item(1).setText(QCoreApplication.translate(
+                "MainWindow", f"School: {rows[id-1][10]}"))
+            self.ui.info.item(2).setText(QCoreApplication.translate(
+                "MainWindow", f"Class: {rows[id-1][5]}"))
+            self.ui.info.item(3).setText(QCoreApplication.translate(
+                "MainWindow", f"Course: {rows[id-1][4]}"))
+            list_ = rows[id-1][8].strip('][').split(', ')
+            self.ui.info.item(5).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[0]}"))
+            self.ui.info.item(6).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[1]}"))
+            self.ui.info.item(7).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[2]}"))
+            self.ui.info.item(8).setText(QCoreApplication.translate(
+                "MainWindow", f"    {list_[3]}"))
+            self.ui.info.item(9).setText(QCoreApplication.translate(
+                "MainWindow", f"Date of Birth: {rows[id-1][3]}"))
+            self.ui.info.item(10).setText(QCoreApplication.translate(
+                "MainWindow", f"Gender: {rows[id-1][11]}"))
+            self.ui.info.item(11).setText(QCoreApplication.translate(
+                "MainWindow", f"BECE Index Number: {rows[id-1][6]}"))
+            self.ui.info.item(12).setText(QCoreApplication.translate(
+                "MainWindow", f"Parent's Contact: {rows[id-1][12]}"))
+            ButtonGone(getId(connection), connection)
 
         def nextStudent():
             id = self.currentStudentId
@@ -428,11 +471,9 @@ class MainWindow(QMainWindow):
                 id = self.currentStudentId + 1
             getStudent(id)
 
-        def previousStudent():
-            id = 0
-            if self.currentStudentId > 1:
-                id = self.currentStudentId - 1
-            getStudent(id)
+        except sqlite3.Error:
+            print(sqlite3.Error)
+        getFromServer(connection)
 
         def delete_student():
             connection = sqlite3.connect("server2.db")
@@ -468,8 +509,13 @@ class MainWindow(QMainWindow):
             lambda: add_student_dialog())
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
 
-        def switch_screen(screen: int):
-            self.ui.stackedWidget.setCurrentIndex(screen)
+            width, height = 150, 200
+            imgResized = cv2.resize(img, (width, height))
+            if os.path.isdir(os.path.dirname(fpath)+"/edited/") == False:
+                os.makedirs(os.path.dirname(fpath)+"/edited/")
+            new_path = os.path.dirname(
+                fpath)+"/edited/"+fpath.replace(os.path.dirname(fpath)+"/", "")+".png"
+            cv2.imwrite(new_path, imgResized)
 
         # ==> SET UI DEFINITIONS
         UIFunctions.uiDefinitions(self)
