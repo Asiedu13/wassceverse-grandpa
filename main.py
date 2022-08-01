@@ -114,7 +114,6 @@ class EditStudentInformation(QDialog):
             # dob = str(self.ui.dateEdit_2.date())
 
             connection = sqlite3.connect("server2.db")
-            cursor = connection.cursor()
 
             sql = f"UPDATE student_details SET surname = '{surname}', first_name = '{first_name}', other_names = '{other_names}', course = '{course}', class = '{class_}', index_number = '{index_number}', electives = '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', gender = '{gender}', parent_contact = '{parent_contact}' WHERE _rowid_ = {self.index}"
             connection.execute(sql)
