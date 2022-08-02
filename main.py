@@ -83,7 +83,7 @@ class EditStudentInformation(QDialog):
             self.ui.checkBox_24
         ]
 
-        self.electives = data[7].split(",")
+        self.electives = data[8].split(",")
         for checkbox in self.checkboxes:
             for elective in self.electives:
                 if checkbox.text() == elective:
@@ -125,17 +125,17 @@ class EditStudentInformation(QDialog):
             connection.commit()
             connection.close()
 
-        self.ui.plainTextEdit.setPlainText(data[0])
-        self.ui.plainTextEdit_2.setPlainText(data[1])
-        self.ui.plainTextEdit_3.setPlainText(data[2])
-        date = data[11].split("/")
+        self.ui.plainTextEdit.setPlainText(data[1])
+        self.ui.plainTextEdit_2.setPlainText(data[2])
+        self.ui.plainTextEdit_3.setPlainText(data[3])
+        date = data[12].split("/")
         self.ui.dateEdit.setDate(
             QDate(int(date[2]), int(date[1]), int(date[0])))
-        self.ui.comboBox.setCurrentText(data[3])
-        self.ui.textEdit.setText(data[4])
-        self.ui.plainTextEdit_4.setPlainText(data[5])
-        self.ui.dateEdit_2.setDate(QDate(int(data[6]), 1, 1))
-        self.ui.plainTextEdit_5.setPlainText(data[10])
+        self.ui.comboBox.setCurrentText(data[4])
+        self.ui.textEdit.setText(data[5])
+        self.ui.plainTextEdit_4.setPlainText(data[6])
+        self.ui.dateEdit_2.setDate(QDate(int(data[7]), 1, 1))
+        self.ui.plainTextEdit_5.setPlainText(data[11])
         self.ui.save.clicked.connect(lambda: update())
 
 
