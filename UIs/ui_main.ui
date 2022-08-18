@@ -228,7 +228,7 @@ background-color: rgb(255, 22, 22);
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
@@ -895,7 +895,7 @@ border-radius: 8px;</string>
                   <widget class="QLabel" name="label_2">
                    <property name="maximumSize">
                     <size>
-                     <width>63</width>
+                     <width>70</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -917,7 +917,7 @@ border-radius: 8px;</string>
                   <widget class="QPushButton" name="SignUpButton">
                    <property name="maximumSize">
                     <size>
-                     <width>108</width>
+                     <width>300</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -953,15 +953,21 @@ border-radius: 8px;</string>
                  </item>
                  <item>
                   <widget class="QPushButton" name="SignInSubmit">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="minimumSize">
                     <size>
-                     <width>80</width>
+                     <width>100</width>
                      <height>40</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>80</width>
+                     <width>250</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -1728,7 +1734,7 @@ border-radius: 8px;</string>
                   <widget class="QLabel" name="label_7">
                    <property name="maximumSize">
                     <size>
-                     <width>100</width>
+                     <width>200</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -1806,7 +1812,7 @@ border-radius: 8px;</string>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>80</width>
+                     <width>200</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -3752,7 +3758,7 @@ border-radius: 8px;</string>
                 <x>0</x>
                 <y>0</y>
                 <width>982</width>
-                <height>670</height>
+                <height>680</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_40">
@@ -3780,6 +3786,74 @@ border-radius: 8px;</string>
                </item>
               </layout>
              </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page">
+       <layout class="QVBoxLayout" name="verticalLayout_24">
+        <item>
+         <widget class="QFrame" name="frame_60">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_41">
+           <item alignment="Qt::AlignTop">
+            <widget class="QFrame" name="frame_61">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_42">
+              <item>
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt; color:#b45f4e;&quot;&gt;You do not have any data on your students, please click the button to continue &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(213, 93, 33);
+border-radius: 20px;</string>
+                </property>
+                <property name="text">
+                 <string>Add Student</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>

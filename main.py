@@ -6,7 +6,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject,
                             QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QThread, Signal, Slot)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase,
-                           QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+                           QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient, QImage)
 from PySide2.QtMultimedia import *
 from PySide2.QtMultimediaWidgets import *
 from PySide2.QtWidgets import *
@@ -20,6 +20,7 @@ import time
 import cv2
 import numpy as np
 import os
+import mariadb
 
 
 # GUI FILES
@@ -39,6 +40,15 @@ FOLDER_NAME = '.TEMP'
 SAVE_PATH = BASE_DIR / FOLDER_NAME
 SAVE_PATH.mkdir(exist_ok=True, parents=True)
 
+CONNECTION = mariadb.connect(
+    host = "localhost",
+    user = "root",
+    passwd = "",
+    database = "wassceverse",
+    port = 3306
+)
+
+CURSOR = CONNECTION.cursor()
 
 class EditStudentInformation(QDialog):
     def __init__(self, parent=None):
@@ -46,15 +56,16 @@ class EditStudentInformation(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.school = window.school_name
-        self.index = window.currentStudentId
-        connection = sqlite3.connect("server2.db")
-        cursor = connection.cursor()
-        sql = f"SELECT * FROM student_details WHERE school = '{self.school}'"
-        cursor.execute(sql)
-        data = cursor.fetchall()
-        connection.close()
-        index = self.index
-        data = data[index]
+        self.index = window.studentData[0]
+        print(self.school)
+        self.listIndex = window.currentStudentId
+        sql = "SELECT * FROM student_details WHERE school = ?"
+        CURSOR.execute(sql, (self.school,))
+
+        result = []
+        for data in CURSOR:
+            result.append(data)
+        print(result)
 
         self.checkboxes = [
             self.ui.checkBox,
@@ -115,17 +126,10 @@ class EditStudentInformation(QDialog):
             parent_contact = self.ui.plainTextEdit_5.toPlainText().replace("'", "''")
             # dob = str(self.ui.dateEdit_2.date())
 
-            connection = sqlite3.connect("server2.db")
-
-            sql = f"DELETE FROM student_details WHERE id = {self.index}"
-            connection.execute(sql)
-            connection.commit()
-
-            sql = f"INSERT INTO student_details (id, surname, first_name, other_names, course, class, index_number, electives, gender, school, parent_contact) VALUES ({self.index} , '{surname}', '{first_name}', '{other_names}', '{course}', '{class_}', '{index_number}', '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', '{gender}', '{self.school}', '{parent_contact}')"
-            print(sql)
-            connection.execute(sql)
-            connection.commit()
-            connection.close()
+            electives = f'{elective[0]},{elective[1]},{elective[2]},{elective[3]}'
+            sql = "UPDATE student_details SET surname = ?, first_name = ?, other_names = ?, course = ?, class = ?, index_number = ?, electives = ?, gender = ?, school = ?, parent_contact = ?"
+            CURSOR.execute(sql, (surname, first_name, other_names, course, class_, index_number, electives, gender, self.school, parent_contact))
+            CONNECTION.commit()
 
         self.ui.plainTextEdit.setPlainText(data[1])
         self.ui.plainTextEdit_2.setPlainText(data[2])
@@ -206,6 +210,7 @@ class AddStudentInformation(QDialog):
             print(sql)
             connection.commit()
             connection.close()
+            window.getStudent()
 
         self.ui.save.clicked.connect(lambda: insert())
 
@@ -242,29 +247,15 @@ class MainWindow(QMainWindow):
         self.ui.comboBox.addItems([camera.description()
                                   for camera in self.availableCameras])
 
-        statement = "SELECT school_name from registered_schools"
-        connection = sqlite3.connect("server2.db")
-        cursor = connection.cursor()
-        cursor.execute(statement)
-        data = cursor.fetchall()
-        self.schools = [d[0]
-                        for d in data]
-        print(self.schools)
-
-        statement = "SELECT school_code from registered_schools"
-        cursor.execute(statement)
-        data = cursor.fetchall()
-        self.codes = [d[0]
-                      for d in data]
-        print(self.codes)
-
-        statement = "SELECT school_email from registered_schools"
-        cursor.execute(statement)
-        data = cursor.fetchall()
-        self.emails = [d[0]
-                       for d in data]
-        print(self.emails)
-        connection.close()
+        sql = "SELECT * FROM registered_schools"
+        CURSOR.execute(sql)
+        self.schools = []
+        self.codes = []
+        self.emails = []
+        for data in CURSOR:
+            self.schools.append(data[1])
+            self.codes.append(data[4])
+            self.emails.append(data[6])
 
         completer = QCompleter(self.schools)
         self.ui.schoolNameSignIn.setCompleter(completer)
@@ -274,20 +265,16 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget.setCurrentIndex(2)
 
         # CHECK INFO
-        def signIn(db: str):
+        def signIn():
             schoolName = self.ui.schoolNameSignIn.text()
-            if "'" in schoolName:
-                schoolName = schoolName.replace("'", "''")
             email = self.ui.emailSignIn.text()
             password = self.ui.passwordSignIn.text()
 
-            connection = sqlite3.connect("server2.db")
-            cursor = connection.cursor()
-
-            sql = f"SELECT * FROM registered_schools WHERE school_name = '{schoolName}' AND school_email = '{email}'"
-            cursor.execute(sql)
-            data = cursor.fetchall()
-            connection.close()
+            sql = "SELECT * FROM registered_schools WHERE school_name = ? AND school_email = ?"
+            CURSOR.execute(sql, (schoolName, email))
+            data = []
+            for d in CURSOR:
+                data.append(d)
 
             if len(data) != 0:
                 if password != data[0][7]:
@@ -295,17 +282,26 @@ class MainWindow(QMainWindow):
                     dialog.exec()
                 else:
                     self.school_name = schoolName
-                    self.getStudent(0)
-                    switch_screen(3)
+                    sql = "SELECT * FROM student_details WHERE school = ?"
+                    CURSOR.execute(sql, (self.school_name,))
+                    data = []
+                    for d in CURSOR:
+                        data.append(d)
+                    self.studentsNo = len(data)
+                    if self.studentsNo > 0:
+                        self.getStudent(0)
+                        switch_screen(3)
+                    else:
+                        switch_screen(5)
             else:
                 dialog = FailDialogOne(self)
                 dialog.exec()
 
         def signUp(db: str):
-            school_name = self.ui.schoolNameSignUp.text().replace("'", "''")
+            school_name = self.ui.schoolNameSignUp.text()
             email = self.ui.emailSignUp.text()
             school_code = self.ui.schoolCodeSignUp.text()
-            password = self.ui.passwordSignUp.text().replace("'", "''")
+            password = self.ui.passwordSignUp.text()
             if len(password) <= 6:
                 self.ui.password_error.setHidden(False)
                 self.ui.school_name_error.setHidden(True)
@@ -333,13 +329,9 @@ class MainWindow(QMainWindow):
                     self.ui.password_error.setHidden(True)
 
                 else:
-                    connection = sqlite3.connect("server2.db")
-                    # cursor = connection.cursor()
-                    sql = f"INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES ('{school_name}', {school_code}, '{email}', '{password}', 1, 'Ghana', 'nowhere')"
-                    print(sql)
-                    connection.execute(sql)
-                    connection.commit()
-                    connection.close()
+                    sql = "INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES (?, ?, ?, ?, 1, 'Ghana', 'nowhere')"
+                    CURSOR.execute(sql, (school_name, school_code, email, password))
+                    CONNECTION.commit()
                     switch_screen(0)
 
         def nextStudent():
@@ -355,13 +347,13 @@ class MainWindow(QMainWindow):
             self.getStudent(id)
 
         def delete_student():
-            connection = sqlite3.connect("server2.db")
-            cursor = connection.cursor()
-            sql = f"DELETE FROM student_details WHERE id = {self.studentData[0]}"
-            cursor.execute(sql)
-            connection.commit()
-            connection.close()
-            self.getStudent(self.currentStudentId)
+            sql = "DELETE FROM student_details WHERE id = ?"
+            CURSOR.execute(sql, (self.studentData[0],))
+            CONNECTION.commit()
+            if self.currentStudentId + 1 == self.studentsNo:
+                self.getStudent(self.currentStudentId-1)
+            else:
+                self.getStudent(self.currentStudentId)
 
         def add_student_dialog():
             dialog = AddStudentInformation(self)
@@ -381,11 +373,12 @@ class MainWindow(QMainWindow):
         self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
         self.ui.SignUpButton_2.clicked.connect(lambda: switch_screen(0))
         self.ui.close_camera.clicked.connect(lambda: self.closeCamera())
-        self.ui.SignInSubmit.clicked.connect(lambda: signIn("server2.db"))
+        self.ui.SignInSubmit.clicked.connect(lambda: signIn())
         self.ui.edit_student_button.clicked.connect(
             lambda: edit_student_dialog())
         self.ui.add_student_button.clicked.connect(
             lambda: add_student_dialog())
+        self.ui.pushButton.clicked.connect(lambda: add_student_dialog())
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
 
         def switch_screen(screen: int):
@@ -401,26 +394,27 @@ class MainWindow(QMainWindow):
     # APP EVENTS
     ########################################################################
 
-    def getStudent(self, id):
-        connection = sqlite3.connect("server2.db")
-        cursor = connection.cursor()
-        sql = f"SELECT * FROM student_details WHERE school = '{self.school_name}'"
-        cursor.execute(sql)
-        data = cursor.fetchall()
-        connection.close()
+    def getStudent(self, id = 0):
+        sql = "SELECT * FROM student_details WHERE school = ?"
+        CURSOR.execute(sql, (self.school_name,))
+        data = []
+        for d in CURSOR:
+            data.append(d)
         self.studentsNo = len(data)
         self.currentStudentId = id
-        self.studentData = []
+        self.studentData = data[id]
         print("Number of students: ", self.studentsNo)
         print("Current student S/N: ", self.currentStudentId)
 
         def previous_block():
             if self.currentStudentId == 0:
                 self.ui.previous_data_button.setStyleSheet(
-                    "background-color: rgb(200, 200, 200);")
+                    "background-color: rgb(200, 200, 200);"
+                    )
                 self.ui.previous_data_button.setDisabled(True)
             else:
-                self.ui.previous_data_button.setStyleSheet("""QWidget {
+                self.ui.previous_data_button.setStyleSheet(
+                    """QWidget {
                         background-color: rgb(112, 112, 112);
                         padding: 0px;
                         }
@@ -429,12 +423,13 @@ class MainWindow(QMainWindow):
                             background-color: rgb(168, 168, 168);
                         }
                     """
-                                                            )
+                    )
                 self.ui.previous_data_button.setDisabled(False)
 
         def next_block():
             if self.currentStudentId < self.studentsNo - 1:
-                self.ui.next_data_button.setStyleSheet("""QWidget {
+                self.ui.next_data_button.setStyleSheet(
+                    """QWidget {
                         background-color: rgb(112, 112, 112);
                         padding: 0px;
                         }
@@ -443,11 +438,15 @@ class MainWindow(QMainWindow):
                             background-color: rgb(168, 168, 168);
                         }
                     """
-                                                        )
+                    )
+
                 self.ui.next_data_button.setDisabled(False)
+
+
             elif self.currentStudentId == self.studentsNo - 1:
                 self.ui.next_data_button.setStyleSheet(
-                    "background-color: rgb(70, 70, 70);")
+                    "background-color: rgb(70, 70, 70);"
+                    )
                 self.ui.next_data_button.setDisabled(True)
 
         next_block()
@@ -470,20 +469,29 @@ class MainWindow(QMainWindow):
                 suffix = ['th', 'st', 'nd', 'rd', 'th'][min(day % 10, 4)]
             day = f"{str(day)}{suffix}"
 
-            months = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"]
-            month = months[int(date[1])-1]
+            month = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"][int(date[1])-1]
+
             self.currentStudentId = id
 
             date = f"{day} {month} {date[2]}"
             self.ui.date_of_birth_label.setText(date)
-            self.ui.parent_contact.setText(data[0][11])
-            self.ui.index_number_bece.setText(data[0][6])
-            electives_array = data[0][8].split(",")
+            self.ui.parent_contact.setText(data[id][11])
+            self.ui.index_number_bece.setText(data[id][6])
+            electives_array = data[id][8].split(",")
             self.ui.elective_1.setText(electives_array[0])
             self.ui.elective_2.setText(electives_array[1])
             self.ui.elective_3.setText(electives_array[2])
             self.ui.elective_4.setText(electives_array[3])
+            if type(data[id][14]) == bytes:
+                if len(data[id][14]) > 0:
+                    ba = QtCore.QByteArray(data[id][14])
+                    pixmap = QtGui.QPixmap()
+                    ok = pixmap.loadFromData(ba, "JPG")
+                    assert ok
+                else:
+                    pixmap = QtGui.QPixmap('Include/img/user-sign-icon-person-symbol-human-avatar-vector-12693195.jpg')
+                self.ui.label_12.setPixmap(pixmap)
 
     def selectCamera(self, i):
         self.camera = QCamera(self.availableCameras[i])
@@ -500,9 +508,10 @@ class MainWindow(QMainWindow):
         self.saveSeq = 0
 
     def clickPhoto(self):
-        timeStamp = time.strftime('Date %d %b %Y Time %H %M %S')
-        fileName = f'Webcam {self.currentCameraName} {timeStamp} .jpg'
-        savePath = SAVE_PATH / fileName
+        fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}.jpg'
+        saveFolder = SAVE_PATH / self.studentData[5]
+        saveFolder.mkdir(exist_ok=True, parents=True)
+        savePath = saveFolder / fileName
         self.savePath = savePath
         self.saveImage(str(savePath))
         print('Image saved on ', str(savePath))
@@ -531,20 +540,12 @@ class MainWindow(QMainWindow):
                     ablob = input_file.read()
                     base = os.path.basename(self.savePath)
                     afile, ext = os.path.splitext(base)
-                    elective = self.student_details[8].split(",")
-
-                    connection = sqlite3.connect("server2.db")
-
-                    sql = f"DELETE FROM student_details WHERE id = {self.currentStudentId}"
-                    connection.execute(sql)
-                    connection.commit()
-
-                    sql = f"INSERT INTO student_details (id, surname, first_name, other_names, course, class, index_number, electives, gender, school, parent_contact, image) VALUES ({self.currentStudentId} , '{self.studentData[1]}', '{self.studentData[2]}', '{self.studentData[3]}', '{self.studentData[4]}', '{self.studentData[5]}', '{self.studentData[6]}', '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', '{self.studentData[10]}', '{self.studentData[9]}', '{self.studentData[11]}', ?)"
-
-                    connection.execute(sql, [sqlite3.Binary(ablob)])
-                    connection.commit()
-                    connection.close()
+                    sql = "UPDATE student_details SET image = ? WHERE index_number = ?"
+                    CURSOR.execute(sql, (mariadb.Binary(ablob), self.studentData[6]))
+                    CONNECTION.commit()
                 self.savePath = None
+                self.getStudent(self.currentStudentId)
+                self.ui.stackedWidget.setCurrentIndex(3)
             except TypeError:
                 self.savePath = None
                 self.ui.stackedWidget.setCurrentIndex(3)

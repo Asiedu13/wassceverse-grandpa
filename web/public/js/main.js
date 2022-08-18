@@ -47,7 +47,7 @@ new MutationObserver(() => {
 
 function onUrlChange() {
   console.log("on url change");
-  openCvReady();
+  // openCvReady();
   let confirmationElem = document.getElementById("confirmation_elems");
   if (confirmationElem) {
     confirmationElem.style.display = "none";
@@ -232,6 +232,7 @@ function schoolSelected(e) {
   `;
   let someVar = `
    <button id="continueC" onClick="continueToChat()">Save</button>`;
+  
   let schoolSelector = document.querySelector("#school_selector");
   let parentReplacementHtml = document.createElement("div");
   parentReplacementHtml.setAttribute("class", "index_number_input");
@@ -260,7 +261,7 @@ async function continueToChat() {
   let theLink = `
       <a id="continue" href="/pages/auto_photo.html" onClick="openCvReady()">Take Photo</a>`;
 
-  let theMainLink = ` <a id="continues" href="/pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Continue</a>`;
+  let theMainLink = ` <a id="continues" href="./pages/student_registration.html?index_number=${userData.index_number}&username=${username}">Continue</a>`;
 
   continueLink.innerHTML = theMainLink;
   schoolSelector.appendChild(continueLink);
