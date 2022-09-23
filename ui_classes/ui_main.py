@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainBlbnEo.ui'
+## Form generated from reading UI file 'ui_mainDQYYji.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1745,27 +1745,16 @@ class Ui_MainWindow(object):
         self.frame_58.setFrameShadow(QFrame.Raised)
         self.verticalLayout_39 = QVBoxLayout(self.frame_58)
         self.verticalLayout_39.setObjectName(u"verticalLayout_39")
-        self.scrollArea = QScrollArea(self.frame_58)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 982, 680))
-        self.verticalLayout_40 = QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
-        self.frame_59 = QFrame(self.scrollAreaWidgetContents)
-        self.frame_59.setObjectName(u"frame_59")
-        self.frame_59.setMinimumSize(QSize(0, 90))
-        self.frame_59.setMaximumSize(QSize(16777215, 90))
-        self.frame_59.setFrameShape(QFrame.StyledPanel)
-        self.frame_59.setFrameShadow(QFrame.Raised)
+        self.listWidget = QListWidget(self.frame_58)
+        QListWidgetItem(self.listWidget)
+        self.listWidget.setObjectName(u"listWidget")
+        font17 = QFont()
+        font17.setFamily(u"JetBrains Mono NL SemiBold")
+        font17.setPointSize(16)
+        self.listWidget.setFont(font17)
+        self.listWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
-        self.verticalLayout_40.addWidget(self.frame_59, 0, Qt.AlignTop)
-
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-
-        self.verticalLayout_39.addWidget(self.scrollArea)
+        self.verticalLayout_39.addWidget(self.listWidget)
 
 
         self.verticalLayout_38.addWidget(self.frame_58)
@@ -1824,7 +1813,7 @@ class Ui_MainWindow(object):
         self.btn_close.clicked.connect(MainWindow.close)
         self.btn_minimize.clicked.connect(MainWindow.showMinimized)
 
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1914,6 +1903,13 @@ class Ui_MainWindow(object):
         self.next_data_button.setText(QCoreApplication.translate("MainWindow", u">", None))
         self.searchbar_main.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Student", None))
         self.close_search.setText(QCoreApplication.translate("MainWindow", u"X", None))
+
+        __sortingEnabled = self.listWidget.isSortingEnabled()
+        self.listWidget.setSortingEnabled(False)
+        ___qlistwidgetitem = self.listWidget.item(0)
+        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        self.listWidget.setSortingEnabled(__sortingEnabled)
+
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#b45f4e;\">You do not have any data on your students, please click the button to continue </span></p></body></html>", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Add Student", None))
     # retranslateUi

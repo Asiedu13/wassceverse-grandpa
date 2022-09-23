@@ -1,6 +1,6 @@
 // ----------------- Variables and Objects --------------
 const fs = require("fs");
-const sql = require("sqlite3").verbose();
+const sql = require("mariadb");
 
 var bodyParser = require("body-parser");
 
@@ -8,6 +8,7 @@ const express = require("express");
 const { exit } = require("process");
 
 const app = express();
+costl
 const db = new sql.Database("../server2.db", (err) => {
   if (err) {
     console.log("Getting Error: ", err);

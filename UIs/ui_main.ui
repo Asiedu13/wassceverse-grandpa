@@ -228,7 +228,7 @@ background-color: rgb(255, 22, 22);
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
@@ -2456,6 +2456,12 @@ QPushButton:hover {
                         <height>240</height>
                        </size>
                       </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>180</width>
+                        <height>240</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string/>
                       </property>
@@ -3745,47 +3751,21 @@ border-radius: 8px;</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_39">
            <item>
-            <widget class="QScrollArea" name="scrollArea">
+            <widget class="QListWidget" name="listWidget">
+             <property name="font">
+              <font>
+               <family>JetBrains Mono NL SemiBold</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
              <property name="horizontalScrollBarPolicy">
-              <enum>Qt::ScrollBarAsNeeded</enum>
+              <enum>Qt::ScrollBarAlwaysOff</enum>
              </property>
-             <property name="widgetResizable">
-              <bool>true</bool>
-             </property>
-             <widget class="QWidget" name="scrollAreaWidgetContents">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>982</width>
-                <height>680</height>
-               </rect>
+             <item>
+              <property name="text">
+               <string>Name</string>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout_40">
-               <item alignment="Qt::AlignTop">
-                <widget class="QFrame" name="frame_59">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>90</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>90</height>
-                  </size>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             </item>
             </widget>
            </item>
           </layout>

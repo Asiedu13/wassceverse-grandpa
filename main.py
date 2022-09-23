@@ -21,6 +21,7 @@ import cv2
 import numpy as np
 import os
 import mariadb
+import shutil
 
 
 # GUI FILES
@@ -41,11 +42,11 @@ SAVE_PATH = BASE_DIR / FOLDER_NAME
 SAVE_PATH.mkdir(exist_ok=True, parents=True)
 
 CONNECTION = mariadb.connect(
-    host = "localhost",
-    user = "root",
-    passwd = "",
-    database = "wassceverse",
-    port = 3306
+    host="localhost",
+    user="root",
+    passwd="",
+    database="wassceverse",
+    port=3306
 )
 
 CURSOR = CONNECTION.cursor()
@@ -57,7 +58,6 @@ class EditStudentInformation(QDialog):
         self.ui.setupUi(self)
         self.school = window.school_name
         self.index = window.studentData[0]
-        print(self.school)
         self.listIndex = window.currentStudentId
         sql = "SELECT * FROM student_details WHERE school = ?"
         CURSOR.execute(sql, (self.school,))
@@ -65,7 +65,6 @@ class EditStudentInformation(QDialog):
         result = []
         for data in CURSOR:
             result.append(data)
-        print(result)
 
         self.checkboxes = [
             self.ui.checkBox,
@@ -128,7 +127,8 @@ class EditStudentInformation(QDialog):
 
             electives = f'{elective[0]},{elective[1]},{elective[2]},{elective[3]}'
             sql = "UPDATE student_details SET surname = ?, first_name = ?, other_names = ?, course = ?, class = ?, index_number = ?, electives = ?, gender = ?, school = ?, parent_contact = ?"
-            CURSOR.execute(sql, (surname, first_name, other_names, course, class_, index_number, electives, gender, self.school, parent_contact))
+            CURSOR.execute(sql, (surname, first_name, other_names, course, class_,
+                           index_number, electives, gender, self.school, parent_contact))
             CONNECTION.commit()
 
         self.ui.plainTextEdit.setPlainText(data[1])
@@ -161,34 +161,33 @@ class AddStudentInformation(QDialog):
             # year_completed = str(self.ui.dateEdit_2.date().year())
 
             self.checkboxes = [
-            self.ui.checkBox,
-            self.ui.checkBox_2,
-            self.ui.checkBox_3,
-            self.ui.checkBox_4,
-            self.ui.checkBox_5,
-            self.ui.checkBox_6,
-            self.ui.checkBox_7,
-            self.ui.checkBox_8,
-            self.ui.checkBox_9,
-            self.ui.checkBox_10,
-            self.ui.checkBox_11,
-            self.ui.checkBox_12,
-            self.ui.checkBox_13,
-            self.ui.checkBox_14,
-            self.ui.checkBox_15,
-            self.ui.checkBox_16,
-            self.ui.checkBox_17,
-            self.ui.checkBox_18,
-            self.ui.checkBox_19,
-            self.ui.checkBox_20,
-            self.ui.checkBox_21,
-            self.ui.checkBox_22,
-            self.ui.checkBox_23,
-            self.ui.checkBox_24
-        ]
+                self.ui.checkBox,
+                self.ui.checkBox_2,
+                self.ui.checkBox_3,
+                self.ui.checkBox_4,
+                self.ui.checkBox_5,
+                self.ui.checkBox_6,
+                self.ui.checkBox_7,
+                self.ui.checkBox_8,
+                self.ui.checkBox_9,
+                self.ui.checkBox_10,
+                self.ui.checkBox_11,
+                self.ui.checkBox_12,
+                self.ui.checkBox_13,
+                self.ui.checkBox_14,
+                self.ui.checkBox_15,
+                self.ui.checkBox_16,
+                self.ui.checkBox_17,
+                self.ui.checkBox_18,
+                self.ui.checkBox_19,
+                self.ui.checkBox_20,
+                self.ui.checkBox_21,
+                self.ui.checkBox_22,
+                self.ui.checkBox_23,
+                self.ui.checkBox_24
+            ]
 
             self.radios = [self.ui.radioButton, self.ui.radioButton_2]
-
 
             elective = []
             for checkbox in self.checkboxes:
@@ -207,7 +206,6 @@ class AddStudentInformation(QDialog):
 
             sql = f"INSERT INTO student_details (surname, first_name, other_names, course, class, index_number, electives, school, gender, parent_contact) VALUES ('{surname}', '{first_name}', '{other_names}', '{course}', '{class_}', '{index_number}', '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', '{window.school_name}',  '{gender}', '{parent_contact}')"
             connection.execute(sql)
-            print(sql)
             connection.commit()
             connection.close()
             window.getStudent()
@@ -330,7 +328,8 @@ class MainWindow(QMainWindow):
 
                 else:
                     sql = "INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES (?, ?, ?, ?, 1, 'Ghana', 'nowhere')"
-                    CURSOR.execute(sql, (school_name, school_code, email, password))
+                    CURSOR.execute(
+                        sql, (school_name, school_code, email, password))
                     CONNECTION.commit()
                     switch_screen(0)
 
@@ -363,6 +362,35 @@ class MainWindow(QMainWindow):
             dialog = EditStudentInformation(self)
             dialog.exec()
 
+        def getImageFromFile():
+            src = self.get_image_file()
+            saveDir = SAVE_PATH / self.studentData[9]
+            saveDir.mkdir(exist_ok=True, parents=True)
+            saveFolder = saveDir / self.studentData[5]
+            saveFolder.mkdir(exist_ok=True, parents=True)
+            fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}'.strip(
+            ) + '.jpg'
+            savePath = saveFolder / fileName
+            pathlib.Path(src).rename(str(savePath))
+            # Get a Numpy array of the cropped image
+            img_url = str(savePath)
+
+            cropper = Cropper(
+                width=150,
+                height=200,
+                face_percent=40
+            )
+            cropped_array = cropper.crop(img_url)
+
+            # Save the cropped image with PIL if a face was detected:
+            try:
+                if len(cropped_array) != 0:
+                    cropped_image = Image.fromarray(cropped_array)
+                    cropped_image.save(savePath)
+
+            except TypeError:
+                self.savePath = None
+
         self.ui.SignInSubmit_2.clicked.connect(lambda: signUp("server2.db"))
         self.ui.next_data_button.clicked.connect(lambda: nextStudent())
         self.ui.previous_data_button.clicked.connect(lambda: previousStudent())
@@ -380,6 +408,36 @@ class MainWindow(QMainWindow):
             lambda: add_student_dialog())
         self.ui.pushButton.clicked.connect(lambda: add_student_dialog())
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
+        self.ui.import_file.clicked.connect(lambda: getImageFromFile())
+        self.ui.searchbar_main.textChanged.connect(lambda: getStudentList())
+
+        def getStudentList():
+            sql = "SELECT * FROM student_details WHERE school = ?"
+            CURSOR.execute(sql, (self.school_name,))
+            data = []
+            for d in CURSOR:
+                data.append(d)
+            search = self.ui.searchbar_main.text()
+            names = []
+            for d in data:
+                name = f"{d[1]} {d[2]} {d[3]}".strip()
+                names.append(name)
+
+            # TODO: The search results
+            self.ui.listWidget.clear()
+            results = {}
+            for n in names:
+                if search in n:
+                    results[n] = [n, names.index(n)]
+                    self.ui.listWidget.addItem(n)
+
+            def searchRes(item):
+                self.getStudent(results[item.text()][1])
+                self.ui.stackedWidget.setCurrentIndex(3)
+
+            self.ui.listWidget.itemClicked.connect(searchRes)
+
+
 
         def switch_screen(screen: int):
             self.ui.stackedWidget.setCurrentIndex(screen)
@@ -394,7 +452,14 @@ class MainWindow(QMainWindow):
     # APP EVENTS
     ########################################################################
 
-    def getStudent(self, id = 0):
+    def get_image_file(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        file_name, _ = QFileDialog.getOpenFileName(
+            self, "Select Image", "", "Image Files (*.jpeg *.jpg *.png)", options=options)
+        return file_name
+
+    def getStudent(self, id=0):
         sql = "SELECT * FROM student_details WHERE school = ?"
         CURSOR.execute(sql, (self.school_name,))
         data = []
@@ -403,14 +468,12 @@ class MainWindow(QMainWindow):
         self.studentsNo = len(data)
         self.currentStudentId = id
         self.studentData = data[id]
-        print("Number of students: ", self.studentsNo)
-        print("Current student S/N: ", self.currentStudentId)
 
         def previous_block():
             if self.currentStudentId == 0:
                 self.ui.previous_data_button.setStyleSheet(
                     "background-color: rgb(200, 200, 200);"
-                    )
+                )
                 self.ui.previous_data_button.setDisabled(True)
             else:
                 self.ui.previous_data_button.setStyleSheet(
@@ -423,7 +486,7 @@ class MainWindow(QMainWindow):
                             background-color: rgb(168, 168, 168);
                         }
                     """
-                    )
+                )
                 self.ui.previous_data_button.setDisabled(False)
 
         def next_block():
@@ -438,15 +501,14 @@ class MainWindow(QMainWindow):
                             background-color: rgb(168, 168, 168);
                         }
                     """
-                    )
+                )
 
                 self.ui.next_data_button.setDisabled(False)
-
 
             elif self.currentStudentId == self.studentsNo - 1:
                 self.ui.next_data_button.setStyleSheet(
                     "background-color: rgb(70, 70, 70);"
-                    )
+                )
                 self.ui.next_data_button.setDisabled(True)
 
         next_block()
@@ -470,7 +532,7 @@ class MainWindow(QMainWindow):
             day = f"{str(day)}{suffix}"
 
             month = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"][int(date[1])-1]
+                     "July", "August", "September", "October", "November", "December"][int(date[1])-1]
 
             self.currentStudentId = id
 
@@ -483,7 +545,21 @@ class MainWindow(QMainWindow):
             self.ui.elective_2.setText(electives_array[1])
             self.ui.elective_3.setText(electives_array[2])
             self.ui.elective_4.setText(electives_array[3])
-            if type(data[id][14]) == bytes:
+
+            saveDir = SAVE_PATH / self.studentData[9]
+            saveFolder = saveDir / self.studentData[5]
+            fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}'.strip(
+            ) + '.jpg'
+            savePath = saveFolder / fileName
+            if savePath.exists():
+                pixmap = QtGui.QPixmap(str(savePath))
+            else:
+                pixmap = QtGui.QPixmap(
+                    'Include/img/user-sign-icon-person-symbol-human-avatar-vector-12693195.jpg')
+            self.ui.label_12.setPixmap(pixmap)
+
+            # FIXME: Getting image from database
+            """ if type(data[id][14]) == bytes:
                 if len(data[id][14]) > 0:
                     ba = QtCore.QByteArray(data[id][14])
                     pixmap = QtGui.QPixmap()
@@ -491,7 +567,7 @@ class MainWindow(QMainWindow):
                     assert ok
                 else:
                     pixmap = QtGui.QPixmap('Include/img/user-sign-icon-person-symbol-human-avatar-vector-12693195.jpg')
-                self.ui.label_12.setPixmap(pixmap)
+                self.ui.label_12.setPixmap(pixmap) """
 
     def selectCamera(self, i):
         self.camera = QCamera(self.availableCameras[i])
@@ -508,8 +584,11 @@ class MainWindow(QMainWindow):
         self.saveSeq = 0
 
     def clickPhoto(self):
-        fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}.jpg'
-        saveFolder = SAVE_PATH / self.studentData[5]
+        fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}'.strip(
+        ) + '.jpg'
+        saveDir = SAVE_PATH / self.studentData[9]
+        saveDir.mkdir(exist_ok=True, parents=True)
+        saveFolder = saveDir / self.studentData[5]
         saveFolder.mkdir(exist_ok=True, parents=True)
         savePath = saveFolder / fileName
         self.savePath = savePath
@@ -541,7 +620,8 @@ class MainWindow(QMainWindow):
                     base = os.path.basename(self.savePath)
                     afile, ext = os.path.splitext(base)
                     sql = "UPDATE student_details SET image = ? WHERE index_number = ?"
-                    CURSOR.execute(sql, (mariadb.Binary(ablob), self.studentData[6]))
+                    CURSOR.execute(
+                        sql, (mariadb.Binary(ablob), self.studentData[6]))
                     CONNECTION.commit()
                 self.savePath = None
                 self.getStudent(self.currentStudentId)
