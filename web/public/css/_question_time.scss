@@ -1,0 +1,135 @@
+#register-main {
+  input {
+    width: 200px;
+    height: 50px;
+    display: none;
+  }
+
+  /**************************
+       Confirmation elems styles 
+       **************************/
+}
+
+// Working
+
+#actual {
+  /************************
+        Actual comprises of 
+        1. Might-interest section 
+        2. question-time section
+    *************************** */
+  width: 100vw;
+  height: 100vh;
+  background: #414844;
+  display: flex;
+  flex-direction: row;
+  justify-self: space-around;
+}
+
+#actual h2 {
+  font-size: 3rem;
+  color: #d55d21;
+  padding: 1rem 2rem;
+}
+.might-interest h2 {
+  @include border(1px solid red);
+}
+.might-interest {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+
+  h2 {
+    color: #d55d21;
+    @include border(1px solid red);
+  }
+  p {
+    color: #414844;
+  }
+  #might-interest-tips {
+    article {
+      width: 350px;
+      height: 100px;
+      background: #fff;
+      margin: 50px 50px;
+      padding: 1rem;
+      box-shadow: rgba(207, 201, 201, 0.432) 1px 2px 20px 2px;
+      border-radius: 5px;
+
+      h2 {
+        color: #d55d21;
+      }
+      p {
+        color: #414844;
+      }
+    }
+  }
+}
+
+#confirmation_elems {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  right: 00px;
+  top: 100px;
+  padding: 1.5rem;
+  width: 100%;
+  height: 100vh;
+  border-radius: 5px;
+  @include border(yellow);
+}
+#confirmation_elems input {
+  padding: 0.5rem;
+  background: rgba(221, 218, 218, 0.788);
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+  width: 340px;
+  display: block;
+}
+.verification {
+  color: #d55d21;
+  text-decoration: none;
+  @include border(red);
+  // background: blue;
+  width: 200px;
+  height: 50px;
+  font-size: 1.3rem;
+  // margin-top: 100px;
+}
+
+.question-time {
+  /* ***************************
+      Question time section styles
+        This comprises of two sections. They are;
+        1.question-time-form
+        2. confirmation-elems 
+    **********************************/
+
+  /* ****** General styles **********/
+  background: #414844;
+  color: #d55d21;
+  height: 100vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include border(red);
+}
+
+#question-time-form {
+  width: 30vw;
+  height: 10vh;
+  input,
+  fieldset {
+    visibility: hidden;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+}

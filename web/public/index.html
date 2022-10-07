@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WASSCE REGISTRATION PAGE</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/loader.css" />
+    <!-- FIXME: Remove this when done and this is still not necessary -->
+    <!-- <link rel="stylesheet" href="css/cf_css.css"> -->
+  </head>
+  <body>
+    <header class="main-header">
+      <section>
+        <h1>WASSCEVERSE.COM</h1>
+      </section>
+    </header>
+
+    <section id="loader">
+      <h1>
+        <span class="let1">l</span>
+        <span class="let2">o</span>
+        <span class="let3">a</span>
+        <span class="let4">d</span>
+        <span class="let5">i</span>
+        <span class="let6">n</span>
+        <span class="let7">g</span>
+      </h1>
+    </section>
+
+    <main id="main">
+      <section id="content">
+        <header class="content-header">
+          <h2>Select your school</h2>
+        </header>
+        <section id="school_selector">
+          <!-- The search bar goes here -->
+          <div class="search-bar">
+            <p>I am a</p>
+            <input type="text" id="search" oninput="inputChange(this)" />
+            <p>student</p>
+          </div>
+          <div class="results">
+            <!-- Search result descriptions -->
+            <div id="search_desc">
+              <span>Schools found: </span>
+              <span class="search_data_count">1</span>
+            </div>
+
+            <!-- Actual Search results -->
+            <div id="search_results">
+              <!-- The results appear here from main.js -->
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/pill@1/dist/pill.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="js/pill_code.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/confirmation.js"></script>
+  </body>
+</html>

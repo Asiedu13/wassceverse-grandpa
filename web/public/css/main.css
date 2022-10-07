@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+  /* background: #F2F4EE; */ }
+
+body {
+  background: #f2f4ee; }
+
+header {
+  padding: 1rem; }
+
+.main-header {
+  background-color: #fff; }
+
+header section h1 {
+  color: #4e6162;
+  font-size: 2rem; }
+
+#main {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid transparent; }
+  #main #content {
+    width: 100vw;
+    height: 80vh;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */ }
+    #main #content a {
+      color: #414844; }
+    #main #content .content-header {
+      width: 580px;
+      height: 100px;
+      border: 1px solid transparent; }
+      #main #content .content-header h2 {
+        width: 500px;
+        border: 1px solid transparent;
+        font-size: 1.2rem;
+        color: #4e6162;
+        margin: 50px 10px 0 0;
+        font-weight: 100;
+        text-align: right; }
+    #main #content > section {
+      height: inherit;
+      width: inherit;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid transparent; }
+      #main #content > section a {
+        color: #d55d21;
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 45%;
+        border: 1px solid transparent; }
+      #main #content > section .search-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        width: inherit;
+        border: 1px solid transparent;
+        color: #808080; }
+        #main #content > section .search-bar p {
+          font-size: 3rem; }
+        #main #content > section .search-bar input {
+          height: 60px;
+          width: 500px;
+          margin: 0 10px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          font-size: 3rem;
+          padding: 0.5rem; }
+      #main #content > section .index_number_input {
+        border: 1px solid transparent;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        height: 200px; }
+        #main #content > section .index_number_input p {
+          font-size: 3rem;
+          color: #808080; }
+        #main #content > section .index_number_input input {
+          height: 60px;
+          width: 500px;
+          margin: 0 10px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          font-size: 3rem;
+          padding: 0.5rem;
+          color: #000; }
+        #main #content > section .index_number_input button {
+          width: 70px;
+          height: 70px;
+          border-radius: 70px;
+          background: #4e6162;
+          color: #fff;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer; }
+      #main #content > section .results {
+        border: 1px solid transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        /* background-color: #fff; */ }
+        #main #content > section .results #search_desc {
+          width: 820px;
+          border: 1px solid transparent;
+          color: grey;
+          padding: 5px 0; }
+        #main #content > section .results #search_results {
+          width: 820px;
+          background: #fff;
+          height: 90%;
+          display: flex;
+          flex-direction: column;
+          /* justify-content: center; */
+          align-items: center;
+          border-radius: 5px;
+          overflow-y: scroll;
+          border: 1px solid transparent; }
+          #main #content > section .results #search_results .school {
+            margin: 1rem;
+            width: 80%;
+            background: #f2f4ee;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            cursor: pointer; }
+            #main #content > section .results #search_results .school img {
+              background: #414844;
+              width: 120px;
+              height: inherit;
+              margin-right: 10px; }
+            #main #content > section .results #search_results .school span {
+              font-size: 15px;
+              color: grey; }
+  #main #register-main {
+    /**************************
+       Confirmation elems styles 
+       **************************/ }
+    #main #register-main input {
+      width: 200px;
+      height: 50px;
+      display: none; }
+  #main #actual {
+    /************************
+        Actual comprises of 
+        1. Might-interest section 
+        2. question-time section
+    *************************** */
+    width: 100vw;
+    height: 100vh;
+    background: #414844;
+    display: flex;
+    flex-direction: row;
+    justify-self: space-around; }
+  #main #actual h2 {
+    font-size: 3rem;
+    color: #d55d21;
+    padding: 1rem 2rem; }
+  #main .might-interest h2 {
+    border: 1px solid transparent; }
+  #main .might-interest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem; }
+    #main .might-interest h2 {
+      color: #d55d21;
+      border: 1px solid transparent; }
+    #main .might-interest p {
+      color: #414844; }
+    #main .might-interest #might-interest-tips article {
+      width: 350px;
+      height: 100px;
+      background: #fff;
+      margin: 50px 50px;
+      padding: 1rem;
+      box-shadow: rgba(207, 201, 201, 0.432) 1px 2px 20px 2px;
+      border-radius: 5px; }
+      #main .might-interest #might-interest-tips article h2 {
+        color: #d55d21; }
+      #main .might-interest #might-interest-tips article p {
+        color: #414844; }
+  #main #confirmation_elems {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    right: 00px;
+    top: 100px;
+    padding: 1.5rem;
+    width: 100%;
+    height: 100vh;
+    border-radius: 5px;
+    border: 1px solid transparent; }
+  #main #confirmation_elems input {
+    padding: 0.5rem;
+    background: rgba(221, 218, 218, 0.788);
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+    width: 340px;
+    display: block; }
+  #main .verification {
+    color: #d55d21;
+    text-decoration: none;
+    border: 1px solid transparent;
+    width: 200px;
+    height: 50px;
+    font-size: 1.3rem; }
+  #main .question-time {
+    /* ***************************
+      Question time section styles
+        This comprises of two sections. They are;
+        1.question-time-form
+        2. confirmation-elems 
+    **********************************/
+    /* ****** General styles **********/
+    background: #414844;
+    color: #d55d21;
+    height: 100vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent; }
+  #main #question-time-form {
+    width: 30vw;
+    height: 10vh; }
+    #main #question-time-form input,
+    #main #question-time-form fieldset {
+      visibility: hidden; }
+    #main #question-time-form h2 {
+      font-size: 3rem; }
+  #main #cf-context {
+    width: 100vw;
+    height: 200px;
+    position: relative;
+    right: 40px;
+    /* // background: red; */ }
+
+#conversational-form {
+  height: 80vh;
+  width: 60vw;
+  margin: 0 auto;
+  border-radius: 5px; }
+
+#success-main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* justify-content: ; */
+  align-items: center;
+  color: #414844; }
+
+#success-main section {
+  /* background: #fff; */
+  border-radius: 5px;
+  height: 300px;
+  width: 400px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #success-main section h1 {
+    font-size: 2.0rem;
+    margin: 10px 0; }
+  #success-main section a {
+    text-decoration: none;
+    background: #fff;
+    color: #414844;
+    padding: 1rem;
+    height: 20px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #success-main section a img {
+      width: 50px;
+      height: 30px; }
