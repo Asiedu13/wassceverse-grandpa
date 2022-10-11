@@ -18,3 +18,5 @@ in your terminal.
 
 ## The Website
 The website is the open to everyone. It allows all students begin the registration with their respective schools.
+
+### Procedure on the Web
