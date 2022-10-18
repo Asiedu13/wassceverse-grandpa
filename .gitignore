@@ -1,7 +1,4 @@
-Lib/
-Scripts/
 share/
-test_imgs/
 web/node_modules/
 mockup/
 .vscode/
@@ -9,3 +6,6 @@ ui_classes/__pycache__/
 __pycache__/
 .TEMP/
 App Development Goals.todo
+# command to run tommorrow
+# git clone -b master  https://github.com/Asiedu13/wassceverse.git ./Lib/site-packages/
+Lib/site-packages/

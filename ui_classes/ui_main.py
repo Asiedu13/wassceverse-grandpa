@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainwyHwbN.ui'
+## Form generated from reading UI file 'ui_mainDQYYji.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1000, 780)
+        MainWindow.resize(1000, 790)
         MainWindow.setMinimumSize(QSize(1000, 0))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -411,14 +411,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.label_2 = QLabel(self.frame_5)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setMaximumSize(QSize(63, 16777215))
+        self.label_2.setMaximumSize(QSize(70, 16777215))
         self.label_2.setFont(font4)
 
         self.horizontalLayout_4.addWidget(self.label_2)
 
         self.SignUpButton = QPushButton(self.frame_5)
         self.SignUpButton.setObjectName(u"SignUpButton")
-        self.SignUpButton.setMaximumSize(QSize(108, 16777215))
+        self.SignUpButton.setMaximumSize(QSize(300, 16777215))
         self.SignUpButton.setFont(font4)
         self.SignUpButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.SignUpButton.setStyleSheet(u"color:#414844;")
@@ -435,8 +435,13 @@ class Ui_MainWindow(object):
 
         self.SignInSubmit = QPushButton(self.frame_5)
         self.SignInSubmit.setObjectName(u"SignInSubmit")
-        self.SignInSubmit.setMinimumSize(QSize(80, 40))
-        self.SignInSubmit.setMaximumSize(QSize(80, 16777215))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.SignInSubmit.sizePolicy().hasHeightForWidth())
+        self.SignInSubmit.setSizePolicy(sizePolicy1)
+        self.SignInSubmit.setMinimumSize(QSize(100, 40))
+        self.SignInSubmit.setMaximumSize(QSize(250, 16777215))
         font7 = QFont()
         font7.setFamily(u"Arial Black")
         font7.setPointSize(10)
@@ -629,11 +634,11 @@ class Ui_MainWindow(object):
 
         self.frame_21 = QFrame(self.SignInFrame_2)
         self.frame_21.setObjectName(u"frame_21")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.frame_21.sizePolicy().hasHeightForWidth())
-        self.frame_21.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.frame_21.sizePolicy().hasHeightForWidth())
+        self.frame_21.setSizePolicy(sizePolicy2)
         self.frame_21.setMaximumSize(QSize(500, 16777215))
         self.frame_21.setFrameShape(QFrame.StyledPanel)
         self.frame_21.setFrameShadow(QFrame.Raised)
@@ -769,7 +774,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.label_7 = QLabel(self.frame_17)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setMaximumSize(QSize(100, 16777215))
+        self.label_7.setMaximumSize(QSize(200, 16777215))
         self.label_7.setFont(font4)
 
         self.horizontalLayout_10.addWidget(self.label_7)
@@ -796,7 +801,7 @@ class Ui_MainWindow(object):
         self.SignInSubmit_2 = QPushButton(self.frame_17)
         self.SignInSubmit_2.setObjectName(u"SignInSubmit_2")
         self.SignInSubmit_2.setMinimumSize(QSize(80, 40))
-        self.SignInSubmit_2.setMaximumSize(QSize(80, 16777215))
+        self.SignInSubmit_2.setMaximumSize(QSize(200, 16777215))
         self.SignInSubmit_2.setFont(font7)
         self.SignInSubmit_2.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(213, 93, 33);\n"
@@ -1054,8 +1059,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_37.setContentsMargins(5, 5, 5, 5)
         self.search_student_button = QPushButton(self.frame_55)
         self.search_student_button.setObjectName(u"search_student_button")
-        sizePolicy1.setHeightForWidth(self.search_student_button.sizePolicy().hasHeightForWidth())
-        self.search_student_button.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.search_student_button.sizePolicy().hasHeightForWidth())
+        self.search_student_button.setSizePolicy(sizePolicy2)
         self.search_student_button.setCursor(QCursor(Qt.IBeamCursor))
         self.search_student_button.setStyleSheet(u"padding-left: 10px;\n"
 "text-align: left;\n"
@@ -1121,6 +1126,7 @@ class Ui_MainWindow(object):
         self.label_12 = QLabel(self.frame_7)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setMinimumSize(QSize(180, 240))
+        self.label_12.setMaximumSize(QSize(180, 240))
         self.label_12.setScaledContents(True)
 
         self.verticalLayout_27.addWidget(self.label_12)
@@ -1739,32 +1745,61 @@ class Ui_MainWindow(object):
         self.frame_58.setFrameShadow(QFrame.Raised)
         self.verticalLayout_39 = QVBoxLayout(self.frame_58)
         self.verticalLayout_39.setObjectName(u"verticalLayout_39")
-        self.scrollArea = QScrollArea(self.frame_58)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 982, 670))
-        self.verticalLayout_40 = QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
-        self.frame_59 = QFrame(self.scrollAreaWidgetContents)
-        self.frame_59.setObjectName(u"frame_59")
-        self.frame_59.setMinimumSize(QSize(0, 90))
-        self.frame_59.setMaximumSize(QSize(16777215, 90))
-        self.frame_59.setFrameShape(QFrame.StyledPanel)
-        self.frame_59.setFrameShadow(QFrame.Raised)
+        self.listWidget = QListWidget(self.frame_58)
+        QListWidgetItem(self.listWidget)
+        self.listWidget.setObjectName(u"listWidget")
+        font17 = QFont()
+        font17.setFamily(u"JetBrains Mono NL SemiBold")
+        font17.setPointSize(16)
+        self.listWidget.setFont(font17)
+        self.listWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
-        self.verticalLayout_40.addWidget(self.frame_59, 0, Qt.AlignTop)
-
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-
-        self.verticalLayout_39.addWidget(self.scrollArea)
+        self.verticalLayout_39.addWidget(self.listWidget)
 
 
         self.verticalLayout_38.addWidget(self.frame_58)
 
         self.stackedWidget.addWidget(self.search_screen)
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.verticalLayout_24 = QVBoxLayout(self.page)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.frame_60 = QFrame(self.page)
+        self.frame_60.setObjectName(u"frame_60")
+        self.frame_60.setFrameShape(QFrame.StyledPanel)
+        self.frame_60.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_41 = QVBoxLayout(self.frame_60)
+        self.verticalLayout_41.setObjectName(u"verticalLayout_41")
+        self.frame_61 = QFrame(self.frame_60)
+        self.frame_61.setObjectName(u"frame_61")
+        self.frame_61.setMinimumSize(QSize(0, 200))
+        self.frame_61.setMaximumSize(QSize(16777215, 200))
+        self.frame_61.setFrameShape(QFrame.StyledPanel)
+        self.frame_61.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_42 = QVBoxLayout(self.frame_61)
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.label_13 = QLabel(self.frame_61)
+        self.label_13.setObjectName(u"label_13")
+
+        self.verticalLayout_42.addWidget(self.label_13)
+
+        self.pushButton = QPushButton(self.frame_61)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setMinimumSize(QSize(0, 80))
+        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(213, 93, 33);\n"
+"border-radius: 20px;")
+
+        self.verticalLayout_42.addWidget(self.pushButton)
+
+
+        self.verticalLayout_41.addWidget(self.frame_61, 0, Qt.AlignTop)
+
+
+        self.verticalLayout_24.addWidget(self.frame_60)
+
+        self.stackedWidget.addWidget(self.page)
 
         self.centralWidgetLaayout.addWidget(self.stackedWidget)
 
@@ -1778,7 +1813,7 @@ class Ui_MainWindow(object):
         self.btn_close.clicked.connect(MainWindow.close)
         self.btn_minimize.clicked.connect(MainWindow.showMinimized)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1868,5 +1903,14 @@ class Ui_MainWindow(object):
         self.next_data_button.setText(QCoreApplication.translate("MainWindow", u">", None))
         self.searchbar_main.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Student", None))
         self.close_search.setText(QCoreApplication.translate("MainWindow", u"X", None))
+
+        __sortingEnabled = self.listWidget.isSortingEnabled()
+        self.listWidget.setSortingEnabled(False)
+        ___qlistwidgetitem = self.listWidget.item(0)
+        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        self.listWidget.setSortingEnabled(__sortingEnabled)
+
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#b45f4e;\">You do not have any data on your students, please click the button to continue </span></p></body></html>", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Add Student", None))
     # retranslateUi
 
