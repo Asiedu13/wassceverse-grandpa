@@ -130,12 +130,14 @@
               />
             </fieldset>
 
-            <fieldset cf-questions="Choose your elective subjects">
+<!-- Electives For All the Courses ------->
+            <fieldset cf-questions="Choose your elective subjects"
+            >
               <input
                 type="checkbox"
                 name="electives"
                 cf-label="E-Math"
-                value="E-Math"
+                cf-conditional-course="General Science||Business"
               />
 
               <input
@@ -143,6 +145,8 @@
                 name="electives"
                 cf-label="Physics"
                 value="Physics"
+                cf-conditional-course="General Science"
+               
               />
 
               <input
@@ -150,27 +154,33 @@
                 name="electives"
                 cf-label="Chemistry"
                 value="Chemistry"
+                cf-conditional-course="General Science||Agriculture||Home Economics"
+                 
               />
 
-              <input
+               <input
                 type="checkbox"
                 name="electives"
                 cf-label="Biology"
                 value="Biology"
-              />
-
-              <input
+                cf-conditional-course="General Science||Home Economics"
+              /> 
+              
+               <input
                 type="checkbox"
                 name="electives"
                 cf-label="E-ICT"
                 value="E-ICT"
-              />
+                cf-conditional-course="General Science||General Arts||Visual Arts"
+              /> 
 
-              <input
+
+               <input
                 type="checkbox"
                 value="Business Management"
                 name="electives"
                 cf-label="Business Management"
+                cf-conditional-course="Business"
               />
 
               <input
@@ -178,6 +188,8 @@
                 name="electives"
                 cf-label="Financial Accounting"
                 value="Financial Accounting"
+                cf-conditional-course="Business"
+
               />
 
               <input
@@ -185,9 +197,77 @@
                 name="electives"
                 cf-label="Government"
                 value="Government"
+                cf-conditional-course="Business||General Arts"
+              /> 
+              
+
+              <input
+                type="checkbox"
+                name="electives"
+                cf-label="Economics"
+                value="Economics"
+                cf-conditional-course="Business|| General Arts||Home Economics"
               />
+              <input
+                type="checkbox"
+                name="electives"
+                cf-label="Cost Accounting"
+                value="Cost Accounting"
+                cf-conditional-course="Business"
+              />
+
+             
+
+              <input
+                type="checkbox"
+                name="electives"
+                cf-label="Literature"
+                value="Literature"
+                cf-conditional-course="General Arts"
+              />
+
+              <input
+                type="checkbox"
+                name="electives"
+                cf-label="History"
+                value="History"
+                cf-conditional-course="General Arts"
+              />
+
+               <input
+                type="checkbox"
+                name="electives"
+                cf-label="French"
+                value="French"
+                cf-conditional-course="General Arts"
+              /> 
+               <input
+                type="checkbox"
+                name="electives"
+                cf-label="Food and Nutrition"
+                value="Food and Nutrition"
+                cf-conditional-course="Home Economics"
+              /> 
+               <input
+                type="checkbox"
+                name="electives"
+                cf-label="Clothing and Textiles"
+                value="Clothing and Textiles"
+                cf-conditional-course="Home Economics"
+              /> 
+               <input
+                type="checkbox"
+                name="electives"
+                cf-label="Management in Living"
+                value="Management in Living"
+                cf-conditional-course="Home Economics"
+              /> 
+
               <input type="checkbox" name="electives" cf-label="" />
             </fieldset>
+
+ -->
+
 
             <input
               type="text"
