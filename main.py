@@ -1,5 +1,4 @@
 import re
-from tkinter import dialog
 from PIL import Image
 from autocrop import Cropper
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -11,21 +10,15 @@ from PySide2.QtMultimedia import *
 from PySide2.QtMultimediaWidgets import *
 from PySide2.QtWidgets import *
 
-import email
 import sqlite3
 import sys
 import pathlib
-import platform
-import time
-import cv2
-import numpy as np
 import os
 import mariadb
-import shutil
 
 
 # GUI FILES
-from ui_classes.ui_main import Ui_MainWindow
+from ui_classes.ui_main_ import Ui_MainWindow
 from ui_classes.signInFailedOneDialog import Ui_signInFailedOneDialog
 from ui_classes.ui_incorrectDialog import Ui_incorrectDialog
 import ui_classes.edit as edit
@@ -50,6 +43,7 @@ CONNECTION = mariadb.connect(
 )
 
 CURSOR = CONNECTION.cursor()
+
 
 class EditStudentInformation(QDialog):
     def __init__(self, parent=None):
@@ -202,12 +196,11 @@ class AddStudentInformation(QDialog):
             parent_contact = self.ui.plainTextEdit_5.toPlainText().replace("'", "''")
             # dob = str(self.ui.dateEdit_2.date())
 
-            connection = sqlite3.connect("server2.db")
-
-            sql = f"INSERT INTO student_details (surname, first_name, other_names, course, class, index_number, electives, school, gender, parent_contact) VALUES ('{surname}', '{first_name}', '{other_names}', '{course}', '{class_}', '{index_number}', '{elective[0]},{elective[1]},{elective[2]},{elective[3]}', '{window.school_name}',  '{gender}', '{parent_contact}')"
-            connection.execute(sql)
-            connection.commit()
-            connection.close()
+            electives = f'{elective[0]},{elective[1]},{elective[2]},{elective[3]}'
+            sql = f"INSERT INTO student_details (surname, first_name, other_names, course, class, index_number, electives, school, gender, parent_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            CURSOR.execute(sql, (surname, first_name, other_names, course, class_,
+                           index_number, electives, self.school, gender, parent_contact))
+            CONNECTION.commit()
             window.getStudent()
 
         self.ui.save.clicked.connect(lambda: insert())
@@ -436,8 +429,6 @@ class MainWindow(QMainWindow):
                 self.ui.stackedWidget.setCurrentIndex(3)
 
             self.ui.listWidget.itemClicked.connect(searchRes)
-
-
 
         def switch_screen(screen: int):
             self.ui.stackedWidget.setCurrentIndex(screen)

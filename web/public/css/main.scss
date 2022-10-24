@@ -10,14 +10,19 @@
 }
 
 body {
-  background: #f2f4ee;
+  // background: #f2f4ee;
+  background: white;
+
+  overflow-x: hidden;
 }
 
 header {
   padding: 1rem;
+  
 }
 .main-header {
-  background-color: #fff;
+  // background-color: #fff;
+  background: #f8f9fa;
 }
 
 header section h1 {
@@ -27,7 +32,7 @@ header section h1 {
 
 #main {
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
   @include border(blue);
 
   #content {
@@ -94,6 +99,7 @@ header section h1 {
           border: none;
           font-size: 3rem;
           padding: 0.5rem;
+          background: #f8f9fa;
         }
       }
       .index_number_input {
@@ -117,6 +123,7 @@ header section h1 {
           font-size: 3rem;
           padding: 0.5rem;
           color: #000;
+          
         }
         button {
           width: 70px;
@@ -162,7 +169,7 @@ header section h1 {
           .school {
             margin: 1rem;
             width: 80%;
-            background: #f2f4ee;
+            background: #fff;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             height: 80px;
             display: flex;
@@ -206,3 +213,17 @@ header section h1 {
 }
 
 @import "success";
+
+footer {
+  background: #414844;
+  color: #fff;
+  padding: 1rem;
+  height: 30px;
+  width: 100vw;
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include border(red);
+}

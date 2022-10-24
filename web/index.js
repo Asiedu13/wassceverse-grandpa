@@ -1,5 +1,6 @@
 // ----------------- Variables and Objects --------------
 const fs = require("fs");
+var mysql = require("mysql");
 const sql = require("mariadb");
 
 var bodyParser = require("body-parser");
@@ -8,34 +9,33 @@ const express = require("express");
 const { exit } = require("process");
 
 const app = express();
-costl
-const db = new sql.Database("../server2.db", (err) => {
-  if (err) {
-    console.log("Getting Error: ", err);
-    exit(1);
-  }
+
+// const db = new sql.Database("../server2.db", (err) => {
+//   if (err) {
+//     console.log("Getting Error: ", err);
+//     exit(1);
+//   }
+// });
+
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "wassceverse",
 });
 
-// --------------- Middleware --------------------
-
-db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS registered_students (
-        surname text not null,
-        first_name text not null,
-        other_names text,
-        course array not null,
-        class text,
-        index_number text primary key not null,
-        year_completed text not null,
-        electives array not null,
-        school text not null,
-        gender array not null,
-        parent_contact text not null,
-        date_of_birth text,
-        signature blob,
-        image blob,
-        fingerprint blob
-  )`);
+// Connecting to database
+connection.connect(function (err) {
+  if (err) {
+    console.log("Error in the connection");
+    console.log(err);
+  } else {
+    console.log(`Database Connected`);
+    connection.query(`SHOW DATABASES`, function (err, result) {
+      if (err) console.log(`Error executing the query - ${err}`);
+      else console.log("Result: ", result);
+    });
+  }
 });
 
 app.use(bodyParser.json());
@@ -51,15 +51,15 @@ app.get("/api/student/verifyStudent", (req, res) => {
   console.log(sql);
   console.log("THe student");
 
-  db.get(sql, [index_number, school], (err, row) => {
+  connection.query(sql, [index_number, school], (err, row) => {
     if (err) console.error(err.message);
-    console.log(row);
-    res.json(row);
+    console.log(row[0]);
+    res.json(row[0]);
   });
 });
 app.get("/api/student/registered", (req, res) => {
   let sql = `SELECT * FROM registered_students`;
-  db.all(sql, [], (err, rows) => {
+  connection.query(sql, [], (err, rows) => {
     if (err) console.error(err.message);
     let requestedData = [];
     rows.forEach((row) => {
@@ -69,7 +69,7 @@ app.get("/api/student/registered", (req, res) => {
   });
 });
 
-// ------ --- Register Students ------------
+// // ------ --- Register Students ------------
 app.post("/api/student/create", function (req, res, next) {
   // Adding data to databse goes here...
 
@@ -78,9 +78,9 @@ app.post("/api/student/create", function (req, res, next) {
   let content = req.body;
 
   let sql =
-    "INSERT INTO registered_students (surname,first_name, other_names,course, class, index_number, year_completed, electives, school, gender, parent_contact, date_of_birth, signature, 'image', fingerprint ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO registered_students (surname,first_name, other_names,course, class, index_number, year_completed, electives, school, gender, parent_contact, date_of_birth, signature, image, fingerprint ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-  db.run(
+  connection.query(
     sql,
     [
       content.surname,
@@ -108,18 +108,18 @@ app.post("/api/student/create", function (req, res, next) {
   res.send("Data received");
 });
 
-// Get all the registered schools from the database
+// // Get all the registered schools from the database
 app.get("/api/schools", (req, res, next) => {
   // FIXME: Edit condition to retrieve only verified schools from the database.
-  let sql = `SELECT * FROM registered_schools WHERE school_email IS NOT " "`;
+  let sql = `SELECT * FROM registered_schools WHERE school_email != " "`;
   let requestedData = [];
-  db.all(sql, [], (err, rows) => {
+  connection.query(sql, [], (err, rows) => {
     if (err) console.error(err.message);
-    rows.forEach((row) => {
-      console.log(row);
-      requestedData.push(row);
-    });
-    res.json(requestedData);
+    // rows.forEach((row) => {
+    //   console.log(row);
+    //   requestedData.push(row);
+    // });
+    res.json(rows);
   });
 });
 

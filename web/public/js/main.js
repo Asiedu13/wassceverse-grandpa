@@ -47,7 +47,6 @@ new MutationObserver(() => {
 
 function onUrlChange() {
   console.log("on url change");
-  // openCvReady();
   let confirmationElem = document.getElementById("confirmation_elems");
   if (confirmationElem) {
     confirmationElem.style.display = "none";
@@ -89,10 +88,11 @@ function onUrlChange() {
         console.log("Formdata, serialized:", formDataSerialized);
 
         let det = {
-          first_name: userData.first_name,
           surname: userData.surname,
-          other_names: formDataSerialized.other_names,
+          first_name: userData.first_name,
+          other_names: formDataSerialized.other_names || " ",
           date_of_birth: formDataSerialized.date_of_birth,
+          class: "",
           gender: formDataSerialized.gender,
           school: userData.school,
           index_number: formDataSerialized.index_number,
@@ -100,6 +100,9 @@ function onUrlChange() {
           course: formDataSerialized.course,
           electives: formDataSerialized.electives,
           parent_contact: formDataSerialized.parent_contact,
+          signature: " ",
+          image: " ",
+          fingerprint: " ",
         };
 
         conversationalForm.addRobotChatResponse(

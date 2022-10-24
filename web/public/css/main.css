@@ -6,13 +6,14 @@
   /* background: #F2F4EE; */ }
 
 body {
-  background: #f2f4ee; }
+  background: white;
+  overflow-x: hidden; }
 
 header {
   padding: 1rem; }
 
 .main-header {
-  background-color: #fff; }
+  background: #f8f9fa; }
 
 header section h1 {
   color: #4e6162;
@@ -20,7 +21,7 @@ header section h1 {
 
 #main {
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
   border: 1px solid transparent; }
   #main #content {
     width: 100vw;
@@ -74,7 +75,8 @@ header section h1 {
           outline: none;
           border: none;
           font-size: 3rem;
-          padding: 0.5rem; }
+          padding: 0.5rem;
+          background: #f8f9fa; }
       #main #content > section .index_number_input {
         border: 1px solid transparent;
         display: flex;
@@ -131,7 +133,7 @@ header section h1 {
           #main #content > section .results #search_results .school {
             margin: 1rem;
             width: 80%;
-            background: #f2f4ee;
+            background: #fff;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             height: 80px;
             display: flex;
@@ -279,7 +281,7 @@ header section h1 {
   justify-content: center;
   align-items: center; }
   #success-main section h1 {
-    font-size: 2.0rem;
+    font-size: 2rem;
     margin: 10px 0; }
   #success-main section a {
     text-decoration: none;
@@ -294,3 +296,16 @@ header section h1 {
     #success-main section a img {
       width: 50px;
       height: 30px; }
+
+footer {
+  background: #414844;
+  color: #fff;
+  padding: 1rem;
+  height: 30px;
+  width: 100vw;
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent; }
