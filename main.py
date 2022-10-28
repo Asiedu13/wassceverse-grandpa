@@ -350,10 +350,59 @@ class MainWindow(QMainWindow):
             dialog = AddStudentInformation(self)
             dialog.exec()
 
-        def edit_student_dialog():
-            dialog = EditStudentInformation(self)
-            dialog.exec()
+        def edit_student_function():
+            switch_screen(5)
+            school = self.school_name
+            index = self.studentData[0]
+            listIndex = self.currentStudentId
+            sql = "SELECT * FROM student_details WHERE school = ?"
+            CURSOR.execute(sql, (school,))
 
+            result = []
+            for data in CURSOR:
+                result.append(data)
+
+            checkboxes = [
+                self.ui.checkBox,
+                self.ui.checkBox_2,
+                self.ui.checkBox_3,
+                self.ui.checkBox_4,
+                self.ui.checkBox_5,
+                self.ui.checkBox_6,
+                self.ui.checkBox_7,
+                self.ui.checkBox_8,
+                self.ui.checkBox_9,
+                self.ui.checkBox_10,
+                self.ui.checkBox_11,
+                self.ui.checkBox_12,
+                self.ui.checkBox_13,
+                self.ui.checkBox_14,
+                self.ui.checkBox_15,
+                self.ui.checkBox_16,
+                self.ui.checkBox_17,
+                self.ui.checkBox_18,
+                self.ui.checkBox_19,
+                self.ui.checkBox_20,
+                self.ui.checkBox_21,
+                self.ui.checkBox_22,
+                self.ui.checkBox_23,
+                self.ui.checkBox_24
+            ]
+
+            electives = data[8].split(",")
+            for checkbox in checkboxes:
+                for elective in electives:
+                    if checkbox.text() == elective:
+                        checkbox.setChecked(True)
+
+            radios = [self.ui.radioButton, self.ui.radioButton_2]
+            for radio in radios:
+                if radio.text() == data[9]:
+                    radio.setChecked(True)
+            self.ui.plainTextEdit.setPlainText(data[1])
+
+            
+            
         def getImageFromFile():
             src = self.get_image_file()
             saveDir = SAVE_PATH / self.studentData[9]
@@ -395,7 +444,7 @@ class MainWindow(QMainWindow):
         self.ui.close_camera.clicked.connect(lambda: self.closeCamera())
         self.ui.SignInSubmit.clicked.connect(lambda: signIn())
         self.ui.edit_student_button.clicked.connect(
-            lambda: edit_student_dialog())
+            lambda: edit_student_function())
         self.ui.add_student_button.clicked.connect(
             lambda: add_student_dialog())
         self.ui.pushButton.clicked.connect(lambda: add_student_dialog())

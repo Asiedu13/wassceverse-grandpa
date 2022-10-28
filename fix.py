@@ -11,8 +11,9 @@ CONNECTION = mariadb.connect(
 
 CURSOR = CONNECTION.cursor()
 
-with open("Include/img/user-sign-icon-person-symbol-human-avatar-vector-12693195.jpg", 'rb') as input_file:
-    ablob = input_file.read()
-    sql = "UPDATE student_details SET image = ? WHERE index_number = 01939308943984"
-    CURSOR.execute(sql, (mariadb.Binary(ablob),))
-    CONNECTION.commit()
+sql = "SELECT * FROM student_details WHERE school = ?"
+CURSOR.execute(sql, ("Presbyterian Boys' Secondary School",))
+data = []
+for d in CURSOR:
+    data.append(d)
+print(data)
