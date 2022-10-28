@@ -10,7 +10,6 @@ from PySide2.QtMultimedia import *
 from PySide2.QtMultimediaWidgets import *
 from PySide2.QtWidgets import *
 
-import sqlite3
 import sys
 import pathlib
 import os
