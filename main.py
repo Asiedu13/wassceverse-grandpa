@@ -271,7 +271,8 @@ class MainWindow(QMainWindow):
                     dialog = PasswordIncorrectDialog(self)
                     dialog.exec()
                 else:
-                    self.school_name = schoolName
+                    switch_screen(1)
+                    """ self.school_name = schoolName
                     sql = "SELECT * FROM student_details WHERE school = ?"
                     CURSOR.execute(sql, (self.school_name,))
                     data = []
@@ -282,7 +283,7 @@ class MainWindow(QMainWindow):
                         self.getStudent(0)
                         switch_screen(3)
                     else:
-                        switch_screen(5)
+                        switch_screen(5) """
             else:
                 dialog = FailDialogOne(self)
                 dialog.exec()
@@ -439,7 +440,7 @@ class MainWindow(QMainWindow):
         self.ui.close_search.clicked.connect(lambda: switch_screen(3))
         self.ui.take_photo.clicked.connect(lambda: camera_screen())
         self.ui.capture.clicked.connect(lambda: self.clickPhoto())
-        self.ui.SignUpButton.clicked.connect(lambda: switch_screen(1))
+        self.ui.SignUpButton.clicked.connect(lambda: switch_screen(2))
         self.ui.SignUpButton_2.clicked.connect(lambda: switch_screen(0))
         self.ui.close_camera.clicked.connect(lambda: self.closeCamera())
         self.ui.SignInSubmit.clicked.connect(lambda: signIn())
