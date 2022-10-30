@@ -14,5 +14,4 @@ class UIFunctions(MainWindow):
 
         self.ui.email_error.setHidden(True)
         self.ui.school_name_error.setHidden(True)
-        self.ui.school_code_error.setHidden(True)
         self.ui.password_error.setHidden(True)
