@@ -230,7 +230,7 @@ class MainWindow(QMainWindow):
         self.availableCameras = QCameraInfo.availableCameras()
         self.viewFinder = self.ui.camera_input
         self.savePath = None
-        self.school_name = ""
+        self.school_id = 0
         self.students = []
         self.studentData = []
         self.currentStudentId = 0
@@ -274,19 +274,42 @@ class MainWindow(QMainWindow):
                     dialog = PasswordIncorrectDialog(self)
                     dialog.exec()
                 else:
+                    self.school_id = data[0][0]
                     switch_screen(1)
-                    """ self.school_name = schoolName
+                    year_group = int(self.ui.year_group.currentText())
+
+                    sql = "SELECT COUNT(*) AS count_students FROM student_details WHERE bece_year = ? and school = ?"
+                    CURSOR.execute(sql, (year_group, self.school_id))
+                    for data in CURSOR:
+                        num_of_students = data[0]
+
+                    sql = "SELECT COUNT(*) AS count_students FROM student_details WHERE bece_year = ? and school = ?"
+                    CURSOR.execute(sql, (year_group, self.school_id))
+                    for data in CURSOR:
+                        num_registered = data[0]
+                    
+                    sql = "SELECT COUNT(*) AS count_students FROM student_details WHERE bece_year = ? and school = ?"
+                    CURSOR.execute(sql, (year_group, self.school_id))
+                    for data in CURSOR:
+                        num_cleared = data[0]
+
+                    self.ui.label_40.setText(f"Number of Students: {num_of_students}")
+                    self.ui.label_43.setText(f"Number of Students Registered: {num_registered}")
+                    self.ui.label_44.setText(f"Number of Students Cleared: {num_cleared}")
+
+                    
+
                     sql = "SELECT * FROM student_details WHERE school = ?"
-                    CURSOR.execute(sql, (self.school_name,))
+                    CURSOR.execute(sql, (self.school_id,))
                     data = []
                     for d in CURSOR:
                         data.append(d)
                     self.studentsNo = len(data)
                     if self.studentsNo > 0:
                         self.getStudent(0)
-                        switch_screen(3)
+                        self.ui.view_data.clicked.connect(lambda: switch_screen(4))
                     else:
-                        switch_screen(5) """
+                        self.ui.view_data.clicked.connect(lambda: switch_screen(7))
             else:
                 dialog = FailDialogOne(self)
                 dialog.exec()

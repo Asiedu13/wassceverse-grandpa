@@ -223,12 +223,15 @@ background-color: rgb(255, 22, 22);
         <family>Arial</family>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">border-radius: 0 0 20px 20px;
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
