@@ -11,9 +11,11 @@ from PySide2.QtMultimediaWidgets import *
 from PySide2.QtWidgets import *
 
 import sys
+import hashlib
 import pathlib
 import os
 import mariadb
+import plotly.graph_objects as go
 
 
 # GUI FILES
@@ -259,6 +261,7 @@ class MainWindow(QMainWindow):
             schoolName = self.ui.schoolNameSignIn.text()
             email = self.ui.emailSignIn.text()
             password = self.ui.passwordSignIn.text()
+            pwd = hashlib.md5(password.encode("utf-8")).hexdigest()
 
             sql = "SELECT * FROM registered_schools WHERE school_name = ? AND school_email = ?"
             CURSOR.execute(sql, (schoolName, email))
@@ -267,7 +270,7 @@ class MainWindow(QMainWindow):
                 data.append(d)
 
             if len(data) != 0:
-                if password != data[0][7]:
+                if pwd != data[0][7]:
                     dialog = PasswordIncorrectDialog(self)
                     dialog.exec()
                 else:
@@ -291,38 +294,30 @@ class MainWindow(QMainWindow):
         def signUp(db: str):
             school_name = self.ui.schoolNameSignUp.text()
             email = self.ui.emailSignUp.text()
-            school_code = self.ui.schoolCodeSignUp.text()
             password = self.ui.passwordSignUp.text()
+            location = self.ui.locationSignUp.text()
+            country = self.ui.countrySignUp.text()
+
             if len(password) <= 6:
                 self.ui.password_error.setHidden(False)
                 self.ui.school_name_error.setHidden(True)
                 self.ui.school_code_error.setHidden(True)
-            elif len(email) > 0 and len(school_name) > 0 and len(school_code) > 0:
+            elif len(email) > 0 and len(school_name) > 0 and len(location) > 0 and len(country) > 0:
                 regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
                 if (not re.search(regex, email)):
                     "TODO"
                 elif email in self.emails:
                     self.ui.email_error.setHidden(False)
                     self.ui.school_name_error.setHidden(True)
-                    self.ui.school_code_error.setHidden(True)
                     self.ui.password_error.setHidden(True)
                 elif school_name in self.schools:
                     self.ui.school_name_error.setHidden(False)
                     self.ui.email_error.setHidden(True)
-                    self.ui.school_code_error.setHidden(True)
                     self.ui.password_error.setHidden(True)
-                elif (not school_code.isnumeric()):
-                    "TODO"
-                elif school_code in self.codes:
-                    self.ui.email_error.setHidden(True)
-                    self.ui.school_name_error.setHidden(True)
-                    self.ui.school_code_error.setHidden(False)
-                    self.ui.password_error.setHidden(True)
-
                 else:
-                    sql = "INSERT INTO registered_schools (school_name, school_code, school_email, password, verified, country, location) VALUES (?, ?, ?, ?, 1, 'Ghana', 'nowhere')"
+                    sql = "INSERT INTO registered_schools (school_name, location, country, school_email, password) VALUES (?, ?, ?, ?, MD5(?))"
                     CURSOR.execute(
-                        sql, (school_name, school_code, email, password))
+                        sql, (school_name, location, country, email, password,))
                     CONNECTION.commit()
                     switch_screen(0)
 

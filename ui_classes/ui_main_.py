@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainVozCOE.ui'
+## Form generated from reading UI file 'ui_mainCPRAoL.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import (QCoreApplication, QDate, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
+from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
+    QRect, QSize, QUrl, Qt, QDate)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
     QRadialGradient)
@@ -560,6 +560,134 @@ class Ui_MainWindow(object):
         self.frame_87.setObjectName(u"frame_87")
         self.frame_87.setFrameShape(QFrame.StyledPanel)
         self.frame_87.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_49 = QVBoxLayout(self.frame_87)
+        self.verticalLayout_49.setSpacing(0)
+        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.verticalLayout_49.setContentsMargins(0, 0, 0, 0)
+        self.frame_89 = QFrame(self.frame_87)
+        self.frame_89.setObjectName(u"frame_89")
+        self.frame_89.setFrameShape(QFrame.StyledPanel)
+        self.frame_89.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_55 = QHBoxLayout(self.frame_89)
+        self.horizontalLayout_55.setObjectName(u"horizontalLayout_55")
+        self.frame_94 = QFrame(self.frame_89)
+        self.frame_94.setObjectName(u"frame_94")
+        self.frame_94.setFrameShape(QFrame.StyledPanel)
+        self.frame_94.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_59 = QHBoxLayout(self.frame_94)
+        self.horizontalLayout_59.setObjectName(u"horizontalLayout_59")
+        self.label_40 = QLabel(self.frame_94)
+        self.label_40.setObjectName(u"label_40")
+        font9 = QFont()
+        font9.setFamily(u"Inter Medium")
+        font9.setPointSize(11)
+        self.label_40.setFont(font9)
+
+        self.horizontalLayout_59.addWidget(self.label_40)
+
+
+        self.horizontalLayout_55.addWidget(self.frame_94)
+
+        self.frame_95 = QFrame(self.frame_89)
+        self.frame_95.setObjectName(u"frame_95")
+        self.frame_95.setFrameShape(QFrame.StyledPanel)
+        self.frame_95.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_60 = QHBoxLayout(self.frame_95)
+        self.horizontalLayout_60.setObjectName(u"horizontalLayout_60")
+        self.label_43 = QLabel(self.frame_95)
+        self.label_43.setObjectName(u"label_43")
+        self.label_43.setFont(font9)
+
+        self.horizontalLayout_60.addWidget(self.label_43)
+
+
+        self.horizontalLayout_55.addWidget(self.frame_95)
+
+
+        self.verticalLayout_49.addWidget(self.frame_89)
+
+        self.frame_91 = QFrame(self.frame_87)
+        self.frame_91.setObjectName(u"frame_91")
+        self.frame_91.setFrameShape(QFrame.StyledPanel)
+        self.frame_91.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_56 = QHBoxLayout(self.frame_91)
+        self.horizontalLayout_56.setObjectName(u"horizontalLayout_56")
+        self.frame_96 = QFrame(self.frame_91)
+        self.frame_96.setObjectName(u"frame_96")
+        self.frame_96.setFrameShape(QFrame.StyledPanel)
+        self.frame_96.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_61 = QHBoxLayout(self.frame_96)
+        self.horizontalLayout_61.setObjectName(u"horizontalLayout_61")
+        self.label_44 = QLabel(self.frame_96)
+        self.label_44.setObjectName(u"label_44")
+        self.label_44.setFont(font9)
+
+        self.horizontalLayout_61.addWidget(self.label_44)
+
+
+        self.horizontalLayout_56.addWidget(self.frame_96)
+
+        self.frame_97 = QFrame(self.frame_91)
+        self.frame_97.setObjectName(u"frame_97")
+        self.frame_97.setFrameShape(QFrame.StyledPanel)
+        self.frame_97.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_50 = QVBoxLayout(self.frame_97)
+        self.verticalLayout_50.setObjectName(u"verticalLayout_50")
+        self.label_46 = QLabel(self.frame_97)
+        self.label_46.setObjectName(u"label_46")
+
+        self.verticalLayout_50.addWidget(self.label_46)
+
+
+        self.horizontalLayout_56.addWidget(self.frame_97)
+
+
+        self.verticalLayout_49.addWidget(self.frame_91)
+
+        self.frame_92 = QFrame(self.frame_87)
+        self.frame_92.setObjectName(u"frame_92")
+        self.frame_92.setFrameShape(QFrame.StyledPanel)
+        self.frame_92.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_58 = QHBoxLayout(self.frame_92)
+        self.horizontalLayout_58.setObjectName(u"horizontalLayout_58")
+        self.frame_98 = QFrame(self.frame_92)
+        self.frame_98.setObjectName(u"frame_98")
+        self.frame_98.setFrameShape(QFrame.StyledPanel)
+        self.frame_98.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_54 = QVBoxLayout(self.frame_98)
+        self.verticalLayout_54.setObjectName(u"verticalLayout_54")
+        self.label_45 = QLabel(self.frame_98)
+        self.label_45.setObjectName(u"label_45")
+
+        self.verticalLayout_54.addWidget(self.label_45)
+
+
+        self.horizontalLayout_58.addWidget(self.frame_98)
+
+        self.frame_99 = QFrame(self.frame_92)
+        self.frame_99.setObjectName(u"frame_99")
+        self.frame_99.setFrameShape(QFrame.StyledPanel)
+        self.frame_99.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_55 = QVBoxLayout(self.frame_99)
+        self.verticalLayout_55.setObjectName(u"verticalLayout_55")
+        self.label_47 = QLabel(self.frame_99)
+        self.label_47.setObjectName(u"label_47")
+
+        self.verticalLayout_55.addWidget(self.label_47)
+
+
+        self.horizontalLayout_58.addWidget(self.frame_99)
+
+
+        self.verticalLayout_49.addWidget(self.frame_92)
+
+        self.frame_93 = QFrame(self.frame_87)
+        self.frame_93.setObjectName(u"frame_93")
+        self.frame_93.setFrameShape(QFrame.StyledPanel)
+        self.frame_93.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_49.addWidget(self.frame_93)
+
 
         self.verticalLayout_48.addWidget(self.frame_87)
 
@@ -576,10 +704,10 @@ class Ui_MainWindow(object):
         self.view_data = QPushButton(self.frame_83)
         self.view_data.setObjectName(u"view_data")
         self.view_data.setMinimumSize(QSize(0, 50))
-        font9 = QFont()
-        font9.setFamily(u"Inter SemiBold")
-        font9.setPointSize(13)
-        self.view_data.setFont(font9)
+        font10 = QFont()
+        font10.setFamily(u"Inter SemiBold")
+        font10.setPointSize(13)
+        self.view_data.setFont(font10)
         self.view_data.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(213, 93, 33);\n"
 "border-bottom-right-radius: 20px;\n"
@@ -803,6 +931,7 @@ class Ui_MainWindow(object):
         self.passwordSignUp = QLineEdit(self.frame_90)
         self.passwordSignUp.setObjectName(u"passwordSignUp")
         self.passwordSignUp.setMinimumSize(QSize(0, 25))
+        self.passwordSignUp.setEchoMode(QLineEdit.Password)
 
         self.verticalLayout_52.addWidget(self.passwordSignUp)
 
@@ -928,7 +1057,7 @@ class Ui_MainWindow(object):
         self.countrySignUp = QLineEdit(self.frame_22)
         self.countrySignUp.setObjectName(u"countrySignUp")
         self.countrySignUp.setMinimumSize(QSize(0, 25))
-        self.countrySignUp.setEchoMode(QLineEdit.Password)
+        self.countrySignUp.setEchoMode(QLineEdit.Normal)
 
         self.verticalLayout_19.addWidget(self.countrySignUp)
 
@@ -1092,11 +1221,11 @@ class Ui_MainWindow(object):
         self.close_camera.setObjectName(u"close_camera")
         self.close_camera.setMinimumSize(QSize(30, 30))
         self.close_camera.setMaximumSize(QSize(30, 30))
-        font10 = QFont()
-        font10.setPointSize(15)
-        font10.setBold(True)
-        font10.setWeight(75)
-        self.close_camera.setFont(font10)
+        font11 = QFont()
+        font11.setPointSize(15)
+        font11.setBold(True)
+        font11.setWeight(75)
+        self.close_camera.setFont(font11)
         self.close_camera.setStyleSheet(u"QPushButton {\n"
 "	color: rgb(95, 95, 95);\n"
 "}\n"
@@ -1130,9 +1259,9 @@ class Ui_MainWindow(object):
 
         self.frame_25 = QFrame(self.frame)
         self.frame_25.setObjectName(u"frame_25")
-        font11 = QFont()
-        font11.setFamily(u"Niagara Engraved")
-        self.frame_25.setFont(font11)
+        font12 = QFont()
+        font12.setFamily(u"Niagara Engraved")
+        self.frame_25.setFont(font12)
         self.frame_25.setFrameShape(QFrame.StyledPanel)
         self.frame_25.setFrameShadow(QFrame.Raised)
 
@@ -1159,9 +1288,9 @@ class Ui_MainWindow(object):
         self.frame_26 = QFrame(self.frame_19)
         self.frame_26.setObjectName(u"frame_26")
         self.frame_26.setMaximumSize(QSize(16777215, 80))
-        font12 = QFont()
-        font12.setFamily(u"Agency FB")
-        self.frame_26.setFont(font12)
+        font13 = QFont()
+        font13.setFamily(u"Agency FB")
+        self.frame_26.setFont(font13)
         self.frame_26.setFrameShape(QFrame.StyledPanel)
         self.frame_26.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_19 = QHBoxLayout(self.frame_26)
@@ -1177,10 +1306,10 @@ class Ui_MainWindow(object):
         self.capture.setObjectName(u"capture")
         self.capture.setMinimumSize(QSize(400, 60))
         self.capture.setMaximumSize(QSize(400, 60))
-        font13 = QFont()
-        font13.setFamily(u"CAMERA - FOTOGRAAMI")
-        font13.setPointSize(35)
-        self.capture.setFont(font13)
+        font14 = QFont()
+        font14.setFamily(u"CAMERA - FOTOGRAAMI")
+        font14.setPointSize(35)
+        self.capture.setFont(font14)
         self.capture.setStyleSheet(u"QPushButton{\n"
 "color: #fff;\n"
 "background-color: #707070;\n"
@@ -1281,10 +1410,10 @@ class Ui_MainWindow(object):
         self.previous_data_button.setObjectName(u"previous_data_button")
         self.previous_data_button.setMinimumSize(QSize(80, 800))
         self.previous_data_button.setMaximumSize(QSize(100, 16777215))
-        font14 = QFont()
-        font14.setFamily(u"Californian FB")
-        font14.setPointSize(100)
-        self.previous_data_button.setFont(font14)
+        font15 = QFont()
+        font15.setFamily(u"Californian FB")
+        font15.setPointSize(100)
+        self.previous_data_button.setFont(font15)
         self.previous_data_button.setStyleSheet(u"QPushButton {\n"
 "color: #ffffff;\n"
 "background-color: rgb(112, 112, 112);\n"
@@ -1327,9 +1456,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
         self.take_photo = QPushButton(self.frame_32)
         self.take_photo.setObjectName(u"take_photo")
-        font15 = QFont()
-        font15.setFamily(u"JetBrains Mono NL Medium")
-        self.take_photo.setFont(font15)
+        font16 = QFont()
+        font16.setFamily(u"JetBrains Mono NL Medium")
+        self.take_photo.setFont(font16)
         self.take_photo.setCursor(QCursor(Qt.PointingHandCursor))
         self.take_photo.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(66, 72, 68);\n"
@@ -1341,7 +1470,7 @@ class Ui_MainWindow(object):
 
         self.import_file = QPushButton(self.frame_32)
         self.import_file.setObjectName(u"import_file")
-        self.import_file.setFont(font15)
+        self.import_file.setFont(font16)
         self.import_file.setCursor(QCursor(Qt.PointingHandCursor))
         self.import_file.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(66, 72, 68);\n"
@@ -1379,10 +1508,10 @@ class Ui_MainWindow(object):
         self.label71.setObjectName(u"label71")
         self.label71.setMaximumSize(QSize(90, 16777215))
         self.label71.setSizeIncrement(QSize(0, 0))
-        font16 = QFont()
-        font16.setFamily(u"JetBrains Mono Medium")
-        font16.setPointSize(10)
-        self.label71.setFont(font16)
+        font17 = QFont()
+        font17.setFamily(u"JetBrains Mono Medium")
+        font17.setPointSize(10)
+        self.label71.setFont(font17)
 
         self.horizontalLayout_31.addWidget(self.label71)
 
@@ -1415,9 +1544,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_32.setContentsMargins(0, 0, 0, 0)
         self.label_29 = QLabel(self.frame_53)
         self.label_29.setObjectName(u"label_29")
-        font17 = QFont()
-        font17.setFamily(u"JetBrains Mono NL ExtraBold")
-        self.label_29.setFont(font17)
+        font18 = QFont()
+        font18.setFamily(u"JetBrains Mono NL ExtraBold")
+        self.label_29.setFont(font18)
 
         self.horizontalLayout_32.addWidget(self.label_29)
 
@@ -1474,13 +1603,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
         self.label_18 = QLabel(self.student_details_name)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font17)
+        self.label_18.setFont(font18)
 
         self.verticalLayout_25.addWidget(self.label_18)
 
         self.student_name = QLabel(self.student_details_name)
         self.student_name.setObjectName(u"student_name")
-        self.student_name.setFont(font16)
+        self.student_name.setFont(font17)
 
         self.verticalLayout_25.addWidget(self.student_name)
 
@@ -1496,13 +1625,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.label_19 = QLabel(self.frame_35)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setFont(font17)
+        self.label_19.setFont(font18)
 
         self.verticalLayout_29.addWidget(self.label_19)
 
         self.student_school = QLabel(self.frame_35)
         self.student_school.setObjectName(u"student_school")
-        self.student_school.setFont(font16)
+        self.student_school.setFont(font17)
 
         self.verticalLayout_29.addWidget(self.student_school)
 
@@ -1526,13 +1655,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.label_20 = QLabel(self.frame_34)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font17)
+        self.label_20.setFont(font18)
 
         self.verticalLayout_30.addWidget(self.label_20)
 
         self.student_class = QLabel(self.frame_34)
         self.student_class.setObjectName(u"student_class")
-        self.student_class.setFont(font16)
+        self.student_class.setFont(font17)
 
         self.verticalLayout_30.addWidget(self.student_class)
 
@@ -1547,13 +1676,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.label_22 = QLabel(self.frame_43)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setFont(font17)
+        self.label_22.setFont(font18)
 
         self.verticalLayout_31.addWidget(self.label_22)
 
         self.student_course = QLabel(self.frame_43)
         self.student_course.setObjectName(u"student_course")
-        self.student_course.setFont(font16)
+        self.student_course.setFont(font17)
 
         self.verticalLayout_31.addWidget(self.student_course)
 
@@ -1579,7 +1708,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.label_23 = QLabel(self.frame_41)
         self.label_23.setObjectName(u"label_23")
-        self.label_23.setFont(font17)
+        self.label_23.setFont(font18)
         self.label_23.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
 
         self.verticalLayout_32.addWidget(self.label_23)
@@ -1619,7 +1748,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
         self.label_21 = QLabel(self.frame_46)
         self.label_21.setObjectName(u"label_21")
-        self.label_21.setFont(font17)
+        self.label_21.setFont(font18)
 
         self.horizontalLayout_26.addWidget(self.label_21)
 
@@ -1635,16 +1764,16 @@ class Ui_MainWindow(object):
         self.label_24 = QLabel(self.frame_48)
         self.label_24.setObjectName(u"label_24")
         self.label_24.setMaximumSize(QSize(190, 16777215))
-        self.label_24.setFont(font17)
+        self.label_24.setFont(font18)
 
         self.horizontalLayout_27.addWidget(self.label_24)
 
         self.student_gender = QLabel(self.frame_48)
         self.student_gender.setObjectName(u"student_gender")
-        font18 = QFont()
-        font18.setFamily(u"JetBrains Mono Medium")
-        font18.setPointSize(11)
-        self.student_gender.setFont(font18)
+        font19 = QFont()
+        font19.setFamily(u"JetBrains Mono Medium")
+        font19.setPointSize(11)
+        self.student_gender.setFont(font19)
 
         self.horizontalLayout_27.addWidget(self.student_gender)
 
@@ -1660,13 +1789,13 @@ class Ui_MainWindow(object):
         self.label_25 = QLabel(self.frame_47)
         self.label_25.setObjectName(u"label_25")
         self.label_25.setMaximumSize(QSize(190, 16777215))
-        self.label_25.setFont(font17)
+        self.label_25.setFont(font18)
 
         self.horizontalLayout_28.addWidget(self.label_25)
 
         self.date_of_birth_label = QLabel(self.frame_47)
         self.date_of_birth_label.setObjectName(u"date_of_birth_label")
-        self.date_of_birth_label.setFont(font18)
+        self.date_of_birth_label.setFont(font19)
 
         self.horizontalLayout_28.addWidget(self.date_of_birth_label)
 
@@ -1682,13 +1811,13 @@ class Ui_MainWindow(object):
         self.label_26 = QLabel(self.frame_50)
         self.label_26.setObjectName(u"label_26")
         self.label_26.setMaximumSize(QSize(190, 16777215))
-        self.label_26.setFont(font17)
+        self.label_26.setFont(font18)
 
         self.horizontalLayout_29.addWidget(self.label_26)
 
         self.parent_contact = QLabel(self.frame_50)
         self.parent_contact.setObjectName(u"parent_contact")
-        self.parent_contact.setFont(font18)
+        self.parent_contact.setFont(font19)
 
         self.horizontalLayout_29.addWidget(self.parent_contact)
 
@@ -1704,13 +1833,13 @@ class Ui_MainWindow(object):
         self.label_27 = QLabel(self.frame_49)
         self.label_27.setObjectName(u"label_27")
         self.label_27.setMaximumSize(QSize(190, 16777215))
-        self.label_27.setFont(font17)
+        self.label_27.setFont(font18)
 
         self.horizontalLayout_30.addWidget(self.label_27)
 
         self.index_number_bece = QLabel(self.frame_49)
         self.index_number_bece.setObjectName(u"index_number_bece")
-        self.index_number_bece.setFont(font18)
+        self.index_number_bece.setFont(font19)
 
         self.horizontalLayout_30.addWidget(self.index_number_bece)
 
@@ -1729,31 +1858,31 @@ class Ui_MainWindow(object):
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.label_28 = QLabel(self.frame_45)
         self.label_28.setObjectName(u"label_28")
-        self.label_28.setFont(font17)
+        self.label_28.setFont(font18)
 
         self.verticalLayout_34.addWidget(self.label_28)
 
         self.elective_1 = QLabel(self.frame_45)
         self.elective_1.setObjectName(u"elective_1")
-        self.elective_1.setFont(font18)
+        self.elective_1.setFont(font19)
 
         self.verticalLayout_34.addWidget(self.elective_1)
 
         self.elective_2 = QLabel(self.frame_45)
         self.elective_2.setObjectName(u"elective_2")
-        self.elective_2.setFont(font18)
+        self.elective_2.setFont(font19)
 
         self.verticalLayout_34.addWidget(self.elective_2)
 
         self.elective_3 = QLabel(self.frame_45)
         self.elective_3.setObjectName(u"elective_3")
-        self.elective_3.setFont(font18)
+        self.elective_3.setFont(font19)
 
         self.verticalLayout_34.addWidget(self.elective_3)
 
         self.elective_4 = QLabel(self.frame_45)
         self.elective_4.setObjectName(u"elective_4")
-        self.elective_4.setFont(font18)
+        self.elective_4.setFont(font19)
 
         self.verticalLayout_34.addWidget(self.elective_4)
 
@@ -1799,10 +1928,10 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.edit_student_button.sizePolicy().hasHeightForWidth())
         self.edit_student_button.setSizePolicy(sizePolicy3)
         self.edit_student_button.setMaximumSize(QSize(16777215, 16777215))
-        font19 = QFont()
-        font19.setFamily(u"JetBrains Mono NL Medium")
-        font19.setPointSize(10)
-        self.edit_student_button.setFont(font19)
+        font20 = QFont()
+        font20.setFamily(u"JetBrains Mono NL Medium")
+        font20.setPointSize(10)
+        self.edit_student_button.setFont(font20)
         self.edit_student_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.edit_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(107, 107, 107);\n"
@@ -1815,7 +1944,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.delete_student_button.sizePolicy().hasHeightForWidth())
         self.delete_student_button.setSizePolicy(sizePolicy3)
         self.delete_student_button.setMaximumSize(QSize(16777215, 16777215))
-        self.delete_student_button.setFont(font19)
+        self.delete_student_button.setFont(font20)
         self.delete_student_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.delete_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(107, 107, 107);\n"
@@ -1829,7 +1958,7 @@ class Ui_MainWindow(object):
         self.add_student_button = QPushButton(self.frame_37)
         self.add_student_button.setObjectName(u"add_student_button")
         self.add_student_button.setMaximumSize(QSize(16777215, 50))
-        self.add_student_button.setFont(font19)
+        self.add_student_button.setFont(font20)
         self.add_student_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.add_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(213, 93, 33);\n"
@@ -1857,7 +1986,7 @@ class Ui_MainWindow(object):
         self.next_data_button.setSizePolicy(sizePolicy3)
         self.next_data_button.setMinimumSize(QSize(80, 800))
         self.next_data_button.setMaximumSize(QSize(80, 16777215))
-        self.next_data_button.setFont(font14)
+        self.next_data_button.setFont(font15)
         self.next_data_button.setStyleSheet(u"QPushButton {\n"
 "color: #ffffff;\n"
 "background-color: rgb(112, 112, 112);\n"
@@ -1924,12 +2053,12 @@ class Ui_MainWindow(object):
         self.close_search.setObjectName(u"close_search")
         self.close_search.setMinimumSize(QSize(25, 25))
         self.close_search.setMaximumSize(QSize(25, 25))
-        font20 = QFont()
-        font20.setFamily(u"Arial")
-        font20.setPointSize(11)
-        font20.setBold(True)
-        font20.setWeight(75)
-        self.close_search.setFont(font20)
+        font21 = QFont()
+        font21.setFamily(u"Arial")
+        font21.setPointSize(11)
+        font21.setBold(True)
+        font21.setWeight(75)
+        self.close_search.setFont(font21)
 
         self.horizontalLayout_40.addWidget(self.close_search)
 
@@ -1951,10 +2080,10 @@ class Ui_MainWindow(object):
         self.listWidget = QListWidget(self.frame_58)
         QListWidgetItem(self.listWidget)
         self.listWidget.setObjectName(u"listWidget")
-        font21 = QFont()
-        font21.setFamily(u"JetBrains Mono NL SemiBold")
-        font21.setPointSize(16)
-        self.listWidget.setFont(font21)
+        font22 = QFont()
+        font22.setFamily(u"JetBrains Mono NL SemiBold")
+        font22.setPointSize(16)
+        self.listWidget.setFont(font22)
         self.listWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
         self.verticalLayout_39.addWidget(self.listWidget)
@@ -2579,6 +2708,12 @@ class Ui_MainWindow(object):
         self.label_41.setText(QCoreApplication.translate("MainWindow", u"Select Year Group:", None))
         self.year_group.setItemText(0, QCoreApplication.translate("MainWindow", u"2019", None))
 
+        self.label_40.setText(QCoreApplication.translate("MainWindow", u"Number of Students: ", None))
+        self.label_43.setText(QCoreApplication.translate("MainWindow", u"Number of Students Registered:", None))
+        self.label_44.setText(QCoreApplication.translate("MainWindow", u"Number of Students Cleared:", None))
+        self.label_46.setText("")
+        self.label_45.setText("")
+        self.label_47.setText("")
         self.view_data.setText(QCoreApplication.translate("MainWindow", u"View Students' Data", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; color:#414844;\">Create Account</span></p></body></html>", None))
         self.SchoolNameSignInLabel_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
