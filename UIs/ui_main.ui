@@ -1028,6 +1028,29 @@ background-color: rgb(185, 80, 28);
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_45">
            <item>
+            <widget class="QPushButton" name="pushButton_6">
+             <property name="font">
+              <font>
+               <family>Inter Medium</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(213, 93, 33);
+border-top-right-radius: 20px;
+border-top-left-radius: 20px;
+padding: 10px 20px;</string>
+             </property>
+             <property name="text">
+              <string>Add Students</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QFrame" name="frame_80">
              <property name="maximumSize">
               <size>
@@ -1395,6 +1418,9 @@ background-color: rgb(185, 80, 28);
                      <family>Inter SemiBold</family>
                      <pointsize>13</pointsize>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">color: rgb(255, 255, 255);
@@ -2806,6 +2832,30 @@ background-color: rgb(152, 152, 152);
         <property name="bottomMargin">
          <number>14</number>
         </property>
+        <item>
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+color: #ffffff;
+background-color: rgb(112, 112, 112);
+padding: 10px 20px;
+}
+
+QPushButton:hover {
+	background-color: rgb(168, 168, 168);
+}</string>
+          </property>
+          <property name="text">
+           <string>Back</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QFrame" name="search_frame">
           <property name="maximumSize">
