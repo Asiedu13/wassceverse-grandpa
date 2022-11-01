@@ -254,7 +254,7 @@ class MainWindow(QMainWindow):
 
         def camera_screen():
             self.selectCamera(0)
-            self.ui.stackedWidget.setCurrentIndex(2)
+            self.ui.stackedWidget.setCurrentIndex(3)
 
         # CHECK INFO
         def signIn():
@@ -283,12 +283,12 @@ class MainWindow(QMainWindow):
                     for data in CURSOR:
                         num_of_students = data[0]
 
-                    sql = "SELECT COUNT(*) AS count_students FROM student_details WHERE bece_year = ? and school = ?"
+                    sql = "SELECT COUNT(*) AS count_students FROM registered_students INNER JOIN student_details ON registered_students.student = student_details.id WHERE bece_year = ? and school = ?"
                     CURSOR.execute(sql, (year_group, self.school_id))
                     for data in CURSOR:
                         num_registered = data[0]
                     
-                    sql = "SELECT COUNT(*) AS count_students FROM student_details WHERE bece_year = ? and school = ?"
+                    sql = "SELECT COUNT(*) AS count_students FROM registered_students INNER JOIN student_details ON registered_students.student = student_details.id WHERE bece_year = ? and school = ? and cleared = 1"
                     CURSOR.execute(sql, (year_group, self.school_id))
                     for data in CURSOR:
                         num_cleared = data[0]
@@ -365,9 +365,77 @@ class MainWindow(QMainWindow):
             else:
                 self.getStudent(self.currentStudentId)
 
-        def add_student_dialog():
-            dialog = AddStudentInformation(self)
-            dialog.exec()
+        def update():
+            surname = self.ui.plainTextEdit.toPlainText()
+            first_name = self.ui.plainTextEdit_2.toPlainText()
+            other_names = self.ui.plainTextEdit_3.toPlainText()
+            dob = self.ui.dateEdit.date().toString("dd/MM/yyyy")
+            course = self.ui.comboBox.currentText()
+            class_ = self.ui.textEdit.toPlainText()
+            index_number = self.ui.plainTextEdit_4.toPlainText()
+            year_completed = str(self.ui.dateEdit_2.date().year())
+
+            checkboxes = [
+                self.ui.checkBox,
+                self.ui.checkBox_2,
+                self.ui.checkBox_3,
+                self.ui.checkBox_4,
+                self.ui.checkBox_5,
+                self.ui.checkBox_6,
+                self.ui.checkBox_7,
+                self.ui.checkBox_8,
+                self.ui.checkBox_9,
+                self.ui.checkBox_10,
+                self.ui.checkBox_11,
+                self.ui.checkBox_12,
+                self.ui.checkBox_13,
+                self.ui.checkBox_14,
+                self.ui.checkBox_15,
+                self.ui.checkBox_16,
+                self.ui.checkBox_17,
+                self.ui.checkBox_18,
+                self.ui.checkBox_19,
+                self.ui.checkBox_20,
+                self.ui.checkBox_21,
+                self.ui.checkBox_22,
+                self.ui.checkBox_23,
+                self.ui.checkBox_24
+            ]
+
+            radios = [self.ui.radioButton, self.ui.radioButton_2]
+
+            elective = []
+            for checkbox in checkboxes:
+                if checkbox.isChecked():
+                    elective.append(checkbox.text())
+
+            gender = ""
+            for radio in radios:
+                if radio.isChecked():
+                    gender = radio.text()
+
+            parent_contact = self.ui.plainTextEdit_5.toPlainText()
+            if len(elective) == 4:
+                electives = f'{elective[0]},{elective[1]},{elective[2]},{elective[3]}'
+            else:
+                electives = ""
+            
+            if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
+                sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed))
+                CONNECTION.commit()
+
+                sql = "SELECT * FROM student_details WHERE surname = ? AND first_name = ? AND other_names = ? AND index_number = ?"
+                CURSOR.execute(sql, (surname, first_name, other_names, index_number,))
+                data = []
+                for d in CURSOR:
+                    data.append(d)
+                    student = data[0][0]
+                
+                sql = "INSERT INTO registered_students (student) VALUES (?)"
+                CURSOR.execute(sql, (student,))
+                CONNECTION.commit()
+                switch_screen(4)
 
         def edit_student_function():
             switch_screen(5)
@@ -419,8 +487,6 @@ class MainWindow(QMainWindow):
                 if radio.text() == data[9]:
                     radio.setChecked(True)
             self.ui.plainTextEdit.setPlainText(data[1])
-
-            
             
         def getImageFromFile():
             src = self.get_image_file()
@@ -465,11 +531,12 @@ class MainWindow(QMainWindow):
         self.ui.edit_student_button.clicked.connect(
             lambda: edit_student_function())
         self.ui.add_student_button.clicked.connect(
-            lambda: add_student_dialog())
-        self.ui.pushButton.clicked.connect(lambda: add_student_dialog())
+            lambda: switch_screen(6))
+        self.ui.pushButton.clicked.connect(lambda: switch_screen(6))
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
         self.ui.import_file.clicked.connect(lambda: getImageFromFile())
         self.ui.searchbar_main.textChanged.connect(lambda: getStudentList())
+        self.ui.save_edit.clicked.connect(lambda: update())
 
         def getStudentList():
             sql = "SELECT * FROM student_details WHERE school = ?"
