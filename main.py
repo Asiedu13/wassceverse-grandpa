@@ -582,6 +582,8 @@ class MainWindow(QMainWindow):
         self.ui.save_edit.clicked.connect(lambda: update())
         self.ui.cancel_edit.clicked.connect(lambda: switch_screen(4))
         self.ui.year_group.activated.connect(lambda: bece_year_update())
+        self.ui.pushButton_5.clicked.connect(lambda: switch_screen(1))
+        self.ui.pushButton_7.clicked.connect(lambda: self.logout())
 
         def bece_year_update():
             self.bece_year = self.ui.year_group.currentText()
@@ -625,6 +627,20 @@ class MainWindow(QMainWindow):
 
     # APP EVENTS
     ########################################################################
+
+    def logout(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.savePath = None
+        self.school_id = 0
+        self.bece_year = 2019
+        self.students = []
+        self.studentData = []
+        self.currentStudentId = 0
+        self.studentsNo = 0
+        self.schools = []
+        self.codes = []
+        self.emails = []
+        self.edit_add = ""
 
     def get_image_file(self):
         options = QFileDialog.Options()

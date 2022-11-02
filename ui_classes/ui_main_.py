@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_maindmrXPh.ui'
+## Form generated from reading UI file 'ui_mainVumIqe.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -486,20 +486,43 @@ class Ui_MainWindow(object):
         self.frame_79.setFrameShadow(QFrame.Raised)
         self.verticalLayout_45 = QVBoxLayout(self.frame_79)
         self.verticalLayout_45.setObjectName(u"verticalLayout_45")
-        self.pushButton_6 = QPushButton(self.frame_79)
-        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.frame_100 = QFrame(self.frame_79)
+        self.frame_100.setObjectName(u"frame_100")
+        self.frame_100.setMaximumSize(QSize(16777215, 50))
+        self.frame_100.setFrameShape(QFrame.StyledPanel)
+        self.frame_100.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_62 = QHBoxLayout(self.frame_100)
+        self.horizontalLayout_62.setSpacing(3)
+        self.horizontalLayout_62.setObjectName(u"horizontalLayout_62")
+        self.horizontalLayout_62.setContentsMargins(0, 0, 0, 0)
+        self.pushButton_7 = QPushButton(self.frame_100)
+        self.pushButton_7.setObjectName(u"pushButton_7")
+        self.pushButton_7.setMaximumSize(QSize(150, 40))
         font8 = QFont()
         font8.setFamily(u"Inter Medium")
         font8.setPointSize(12)
+        self.pushButton_7.setFont(font8)
+        self.pushButton_7.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(148, 22, 24);\n"
+"border-top-left-radius: 20px;\n"
+"padding: 10px 20px;")
+
+        self.horizontalLayout_62.addWidget(self.pushButton_7)
+
+        self.pushButton_6 = QPushButton(self.frame_100)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setMaximumSize(QSize(16777215, 40))
         self.pushButton_6.setFont(font8)
         self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_6.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(213, 93, 33);\n"
 "border-top-right-radius: 20px;\n"
-"border-top-left-radius: 20px;\n"
 "padding: 10px 20px;")
 
-        self.verticalLayout_45.addWidget(self.pushButton_6)
+        self.horizontalLayout_62.addWidget(self.pushButton_6)
+
+
+        self.verticalLayout_45.addWidget(self.frame_100)
 
         self.frame_80 = QFrame(self.frame_79)
         self.frame_80.setObjectName(u"frame_80")
@@ -2721,7 +2744,7 @@ class Ui_MainWindow(object):
         self.btn_close.clicked.connect(MainWindow.close)
         self.btn_minimize.clicked.connect(MainWindow.showMinimized)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2747,6 +2770,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"New User?", None))
         self.SignUpButton.setText(QCoreApplication.translate("MainWindow", u"Create an Account", None))
         self.SignInSubmit.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
+        self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
         self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"Add Students", None))
         self.label_41.setText(QCoreApplication.translate("MainWindow", u"Select Year Group:", None))
         self.year_group.setItemText(0, QCoreApplication.translate("MainWindow", u"2019", None))
