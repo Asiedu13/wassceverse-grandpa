@@ -414,7 +414,6 @@ class MainWindow(QMainWindow):
         self.ui.SignInSubmit_2.clicked.connect(lambda: signUp("server2.db"))
         self.ui.next_data_button.clicked.connect(lambda: nextStudent())
         self.ui.previous_data_button.clicked.connect(lambda: previousStudent())
-        self.ui.search_student_button.clicked.connect(lambda: switch_screen(4))
         self.ui.close_search.clicked.connect(lambda: switch_screen(3))
         self.ui.take_photo.clicked.connect(lambda: camera_screen())
         self.ui.capture.clicked.connect(lambda: self.clickPhoto())
