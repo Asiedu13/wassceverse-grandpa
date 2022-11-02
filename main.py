@@ -11,6 +11,8 @@ from PySide2.QtMultimediaWidgets import *
 from PySide2.QtWidgets import *
 
 import sys
+import random
+import string
 import hashlib
 import pathlib
 import os
@@ -97,7 +99,19 @@ class MainWindow(QMainWindow):
             self.selectCamera(0)
             self.ui.stackedWidget.setCurrentIndex(3)
 
-        def generate_key()
+        def generate_key():
+            index_numbers = []
+            sql = "SELECT index_number FROM student_details WHERE school = ? AND bece_year = ?"
+            CURSOR.execute(sql, (self.studentData[0],))
+            for d in CURSOR:
+                index_numbers.append(d[0])
+            
+            for index_number in index_numbers:
+                sql = "UPDATE student_details SET student_key = ? WHERE index_number = ?"
+                letters = string.ascii_lowercase + "0123456789"
+                code = ''.join(random.choice(letters) for i in range(6))
+                CURSOR.execute(sql,(code, index_number))
+
 
         # CHECK INFO
         def signIn():
@@ -499,6 +513,7 @@ class MainWindow(QMainWindow):
         self.ui.import_file.clicked.connect(lambda: getImageFromFile())
         self.ui.searchbar_main.textChanged.connect(lambda: getStudentList())
         self.ui.save_edit.clicked.connect(lambda: update())
+        self.ui.pushButton_9.clicked.connect(lambda: generate_key())
         self.ui.cancel_edit.clicked.connect(lambda: switch_screen(4))
         self.ui.year_group.activated.connect(lambda: bece_year_update())
         self.ui.pushButton_5.clicked.connect(lambda: switch_screen(1))
