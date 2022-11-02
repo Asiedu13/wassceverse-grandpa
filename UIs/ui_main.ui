@@ -224,14 +224,14 @@ background-color: rgb(255, 22, 22);
        </font>
       </property>
       <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
+       <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">border-radius: 0 0 20px 20px;
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
@@ -3171,6 +3171,32 @@ QPushButton:hover {
                       </property>
                       <property name="text">
                        <string>Registered: </string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton_8">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>JetBrains Mono NL Medium</family>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(213, 93, 33);</string>
+                      </property>
+                      <property name="text">
+                       <string>Register</string>
                       </property>
                      </widget>
                     </item>
