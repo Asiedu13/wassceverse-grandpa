@@ -231,7 +231,7 @@ background-color: rgb(255, 22, 22);
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
@@ -2966,13 +2966,13 @@ QPushButton:hover {
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_36">
-           <item>
-            <widget class="QFrame" name="SchoolNameBorder_8">
+          <layout class="QVBoxLayout" name="verticalLayout_39">
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QFrame" name="SchoolNameBorder_9">
              <property name="minimumSize">
               <size>
-               <width>0</width>
-               <height>35</height>
+               <width>600</width>
+               <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -2991,7 +2991,7 @@ border-radius:8px;</string>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_35">
+             <layout class="QHBoxLayout" name="horizontalLayout_39">
               <property name="spacing">
                <number>0</number>
               </property>
@@ -3008,7 +3008,7 @@ border-radius:8px;</string>
                <number>1</number>
               </property>
               <item>
-               <widget class="QFrame" name="frame_55">
+               <widget class="QFrame" name="frame_57">
                 <property name="maximumSize">
                  <size>
                   <width>600</width>
@@ -3025,7 +3025,7 @@ border-radius: 8px;</string>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_37">
+                <layout class="QHBoxLayout" name="horizontalLayout_40">
                  <property name="spacing">
                   <number>0</number>
                  </property>
@@ -3042,23 +3042,53 @@ border-radius: 8px;</string>
                   <number>5</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="search_student_button">
+                  <widget class="QLineEdit" name="searchbar_main">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="font">
+                    <font>
+                     <stylestrategy>PreferDefault</stylestrategy>
+                    </font>
+                   </property>
                    <property name="cursor">
                     <cursorShape>IBeamCursor</cursorShape>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">padding-left: 10px;
-text-align: left;
-color: rgb(165, 165, 165);</string>
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Search Student</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="close_search">
+                   <property name="minimumSize">
+                    <size>
+                     <width>25</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>25</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Arial</family>
+                     <pointsize>11</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
                    </property>
                    <property name="text">
-                    <string>Search Student</string>
+                    <string>X</string>
                    </property>
                   </widget>
                  </item>
@@ -4386,185 +4416,6 @@ QPushButton:hover {
         <property name="bottomMargin">
          <number>0</number>
         </property>
-        <item>
-         <widget class="QFrame" name="search_frame_2">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>85</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color:#f2f4ee;</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_38">
-           <property name="topMargin">
-            <number>25</number>
-           </property>
-           <item>
-            <widget class="QFrame" name="SchoolNameBorder_9">
-             <property name="maximumSize">
-              <size>
-               <width>600</width>
-               <height>35</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: #414844;
-border-radius:8px;</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_39">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <property name="leftMargin">
-               <number>1</number>
-              </property>
-              <property name="topMargin">
-               <number>1</number>
-              </property>
-              <property name="rightMargin">
-               <number>1</number>
-              </property>
-              <property name="bottomMargin">
-               <number>1</number>
-              </property>
-              <item>
-               <widget class="QFrame" name="frame_57">
-                <property name="maximumSize">
-                 <size>
-                  <width>600</width>
-                  <height>35</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 8px;</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_40">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>5</number>
-                 </property>
-                 <item>
-                  <widget class="QLineEdit" name="searchbar_main">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <stylestrategy>PreferDefault</stylestrategy>
-                    </font>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>IBeamCursor</cursorShape>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="placeholderText">
-                    <string>Search Student</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="close_search">
-                   <property name="minimumSize">
-                    <size>
-                     <width>25</width>
-                     <height>25</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>25</width>
-                     <height>25</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Arial</family>
-                     <pointsize>11</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>X</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QFrame" name="frame_58">
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_39">
-           <item>
-            <widget class="QListWidget" name="listWidget">
-             <property name="font">
-              <font>
-               <family>JetBrains Mono NL SemiBold</family>
-               <pointsize>16</pointsize>
-              </font>
-             </property>
-             <property name="horizontalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
-             </property>
-             <item>
-              <property name="text">
-               <string>Name</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="edit">

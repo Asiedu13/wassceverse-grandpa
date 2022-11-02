@@ -491,6 +491,7 @@ class MainWindow(QMainWindow):
         self.codes = []
         self.emails = []
         self.edit_add = ""
+        self.ui.passwordSignIn.setText("")
 
     def get_image_file(self):
         options = QFileDialog.Options()
