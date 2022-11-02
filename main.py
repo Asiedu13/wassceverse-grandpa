@@ -231,6 +231,7 @@ class MainWindow(QMainWindow):
         self.viewFinder = self.ui.camera_input
         self.savePath = None
         self.school_id = 0
+        self.bece_year = 2019
         self.students = []
         self.studentData = []
         self.currentStudentId = 0
@@ -244,6 +245,7 @@ class MainWindow(QMainWindow):
         self.schools = []
         self.codes = []
         self.emails = []
+        self.edit_add = ""
         for data in CURSOR:
             self.schools.append(data[1])
             self.codes.append(data[4])
@@ -305,6 +307,7 @@ class MainWindow(QMainWindow):
                     for d in CURSOR:
                         data.append(d)
                     self.studentsNo = len(data)
+                    self.bece_year = self.ui.year_group.currentText()
                     if self.studentsNo > 0:
                         self.getStudent(0)
                         self.ui.view_data.clicked.connect(lambda: switch_screen(4))
@@ -370,7 +373,8 @@ class MainWindow(QMainWindow):
             first_name = self.ui.plainTextEdit_2.toPlainText()
             other_names = self.ui.plainTextEdit_3.toPlainText()
             dob = self.ui.dateEdit.date().toString("dd/MM/yyyy")
-            course = self.ui.comboBox.currentText()
+            course = self.ui.comboBox_2.currentText()
+            print(course)
             class_ = self.ui.textEdit.toPlainText()
             index_number = self.ui.plainTextEdit_4.toPlainText()
             year_completed = str(self.ui.dateEdit_2.date().year())
@@ -413,6 +417,13 @@ class MainWindow(QMainWindow):
             for radio in radios:
                 if radio.isChecked():
                     gender = radio.text()
+            
+            if gender.lower() == "male":
+                gender = 0
+            elif gender.lower() == "female":
+                gender = 1
+
+            print(gender)
 
             parent_contact = self.ui.plainTextEdit_5.toPlainText()
             if len(elective) == 4:
@@ -420,26 +431,46 @@ class MainWindow(QMainWindow):
             else:
                 electives = ""
             
-            if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
-                sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-                CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed))
-                CONNECTION.commit()
+            if self.edit_add == "add":
+                if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
+                    sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed))
+                    CONNECTION.commit()
 
-                sql = "SELECT * FROM student_details WHERE surname = ? AND first_name = ? AND other_names = ? AND index_number = ?"
-                CURSOR.execute(sql, (surname, first_name, other_names, index_number,))
-                data = []
-                for d in CURSOR:
-                    data.append(d)
-                    student = data[0][0]
-                
-                sql = "INSERT INTO registered_students (student) VALUES (?)"
-                CURSOR.execute(sql, (student,))
-                CONNECTION.commit()
-                switch_screen(4)
+                    sql = "SELECT * FROM student_details WHERE surname = ? AND first_name = ? AND other_names = ? AND index_number = ?"
+                    CURSOR.execute(sql, (surname, first_name, other_names, index_number,))
+                    data = []
+                    for d in CURSOR:
+                        data.append(d)
+                        student = data[0][0]
+                    
+                    sql = "INSERT INTO registered_students (student) VALUES (?)"
+                    CURSOR.execute(sql, (student,))
+                    CONNECTION.commit()
+            
+            elif self.edit_add == "edit":
+                if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
+                    sql = "UPDATE student_details SET school = ?, surname = ?, first_name = ?, other_names = ?, course = ?, class = ?, index_number = ?, electives = ?, gender = ?, parent_contact = ?, date_of_birth = ?, bece_year = ? WHERE id = ?"
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed, self.studentData[0]))
+                    CONNECTION.commit()
+
+                    sql = "SELECT COUNT(*) FROM registered_students WHERE student = ?"
+                    CURSOR.execute(sql, (self.studentData[0],))
+                    data = []
+                    for d in CURSOR:
+                        data.append(d)
+                        student = data[0]
+                    
+                    if student == 0:
+                        sql = "INSERT INTO registered_students (student) VALUES (?)"
+                        CURSOR.execute(sql, (self.studentData[0],))
+                        CONNECTION.commit()
+            self.edit_add = ""
+            switch_screen(4)
 
         def edit_student_function():
-            switch_screen(5)
-            school = self.school_name
+            switch_screen(6, "edit")
+            school = self.school_id
             index = self.studentData[0]
             listIndex = self.currentStudentId
             sql = "SELECT * FROM student_details WHERE school = ?"
@@ -483,10 +514,22 @@ class MainWindow(QMainWindow):
                         checkbox.setChecked(True)
 
             radios = [self.ui.radioButton, self.ui.radioButton_2]
+            if data[9] == 0:
+                gender = "Male"
+            elif data[9] == 1:
+                gender = "Female"
             for radio in radios:
-                if radio.text() == data[9]:
+                if radio.text() == gender:
                     radio.setChecked(True)
-            self.ui.plainTextEdit.setPlainText(data[1])
+            self.ui.plainTextEdit.setPlainText(data[2])
+            self.ui.plainTextEdit_2.setPlainText(data[3])
+            self.ui.plainTextEdit_3.setPlainText(data[4])
+            self.ui.textEdit.setText(data[6])
+            self.ui.plainTextEdit_4.setPlainText(data[7])
+            self.ui.plainTextEdit_5.setPlainText(data[10])
+            self.ui.comboBox_2.setCurrentText(data[5])
+            date = data[11].split("/")
+            self.ui.dateEdit.setDate(QDate(int(date[2]), int(date[1]), int(date[0])))
             
         def getImageFromFile():
             src = self.get_image_file()
@@ -531,23 +574,28 @@ class MainWindow(QMainWindow):
         self.ui.edit_student_button.clicked.connect(
             lambda: edit_student_function())
         self.ui.add_student_button.clicked.connect(
-            lambda: switch_screen(6))
-        self.ui.pushButton.clicked.connect(lambda: switch_screen(6))
+            lambda: switch_screen(6, "add"))
+        self.ui.pushButton.clicked.connect(lambda: switch_screen(6, "add"))
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
         self.ui.import_file.clicked.connect(lambda: getImageFromFile())
         self.ui.searchbar_main.textChanged.connect(lambda: getStudentList())
         self.ui.save_edit.clicked.connect(lambda: update())
+        self.ui.cancel_edit.clicked.connect(lambda: switch_screen(4))
+        self.ui.year_group.activated.connect(lambda: bece_year_update())
+
+        def bece_year_update():
+            self.bece_year = self.ui.year_group.currentText()
 
         def getStudentList():
-            sql = "SELECT * FROM student_details WHERE school = ?"
-            CURSOR.execute(sql, (self.school_name,))
+            sql = "SELECT * FROM student_details WHERE school = ? and bece_year = ?"
+            CURSOR.execute(sql, (self.school_id, self.bece_year))
             data = []
             for d in CURSOR:
                 data.append(d)
             search = self.ui.searchbar_main.text()
             names = []
             for d in data:
-                name = f"{d[1]} {d[2]} {d[3]}".strip()
+                name = f"{d[2]} {d[3]} {d[4]}".strip()
                 names.append(name)
 
             # TODO: The search results
@@ -560,11 +608,12 @@ class MainWindow(QMainWindow):
 
             def searchRes(item):
                 self.getStudent(results[item.text()][1])
-                self.ui.stackedWidget.setCurrentIndex(3)
+                self.ui.stackedWidget.setCurrentIndex(4)
 
             self.ui.listWidget.itemClicked.connect(searchRes)
 
-        def switch_screen(screen: int):
+        def switch_screen(screen: int, action: str = ""):
+            self.edit_add = action
             self.ui.stackedWidget.setCurrentIndex(screen)
 
         # ==> SET UI DEFINITIONS
@@ -585,8 +634,23 @@ class MainWindow(QMainWindow):
         return file_name
 
     def getStudent(self, id=0):
-        sql = "SELECT * FROM student_details WHERE school = ?"
-        CURSOR.execute(sql, (self.school_name,))
+        sql = """SELECT
+            student_details.id,
+            student_details.surname,
+            student_details.first_name,
+            student_details.other_names,
+            student_details.course,
+            student_details.class,
+            student_details.index_number,
+            student_details.electives,
+            student_details.gender,
+            student_details.parent_contact,
+            student_details.date_of_birth,
+            registered_schools.school_name 
+            FROM student_details JOIN registered_schools
+            ON student_details.school = registered_schools.id
+            WHERE student_details.school = ? AND student_details.bece_year = ?"""
+        CURSOR.execute(sql, (self.school_id, self.bece_year))
         data = []
         for d in CURSOR:
             data.append(d)
@@ -642,11 +706,14 @@ class MainWindow(QMainWindow):
         if len(data) != 0:
             name = f"{data[id][1]} {data[id][2]} {data[id][3]}"
             self.ui.student_name.setText(name.strip())
-            self.ui.student_school.setText(data[id][9])
+            self.ui.student_school.setText(data[id][10])
             self.ui.student_class.setText(data[id][5])
             self.ui.student_course.setText(data[id][4])
-            self.ui.student_gender.setText(data[id][10].title())
-            date = data[id][12]
+            if data[id][8] == 0:
+                self.ui.student_gender.setText("Male")
+            elif data[id][8] == 1:
+                self.ui.student_gender.setText("Female")
+            date = data[id][10]
             date = date.split("/")
             day = int(date[0])
             suffix = ""
@@ -663,15 +730,15 @@ class MainWindow(QMainWindow):
 
             date = f"{day} {month} {date[2]}"
             self.ui.date_of_birth_label.setText(date)
-            self.ui.parent_contact.setText(data[id][11])
+            self.ui.parent_contact.setText(data[id][9])
             self.ui.index_number_bece.setText(data[id][6])
-            electives_array = data[id][8].split(",")
+            electives_array = data[id][7].split(",")
             self.ui.elective_1.setText(electives_array[0])
             self.ui.elective_2.setText(electives_array[1])
             self.ui.elective_3.setText(electives_array[2])
             self.ui.elective_4.setText(electives_array[3])
 
-            saveDir = SAVE_PATH / self.studentData[9]
+            saveDir = SAVE_PATH / self.studentData[10]
             saveFolder = saveDir / self.studentData[5]
             fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}'.strip(
             ) + '.jpg'

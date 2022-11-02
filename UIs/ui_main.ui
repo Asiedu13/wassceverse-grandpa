@@ -231,7 +231,7 @@ background-color: rgb(255, 22, 22);
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
@@ -3089,6 +3089,25 @@ QPushButton:hover {
                       </property>
                       <property name="scaledContents">
                        <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_48">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>JetBrains Mono NL SemiBold</family>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Registered: </string>
                       </property>
                      </widget>
                     </item>
