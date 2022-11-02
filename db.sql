@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2022 at 02:15 AM
+-- Generation Time: Nov 02, 2022 at 11:00 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -60,6 +60,13 @@ CREATE TABLE `registered_students` (
   `cleared` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `registered_students`
+--
+
+INSERT INTO `registered_students` (`id`, `student`, `wassce_index_number`, `wassce_year`, `cleared`) VALUES
+(2, 4, NULL, NULL, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -82,8 +89,16 @@ CREATE TABLE `student_details` (
   `signature` blob NOT NULL,
   `image` blob NOT NULL,
   `fingerprint` blob NOT NULL,
-  `bece_year` int(11) NOT NULL
+  `bece_year` int(11) NOT NULL,
+  `student_key` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_details`
+--
+
+INSERT INTO `student_details` (`id`, `school`, `surname`, `first_name`, `other_names`, `course`, `class`, `index_number`, `electives`, `gender`, `parent_contact`, `date_of_birth`, `signature`, `image`, `fingerprint`, `bece_year`, `student_key`) VALUES
+(4, 1, 'Asiedu', 'Prince', 'Kofi', 'General Science', '3 Science 2', '0102034005', 'Chemistry,Physics,Elective ICT,Elective Mathematics', 0, '+233 (0) 2443455673', '21/01/2004', '', '', '', 2019, NULL);
 
 --
 -- Indexes for dumped tables
@@ -123,13 +138,13 @@ ALTER TABLE `registered_schools`
 -- AUTO_INCREMENT for table `registered_students`
 --
 ALTER TABLE `registered_students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student_details`
 --
 ALTER TABLE `student_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

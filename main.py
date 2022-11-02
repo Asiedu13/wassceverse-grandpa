@@ -15,7 +15,7 @@ import hashlib
 import pathlib
 import os
 import mariadb
-import plotly.graph_objects as go
+import plotly.express as px
 
 
 # GUI FILES
@@ -97,6 +97,8 @@ class MainWindow(QMainWindow):
             self.selectCamera(0)
             self.ui.stackedWidget.setCurrentIndex(3)
 
+        def generate_key()
+
         # CHECK INFO
         def signIn():
             schoolName = self.ui.schoolNameSignIn.text()
@@ -152,6 +154,74 @@ class MainWindow(QMainWindow):
                         data.append(d)
                     self.studentsNo = len(data)
                     self.bece_year = self.ui.year_group.currentText()
+                    sql = "SELECT bece_year FROM student_details where school = ?"
+                    CURSOR.execute(sql, (self.school_id,))
+                    years = []
+                    for d in CURSOR:
+                        years.append(d[0])
+                    years.sort()
+
+                    total_num = []
+                    for year in years:
+                        sql = "SELECT COUNT(*) FROM student_details WHERE student_details.bece_year = ? AND student_details.school = ?"
+                        CURSOR.execute(sql, (year, self.school_id))
+                        for d in CURSOR:
+                            total_num.append(d[0])
+                    
+                    reg_list = []
+                    for year in years:
+                        sql = "SELECT COUNT(*) FROM registered_students JOIN student_details ON student_details.id = registered_students.student WHERE student_details.bece_year = ? AND student_details.school = ?"
+                        CURSOR.execute(sql, (year, self.school_id))
+                        for d in CURSOR:
+                            reg_list.append(d[0])
+
+                    clear_list = []
+                    for year in years:
+                        sql = "SELECT COUNT(*) FROM registered_students JOIN student_details ON student_details.id = registered_students.student WHERE student_details.bece_year = ? AND student_details.school = ? AND cleared = 1"
+                        CURSOR.execute(sql, (year, self.school_id))
+                        for d in CURSOR:
+                            clear_list.append(d[0])
+
+                    self.ui.widget_2.setHtml(f"""
+                        <html>
+                            <head>
+                                <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+                            </head>
+                            <body>
+                                <div id="graph" style="height: 400px;"></div>
+                                <script>
+                                    var trace1 = {{
+                                        x: {years},
+                                        y: {total_num},
+                                        name: 'Total Number of Students',
+                                        type: 'bar'
+                                    }};
+
+                                    var trace2 = {{
+                                        x: {years},
+                                        y: {reg_list},
+                                        name: 'Registered Students',
+                                        type: 'bar'
+                                    }};
+
+                                    var trace3 = {{
+                                        x: {years},
+                                        y: {clear_list},
+                                        name: 'Students Cleared',
+                                        type: 'bar'
+                                    }};
+
+                                    var data = [trace1, trace2, trace3];
+
+                                    var layout = {{barmode: 'group'}};
+
+                                    Plotly.newPlot('graph', data, layout);
+
+                                </script>
+                            </body>
+                        </html>
+                    """)
+
                     if self.studentsNo > 0:
                         self.getStudent(0)
                         self.ui.view_data.clicked.connect(lambda: switch_screen(4))
@@ -414,6 +484,7 @@ class MainWindow(QMainWindow):
         self.ui.SignInSubmit_2.clicked.connect(lambda: signUp("server2.db"))
         self.ui.next_data_button.clicked.connect(lambda: nextStudent())
         self.ui.previous_data_button.clicked.connect(lambda: previousStudent())
+        self.ui.search_student_button.clicked.connect(lambda: switch_screen(5))
         self.ui.close_search.clicked.connect(lambda: switch_screen(3))
         self.ui.take_photo.clicked.connect(lambda: camera_screen())
         self.ui.capture.clicked.connect(lambda: self.clickPhoto())
