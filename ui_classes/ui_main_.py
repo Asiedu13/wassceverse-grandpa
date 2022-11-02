@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainYdscEm.ui'
+## Form generated from reading UI file 'ui_mainUhnsfo.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -502,6 +502,7 @@ class Ui_MainWindow(object):
         font8.setFamily(u"Inter Medium")
         font8.setPointSize(12)
         self.pushButton_7.setFont(font8)
+        self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_7.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(148, 22, 24);\n"
 "border-top-left-radius: 20px;\n"
@@ -515,11 +516,22 @@ class Ui_MainWindow(object):
         self.pushButton_6.setFont(font8)
         self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_6.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(100, 100, 100);\n"
+"padding: 10px 20px;")
+
+        self.horizontalLayout_62.addWidget(self.pushButton_6)
+
+        self.pushButton_9 = QPushButton(self.frame_100)
+        self.pushButton_9.setObjectName(u"pushButton_9")
+        self.pushButton_9.setMaximumSize(QSize(255, 40))
+        self.pushButton_9.setFont(font8)
+        self.pushButton_9.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_9.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(213, 93, 33);\n"
 "border-top-right-radius: 20px;\n"
 "padding: 10px 20px;")
 
-        self.horizontalLayout_62.addWidget(self.pushButton_6)
+        self.horizontalLayout_62.addWidget(self.pushButton_9)
 
 
         self.verticalLayout_45.addWidget(self.frame_100)
@@ -2754,7 +2766,7 @@ class Ui_MainWindow(object):
         self.btn_close.clicked.connect(MainWindow.close)
         self.btn_minimize.clicked.connect(MainWindow.showMinimized)
 
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2781,7 +2793,8 @@ class Ui_MainWindow(object):
         self.SignUpButton.setText(QCoreApplication.translate("MainWindow", u"Create an Account", None))
         self.SignInSubmit.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
         self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"Add Students", None))
+        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"Import Students Data", None))
+        self.pushButton_9.setText(QCoreApplication.translate("MainWindow", u"Generate Student Keys", None))
         self.label_41.setText(QCoreApplication.translate("MainWindow", u"Select Year Group:", None))
         self.year_group.setItemText(0, QCoreApplication.translate("MainWindow", u"2019", None))
 
