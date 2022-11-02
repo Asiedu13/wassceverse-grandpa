@@ -137,7 +137,7 @@ class MainWindow(QMainWindow):
                     sql = "SELECT * from registered_students"
                     CURSOR.execute(sql)
                     for data in CURSOR:
-                        self.registered_sudents_list.append(data[0][0])
+                        self.registered_sudents_list.append(data[1])
 
                     self.ui.label_40.setText(f"Number of Students: {num_of_students}")
                     self.ui.label_43.setText(f"Number of Students Registered: {num_registered}")

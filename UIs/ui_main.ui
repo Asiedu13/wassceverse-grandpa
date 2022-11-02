@@ -231,7 +231,7 @@ background-color: rgb(255, 22, 22);
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">
@@ -1071,6 +1071,9 @@ background-color: rgb(185, 80, 28);
                   <pointsize>12</pointsize>
                  </font>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(148, 22, 24);
@@ -1101,12 +1104,39 @@ padding: 10px 20px;</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(100, 100, 100);
+padding: 10px 20px;</string>
+                </property>
+                <property name="text">
+                 <string>Import Students Data</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_9">
+                <property name="maximumSize">
+                 <size>
+                  <width>255</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Inter Medium</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(213, 93, 33);
 border-top-right-radius: 20px;
 padding: 10px 20px;</string>
                 </property>
                 <property name="text">
-                 <string>Add Students</string>
+                 <string>Generate Student Keys</string>
                 </property>
                </widget>
               </item>
