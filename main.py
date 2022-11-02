@@ -134,6 +134,11 @@ class MainWindow(QMainWindow):
                     for data in CURSOR:
                         num_cleared = data[0]
 
+                    sql = "SELECT * from registered_students"
+                    CURSOR.execute(sql)
+                    for data in CURSOR:
+                        self.registered_sudents_list.append(data[0][0])
+
                     self.ui.label_40.setText(f"Number of Students: {num_of_students}")
                     self.ui.label_43.setText(f"Number of Students Registered: {num_registered}")
                     self.ui.label_44.setText(f"Number of Students Cleared: {num_cleared}")
@@ -564,6 +569,11 @@ class MainWindow(QMainWindow):
             self.ui.student_school.setText(data[id][10])
             self.ui.student_class.setText(data[id][5])
             self.ui.student_course.setText(data[id][4])
+            if data[id][0] in self.registered_sudents_list:
+                self.ui.label_48.setText("Registered: Yes")
+            else:
+                self.ui.label_48.setText("Registered: No")
+
             if data[id][8] == 0:
                 self.ui.student_gender.setText("Male")
             elif data[id][8] == 1:
