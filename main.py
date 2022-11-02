@@ -298,6 +298,12 @@ class MainWindow(QMainWindow):
                     CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed, self.studentData[0]))
                     CONNECTION.commit()
 
+            elif self.edit_add == "register":
+                if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
+                    sql = "UPDATE student_details SET school = ?, surname = ?, first_name = ?, other_names = ?, course = ?, class = ?, index_number = ?, electives = ?, gender = ?, parent_contact = ?, date_of_birth = ?, bece_year = ? WHERE id = ?"
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed, self.studentData[0]))
+                    CONNECTION.commit()
+
                     sql = "SELECT COUNT(*) FROM registered_students WHERE student = ?"
                     CURSOR.execute(sql, (self.studentData[0],))
                     data = []
@@ -309,11 +315,12 @@ class MainWindow(QMainWindow):
                         sql = "INSERT INTO registered_students (student) VALUES (?)"
                         CURSOR.execute(sql, (self.studentData[0],))
                         CONNECTION.commit()
+            
             self.edit_add = ""
             switch_screen(4)
 
-        def edit_student_function():
-            switch_screen(6, "edit")
+        def edit_student_function(action):
+            switch_screen(6, action)
             school = self.school_id
             index = self.studentData[0]
             listIndex = self.currentStudentId
@@ -415,10 +422,8 @@ class MainWindow(QMainWindow):
         self.ui.SignUpButton_2.clicked.connect(lambda: switch_screen(0))
         self.ui.close_camera.clicked.connect(lambda: self.closeCamera())
         self.ui.SignInSubmit.clicked.connect(lambda: signIn())
-        self.ui.edit_student_button.clicked.connect(
-            lambda: edit_student_function())
-        self.ui.add_student_button.clicked.connect(
-            lambda: switch_screen(6, "add"))
+        self.ui.edit_student_button.clicked.connect(lambda: edit_student_function("edit"))
+        self.ui.add_student_button.clicked.connect(lambda: switch_screen(6, "add"))
         self.ui.pushButton.clicked.connect(lambda: switch_screen(6, "add"))
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
         self.ui.import_file.clicked.connect(lambda: getImageFromFile())
@@ -428,6 +433,7 @@ class MainWindow(QMainWindow):
         self.ui.year_group.activated.connect(lambda: bece_year_update())
         self.ui.pushButton_5.clicked.connect(lambda: switch_screen(1))
         self.ui.pushButton_7.clicked.connect(lambda: self.logout())
+        self.ui.pushButton_8.clicked.connect(lambda: edit_student_function("register"))
 
         def bece_year_update():
             self.bece_year = self.ui.year_group.currentText()
@@ -571,8 +577,10 @@ class MainWindow(QMainWindow):
             self.ui.student_course.setText(data[id][4])
             if data[id][0] in self.registered_sudents_list:
                 self.ui.label_48.setText("Registered: Yes")
+                self.ui.pushButton_8.setHidden(True)
             else:
                 self.ui.label_48.setText("Registered: No")
+                self.ui.pushButton_8.setHidden(False)
 
             if data[id][8] == 0:
                 self.ui.student_gender.setText("Male")
