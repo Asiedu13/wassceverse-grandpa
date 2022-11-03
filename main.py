@@ -19,6 +19,7 @@ import os
 import mariadb
 import plotly.express as px
 
+from openpyxl import load_workbook
 
 # GUI FILES
 from ui_classes.ui_main_ import Ui_MainWindow
@@ -102,15 +103,16 @@ class MainWindow(QMainWindow):
         def generate_key():
             index_numbers = []
             sql = "SELECT index_number FROM student_details WHERE school = ? AND bece_year = ?"
-            CURSOR.execute(sql, (self.studentData[0],))
+            CURSOR.execute(sql, (self.school_id, self.bece_year))
             for d in CURSOR:
                 index_numbers.append(d[0])
             
             for index_number in index_numbers:
                 sql = "UPDATE student_details SET student_key = ? WHERE index_number = ?"
-                letters = string.ascii_lowercase + "0123456789"
+                letters = string.ascii_lowercase
                 code = ''.join(random.choice(letters) for i in range(6))
                 CURSOR.execute(sql,(code, index_number))
+                CONNECTION.commit()
 
 
         # CHECK INFO
@@ -302,7 +304,6 @@ class MainWindow(QMainWindow):
             other_names = self.ui.plainTextEdit_3.toPlainText()
             dob = self.ui.dateEdit.date().toString("dd/MM/yyyy")
             course = self.ui.comboBox_2.currentText()
-            print(course)
             class_ = self.ui.textEdit.toPlainText()
             index_number = self.ui.plainTextEdit_4.toPlainText()
             year_completed = str(self.ui.dateEdit_2.date().year())
@@ -519,6 +520,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_5.clicked.connect(lambda: switch_screen(1))
         self.ui.pushButton_7.clicked.connect(lambda: self.logout())
         self.ui.pushButton_8.clicked.connect(lambda: edit_student_function("register"))
+        self.ui.pushButton_6.clicked.connect(lambda: self.add_students())
 
         def bece_year_update():
             self.bece_year = self.ui.year_group.currentText()
@@ -584,6 +586,18 @@ class MainWindow(QMainWindow):
         file_name, _ = QFileDialog.getOpenFileName(
             self, "Select Image", "", "Image Files (*.jpeg *.jpg *.png)", options=options)
         return file_name
+
+    def add_students(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","Excel Spreadsheet (*.xlsx)", options=options)
+        if fileName:
+            workbook = load_workbook(filename="sample.xlsx")
+            sheet = workbook.active
+
+            for row in sheet.iter_rows(min_row=3, values_only=True):
+                
+
 
     def getStudent(self, id=0):
         sql = """SELECT
