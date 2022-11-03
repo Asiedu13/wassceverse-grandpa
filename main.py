@@ -409,8 +409,8 @@ class MainWindow(QMainWindow):
             school = self.school_id
             index = self.studentData[0]
             listIndex = self.currentStudentId
-            sql = "SELECT * FROM student_details WHERE school = ?"
-            CURSOR.execute(sql, (school,))
+            sql = "SELECT * FROM student_details WHERE school = ? and id = ?"
+            CURSOR.execute(sql, (school, index))
 
             result = []
             for data in CURSOR:
