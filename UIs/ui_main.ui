@@ -231,7 +231,7 @@ background-color: rgb(255, 22, 22);
 background-color:#f2f4ee;</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="signIn">
        <property name="styleSheet">

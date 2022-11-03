@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2022 at 11:00 PM
+-- Generation Time: Nov 03, 2022 at 02:21 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -78,17 +78,17 @@ CREATE TABLE `student_details` (
   `school` int(11) NOT NULL,
   `surname` text NOT NULL,
   `first_name` text NOT NULL,
-  `other_names` text NOT NULL,
+  `other_names` text DEFAULT NULL,
   `course` text NOT NULL,
   `class` text NOT NULL,
   `index_number` text NOT NULL,
   `electives` text NOT NULL,
   `gender` int(11) NOT NULL,
-  `parent_contact` text NOT NULL,
+  `parent_contact` text DEFAULT NULL,
   `date_of_birth` text NOT NULL,
-  `signature` blob NOT NULL,
-  `image` blob NOT NULL,
-  `fingerprint` blob NOT NULL,
+  `signature` blob DEFAULT NULL,
+  `image` blob DEFAULT NULL,
+  `fingerprint` blob DEFAULT NULL,
   `bece_year` int(11) NOT NULL,
   `student_key` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -98,7 +98,7 @@ CREATE TABLE `student_details` (
 --
 
 INSERT INTO `student_details` (`id`, `school`, `surname`, `first_name`, `other_names`, `course`, `class`, `index_number`, `electives`, `gender`, `parent_contact`, `date_of_birth`, `signature`, `image`, `fingerprint`, `bece_year`, `student_key`) VALUES
-(4, 1, 'Asiedu', 'Prince', 'Kofi', 'General Science', '3 Science 2', '0102034005', 'Chemistry,Physics,Elective ICT,Elective Mathematics', 0, '+233 (0) 2443455673', '21/01/2004', '', '', '', 2019, NULL);
+(4, 1, 'Asiedu', 'Prince', 'Kofi', 'General Science', '3 Science 2', '0102034005', 'Chemistry,Physics,Elective ICT,Elective Mathematics', 0, '+233 (0) 2443455673', '21/01/2004', '', '', '', 2019, 'guozit');
 
 --
 -- Indexes for dumped tables
@@ -144,7 +144,7 @@ ALTER TABLE `registered_students`
 -- AUTO_INCREMENT for table `student_details`
 --
 ALTER TABLE `student_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
