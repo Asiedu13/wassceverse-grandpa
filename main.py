@@ -592,11 +592,29 @@ class MainWindow(QMainWindow):
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","Excel Spreadsheet (*.xlsx)", options=options)
         if fileName:
-            workbook = load_workbook(filename="sample.xlsx")
+            workbook = load_workbook(filename=fileName)
             sheet = workbook.active
 
             for row in sheet.iter_rows(min_row=3, values_only=True):
-                
+                surname = row[0]
+                first_name = row[1]
+                other_names = row[2]
+                course = row[4]
+                class_ = row[3]
+                index_number = row[5]
+                electives = f"{row[6],row[7],row[8],row[9]}"
+                gender = 0
+                if row[10].lower == "male":
+                    gender = 0
+                elif row[10].lower == "female":
+                    gender = 1
+
+                parent_contact = row[11]
+                dob = row[12]
+
+                sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, self.bece_year))
+                CONNECTION.commit()
 
 
     def getStudent(self, id=0):
