@@ -1,14 +1,15 @@
 from main import *
 
-## ==> GLOBALS
+# ==> GLOBALS
 
 GLOBAL_STATE = 0
 
+
 class UIFunctions(MainWindow):
 
-    ## ==> UI DEFINITIONS
+    # ==> UI DEFINITIONS
     def uiDefinitions(self):
-        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.showMaximized()
 
