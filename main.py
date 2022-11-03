@@ -602,7 +602,11 @@ class MainWindow(QMainWindow):
                 course = row[4]
                 class_ = row[3]
                 index_number = row[5]
-                electives = f"{row[6],row[7],row[8],row[9]}"
+                e_1 = row[6]
+                e_2 = row[7]
+                e_3 = row[8]
+                e_4 = row[9]
+                electives = f"{e_1,e_2,e_3,e_4}".replace("'", "").replace("(", "").replace(")", "")
                 gender = 0
                 if row[10].lower == "male":
                     gender = 0
