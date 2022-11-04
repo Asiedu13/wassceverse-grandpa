@@ -25,8 +25,6 @@ from openpyxl import load_workbook
 from ui_classes.ui_main_ import Ui_MainWindow
 from ui_classes.signInFailedOneDialog import Ui_signInFailedOneDialog
 from ui_classes.ui_incorrectDialog import Ui_incorrectDialog
-import ui_classes.edit as edit
-from ui_classes.edit import Ui_Dialog
 
 
 # IMPORT FUNCTIONS
