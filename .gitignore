@@ -2,7 +2,7 @@ share/
 web/node_modules/
 mockup/
 .vscode/
-ui_classes/__pycache__/
+app/ui_classes/__pycache__/
 __pycache__/
 .TEMP/
 App Development Goals.todo
