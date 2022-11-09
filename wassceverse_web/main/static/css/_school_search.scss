@@ -25,7 +25,7 @@
         width: 500px;
         @include border(cyan);
         font-size: 1.2rem;
-        color: #4e6162;
+        color: #eb6440;
         margin: 50px 10px 0 0;
         font-weight: 100;
         text-align: right;
@@ -53,20 +53,22 @@
         height: 100px;
         width: inherit;
         @include border(pink);
-        color: #808080;
+        // color: #808080;
+        color: #497174;
         p {
-          font-size: 3rem;
+            font-size: 3rem;
         }
-
+        
         input {
-          height: 60px;
-          width: 500px;
-          margin: 0 10px;
-          border-radius: 10px;
-          outline: none;
-          border: none;
-          font-size: 3rem;
-          padding: 0.5rem;
+            height: 60px;
+            width: 500px;
+            margin: 0 10px;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            font-size: 3rem;
+            padding: 0.5rem;
+            background: #d6e4e5;
         }
       }
       .index_number_input {
@@ -156,5 +158,7 @@
             }
           }
         }
-
-    }}}}
+      }
+    }
+  }
+}

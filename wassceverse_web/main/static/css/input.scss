@@ -8,19 +8,26 @@
 }
 
 body {
-  background: #f2f4ee;
+  background: #eff5f5;
+}
+#app {
+    width: 100vw;
+    height: 100vh;
 }
 
 header {
   padding: 1rem;
 }
 .main-header {
-  background-color: #fff;
+  
+  background-color: #d6e4e5;
 }
 
 header section h1 {
-  color: #4e6162;
+  color: #497174;
   font-size: 2rem;
 }
 
 @import "school_search";
+@import "conversation";
+@import "form";

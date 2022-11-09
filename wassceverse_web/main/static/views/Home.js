@@ -3,15 +3,15 @@ import AbstractView from "./AbstractView.js";
 export default class extends AbstractView {
   constructor() {
     super();
-    this.getTitle("MainPage");
+    this.setTitle("MainPage");
   }
 
   async getHTML() {
-      axios.get( "/api/schools" ).then( ( res ) => {
-          // -------- Get schools data --------
-          schools = res.data;
-          console.log( res.data );
-      } )
+    //   axios.get( "/api/schools" ).then( ( res ) => {
+    //       // -------- Get schools data --------
+    //       schools = res.data;
+    //       console.log( res.data );
+    //   } )
     return `
     <main id="main">
       <section id="content">

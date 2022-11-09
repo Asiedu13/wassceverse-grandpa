@@ -1,14 +1,18 @@
 import Home from "./views/Home.js";
-// import About from "./views/About.js";
+import ChatWithWaslyn from "./views/ChatWithWaslyn.js";
+
 const navigateTo = (url) => {
-  history.pushState(null, null, url);
-  router();
+    history.pushState( null, null, url );
+    console.log( url );
+    router();
+    
+    
 };
 
 const router = async () => {
   const routes = [
     { path: "/", view: Home },
-    // { path: "/about", view: About },
+    { path: "/conversation", view: ChatWithWaslyn },
     // { path: "/posts", view: () => console.log("Main posts") },
   ];
 
@@ -29,7 +33,12 @@ const router = async () => {
   let view = new findMatch.route.view();
   console.log(view);
 
-  document.querySelector("#app").innerHTML = await view.getHTML();
+    document.querySelector( "#app" ).innerHTML = await view.getHTML();
+    
+    if (location.pathname == "/conversation") {
+      console.log(location.pathname);
+      initConversation();
+    }
 };
 
 window.addEventListener('popstate', router)
@@ -38,8 +47,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.body.addEventListener("click", (e) => {
     if (e.target.matches("[data-link]")) {
       e.preventDefault();
-      navigateTo(e.target.href);
+        navigateTo( e.target.href );
+        if (location.pathname == "/conversation") {
+          console.log(location.pathname);
+          initConversation();
+        }
+        
     }
-  });
+  } );
   router();
+  
 });

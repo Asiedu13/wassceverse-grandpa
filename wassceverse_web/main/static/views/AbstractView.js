@@ -1,7 +1,7 @@
 export default class {
   constructor() {}
 
-  getTitle(title) {
+  setTitle(title) {
     document.title = title;
   }
 

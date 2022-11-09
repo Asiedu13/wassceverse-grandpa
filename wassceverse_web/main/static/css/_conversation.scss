@@ -1,0 +1,46 @@
+#question-time {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  //   align-items: center;
+  justify-content: space-between;
+  position: relative;
+  @include border(green);
+
+  #might-interest-tips {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #497174;
+    article {
+      background: #fff;
+      width: 50%;
+      padding: 1.5rem;
+      border-radius: 5px;
+      // height: 200px;
+      color: #eb6440;
+      @include border(white);
+    }
+  }
+
+  #my-form-element {
+    width: 500px;
+    height: 500px;
+    @include border(Red);
+  }
+}
+#cf-context {
+  height: 10vh;
+  width: 50vw;
+}
+
+#conversational-form {
+  width: 50vw;
+  height: 560px;
+  position: absolute;
+  left: 500px;
+  bottom: 150px;
+  @include border(blue);
+}
