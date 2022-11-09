@@ -8,9 +8,15 @@ export default class extends AbstractView {
 
   async getHTML() {
     return `
-            <h1>AJEI!!! The boy has finished    
-    
-            </h1>
+        <main id="success-main">
+     
+      <img src="/static/media/happy_feeling.svg" />
+      <section>
+        <h1>You have been registered!</h1>
+        <a href="/" data-link><img src="/static/media/arrow-small-left.svg" /> Home</a>
+      </section>
+      
+    </main>
         `;
   }
 }
