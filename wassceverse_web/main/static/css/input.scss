@@ -1,0 +1,26 @@
+@import "util";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+  /* background: #F2F4EE; */
+}
+
+body {
+  background: #f2f4ee;
+}
+
+header {
+  padding: 1rem;
+}
+.main-header {
+  background-color: #fff;
+}
+
+header section h1 {
+  color: #4e6162;
+  font-size: 2rem;
+}
+
+@import "school_search";
