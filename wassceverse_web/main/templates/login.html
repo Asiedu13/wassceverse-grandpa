@@ -1,4 +1,5 @@
 {% extends '__base.html' %}
+{% load functions %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,16 +31,14 @@
             <!-- Actual Search results -->
             <div id="search_results">
               {% for school in schools %}
-                
-              {% endfor %}
-              
-           <div class="sch_img">
-              <img src="${school.school_logo}" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
-          </div>
-          <div class="sch_desc">
-          <h4 class="sch_name">${school.school_name}</h4>
-          <span>Location: </span><span>${school.location}</span>
-          </div>
+                <div class="sch_img">
+                  <img src="{{ school.school_logo | encode }}" alt="Image not found"/>
+                </div>
+                <div class="sch_desc">
+                  <h4 class="sch_name">{{school.school_name}}</h4>
+                  <span>Location: </span><span>{{school.location}}</span>
+                </div>
+              {% endfor %}          
             </div>
           </div>
         </section>
