@@ -7,23 +7,23 @@ def convertToBinaryData(filename):
     return binaryData
 
 
-def insertBLOB(emp_id, name, photo, biodataFile):
+def insertBLOB(photo):
     print("Inserting BLOB into python_employee table")
     try:
-        connection = mysql.connector.connect(host='localhost',
-                                             database='python_db',
-                                             user='pynative',
-                                             password='pynative@#29')
-
+        connection = mariadb.connect(
+            host="localhost",
+            user="root",
+            passwd="",
+            database="wassceverse",
+            port=3306
+        )
         cursor = connection.cursor()
-        sql_insert_blob_query = """ INSERT INTO python_employee
-                          (id, name, photo, biodata) VALUES (%s,%s,%s,%s)"""
+        sql_insert_blob_query = """UPDATE registered_schools SET school_logo = ? WHERE id = 1"""
 
         empPicture = convertToBinaryData(photo)
-        file = convertToBinaryData(biodataFile)
 
         # Convert data into tuple format
-        insert_blob_tuple = (emp_id, name, empPicture, file)
+        insert_blob_tuple = (empPicture,)
         result = cursor.execute(sql_insert_blob_query, insert_blob_tuple)
         connection.commit()
         print("Image and file inserted successfully as a BLOB into python_employee table", result)
@@ -31,13 +31,5 @@ def insertBLOB(emp_id, name, photo, biodataFile):
     except mysql.connector.Error as error:
         print("Failed inserting BLOB data into MySQL table {}".format(error))
 
-    finally:
-        if connection.is_connected():
-            cursor.close()
-            connection.close()
-            print("MySQL connection is closed")
 
-insertBLOB(1, "Eric", "D:\Python\Articles\my_SQL\images\eric_photo.png",
-           "D:\Python\Articles\my_SQL\images\eric_bioData.txt")
-insertBLOB(2, "Scott", "D:\Python\Articles\my_SQL\images\scott_photo.png",
-           "D:\Python\Articles\my_SQL\images\scott_bioData.txt")-
+insertBLOB("download.png")
