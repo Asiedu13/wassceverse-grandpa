@@ -29,8 +29,9 @@
 
             <!-- Actual Search results -->
             <div id="search_results">
-              <!-- The results appear here from main.js -->
-
+              {% for school in schools %}
+                
+              {% endfor %}
               
            <div class="sch_img">
               <img src="${school.school_logo}" alt="Image not found" onerror="this.onerror=null;this.src='./media/image_not_found.png';" />
