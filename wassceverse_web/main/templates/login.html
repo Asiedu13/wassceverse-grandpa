@@ -32,7 +32,13 @@
             <div id="search_results">
               {% for school in schools %}
                 <div class="sch_img">
-                  <img src="{{ school.school_logo | encode }}" alt="Image not found"/>
+                  <img src="
+                  {% if school.school_logo|encode == "" %}
+                  
+                  {% else %}
+                  data:image/png;base64,{{school.school_logo|encode}}
+                  {% endif %}
+                  " alt="Image not found"/>
                 </div>
                 <div class="sch_desc">
                   <h4 class="sch_name">{{school.school_name}}</h4>
