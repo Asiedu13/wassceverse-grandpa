@@ -29,7 +29,9 @@
 
             <!-- Actual Search results -->
             <div id="search_results">
-              <!-- The results appear here from main.js -->
+              {% for x in schools %}
+                <p>{{x.school_name}}</p>
+              {% endfor %}
             </div>
           </div>
         </section>
