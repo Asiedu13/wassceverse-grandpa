@@ -1,5 +1,4 @@
-{% extends '__base.html' %}
-{% load functions %}
+{% extends '__base.html' %} {% load functions %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,20 +30,17 @@
             <!-- Actual Search results -->
             <div id="search_results">
               {% for school in schools %}
-                <div class="sch_img">
-                  <img src="
-                  {% if school.school_logo|encode == "" %}
-                  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_SSkZ-OqOD5W-HidZTesIUjs3PlH-NtrnUg&usqp=CAU
-                  {% else %}
-                  data:image/png;base64,{{school.school_logo|encode}}
-                  {% endif %}
-                  " alt="Image not found"/>
-                </div>
-                <div class="sch_desc">
-                  <h4 class="sch_name">{{school.school_name}}</h4>
-                  <span>Location: </span><span>{{school.location}}</span>
-                </div>
-              {% endfor %}          
+              <div class="sch_img">
+                <img src=" {% if school.school_logo|encode == "" %}
+                https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_SSkZ-OqOD5W-HidZTesIUjs3PlH-NtrnUg&usqp=CAU
+                {% else %} data:image/png;base64,{{school.school_logo|encode}}
+                {% endif %} " alt="Image not found"/>
+              </div>
+              <div class="sch_desc">
+                <h4 class="sch_name">{{school.school_name}}</h4>
+                <span>Location: </span><span>{{school.location}}</span>
+              </div>
+              {% endfor %}
             </div>
           </div>
         </section>
@@ -53,3 +49,9 @@
     {% endblock content %}
   </body>
 </html>
+   
+
+<p>and my B.E.C.E index number was </p>
+            <input type="text" minlength="10" maxlength="13 id="indexNumber" onInput="updateIndexNumber(this)" placeholder="eg. 0101050901619" />  
+            <button id="continueC" onClick="continueToChat()">Save</button>
+  `;
