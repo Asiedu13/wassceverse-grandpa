@@ -11,48 +11,16 @@
     <main id="main">
       <section id="content">
         <header class="content-header">
-          <h2>Select your school</h2>
+          <h2>Enter your details?</h2>
         </header>
-        <section id="school_selector">
-          <!-- The search bar goes here -->
-          <div class="search-bar">
-            <p>I am a</p>
-            <input type="text" id="search" oninput="inputChange(this)" />
-            <p>student</p>
-          </div>
-          <div class="results">
-            <!-- Search result descriptions -->
-            <div id="search_desc">
-              <span>Schools found: </span>
-              <span class="search_data_count">1</span>
-            </div>
-
-            <!-- Actual Search results -->
-            <div id="search_results">
-              {% for school in schools %}
-              <div class="school">
-                <div class="sch_img">
-                  <img src=" {% if school.school_logo|encode == "" %}
-                  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_SSkZ-OqOD5W-HidZTesIUjs3PlH-NtrnUg&usqp=CAU
-                  {% else %} data:image/png;base64,{{school.school_logo|encode}}
-                  {% endif %} " alt="Image not found"/>
-                </div>
-                <div class="sch_desc">
-                  <h4 class="sch_name">{{school.school_name}}</h4>
-                  <span>Location: </span><span>{{school.location}}</span>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-        </section>
+        <form method="post">
+          {% csrf_token %}
+          {{form}}
+          <input type="submit" value="Submit">
+        </form>
+        
       </section>
     </main>
     {% endblock content %}
   </body>
 </html>
-
-<p>and my B.E.C.E index number was</p>
-<input type="text" minlength="10" maxlength="13 id="indexNumber"
-onInput="updateIndexNumber(this)"placeholder="eg. 0101050901619 />
-<button id="continueC" onClick="continueToChat()">Save</button>
