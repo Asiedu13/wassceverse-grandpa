@@ -29,6 +29,7 @@
     width: 0px;
     height: 0px;
     @include border(Red);
+    visibility: hidden;
   }
 }
 #cf-context {
