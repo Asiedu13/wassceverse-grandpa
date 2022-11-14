@@ -13,6 +13,7 @@
         <header class="content-header">
           <h2>Enter your details?</h2>
         </header>
+        <p>{{error}}</p>
         <form method="post">
           {% csrf_token %}
           {{form}}

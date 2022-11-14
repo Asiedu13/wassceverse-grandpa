@@ -2,6 +2,7 @@ from django.db import models
 
 
 class RegisteredSchools(models.Model):
+    id = models.IntegerField(primary_key = True)
     school_name = models.TextField()
     location = models.TextField()
     country = models.TextField()
@@ -17,7 +18,8 @@ class RegisteredSchools(models.Model):
 
 
 class RegisteredStudents(models.Model):
-    student = models.ForeignKey('StudentDetails', models.DO_NOTHING, db_column='student')
+    id = models.IntegerField(primary_key = True)
+    student = models.ForeignKey('StudentDetails', models.CASCADE, db_column='student')
     wassce_index_number = models.TextField(blank=True, null=True)
     wassce_year = models.IntegerField(blank=True, null=True)
     cleared = models.IntegerField()
@@ -28,7 +30,8 @@ class RegisteredStudents(models.Model):
 
 
 class StudentDetails(models.Model):
-    school = models.ForeignKey(RegisteredSchools, models.DO_NOTHING, db_column='school')
+    id = models.IntegerField(primary_key = True)
+    school = models.ForeignKey(RegisteredSchools, on_delete = models.CASCADE, db_column='school')
     surname = models.TextField()
     first_name = models.TextField()
     other_names = models.TextField(blank=True, null=True)

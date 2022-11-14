@@ -11,60 +11,21 @@
             </article>
           </section>
 
-        <form id="my-form-element">
-             <datalist id="classes">
-              <option
-                value="3 SCIENCE 1"
-              ></option>
-              <option value="3 SCIENCE 2"></option>
-              <option value="3 SCIENCE 3"></option>
-              <option value="3 SCIENCE 4"></option>
-              <option value="3 SCIENCE "></option>
-              <option value="Wesley Girls Senior High School"></option>
-            </datalist>
-
+        <form id="my-form-element" cf-form>
             <cf-robot-message cf-questions="Hello student!"></cf-robot-message>
 
-           
+            <fieldset cf-questions="Are you {{surname}} {{first_name}} {{othernames}}?">
+              <input type="radio" name="name_correct" id="name_accurate" value="Yes">
+              <label for="name_accurate">Yes</label>
 
-            <fieldset cf-questions="Choose your gender">
-              <input type="radio" name="gender" cf-label="Male" value="male" />
-
-              <input
-                type="radio"
-                name="gender"
-                ,
-                cf-label="Female"
-                value="female"
-              />
+              <input type="radio" name="name_correct" id="name_inaccurate" value="No">
+              <label for="name_inaccurate">No</label>
             </fieldset>
-            <input
-              type="text"
-              name="date_of_birth"
-              title="Date of Birth"
-              cf-input-placeholder="DD/MM/YYYY"
-              cf-questions="Birth date? (DD/MM/YYYY)"
-            />
-            <!-- <input
-              type="text"
-              name="class"
-              list="classes"
-              cf-questions="Which class are you in?"
-            /> -->
-            <input
-              type="number"
-              name="index_number"
-              minlength="8"
-              pattern="^[0-9]*$"
-              cf-questions="What is your BECE index number"
-            />
-            <input
-              type="number"
-              name="year_completed"
-              minlength="4"
-              pattern="^[0-9]{4}"
-              cf-questions="Which year did you complete BECE?"
-            />
+
+            <input type="text" name="surname" id="surname" cf-questions="What is your surname?" cf-conditional-name-correct="No">
+            <input type="text" name="first_name" id="first_name" cf-questions="What is your first name?" cf-conditional-name-correct="No">
+            <input type="text" name="other_names" id="other_names" cf-questions="What are your other names?" cf-conditional-name-correct="No">
+
             <fieldset cf-questions="Choose your programme or course">
               <input
                 type="radio"
@@ -168,6 +129,21 @@
               <input type="checkbox" name="electives" cf-label="" />
             </fieldset>
 
+            <input type="text" name="class" id="class" cf-input-placeholder="Example: 3 Visual Arts 3 ([Year] [Course] [Class Number])">
+
+            <fieldset cf-questions="Choose your gender">
+              <input type="radio" name="gender" cf-label="Male" value="male" />
+              <input type="radio" name="gender" cf-label="Female" value="female"/>
+            </fieldset>
+
+            <input
+              type="text"
+              name="date_of_birth"
+              title="Date of Birth"
+              cf-input-placeholder="DD/MM/YYYY"
+              cf-questions="Birth date? (DD/MM/YYYY)"
+            />
+
             <input
               type="text"
               name="parent_contact"
@@ -177,11 +153,12 @@
               cf-questions="Your parent's contact number?"
               cf-input-placeholder="+233"
             />
-
-            <fieldset cf-questions="Do you wish to continue?">
-              <input type="radio" name="continue" cf-label="Yes" value="Yes" />
-            </fieldset>
           </form>
 
           <div id="cf-context" role="cf-context" cf-context></div>
+          <script>
+            $("form").conversationalForm({
+
+            });
+          </script>
 {% endblock content %}
