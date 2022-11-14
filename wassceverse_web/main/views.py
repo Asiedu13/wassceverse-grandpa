@@ -25,8 +25,7 @@ def login(request):
 
 def conversation(request):
     if 'student' not in request.session:
-        print('Hello')
-        HttpResponseRedirect('login')
+        return redirect('login')
     
     student = request.session['student']
     print(student)
