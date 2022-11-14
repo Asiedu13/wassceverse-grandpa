@@ -41,26 +41,13 @@
     #content-body {
       #err {
         color: red;
-        background: #fff;
-        box-shadow: 1px 1px 15px 5px rgb(182, 179, 179);
         border-radius: 5px;
         padding: 1rem;
         width: 600px;
         z-index: 2;
         position: relative;
-        transition: all 0.5s ease-in-out;
-        animation: .8s 1 normal forwards ease-out jumpIn;
       }
-      @keyframes jumpIn {
-        from {
-          opacity: 0;
-          top: 0;
-
-        }to {
-          opacity: 1;
-          top: 20px;
-        }
-      }
+      
       form {
         padding: 1.5rem;
         display: flex;
