@@ -204,7 +204,8 @@ header section h1 {
   #question-time #my-form-element {
     width: 0px;
     height: 0px;
-    border: 1px solid transparent; }
+    border: 1px solid transparent;
+    visibility: hidden; }
 
 #cf-context {
   height: 10vh;
