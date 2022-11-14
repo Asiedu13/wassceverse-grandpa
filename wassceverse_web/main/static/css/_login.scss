@@ -1,0 +1,10 @@
+#content {
+  width: 100vw;
+  @include border(red);
+
+  .content-header {
+    h2 {
+      font-size: 4.5rem;
+    }
+  }
+}

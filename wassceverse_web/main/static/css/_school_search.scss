@@ -4,9 +4,9 @@
   @include border(blue);
 
   #content {
-    width: 100vw;
+    width: 95vw;
     height: 80vh;
-    @include border(red);
+    @include border(blue);
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -16,19 +16,70 @@
       color: #414844;
     }
 
+    .content-header,
+    #content-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     .content-header {
-      width: 580px;
       height: 100px;
       @include border(red);
 
       h2 {
-        width: 500px;
+        width: fit-content;
         @include border(cyan);
-        font-size: 1.2rem;
+        font-size: 2.5rem;
         color: #eb6440;
-        margin: 50px 10px 0 0;
+        margin: 0px 0px 0 0;
         font-weight: 100;
         text-align: right;
+      }
+    }
+
+    #content-body {
+      #err {
+        color: red;
+        background: #fff;
+        box-shadow: 1px 1px 15px 5px rgb(182, 179, 179);
+        border-radius: 5px;
+        padding: 1rem;
+        width: 600px;
+        z-index: 2;
+        position: relative;
+        transition: all 0.5s ease-in-out;
+        animation: .8s 1 normal forwards ease-out jumpIn;
+      }
+      @keyframes jumpIn {
+        from {
+          opacity: 0;
+          top: 0;
+
+        }to {
+          opacity: 1;
+          top: 20px;
+        }
+      }
+      form {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        box-shadow: 1px 1px 15px 5px rgb(182, 179, 179);
+        border-radius: 10px;
+        @include border(green);
+
+        input[type="text"] {
+          width: 500px;
+          height: 60px;
+          padding: 0.3rem;
+          background: rgba(149, 157, 165, 0.2);
+          margin-bottom: 40px;
+        }
+        label {
+          margin-bottom: 5px;
+        }
       }
     }
 
@@ -56,19 +107,19 @@
         // color: #808080;
         color: #497174;
         p {
-            font-size: 3rem;
+          font-size: 3rem;
         }
-        
+
         input {
-            height: 60px;
-            width: 500px;
-            margin: 0 10px;
-            border-radius: 10px;
-            outline: none;
-            border: none;
-            font-size: 3rem;
-            padding: 0.5rem;
-            background: #d6e4e5;
+          height: 60px;
+          width: 500px;
+          margin: 0 10px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          font-size: 3rem;
+          padding: 0.5rem;
+          background: #d6e4e5;
         }
       }
       .index_number_input {

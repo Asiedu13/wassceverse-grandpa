@@ -9,6 +9,7 @@
 
 body {
   background: #eff5f5;
+  overflow-x: hidden;
 }
 #app {
     width: 100vw;
@@ -27,9 +28,9 @@ header section h1 {
   color: #497174;
   font-size: 2rem;
 }
-
 @import "school_search";
 @import "conversation";
 @import "form";
+/* @import 'login'; */
 
 @import "success";

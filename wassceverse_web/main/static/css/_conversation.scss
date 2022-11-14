@@ -26,21 +26,24 @@
   }
 
   #my-form-element {
-    width: 500px;
-    height: 500px;
+    width: 0px;
+    height: 0px;
     @include border(Red);
   }
 }
 #cf-context {
   height: 10vh;
   width: 50vw;
+  position: relative;
+  bottom: 500px;
 }
 
 #conversational-form {
   width: 50vw;
   height: 560px;
-  position: absolute;
-  left: 500px;
-  bottom: 150px;
+  position: relative;
+  left: -45vw;
+  top: 70vh;
+  // bottom: 60vh;
   @include border(blue);
 }
