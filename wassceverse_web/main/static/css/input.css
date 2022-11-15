@@ -405,14 +405,14 @@ text
   height: 0px;
   overflow: hidden; }
 
-/* @import 'login'; */
 #success-main {
   width: 100vw;
   height: 100vh;
   display: flex;
-  /* justify-content: ; */
+  justify-content: center;
   align-items: center;
-  color: #414844; }
+  color: #414844;
+  border: 1px solid transparent; }
 
 #success-main section {
   /* background: #fff; */
@@ -423,10 +423,15 @@ text
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  border: 1px solid transparent; }
   #success-main section h1 {
     font-size: 2rem;
-    margin: 10px 0; }
+    width: fit-content;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; }
   #success-main section a {
     text-decoration: none;
     background: #fff;
@@ -436,7 +441,51 @@ text
     width: 100px;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    border: 1px solid transparent; }
+    #success-main section a img {
+      width: 50px;
+      height: 30px; }
+
+/* @import 'login'; */
+#success-main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #414844;
+  border: 1px solid transparent; }
+
+#success-main section {
+  /* background: #fff; */
+  border-radius: 5px;
+  height: 300px;
+  width: 400px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid transparent; }
+  #success-main section h1 {
+    font-size: 2rem;
+    width: fit-content;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; }
+  #success-main section a {
+    text-decoration: none;
+    background: #fff;
+    color: #414844;
+    padding: 1rem;
+    height: 20px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent; }
     #success-main section a img {
       width: 50px;
       height: 30px; }
