@@ -44,10 +44,7 @@
       id="other_names"
       cf-questions="What are your other names?"
       cf-conditional-name-correct="no"
-      value = {{other_names}}
     />
-
-    <fieldset cf-questions="Choose your programme or course">
       <input
         type="radio"
         name="course"
@@ -161,16 +158,16 @@
       cf-questions="Birth date? (DD/MM/YYYY)"
     />
 
-            <input
-              type="text"
-              name="parent_contact"
-              minlength="8"
-              maxlength="14"
-              pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-              cf-questions="Your parent's contact number?"
-              cf-input-placeholder="+233"
-            />
-          </form>
+    <input
+      type="text"
+      name="parent_contact"
+      minlength="8"
+      maxlength="14"
+      pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
+      cf-questions="Your parent's contact number?"
+      cf-input-placeholder="+233"
+    />
+  </form>
 
   <form id="final_form" method="post">
     {% csrf_token %}
