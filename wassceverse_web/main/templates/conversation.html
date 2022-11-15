@@ -15,16 +15,16 @@
             <cf-robot-message cf-questions="Hello student!"></cf-robot-message>
 
             <fieldset cf-questions="Are you {{surname}} {{first_name}} {{othernames}}?">
-              <input type="radio" name="name_correct" id="name_accurate" value="Yes">
+              <input type="radio" name="name-correct" id="name_accurate" value="yes">
               <label for="name_accurate">Yes</label>
 
-              <input type="radio" name="name_correct" id="name_inaccurate" value="No">
+              <input type="radio" name="name-correct" id="name_inaccurate" value="no">
               <label for="name_inaccurate">No</label>
             </fieldset>
 
-            <input type="text" name="surname" id="surname" cf-questions="What is your surname?" cf-conditional-name-correct="No">
-            <input type="text" name="first_name" id="first_name" cf-questions="What is your first name?" cf-conditional-name-correct="No">
-            <input type="text" name="other_names" id="other_names" cf-questions="What are your other names?" cf-conditional-name-correct="No">
+            <input type="text" name="surname" id="surname" cf-questions="What is your surname?" cf-conditional-name-correct="no">
+            <input type="text" name="first_name" id="first_name" cf-questions="What is your first name?" cf-conditional-name-correct="no">
+            <input type="text" name="other_names" id="other_names" cf-questions="What are your other names?" cf-conditional-name-correct="no">
 
             <fieldset cf-questions="Choose your programme or course">
               <input
@@ -151,7 +151,7 @@
               name="parent_contact"
               minlength="8"
               maxlength="14"
-              pattern="[0-9]*$"
+              pattern="+[0-9]*$"
               cf-questions="Your parent's contact number?"
               cf-input-placeholder="+233"
             />
