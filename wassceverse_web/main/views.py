@@ -61,10 +61,8 @@ def conversation(request):
                 record.save()
             print(request.POST['has_camera'])
             if request.POST['has_camera'] == "no":
-                print("Hello")
                 return redirect('congrats')
             elif request.POST['has_camera'] == 'yes':
-                print("Shit")
                 return redirect('camera')
     
     student = request.session['student']
