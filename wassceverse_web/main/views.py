@@ -48,24 +48,37 @@ def conversation(request):
             studentData.electives = request.POST['electives_final']
             studentData.date_of_birth = request.POST['date_of_birth_final']
             studentData.parent_contact = request.POST['parent_contact_final']
+            if request.POST['gender_final'] == 'male':
+                studentData.gender = 0
+            elif request.POST['gender_final'] == 'female':
+                studentData.gender = 1
             studentData.save()
 
             try:
                 studentReg = models.RegisteredStudents.objects.get(student = request.session['student'])
             except ObjectDoesNotExist:
                 record = models.RegisteredStudents(student = request.session['student'])
-
-            return redirect('congrats')
+                record.save()
+            print("Hell")
+            if request.POST['has_camera'] == "no":
+                print("Hello")
+                return redirect('congrats')
+            elif request.POST['has_camera'] == 'yes':
+                print("Shit")
+                return redirect('camera')
     
     student = request.session['student']
     studentData = models.StudentDetails.objects.get(id = student)
     school = studentData.school
+    other_names = ""
+    if studentData.other_names != "undefined":
+        other_names = studentData.other_names
     context = {
         'id': student,
         'school': school,
         'surname': studentData.surname,
         'first_name': studentData.first_name,
-        'other_names': studentData.other_names,
+        'other_names': other_names,
         'course': studentData.course,
         'class': studentData.class_field,
         'index_number': studentData.index_number,
@@ -78,3 +91,9 @@ def conversation(request):
 
 def congrats(request):
     return render(request, 'congrats.html')
+
+def camera(request):
+    return render(request, 'passport_pic.html')
+
+def fingerprint(request):
+    return render(request, "fingerprint.html")

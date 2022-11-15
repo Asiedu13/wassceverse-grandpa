@@ -180,6 +180,7 @@
     <input type="hidden" name="gender_final" id="gender_final">
     <input type="hidden" name="date_of_birth_final" id="date_of_birth_final">
     <input type="hidden" name="parent_contact_final" id="parent_contact_final">
+    <input type="hidden" name="has_camera" id="has_camera">
   </form>
 
   <div id="cf-context" role="cf-context" cf-context></div>
@@ -194,15 +195,15 @@
           console.log("Surname:", formDataSerialized.surname)
           conversationalForm.addRobotChatResponse("Thank you");
 
-          surname = document.getElementById("surname_final");
-          first_name = document.getElementById("first_name_final");
-          other_names = document.getElementById("other_names_final");
-          course = document.getElementById("course_final");
-          class_field = document.getElementById("class_final");
-          electives = document.getElementById("electives_final");
-          gender = document.getElementById("gender_final");
-          dob = document.getElementById("date_of_birth_final");
-          parent_contact = document.getElementById("parent_contact_final");
+          var surname = document.getElementById("surname_final");
+          var first_name = document.getElementById("first_name_final");
+          var other_names = document.getElementById("other_names_final");
+          var course = document.getElementById("course_final");
+          var class_field = document.getElementById("class_final");
+          var electives = document.getElementById("electives_final");
+          var gender = document.getElementById("gender_final");
+          var dob = document.getElementById("date_of_birth_final");
+          var parent_contact = document.getElementById("parent_contact_final");
 
           surname.setAttribute("value", formDataSerialized.surname);
           first_name.setAttribute("value", formDataSerialized.first_name);
@@ -222,7 +223,26 @@
           dob.setAttribute("value", formDataSerialized.date_of_birth);
           parent_contact.setAttribute("value", formDataSerialized.parent_contact);
 
-          document.getElementById("final_form").submit()
+          navigator.getMedia = ( navigator.getUserMedia || // use the proper vendor prefix
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
+          navigator.getMedia({video: true}, function() {
+            // webcam is available
+            camera = document.getElementById("has_camera")
+            camera.setAttribute("value", "yes");
+            console.log("There is a webcam available");
+            
+          }, function() {
+            // webcam is not available
+            camera = document.getElementById("has_camera")
+            camera.setAttribute("value", "no");
+            console.log("There is no webcam");
+          });
+          sleep(1000);
+
+          document.getElementById("final_form").submit();
         }
       });
     };
