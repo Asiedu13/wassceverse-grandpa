@@ -12,15 +12,14 @@ body {
   overflow-x: hidden;
 }
 #app {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 header {
   padding: 1rem;
 }
 .main-header {
-  
   background-color: #d6e4e5;
 }
 
@@ -31,6 +30,7 @@ header section h1 {
 @import "school_search";
 @import "conversation";
 @import "form";
+@import "success";
 /* @import 'login'; */
 
 @import "success";
