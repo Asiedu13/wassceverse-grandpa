@@ -1,166 +1,195 @@
-{% extends '__base.html' %}
-{% block content %}
-<div id='question-time'>
-        <section id="might-interest-tips">
-            <article>
-              <h3>Tip!</h3>
-              <p>
-                To revert mistakes, click on the upward triangle icon next to
-                your reply.
-              </p>
-            </article>
-          </section>
+{% extends '__base.html' %} {% block content %}
+<div id="question-time">
+  <section id="might-interest-tips">
+    <article>
+      <h3>Tip!</h3>
+      <p>
+        To revert mistakes, click on the upward triangle icon next to your
+        reply.
+      </p>
+    </article>
+  </section>
 
-        <form id="my-form-element" cf-form>
-            <cf-robot-message cf-questions="Hello student!"></cf-robot-message>
+  <form id="my-form-element" method="post" cf-form>
+    {% csrf_token %}
+    <cf-robot-message cf-questions="Hello student!"></cf-robot-message>
 
-            <fieldset cf-questions="Are you {{surname}} {{first_name}} {{othernames}}?">
-              <input type="radio" name="name-correct" id="name_accurate" value="yes">
-              <label for="name_accurate">Yes</label>
+    <fieldset cf-questions="Are you {{surname}} {{first_name}} {{othernames}}?">
+      <input type="radio" name="name-correct" id="name_accurate" value="yes" />
+      <label for="name_accurate">Yes</label>
 
-              <input type="radio" name="name-correct" id="name_inaccurate" value="no">
-              <label for="name_inaccurate">No</label>
-            </fieldset>
+      <input type="radio" name="name-correct" id="name_inaccurate" value="no" />
+      <label for="name_inaccurate">No</label>
+    </fieldset>
 
-            <input type="text" name="surname" id="surname" cf-questions="What is your surname?" cf-conditional-name-correct="no">
-            <input type="text" name="first_name" id="first_name" cf-questions="What is your first name?" cf-conditional-name-correct="no">
-            <input type="text" name="other_names" id="other_names" cf-questions="What are your other names?" cf-conditional-name-correct="no">
+    <input
+      type="text"
+      name="surname"
+      id="surname"
+      cf-questions="What is your surname?"
+      cf-conditional-name-correct="no"
+      value = {{surname}}
+    />
+    <input
+      type="text"
+      name="first_name"
+      id="first_name"
+      cf-questions="What is your first name?"
+      cf-conditional-name-correct="no"
+      value = {{first_name}}
+    />
+    <input
+      type="text"
+      name="other_names"
+      id="other_names"
+      cf-questions="What are your other names?"
+      cf-conditional-name-correct="no"
+      value = {{other_names}}
+    />
 
-            <fieldset cf-questions="Choose your programme or course">
-              <input
-                type="radio"
-                name="course"
-                cf-label="General Science"
-                value="General Science"
-              />
+    <fieldset cf-questions="Choose your programme or course">
+      <input
+        type="radio"
+        name="course"
+        cf-label="General Science"
+        value="General Science"
+      />
 
-              <input
-                type="radio"
-                name="course"
-                cf-label="General Arts"
-                value="General Arts"
-              />
+      <input
+        type="radio"
+        name="course"
+        cf-label="General Arts"
+        value="General Arts"
+      />
 
-              <input
-                type="radio"
-                name="course"
-                cf-label="Business"
-                value="Business"
-              />
+      <input type="radio" name="course" cf-label="Business" value="Business" />
 
-              <input
-                type="radio"
-                name="course"
-                cf-label="Home Economics"
-                value="Home Economics"
-              />
+      <input
+        type="radio"
+        name="course"
+        cf-label="Home Economics"
+        value="Home Economics"
+      />
 
-              <input
-                type="radio"
-                name="course"
-                cf-label="Visual Arts"
-                value="Visual Arts"
-              />
+      <input
+        type="radio"
+        name="course"
+        cf-label="Visual Arts"
+        value="Visual Arts"
+      />
 
-              <input
-                type="radio"
-                name="course"
-                cf-label="Agriculture"
-                value="Agriculture"
-              />
-            </fieldset>
+      <input
+        type="radio"
+        name="course"
+        cf-label="Agriculture"
+        value="Agriculture"
+      />
+    </fieldset>
 
-            <fieldset cf-questions="Choose your elective subjects">
-              <input
-                type="checkbox"
-                name="electives"
-                cf-label="E-Math"
-                value="E-Math"
-              />
+    <fieldset cf-questions="Choose your elective subjects">
+      <input
+        type="checkbox"
+        name="electives"
+        cf-label="E-Math"
+        value="E-Math"
+      />
 
-              <input
-                type="checkbox"
-                name="electives"
-                cf-label="Physics"
-                value="Physics"
-              />
+      <input
+        type="checkbox"
+        name="electives"
+        cf-label="Physics"
+        value="Physics"
+      />
 
-              <input
-                type="checkbox"
-                name="electives"
-                cf-label="Chemistry"
-                value="Chemistry"
-              />
+      <input
+        type="checkbox"
+        name="electives"
+        cf-label="Chemistry"
+        value="Chemistry"
+      />
 
-              <input
-                type="checkbox"
-                name="electives"
-                cf-label="Biology"
-                value="Biology"
-              />
+      <input
+        type="checkbox"
+        name="electives"
+        cf-label="Biology"
+        value="Biology"
+      />
 
-              <input
-                type="checkbox"
-                name="electives"
-                cf-label="E-ICT"
-                value="E-ICT"
-              />
+      <input type="checkbox" name="electives" cf-label="E-ICT" value="E-ICT" />
 
-              <input
-                type="checkbox"
-                value="Business Management"
-                name="electives"
-                cf-label="Business Management"
-              />
+      <input
+        type="checkbox"
+        value="Business Management"
+        name="electives"
+        cf-label="Business Management"
+      />
 
-              <input
-                type="checkbox"
-                name="electives"
-                cf-label="Financial Accounting"
-                value="Financial Accounting"
-              />
+      <input
+        type="checkbox"
+        name="electives"
+        cf-label="Financial Accounting"
+        value="Financial Accounting"
+      />
 
-              <input
-                type="checkbox"
-                name="electives"
-                cf-label="Government"
-                value="Government"
-              />
-              <input type="checkbox" name="electives" cf-label="" />
-            </fieldset>
+      <input
+        type="checkbox"
+        name="electives"
+        cf-label="Government"
+        value="Government"
+      />
+      <input type="checkbox" name="electives" cf-label="" />
+    </fieldset>
 
-            <input type="text" name="class" id="class" 
-            cf-questions='What is your class?'
-            cf-input-placeholder="Example: 3 Visual Arts 3 ([Year] [Course] [Class Number])">
+    <input
+      type="text"
+      name="class"
+      id="class"
+      cf-questions="What is your class?"
+      cf-input-placeholder="Example: 3 Visual Arts 3 ([Year] [Course] [Class Number])"
+    />
 
-            <fieldset cf-questions="Choose your gender">
-              <input type="radio" name="gender" cf-label="Male" value="male" />
-              <input type="radio" name="gender" cf-label="Female" value="female"/>
-            </fieldset>
+    <fieldset cf-questions="Choose your gender">
+      <input type="radio" name="gender" cf-label="Male" value="male" />
+      <input type="radio" name="gender" cf-label="Female" value="female" />
+    </fieldset>
 
-            <input
-              type="text"
-              name="date_of_birth"
-              title="Date of Birth"
-              cf-input-placeholder="DD/MM/YYYY"
-              cf-questions="Birth date? (DD/MM/YYYY)"
-            />
+    <input
+      type="text"
+      name="date_of_birth"
+      title="Date of Birth"
+      cf-input-placeholder="DD/MM/YYYY"
+      cf-questions="Birth date? (DD/MM/YYYY)"
+    />
 
-            <input
-              type="text"
-              name="parent_contact"
-              minlength="8"
-              maxlength="14"
-              pattern="+[0-9]*$"
-              cf-questions="Your parent's contact number?"
-              cf-input-placeholder="+233"
-            />
-          </form>
+    <input
+      type="text"
+      name="parent_contact"
+      minlength="8"
+      maxlength="14"
+      pattern="^[+][0-9]*$"
+      cf-questions="Your parent's contact number?"
+      cf-input-placeholder="+233"
+    />
+  </form>
 
-          <div id="cf-context" role="cf-context" cf-context></div>
-          <script>
-            $("form").conversationalForm({
-               
-            });
-          </script>
-{% endblock content %} 
+  <div id="cf-context" role="cf-context" cf-context></div>
+  <script>
+    window.onload = function () {
+      var conversationalForm =
+        window.cf.ConversationalForm.startTheConversation({
+          submitCallback: function () {
+            alert("Submit: check dev tools console for more");
+            // be aware that this prevents default form submit.
+            var formData = conversationalForm.getFormData();
+            var formDataSerialized = conversationalForm.getFormData(true);
+            console.log("Formdata:", formData);
+            console.log("Formdata, serialized:", formDataSerialized);
+            conversationalForm.addRobotChatResponse(
+              "Check the dev console for FormatData output."
+            );
+          },
+        });
+    };
+  </script>
+  {% endblock content %}
+</div>

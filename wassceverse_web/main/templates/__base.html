@@ -9,18 +9,6 @@
     <title>WASSCEVerse</title>
     {% endblock title %}
     <link rel="stylesheet" href="../static/css/input.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              clifford: "#da373d",
-            },
-          },
-        },
-      };
-    </script>
   </head>
   <body>
     <header class="main-header">
@@ -34,7 +22,6 @@
     {% block content %} {% endblock content %}
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>
     {% comment %}
     <script src="../static/main.js"></script>
