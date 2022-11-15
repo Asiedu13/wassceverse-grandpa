@@ -12,7 +12,7 @@
     
     <form method="post" id="image">
         {% csrf_token %}
-        <input type="hidden" name="blobData">
+        <input type="hidden" id="blobData" name="blobData">
     </form>
 
     <button id="camera--trigger">Take a picture</button>
@@ -52,6 +52,7 @@
           height: 100px!important;
           width: 100px!important;
           transition: all 0.5s ease-in;
+          box-sizing: border-box;
           border: solid 3px white;
           box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
           top: 20px;
@@ -98,10 +99,18 @@ cameraTrigger.onclick = function() {
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
     cameraOutput.src = cameraSensor.toDataURL("image/png");
     console.log(cameraOutput.src);
+    document.querySelector("camera--sensor").toBlob((blob) => {
+        blobData = document.querySelector("#blobData")
+        blobData.setAttribute("value", cameraOutput.src)
+    }, 'image/png');
     cameraOutput.classList.add("taken");
     container = document.querySelector("#camera--output-container");
     container.style.visibility = 'visible';
 };
+
+save = document.querySelector("#save").onclick = function () {
+    document.querySelector("#image").submit();
+}
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
 </script>
