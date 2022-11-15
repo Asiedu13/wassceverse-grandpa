@@ -10,11 +10,11 @@
     </article>
   </section>
 
-  <form id="my-form-element" method="post" cf-form>
+  <form id="form" method="post">
     {% csrf_token %}
     <cf-robot-message cf-questions="Hello student!"></cf-robot-message>
 
-    <fieldset cf-questions="Are you {{surname}} {{first_name}} {{othernames}}?">
+    <fieldset cf-questions="Are you {{surname}} {{first_name}} {{other_names}}?">
       <input type="radio" name="name-correct" id="name_accurate" value="yes" />
       <label for="name_accurate">Yes</label>
 
@@ -172,23 +172,62 @@
     />
   </form>
 
+  <form id="final_form" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="surname_final" id="surname_final">
+    <input type="hidden" name="first_name_final" id="first_name_final">
+    <input type="hidden" name="other_names_final" id="other_names_final">
+    <input type="hidden" name="course_final" id="course_final">
+    <input type="hidden" name="class_final" id="class_final">
+    <input type="hidden" name="electives_final" id="electives_final">
+    <input type="hidden" name="gender_final" id="gender_final">
+    <input type="hidden" name="date_of_birth_final" id="date_of_birth_final">
+    <input type="hidden" name="parent_contact_final" id="parent_contact_final">
+  </form>
+
   <div id="cf-context" role="cf-context" cf-context></div>
   <script>
-    window.onload = function () {
-      var conversationalForm =
-        window.cf.ConversationalForm.startTheConversation({
-          submitCallback: function () {
-            alert("Submit: check dev tools console for more");
-            // be aware that this prevents default form submit.
-            var formData = conversationalForm.getFormData();
-            var formDataSerialized = conversationalForm.getFormData(true);
-            console.log("Formdata:", formData);
-            console.log("Formdata, serialized:", formDataSerialized);
-            conversationalForm.addRobotChatResponse(
-              "Check the dev console for FormatData output."
-            );
-          },
-        });
+    window.onload = function(){
+      var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+        formEl: document.getElementById("form"),
+        context: document.getElementById("cf-context"),
+        submitCallback: function(){
+          var formDataSerialized = conversationalForm.getFormData(true);
+          console.log("FormData:", formDataSerialized);
+          console.log("Surname:", formDataSerialized.surname)
+          conversationalForm.addRobotChatResponse("Thank you");
+
+          surname = document.getElementById("surname_final");
+          first_name = document.getElementById("first_name_final");
+          other_names = document.getElementById("other_names_final");
+          course = document.getElementById("course_final");
+          class_field = document.getElementById("class_final");
+          electives = document.getElementById("electives_final");
+          gender = document.getElementById("gender_final");
+          dob = document.getElementById("date_of_birth_final");
+          parent_contact = document.getElementById("parent_contact_final");
+
+          surname.setAttribute("value", formDataSerialized.surname);
+          first_name.setAttribute("value", formDataSerialized.first_name);
+          other_names.setAttribute("value", formDataSerialized.other_names);
+          course.setAttribute("value", formDataSerialized.course[0]);
+          class_field.setAttribute("value", formDataSerialized.class);
+          electives.setAttribute(
+            "value",
+            [
+            formDataSerialized.electives[0],
+            formDataSerialized.electives[1],
+            formDataSerialized.electives[2],
+            formDataSerialized.electives[3]
+            ].join()
+          );
+          gender.setAttribute("value", formDataSerialized.gender);
+          dob.setAttribute("value", formDataSerialized.date_of_birth);
+          parent_contact.setAttribute("value", formDataSerialized.parent_contact);
+
+          document.getElementById("final_form").submit()
+        }
+      });
     };
   </script>
   {% endblock content %}
