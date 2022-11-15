@@ -187,13 +187,33 @@
   <div id="cf-context" role="cf-context" cf-context></div>
   <script>
     window.onload = function(){
+      navigator.getMedia = (
+        navigator.getUserMedia || // use the proper vendor prefix
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia
+      );
+
+      navigator.getMedia({video: true}, function() {
+        // webcam is available
+        camera = document.getElementById("has_camera")
+        camera.setAttribute("value", "yes");
+        console.log("There is a webcam available");
+        
+      }, function() {
+        // webcam is not available
+        camera = document.getElementById("has_camera")
+        camera.setAttribute("value", "no");
+        console.log("There is no webcam");
+      });
+
       var conversationalForm = window.cf.ConversationalForm.startTheConversation({
         formEl: document.getElementById("form"),
         context: document.getElementById("cf-context"),
         submitCallback: function(){
           var formDataSerialized = conversationalForm.getFormData(true);
           console.log("FormData:", formDataSerialized);
-          console.log("Surname:", formDataSerialized.surname)
+          console.log("Surname:", formDataSerialized.surname);
           conversationalForm.addRobotChatResponse("Thank you");
 
           var surname = document.getElementById("surname_final");
@@ -223,26 +243,6 @@
           gender.setAttribute("value", formDataSerialized.gender);
           dob.setAttribute("value", formDataSerialized.date_of_birth);
           parent_contact.setAttribute("value", formDataSerialized.parent_contact);
-
-          navigator.getMedia = ( navigator.getUserMedia || // use the proper vendor prefix
-                       navigator.webkitGetUserMedia ||
-                       navigator.mozGetUserMedia ||
-                       navigator.msGetUserMedia);
-
-          navigator.getMedia({video: true}, function() {
-            // webcam is available
-            camera = document.getElementById("has_camera")
-            camera.setAttribute("value", "yes");
-            console.log("There is a webcam available");
-            
-          }, function() {
-            // webcam is not available
-            camera = document.getElementById("has_camera")
-            camera.setAttribute("value", "no");
-            console.log("There is no webcam");
-          });
-          sleep(1000);
-
           document.getElementById("final_form").submit();
         }
       });

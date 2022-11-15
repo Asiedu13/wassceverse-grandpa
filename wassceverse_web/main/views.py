@@ -59,7 +59,7 @@ def conversation(request):
             except ObjectDoesNotExist:
                 record = models.RegisteredStudents(student = request.session['student'])
                 record.save()
-            print("Hell")
+            print(request.POST['has_camera'])
             if request.POST['has_camera'] == "no":
                 print("Hello")
                 return redirect('congrats')

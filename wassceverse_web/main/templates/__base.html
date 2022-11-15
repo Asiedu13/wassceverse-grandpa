@@ -18,15 +18,6 @@
       <a href="{% url 'conversation' %}" data-link>Chat </a>
       <a href="{% url 'congrats' %}" data-link> Congrats </a>
     </header>
-    <script>
-      function sleep(milliseconds) {
-        const date = Date.now();
-        let currentDate = null;
-        do {
-          currentDate = Date.now();
-        } while (currentDate - date < milliseconds);
-      }
-    </script>
 
     {% block content %} {% endblock content %}
 
