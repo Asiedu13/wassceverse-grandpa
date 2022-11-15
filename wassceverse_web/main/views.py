@@ -1,7 +1,10 @@
-from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.core.exceptions import ObjectDoesNotExist
+
 from . import models
 from .forms import StudentCred
+
 
 # Create your views here.
 def login(request):
@@ -9,11 +12,18 @@ def login(request):
     if request.method == "POST":
         form = StudentCred(request.POST)
         if form.is_valid:
-            studentData = models.StudentDetails.objects.get(index_number = request.POST['index_number'])
-            if studentData.student_key == "":
+            print("hello")
+            state = False
+            try:
+                studentData = models.StudentDetails.objects.get(index_number = request.POST['index_number'])
+            except ObjectDoesNotExist:
+                state = True
+            if state:
+                context['error'] = "Your index number does not exist on our system.Please contact your school administration"
+            elif studentData.student_key == "": # type: ignore
                 context['error'] = "You do not have a key. Please contact your school administration" 
-            elif studentData.student_key == request.POST['student_key']:
-                request.session['student'] = studentData.id
+            elif studentData.student_key == request.POST['student_key']: # type: ignore
+                request.session['student'] = studentData.id # type: ignore
                 return redirect("conversation")
             else:
                 context['error'] = "Your key is incorrect. Please contact your school administration if you have recieved the wrong key"
@@ -28,10 +38,8 @@ def conversation(request):
         return redirect('login')
     
     student = request.session['student']
-    print(student)
     studentData = models.StudentDetails.objects.get(id = student)
     school = studentData.school
-    print(school)
     context = {
         'id': student,
         'school': school,
