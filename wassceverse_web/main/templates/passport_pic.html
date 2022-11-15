@@ -1,45 +1,108 @@
 {% extends '__base.html' %}
 {% block content %}
+<main id="camera">
+    <canvas id="camera--sensor">
+
+    </canvas>
+    <video id="camera--view" autoplay playsinline></video>
+    <div id="camera--output-container" style="visibility: collapse;">
+        <img src="//:0" alt="" id="camera--output">
+        <a href="#" id='save'>Save</a>
+    </div>
+    
+    <form method="post" id="image">
+        {% csrf_token %}
+        <input type="hidden" name="blobData">
+    </form>
+
+    <button id="camera--trigger">Take a picture</button>
+</main>
+<style>
+    html, body{
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #camera, #camera--view, #camera--sensor, #camera--output{
+          position: fixed;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+      }
+      #camera--view, #camera--sensor, #camera--output{
+          transform: scaleX(-1);
+          filter: FlipH;
+      }
+      #camera--trigger{
+          width: 200px;
+          background-color: black;
+          color: white;
+          font-size: 16px;
+          border-radius: 30px;
+          border: none;
+          padding: 15px 20px;
+          text-align: center;
+          box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+          position: fixed;
+          bottom: 30px;
+          left: calc(50% - 100px);
+      }
+      .taken{
+          height: 100px!important;
+          width: 100px!important;
+          transition: all 0.5s ease-in;
+          border: solid 3px white;
+          box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+          top: 20px;
+          right: 20px;
+          z-index: 2;
+      }
+
+      #save{
+        position: fixed;
+        width: 100px;
+        box-sizing: border-box;
+        transition: all 0.5s ease-in;
+        border: solid 3px white;
+        padding: 20px 10px;
+        top: 130px;
+        right: 20px;
+        z-index: 6;
+    }
+</style>
 <script>
-    window.addEventListener("DOMContentLoaded",function(){
-        var canvas=document.getElementById("canvas"),
-            video=document.getElementById("video"),
-            context=canvas.getContext("2d"),
-            videoObj={"video":true},
-            errorfn=function(){
-            console.log('str wrong');
-        }
-        var play=function(){
-            if(navigator.getUserMedia) { // Standard
-                navigator.getUserMedia(videoObj, function(stream) {
-                    video.src = stream;
-                    video.play();
-                }, errorfn);
-            } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-                navigator.webkitGetUserMedia(videoObj, function(stream){
-                    video.src = window.webkitURL.createObjectURL(stream);
-                    video.play();
-                }, errorfn);
-            } else if(navigator.mozGetUserMedia) { // WebKit-prefixed
-                navigator.mozGetUserMedia(videoObj, function(stream){
-                    video.src = window.URL.createObjectURL(stream);
-                    video.play();
-                }, errorfn);
-            }
-            else if(navigator.msGetUserMedia) { // WebKit-prefixed
-                navigator.mozGetUserMedia(videoObj, function(stream){
-                    video.src = window.URL.createObjectURL(stream);
-                    video.play();
-                }, errorfn);
-            }
-        }
-        play();
-        document.getElementById("picture").addEventListener("click",function(){
-            context.drawImage(video,0,0,640,480);
-        })
-    },false)
+// Set constraints for the video stream
+var constraints = { video: { facingMode: "user" }, audio: false };
+// Define constants
+const cameraView = document.querySelector("#camera--view"),
+    cameraOutput = document.querySelector("#camera--output"),
+    cameraSensor = document.querySelector("#camera--sensor"),
+    cameraTrigger = document.querySelector("#camera--trigger")
+// Access the device camera and stream to cameraView
+function cameraStart() {
+    navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function(stream) {
+        track = stream.getTracks()[0];
+        cameraView.srcObject = stream;
+    })
+    .catch(function(error) {
+        console.error("Oops. Something is broken.", error);
+    });
+}
+// Take a picture when cameraTrigger is tapped
+cameraTrigger.onclick = function() {
+    cameraSensor.width = cameraView.videoWidth;
+    cameraSensor.height = cameraView.videoHeight;
+    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+    cameraOutput.src = cameraSensor.toDataURL("image/png");
+    console.log(cameraOutput.src);
+    cameraOutput.classList.add("taken");
+    container = document.querySelector("#camera--output-container");
+    container.style.visibility = 'visible';
+};
+// Start the video stream when the window loads
+window.addEventListener("load", cameraStart, false);
 </script>
-<video id="video" style="width:640px;height:480px"></video>
-<button id="picture">take pirture</button>
-<canvas id="canvas" width="640" height="480"></canvas>  
 {% endblock content %}
