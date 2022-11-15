@@ -12,7 +12,6 @@ def login(request):
     if request.method == "POST":
         form = StudentCred(request.POST)
         if form.is_valid:
-            print("hello")
             state = False
             try:
                 studentData = models.StudentDetails.objects.get(index_number = request.POST['index_number'])
@@ -36,6 +35,27 @@ def login(request):
 def conversation(request):
     if 'student' not in request.session:
         return redirect('login')
+
+    if request.method == "POST":
+        form = StudentCred(request.POST)
+        if form.is_valid:
+            studentData = models.StudentDetails.objects.get(id = request.session['student'])
+            studentData.surname = request.POST['surname_final']
+            studentData.first_name = request.POST['first_name_final']
+            studentData.other_names = request.POST['other_names_final']
+            studentData.course = request.POST['course_final']
+            studentData.class_field = request.POST['class_final']
+            studentData.electives = request.POST['electives_final']
+            studentData.date_of_birth = request.POST['date_of_birth_final']
+            studentData.parent_contact = request.POST['parent_contact_final']
+            studentData.save()
+
+            try:
+                studentReg = models.RegisteredStudents.objects.get(student = request.session['student'])
+            except ObjectDoesNotExist:
+                record = models.RegisteredStudents(student = request.session['student'])
+
+            return redirect('congrats')
     
     student = request.session['student']
     studentData = models.StudentDetails.objects.get(id = student)
