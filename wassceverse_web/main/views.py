@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 from . import models
 from .forms import StudentCred
@@ -18,8 +18,15 @@ def login(request):
                 studentData = models.StudentDetails.objects.get(index_number = request.POST['index_number'])
             except ObjectDoesNotExist:
                 state = True
+            
+            except MultipleObjectsReturned:
+                duplicate = True
+
             if state:
                 context['error'] = "Your index number does not exist on our system.Please contact your school administration"
+
+            elif duplicate:
+                context['error'] = "Your index number appears to be duplicate on our system.Please contact your school administration"
             elif studentData.student_key == "": # type: ignore
                 context['error'] = "You do not have a key. Please contact your school administration" 
             elif studentData.student_key == request.POST['student_key']: # type: ignore
