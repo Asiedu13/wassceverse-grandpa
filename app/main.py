@@ -612,11 +612,18 @@ class MainWindow(QMainWindow):
                     gender = 1
 
                 parent_contact = row[11]
-                dob = row[12]
-
-                sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-                CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, self.bece_year))
-                CONNECTION.commit()
+                do_b = row[12].split()
+                do_b = do_b[0].split("-")
+                dob = f"{do_b[2]}/{do_b[1]}/{do_b[0]}"
+                sql = "SELECT COUNT(*) FROM student_details WHERE index_number = ?"
+                CURSOR.execute(sql, (index_number,))
+                data = []
+                for d in CURSOR:
+                    data.append(d)
+                if data[0] == 0:
+                    sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, self.bece_year))
+                    CONNECTION.commit()
 
 
     def getStudent(self, id=0):
