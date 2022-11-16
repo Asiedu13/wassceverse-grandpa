@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainagaDyo.ui'
+# Form generated from reading UI file 'ui_mainkSeARH.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.14.1
+# Created by: Qt User Interface Compiler version 5.14.1
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
+# WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt, QDate)
+                            QRect, QSize, QUrl, Qt, QDate)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
+                           QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
+                           QRadialGradient)
 from PySide2.QtWidgets import *
 
 from PySide2.QtMultimediaWidgets import QCameraViewfinder
@@ -55,7 +55,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_9.addWidget(self.label_4)
 
-
         self.horizontalLayout_5.addWidget(self.frame_10)
 
         self.frame_11 = QFrame(self.title_bar)
@@ -78,13 +77,13 @@ class Ui_MainWindow(object):
         self.btn_minimize.setMinimumSize(QSize(18, 18))
         self.btn_minimize.setMaximumSize(QSize(18, 18))
         self.btn_minimize.setStyleSheet(u"QPushButton {\n"
-"border-radius: 9px;\n"
-"background-color: rgb(0, 189, 91);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: rgb(0, 255, 119);\n"
-"}")
+                                        "border-radius: 9px;\n"
+                                        "background-color: rgb(0, 189, 91);\n"
+                                        "}\n"
+                                        "\n"
+                                        "QPushButton:hover {\n"
+                                        "background-color: rgb(0, 255, 119);\n"
+                                        "}")
 
         self.horizontalLayout_6.addWidget(self.btn_minimize)
 
@@ -93,19 +92,17 @@ class Ui_MainWindow(object):
         self.btn_close.setMinimumSize(QSize(18, 18))
         self.btn_close.setMaximumSize(QSize(18, 18))
         self.btn_close.setStyleSheet(u"QPushButton {\n"
-"border-radius: 9px;\n"
-"background-color: rgb(227, 20, 20);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"background-color: rgb(255, 22, 22);\n"
-"}")
+                                     "border-radius: 9px;\n"
+                                     "background-color: rgb(227, 20, 20);\n"
+                                     "}\n"
+                                     "\n"
+                                     "QPushButton:hover {\n"
+                                     "background-color: rgb(255, 22, 22);\n"
+                                     "}")
 
         self.horizontalLayout_6.addWidget(self.btn_close)
 
-
         self.horizontalLayout_5.addWidget(self.frame_12)
-
 
         self.centralWidgetLaayout.addWidget(self.title_bar)
 
@@ -116,7 +113,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.setFont(font)
         self.stackedWidget.setCursor(QCursor(Qt.ArrowCursor))
         self.stackedWidget.setStyleSheet(u"border-radius: 0 0 20px 20px;\n"
-"background-color:#f2f4ee;")
+                                         "background-color:#f2f4ee;")
         self.signIn = QWidget()
         self.signIn.setObjectName(u"signIn")
         self.signIn.setStyleSheet(u"background-color: #f2f4ee;")
@@ -127,7 +124,7 @@ class Ui_MainWindow(object):
         self.background = QFrame(self.signIn)
         self.background.setObjectName(u"background")
         self.background.setStyleSheet(u"background-color: #ffffff;\n"
-"border-radius: 30px;")
+                                      "border-radius: 30px;")
         self.background.setFrameShape(QFrame.StyledPanel)
         self.background.setFrameShadow(QFrame.Raised)
         self.SignInBackgroundLayout = QHBoxLayout(self.background)
@@ -155,7 +152,7 @@ class Ui_MainWindow(object):
         font1.setPointSize(16)
         self.SignInInfoTop.setFont(font1)
         self.SignInInfoTop.setTextFormat(Qt.AutoText)
-        self.SignInInfoTop.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+        self.SignInInfoTop.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
 
         self.verticalLayout.addWidget(self.SignInInfoTop)
 
@@ -168,7 +165,7 @@ class Ui_MainWindow(object):
         self.SignInInfoBottom.setFont(font2)
         self.SignInInfoBottom.setLineWidth(1)
         self.SignInInfoBottom.setMidLineWidth(0)
-        self.SignInInfoBottom.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.SignInInfoBottom.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
         self.SignInInfoBottom.setMargin(9)
 
         self.verticalLayout.addWidget(self.SignInInfoBottom)
@@ -180,7 +177,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.signInLeftBottomSpacer)
 
-
         self.SignInBackgroundLayout.addWidget(self.SignInInfoFrame)
 
         self.divider = QFrame(self.background)
@@ -189,9 +185,9 @@ class Ui_MainWindow(object):
         self.divider.setSizeIncrement(QSize(0, 0))
         self.divider.setAutoFillBackground(False)
         self.divider.setStyleSheet(u"background-color:#414844;\n"
-"border-radius:3px;\n"
-"margin-top: 20px;\n"
-"margin-bottom: 20px;")
+                                   "border-radius:3px;\n"
+                                   "margin-top: 20px;\n"
+                                   "margin-bottom: 20px;")
         self.divider.setFrameShape(QFrame.StyledPanel)
         self.divider.setFrameShadow(QFrame.Raised)
         self.divider.setLineWidth(0)
@@ -224,7 +220,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_15.addWidget(self.label_10)
 
-
         self.verticalLayout_2.addWidget(self.frame_9)
 
         self.SchoolNameFrame = QFrame(self.SignInFrame)
@@ -250,7 +245,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder.setObjectName(u"SchoolNameBorder")
         self.SchoolNameBorder.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                            "border-radius:8px;")
         self.SchoolNameBorder.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder.setFrameShadow(QFrame.Raised)
         self.horizontalLayout = QHBoxLayout(self.SchoolNameBorder)
@@ -261,7 +256,7 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setMaximumSize(QSize(16777215, 35))
         self.frame_2.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                   "border-radius: 8px;")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_2)
@@ -273,15 +268,14 @@ class Ui_MainWindow(object):
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.schoolNameSignIn.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.schoolNameSignIn.sizePolicy().hasHeightForWidth())
         self.schoolNameSignIn.setSizePolicy(sizePolicy)
         self.schoolNameSignIn.setCursorMoveStyle(Qt.VisualMoveStyle)
 
         self.verticalLayout_4.addWidget(self.schoolNameSignIn)
 
-
         self.horizontalLayout.addWidget(self.frame_2)
-
 
         self.verticalLayout_3.addWidget(self.SchoolNameBorder)
 
@@ -312,7 +306,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_3.setObjectName(u"SchoolNameBorder_3")
         self.SchoolNameBorder_3.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_3.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_3.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.SchoolNameBorder_3)
@@ -323,7 +317,7 @@ class Ui_MainWindow(object):
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setMaximumSize(QSize(600, 35))
         self.frame_4.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                   "border-radius: 8px;")
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.frame_4)
@@ -332,7 +326,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setContentsMargins(5, 5, 5, 5)
         self.emailSignIn = QLineEdit(self.frame_4)
         self.emailSignIn.setObjectName(u"emailSignIn")
-        sizePolicy.setHeightForWidth(self.emailSignIn.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.emailSignIn.sizePolicy().hasHeightForWidth())
         self.emailSignIn.setSizePolicy(sizePolicy)
         font6 = QFont()
         font6.setStyleStrategy(QFont.PreferDefault)
@@ -340,12 +335,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.emailSignIn)
 
-
         self.horizontalLayout_3.addWidget(self.frame_4)
 
-
         self.verticalLayout_8.addWidget(self.SchoolNameBorder_3)
-
 
         self.verticalLayout_2.addWidget(self.EmailSignInFrame)
 
@@ -368,7 +360,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_2.setObjectName(u"SchoolNameBorder_2")
         self.SchoolNameBorder_2.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_2.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_2.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.SchoolNameBorder_2)
@@ -379,7 +371,7 @@ class Ui_MainWindow(object):
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setMaximumSize(QSize(16777215, 35))
         self.frame_3.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                   "border-radius: 8px;")
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.frame_3)
@@ -388,18 +380,16 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setContentsMargins(5, 5, 5, 5)
         self.passwordSignIn = QLineEdit(self.frame_3)
         self.passwordSignIn.setObjectName(u"passwordSignIn")
-        sizePolicy.setHeightForWidth(self.passwordSignIn.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.passwordSignIn.sizePolicy().hasHeightForWidth())
         self.passwordSignIn.setSizePolicy(sizePolicy)
         self.passwordSignIn.setEchoMode(QLineEdit.Password)
 
         self.verticalLayout_5.addWidget(self.passwordSignIn)
 
-
         self.horizontalLayout_2.addWidget(self.frame_3)
 
-
         self.verticalLayout_6.addWidget(self.SchoolNameBorder_2)
-
 
         self.verticalLayout_2.addWidget(self.PasswordSignInFrame)
 
@@ -440,7 +430,8 @@ class Ui_MainWindow(object):
         sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.SignInSubmit.sizePolicy().hasHeightForWidth())
+        sizePolicy1.setHeightForWidth(
+            self.SignInSubmit.sizePolicy().hasHeightForWidth())
         self.SignInSubmit.setSizePolicy(sizePolicy1)
         self.SignInSubmit.setMinimumSize(QSize(100, 40))
         self.SignInSubmit.setMaximumSize(QSize(250, 16777215))
@@ -449,16 +440,15 @@ class Ui_MainWindow(object):
         font7.setPointSize(10)
         self.SignInSubmit.setFont(font7)
         self.SignInSubmit.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(213, 93, 33);\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius: 20px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-color: rgb(185, 80, 28);\n"
-"}")
+                                        "background-color: rgb(213, 93, 33);\n"
+                                        "color: rgb(255, 255, 255);\n"
+                                        "border-radius: 20px;\n"
+                                        "}\n"
+                                        "QPushButton:hover{\n"
+                                        "background-color: rgb(185, 80, 28);\n"
+                                        "}")
 
         self.horizontalLayout_4.addWidget(self.SignInSubmit)
-
 
         self.verticalLayout_2.addWidget(self.frame_5)
 
@@ -469,9 +459,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.frame_8)
 
-
-        self.SignInBackgroundLayout.addWidget(self.SignInFrame, 0, Qt.AlignHCenter)
-
+        self.SignInBackgroundLayout.addWidget(
+            self.SignInFrame, 0, Qt.AlignHCenter)
 
         self.signInLayout.addWidget(self.background)
 
@@ -504,9 +493,9 @@ class Ui_MainWindow(object):
         self.pushButton_7.setFont(font8)
         self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_7.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(148, 22, 24);\n"
-"border-top-left-radius: 20px;\n"
-"padding: 10px 20px;")
+                                        "background-color: rgb(148, 22, 24);\n"
+                                        "border-top-left-radius: 20px;\n"
+                                        "padding: 10px 20px;")
 
         self.horizontalLayout_62.addWidget(self.pushButton_7)
 
@@ -516,8 +505,8 @@ class Ui_MainWindow(object):
         self.pushButton_6.setFont(font8)
         self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_6.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(100, 100, 100);\n"
-"padding: 10px 20px;")
+                                        "background-color: rgb(100, 100, 100);\n"
+                                        "padding: 10px 20px;")
 
         self.horizontalLayout_62.addWidget(self.pushButton_6)
 
@@ -527,12 +516,11 @@ class Ui_MainWindow(object):
         self.pushButton_9.setFont(font8)
         self.pushButton_9.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_9.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(213, 93, 33);\n"
-"border-top-right-radius: 20px;\n"
-"padding: 10px 20px;")
+                                        "background-color: rgb(213, 93, 33);\n"
+                                        "border-top-right-radius: 20px;\n"
+                                        "padding: 10px 20px;")
 
         self.horizontalLayout_62.addWidget(self.pushButton_9)
-
 
         self.verticalLayout_45.addWidget(self.frame_100)
 
@@ -547,7 +535,6 @@ class Ui_MainWindow(object):
         self.widget_2.setObjectName(u"widget_2")
 
         self.verticalLayout_46.addWidget(self.widget_2)
-
 
         self.verticalLayout_45.addWidget(self.frame_80)
 
@@ -604,7 +591,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_54.addWidget(self.frame_86)
 
-
         self.verticalLayout_48.addWidget(self.frame_85)
 
         self.frame_87 = QFrame(self.frame_82)
@@ -636,7 +622,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_59.addWidget(self.label_40)
 
-
         self.horizontalLayout_55.addWidget(self.frame_94)
 
         self.frame_95 = QFrame(self.frame_89)
@@ -651,9 +636,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_60.addWidget(self.label_43)
 
-
         self.horizontalLayout_55.addWidget(self.frame_95)
-
 
         self.verticalLayout_49.addWidget(self.frame_89)
 
@@ -675,7 +658,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_61.addWidget(self.label_44)
 
-
         self.horizontalLayout_56.addWidget(self.frame_96)
 
         self.frame_97 = QFrame(self.frame_91)
@@ -689,9 +671,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_50.addWidget(self.label_46)
 
-
         self.horizontalLayout_56.addWidget(self.frame_97)
-
 
         self.verticalLayout_49.addWidget(self.frame_91)
 
@@ -712,7 +692,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_54.addWidget(self.label_45)
 
-
         self.horizontalLayout_58.addWidget(self.frame_98)
 
         self.frame_99 = QFrame(self.frame_92)
@@ -726,9 +705,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_55.addWidget(self.label_47)
 
-
         self.horizontalLayout_58.addWidget(self.frame_99)
-
 
         self.verticalLayout_49.addWidget(self.frame_92)
 
@@ -739,9 +716,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_49.addWidget(self.frame_93)
 
-
         self.verticalLayout_48.addWidget(self.frame_87)
-
 
         self.verticalLayout_47.addWidget(self.frame_82)
 
@@ -761,18 +736,15 @@ class Ui_MainWindow(object):
         self.view_data.setFont(font11)
         self.view_data.setCursor(QCursor(Qt.PointingHandCursor))
         self.view_data.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(213, 93, 33);\n"
-"border-bottom-right-radius: 20px;\n"
-"border-bottom-left-radius: 20px;")
+                                     "background-color: rgb(213, 93, 33);\n"
+                                     "border-bottom-right-radius: 20px;\n"
+                                     "border-bottom-left-radius: 20px;")
 
         self.horizontalLayout_53.addWidget(self.view_data)
 
-
         self.verticalLayout_47.addWidget(self.frame_83)
 
-
         self.verticalLayout_45.addWidget(self.frame_81)
-
 
         self.verticalLayout_44.addWidget(self.frame_79)
 
@@ -785,12 +757,13 @@ class Ui_MainWindow(object):
         self.background_2 = QFrame(self.signUp)
         self.background_2.setObjectName(u"background_2")
         self.background_2.setStyleSheet(u"background-color: #ffffff;\n"
-"border-radius: 30px;")
+                                        "border-radius: 30px;")
         self.background_2.setFrameShape(QFrame.StyledPanel)
         self.background_2.setFrameShadow(QFrame.Raised)
         self.SignInBackgroundLayout_2 = QHBoxLayout(self.background_2)
         self.SignInBackgroundLayout_2.setSpacing(0)
-        self.SignInBackgroundLayout_2.setObjectName(u"SignInBackgroundLayout_2")
+        self.SignInBackgroundLayout_2.setObjectName(
+            u"SignInBackgroundLayout_2")
         self.SignInBackgroundLayout_2.setContentsMargins(0, 0, 0, 0)
         self.SignInFrame_2 = QFrame(self.background_2)
         self.SignInFrame_2.setObjectName(u"SignInFrame_2")
@@ -814,7 +787,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_14.addWidget(self.label_9)
 
-
         self.verticalLayout_11.addWidget(self.frame_13)
 
         self.SchoolNameFrame_2 = QFrame(self.SignInFrame_2)
@@ -836,7 +808,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_4.setObjectName(u"SchoolNameBorder_4")
         self.SchoolNameBorder_4.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_4.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_4.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_4.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.SchoolNameBorder_4)
@@ -847,7 +819,7 @@ class Ui_MainWindow(object):
         self.frame_14.setObjectName(u"frame_14")
         self.frame_14.setMaximumSize(QSize(16777215, 35))
         self.frame_14.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                    "border-radius: 8px;")
         self.frame_14.setFrameShape(QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QFrame.Raised)
         self.verticalLayout_13 = QVBoxLayout(self.frame_14)
@@ -856,15 +828,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setContentsMargins(5, 5, 5, 5)
         self.schoolNameSignUp = QLineEdit(self.frame_14)
         self.schoolNameSignUp.setObjectName(u"schoolNameSignUp")
-        sizePolicy.setHeightForWidth(self.schoolNameSignUp.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.schoolNameSignUp.sizePolicy().hasHeightForWidth())
         self.schoolNameSignUp.setSizePolicy(sizePolicy)
         self.schoolNameSignUp.setMinimumSize(QSize(0, 25))
 
         self.verticalLayout_13.addWidget(self.schoolNameSignUp)
 
-
         self.horizontalLayout_7.addWidget(self.frame_14)
-
 
         self.verticalLayout_12.addWidget(self.SchoolNameBorder_4)
 
@@ -873,7 +844,6 @@ class Ui_MainWindow(object):
         self.school_name_error.setStyleSheet(u"color: rgb(255, 0, 0);")
 
         self.verticalLayout_12.addWidget(self.school_name_error)
-
 
         self.verticalLayout_11.addWidget(self.SchoolNameFrame_2)
 
@@ -896,7 +866,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_5.setObjectName(u"SchoolNameBorder_5")
         self.SchoolNameBorder_5.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_5.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_5.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_5.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.SchoolNameBorder_5)
@@ -907,7 +877,7 @@ class Ui_MainWindow(object):
         self.frame_15.setObjectName(u"frame_15")
         self.frame_15.setMaximumSize(QSize(600, 35))
         self.frame_15.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                    "border-radius: 8px;")
         self.frame_15.setFrameShape(QFrame.StyledPanel)
         self.frame_15.setFrameShadow(QFrame.Raised)
         self.verticalLayout_15 = QVBoxLayout(self.frame_15)
@@ -920,9 +890,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addWidget(self.emailSignUp)
 
-
         self.horizontalLayout_8.addWidget(self.frame_15)
-
 
         self.verticalLayout_14.addWidget(self.SchoolNameBorder_5)
 
@@ -931,7 +899,6 @@ class Ui_MainWindow(object):
         self.email_error.setStyleSheet(u"color: rgb(255, 0, 0);")
 
         self.verticalLayout_14.addWidget(self.email_error)
-
 
         self.verticalLayout_11.addWidget(self.EmailSignInFrame_2)
 
@@ -962,7 +929,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_11.setObjectName(u"SchoolNameBorder_11")
         self.SchoolNameBorder_11.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_11.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                               "border-radius:8px;")
         self.SchoolNameBorder_11.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_11.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_57 = QHBoxLayout(self.SchoolNameBorder_11)
@@ -973,7 +940,7 @@ class Ui_MainWindow(object):
         self.frame_90.setObjectName(u"frame_90")
         self.frame_90.setMaximumSize(QSize(600, 35))
         self.frame_90.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                    "border-radius: 8px;")
         self.frame_90.setFrameShape(QFrame.StyledPanel)
         self.frame_90.setFrameShadow(QFrame.Raised)
         self.verticalLayout_52 = QVBoxLayout(self.frame_90)
@@ -987,9 +954,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_52.addWidget(self.passwordSignUp)
 
-
         self.horizontalLayout_57.addWidget(self.frame_90)
-
 
         self.verticalLayout_51.addWidget(self.SchoolNameBorder_11)
 
@@ -999,9 +964,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_51.addWidget(self.password_error)
 
-
         self.verticalLayout_53.addWidget(self.EmailSignInFrame_3)
-
 
         self.verticalLayout_11.addWidget(self.frame_88)
 
@@ -1010,7 +973,8 @@ class Ui_MainWindow(object):
         sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.frame_21.sizePolicy().hasHeightForWidth())
+        sizePolicy2.setHeightForWidth(
+            self.frame_21.sizePolicy().hasHeightForWidth())
         self.frame_21.setSizePolicy(sizePolicy2)
         self.frame_21.setMaximumSize(QSize(500, 16777215))
         self.frame_21.setFrameShape(QFrame.StyledPanel)
@@ -1037,7 +1001,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_6.setObjectName(u"SchoolNameBorder_6")
         self.SchoolNameBorder_6.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_6.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_6.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_6.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.SchoolNameBorder_6)
@@ -1048,7 +1012,7 @@ class Ui_MainWindow(object):
         self.frame_16.setObjectName(u"frame_16")
         self.frame_16.setMaximumSize(QSize(16777215, 35))
         self.frame_16.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                    "border-radius: 8px;")
         self.frame_16.setFrameShape(QFrame.StyledPanel)
         self.frame_16.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.frame_16)
@@ -1061,12 +1025,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_17.addWidget(self.locationSignUp)
 
-
         self.horizontalLayout_9.addWidget(self.frame_16)
 
-
         self.verticalLayout_16.addWidget(self.SchoolNameBorder_6)
-
 
         self.horizontalLayout_13.addWidget(self.PasswordSignInFrame_2)
 
@@ -1088,7 +1049,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_7.setObjectName(u"SchoolNameBorder_7")
         self.SchoolNameBorder_7.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_7.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_7.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_7.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_12 = QHBoxLayout(self.SchoolNameBorder_7)
@@ -1099,7 +1060,7 @@ class Ui_MainWindow(object):
         self.frame_22.setObjectName(u"frame_22")
         self.frame_22.setMaximumSize(QSize(16777215, 35))
         self.frame_22.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                    "border-radius: 8px;")
         self.frame_22.setFrameShape(QFrame.StyledPanel)
         self.frame_22.setFrameShadow(QFrame.Raised)
         self.verticalLayout_19 = QVBoxLayout(self.frame_22)
@@ -1113,15 +1074,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_19.addWidget(self.countrySignUp)
 
-
         self.horizontalLayout_12.addWidget(self.frame_22)
-
 
         self.verticalLayout_18.addWidget(self.SchoolNameBorder_7)
 
-
         self.horizontalLayout_13.addWidget(self.PasswordSignInFrame_3)
-
 
         self.verticalLayout_11.addWidget(self.frame_21)
 
@@ -1164,16 +1121,15 @@ class Ui_MainWindow(object):
         self.SignInSubmit_2.setMaximumSize(QSize(200, 16777215))
         self.SignInSubmit_2.setFont(font7)
         self.SignInSubmit_2.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(213, 93, 33);\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius: 20px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-color: rgb(185, 80, 28);\n"
-"}")
+                                          "background-color: rgb(213, 93, 33);\n"
+                                          "color: rgb(255, 255, 255);\n"
+                                          "border-radius: 20px;\n"
+                                          "}\n"
+                                          "QPushButton:hover{\n"
+                                          "background-color: rgb(185, 80, 28);\n"
+                                          "}")
 
         self.horizontalLayout_10.addWidget(self.SignInSubmit_2)
-
 
         self.verticalLayout_11.addWidget(self.frame_17)
 
@@ -1185,8 +1141,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_11.addWidget(self.frame_20)
 
-
-        self.SignInBackgroundLayout_2.addWidget(self.SignInFrame_2, 0, Qt.AlignHCenter)
+        self.SignInBackgroundLayout_2.addWidget(
+            self.SignInFrame_2, 0, Qt.AlignHCenter)
 
         self.divider_2 = QFrame(self.background_2)
         self.divider_2.setObjectName(u"divider_2")
@@ -1194,9 +1150,9 @@ class Ui_MainWindow(object):
         self.divider_2.setSizeIncrement(QSize(0, 0))
         self.divider_2.setAutoFillBackground(False)
         self.divider_2.setStyleSheet(u"background-color:#414844;\n"
-"border-radius:3px;\n"
-"margin-top: 20px;\n"
-"margin-bottom: 20px;")
+                                     "border-radius:3px;\n"
+                                     "margin-top: 20px;\n"
+                                     "margin-bottom: 20px;")
         self.divider_2.setFrameShape(QFrame.StyledPanel)
         self.divider_2.setFrameShadow(QFrame.Raised)
         self.divider_2.setLineWidth(0)
@@ -1223,7 +1179,7 @@ class Ui_MainWindow(object):
         self.SignInInfoTop_2.setMaximumSize(QSize(16777215, 80))
         self.SignInInfoTop_2.setFont(font1)
         self.SignInInfoTop_2.setTextFormat(Qt.AutoText)
-        self.SignInInfoTop_2.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+        self.SignInInfoTop_2.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
 
         self.verticalLayout_10.addWidget(self.SignInInfoTop_2)
 
@@ -1232,21 +1188,20 @@ class Ui_MainWindow(object):
         self.SignInInfoBottom_2.setFont(font2)
         self.SignInInfoBottom_2.setLineWidth(1)
         self.SignInInfoBottom_2.setMidLineWidth(0)
-        self.SignInInfoBottom_2.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.SignInInfoBottom_2.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
         self.SignInInfoBottom_2.setMargin(9)
 
         self.verticalLayout_10.addWidget(self.SignInInfoBottom_2)
 
         self.signInLeftBottomSpacer_2 = QFrame(self.SignInInfoFrame_2)
-        self.signInLeftBottomSpacer_2.setObjectName(u"signInLeftBottomSpacer_2")
+        self.signInLeftBottomSpacer_2.setObjectName(
+            u"signInLeftBottomSpacer_2")
         self.signInLeftBottomSpacer_2.setFrameShape(QFrame.StyledPanel)
         self.signInLeftBottomSpacer_2.setFrameShadow(QFrame.Raised)
 
         self.verticalLayout_10.addWidget(self.signInLeftBottomSpacer_2)
 
-
         self.SignInBackgroundLayout_2.addWidget(self.SignInInfoFrame_2)
-
 
         self.horizontalLayout_11.addWidget(self.background_2)
 
@@ -1279,12 +1234,12 @@ class Ui_MainWindow(object):
         font12.setWeight(75)
         self.close_camera.setFont(font12)
         self.close_camera.setStyleSheet(u"QPushButton {\n"
-"	color: rgb(95, 95, 95);\n"
-"}\n"
-"QPushButton:hover {\n"
-"	\n"
-"	background-color: rgb(200, 200, 200);\n"
-"}")
+                                        "	color: rgb(95, 95, 95);\n"
+                                        "}\n"
+                                        "QPushButton:hover {\n"
+                                        "	\n"
+                                        "	background-color: rgb(200, 200, 200);\n"
+                                        "}")
 
         self.horizontalLayout_16.addWidget(self.close_camera)
 
@@ -1319,7 +1274,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_16.addWidget(self.frame_25)
 
-
         self.verticalLayout_21.addWidget(self.frame)
 
         self.frame_23 = QFrame(self.frame_19)
@@ -1333,7 +1287,6 @@ class Ui_MainWindow(object):
         self.camera_input.setMinimumSize(QSize(600, 0))
 
         self.horizontalLayout_18.addWidget(self.camera_input)
-
 
         self.verticalLayout_21.addWidget(self.frame_23)
 
@@ -1363,13 +1316,13 @@ class Ui_MainWindow(object):
         font15.setPointSize(35)
         self.capture.setFont(font15)
         self.capture.setStyleSheet(u"QPushButton{\n"
-"color: #fff;\n"
-"background-color: #707070;\n"
-"border-radius: 30px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"background-color: rgb(152, 152, 152);\n"
-"}")
+                                   "color: #fff;\n"
+                                   "background-color: #707070;\n"
+                                   "border-radius: 30px;\n"
+                                   "}\n"
+                                   "QPushButton:hover{\n"
+                                   "background-color: rgb(152, 152, 152);\n"
+                                   "}")
 
         self.horizontalLayout_19.addWidget(self.capture)
 
@@ -1380,9 +1333,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_19.addWidget(self.frame_28)
 
-
         self.verticalLayout_21.addWidget(self.frame_26)
-
 
         self.verticalLayout_20.addWidget(self.frame_19)
 
@@ -1397,14 +1348,14 @@ class Ui_MainWindow(object):
         self.pushButton_5.setObjectName(u"pushButton_5")
         self.pushButton_5.setMaximumSize(QSize(100, 16777215))
         self.pushButton_5.setStyleSheet(u"QPushButton {\n"
-"color: #ffffff;\n"
-"background-color: rgb(112, 112, 112);\n"
-"padding: 10px 20px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(168, 168, 168);\n"
-"}")
+                                        "color: #ffffff;\n"
+                                        "background-color: rgb(112, 112, 112);\n"
+                                        "padding: 10px 20px;\n"
+                                        "}\n"
+                                        "\n"
+                                        "QPushButton:hover {\n"
+                                        "	background-color: rgb(168, 168, 168);\n"
+                                        "}")
 
         self.verticalLayout_22.addWidget(self.pushButton_5)
 
@@ -1421,7 +1372,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_8.setMinimumSize(QSize(0, 35))
         self.SchoolNameBorder_8.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_8.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_8.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_8.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_35 = QHBoxLayout(self.SchoolNameBorder_8)
@@ -1432,7 +1383,7 @@ class Ui_MainWindow(object):
         self.frame_55.setObjectName(u"frame_55")
         self.frame_55.setMaximumSize(QSize(600, 35))
         self.frame_55.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                    "border-radius: 8px;")
         self.frame_55.setFrameShape(QFrame.StyledPanel)
         self.frame_55.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_37 = QHBoxLayout(self.frame_55)
@@ -1441,21 +1392,19 @@ class Ui_MainWindow(object):
         self.horizontalLayout_37.setContentsMargins(5, 5, 5, 5)
         self.search_student_button = QPushButton(self.frame_55)
         self.search_student_button.setObjectName(u"search_student_button")
-        sizePolicy2.setHeightForWidth(self.search_student_button.sizePolicy().hasHeightForWidth())
+        sizePolicy2.setHeightForWidth(
+            self.search_student_button.sizePolicy().hasHeightForWidth())
         self.search_student_button.setSizePolicy(sizePolicy2)
         self.search_student_button.setCursor(QCursor(Qt.IBeamCursor))
         self.search_student_button.setStyleSheet(u"padding-left: 10px;\n"
-"text-align: left;\n"
-"color: rgb(165, 165, 165);")
+                                                 "text-align: left;\n"
+                                                 "color: rgb(165, 165, 165);")
 
         self.horizontalLayout_37.addWidget(self.search_student_button)
 
-
         self.horizontalLayout_35.addWidget(self.frame_55)
 
-
         self.horizontalLayout_36.addWidget(self.SchoolNameBorder_8)
-
 
         self.verticalLayout_22.addWidget(self.search_frame)
 
@@ -1482,13 +1431,13 @@ class Ui_MainWindow(object):
         font16.setPointSize(100)
         self.previous_data_button.setFont(font16)
         self.previous_data_button.setStyleSheet(u"QPushButton {\n"
-"color: #ffffff;\n"
-"background-color: rgb(112, 112, 112);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(168, 168, 168);\n"
-"}")
+                                                "color: #ffffff;\n"
+                                                "background-color: rgb(112, 112, 112);\n"
+                                                "}\n"
+                                                "\n"
+                                                "QPushButton:hover {\n"
+                                                "	background-color: rgb(168, 168, 168);\n"
+                                                "}")
 
         self.horizontalLayout_21.addWidget(self.previous_data_button)
 
@@ -1525,6 +1474,7 @@ class Ui_MainWindow(object):
 
         self.pushButton_8 = QPushButton(self.frame_7)
         self.pushButton_8.setObjectName(u"pushButton_8")
+        self.pushButton_8.setMinimumSize(QSize(0, 30))
         self.pushButton_8.setMaximumSize(QSize(16777215, 30))
         font18 = QFont()
         font18.setFamily(u"JetBrains Mono NL Medium")
@@ -1532,9 +1482,21 @@ class Ui_MainWindow(object):
         self.pushButton_8.setFont(font18)
         self.pushButton_8.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_8.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(213, 93, 33);")
+                                        "background-color: rgb(213, 93, 33);")
 
         self.verticalLayout_27.addWidget(self.pushButton_8)
+
+        self.individual_student_key = QPushButton(self.frame_7)
+        self.individual_student_key.setObjectName(u"individual_student_key")
+        self.individual_student_key.setMinimumSize(QSize(0, 30))
+        font19 = QFont()
+        font19.setFamily(u"JetBrains Mono NL Medium")
+        font19.setPointSize(9)
+        self.individual_student_key.setFont(font19)
+        self.individual_student_key.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+                                                  "background-color: rgb(213, 93, 33);")
+
+        self.verticalLayout_27.addWidget(self.individual_student_key)
 
         self.frame_32 = QFrame(self.frame_7)
         self.frame_32.setObjectName(u"frame_32")
@@ -1546,33 +1508,31 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
         self.take_photo = QPushButton(self.frame_32)
         self.take_photo.setObjectName(u"take_photo")
-        font19 = QFont()
-        font19.setFamily(u"JetBrains Mono NL Medium")
-        self.take_photo.setFont(font19)
+        font20 = QFont()
+        font20.setFamily(u"JetBrains Mono NL Medium")
+        self.take_photo.setFont(font20)
         self.take_photo.setCursor(QCursor(Qt.PointingHandCursor))
         self.take_photo.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(66, 72, 68);\n"
-"padding: 6px;\n"
-"border-top-left-radius: 10px;\n"
-"border-bottom-left-radius: 10px;")
+                                      "background-color: rgb(66, 72, 68);\n"
+                                      "padding: 6px;\n"
+                                      "border-top-left-radius: 10px;\n"
+                                      "border-bottom-left-radius: 10px;")
 
         self.horizontalLayout_23.addWidget(self.take_photo)
 
         self.import_file = QPushButton(self.frame_32)
         self.import_file.setObjectName(u"import_file")
-        self.import_file.setFont(font19)
+        self.import_file.setFont(font20)
         self.import_file.setCursor(QCursor(Qt.PointingHandCursor))
         self.import_file.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(66, 72, 68);\n"
-"padding: 6px;\n"
-"border-top-right-radius: 10px;\n"
-"border-bottom-right-radius: 10px;")
+                                       "background-color: rgb(66, 72, 68);\n"
+                                       "padding: 6px;\n"
+                                       "border-top-right-radius: 10px;\n"
+                                       "border-bottom-right-radius: 10px;")
 
         self.horizontalLayout_23.addWidget(self.import_file)
 
-
         self.verticalLayout_27.addWidget(self.frame_32)
-
 
         self.verticalLayout_26.addWidget(self.frame_7)
 
@@ -1598,10 +1558,10 @@ class Ui_MainWindow(object):
         self.label71.setObjectName(u"label71")
         self.label71.setMaximumSize(QSize(90, 16777215))
         self.label71.setSizeIncrement(QSize(0, 0))
-        font20 = QFont()
-        font20.setFamily(u"JetBrains Mono Medium")
-        font20.setPointSize(10)
-        self.label71.setFont(font20)
+        font21 = QFont()
+        font21.setFamily(u"JetBrains Mono Medium")
+        font21.setPointSize(10)
+        self.label71.setFont(font21)
 
         self.horizontalLayout_31.addWidget(self.label71)
 
@@ -1610,7 +1570,6 @@ class Ui_MainWindow(object):
         self.signature.setScaledContents(True)
 
         self.horizontalLayout_31.addWidget(self.signature)
-
 
         self.verticalLayout_35.addWidget(self.frame_51)
 
@@ -1634,12 +1593,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_32.setContentsMargins(0, 0, 0, 0)
         self.label_29 = QLabel(self.frame_53)
         self.label_29.setObjectName(u"label_29")
-        font21 = QFont()
-        font21.setFamily(u"JetBrains Mono NL ExtraBold")
-        self.label_29.setFont(font21)
+        font22 = QFont()
+        font22.setFamily(u"JetBrains Mono NL ExtraBold")
+        self.label_29.setFont(font22)
 
         self.horizontalLayout_32.addWidget(self.label_29)
-
 
         self.verticalLayout_36.addWidget(self.frame_53)
 
@@ -1663,18 +1621,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_33.addWidget(self.right_thumb)
 
-
         self.verticalLayout_36.addWidget(self.frame_54)
-
 
         self.verticalLayout_35.addWidget(self.frame_52)
 
-
         self.verticalLayout_26.addWidget(self.frame_38)
 
-
         self.horizontalLayout_21.addWidget(self.frame_33)
-
 
         self.horizontalLayout_20.addWidget(self.frame_30)
 
@@ -1693,16 +1646,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
         self.label_18 = QLabel(self.student_details_name)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font21)
+        self.label_18.setFont(font22)
 
         self.verticalLayout_25.addWidget(self.label_18)
 
         self.student_name = QLabel(self.student_details_name)
         self.student_name.setObjectName(u"student_name")
-        self.student_name.setFont(font20)
+        self.student_name.setFont(font21)
 
         self.verticalLayout_25.addWidget(self.student_name)
-
 
         self.verticalLayout_23.addWidget(self.student_details_name)
 
@@ -1715,16 +1667,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.label_19 = QLabel(self.frame_35)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setFont(font21)
+        self.label_19.setFont(font22)
 
         self.verticalLayout_29.addWidget(self.label_19)
 
         self.student_school = QLabel(self.frame_35)
         self.student_school.setObjectName(u"student_school")
-        self.student_school.setFont(font20)
+        self.student_school.setFont(font21)
 
         self.verticalLayout_29.addWidget(self.student_school)
-
 
         self.verticalLayout_23.addWidget(self.frame_35)
 
@@ -1745,16 +1696,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.label_20 = QLabel(self.frame_34)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font21)
+        self.label_20.setFont(font22)
 
         self.verticalLayout_30.addWidget(self.label_20)
 
         self.student_class = QLabel(self.frame_34)
         self.student_class.setObjectName(u"student_class")
-        self.student_class.setFont(font20)
+        self.student_class.setFont(font21)
 
         self.verticalLayout_30.addWidget(self.student_class)
-
 
         self.horizontalLayout_24.addWidget(self.frame_34)
 
@@ -1766,19 +1716,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.label_22 = QLabel(self.frame_43)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setFont(font21)
+        self.label_22.setFont(font22)
 
         self.verticalLayout_31.addWidget(self.label_22)
 
         self.student_course = QLabel(self.frame_43)
         self.student_course.setObjectName(u"student_course")
-        self.student_course.setFont(font20)
+        self.student_course.setFont(font21)
 
         self.verticalLayout_31.addWidget(self.student_course)
 
-
         self.horizontalLayout_24.addWidget(self.frame_43)
-
 
         self.verticalLayout_23.addWidget(self.frame_36)
 
@@ -1798,8 +1746,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.label_23 = QLabel(self.frame_41)
         self.label_23.setObjectName(u"label_23")
-        self.label_23.setFont(font21)
-        self.label_23.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+        self.label_23.setFont(font22)
+        self.label_23.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
 
         self.verticalLayout_32.addWidget(self.label_23)
 
@@ -1807,12 +1755,11 @@ class Ui_MainWindow(object):
         self.widget.setObjectName(u"widget")
         self.widget.setMaximumSize(QSize(16777215, 2))
         self.widget.setStyleSheet(u"background-color: rgb(66, 72, 68);\n"
-"border-radius: 1px;\n"
-"margin-left: 20px;\n"
-"margin-right:20px;")
+                                  "border-radius: 1px;\n"
+                                  "margin-left: 20px;\n"
+                                  "margin-right:20px;")
 
         self.verticalLayout_32.addWidget(self.widget)
-
 
         self.verticalLayout_28.addWidget(self.frame_41)
 
@@ -1838,10 +1785,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
         self.label_21 = QLabel(self.frame_46)
         self.label_21.setObjectName(u"label_21")
-        self.label_21.setFont(font21)
+        self.label_21.setFont(font22)
 
         self.horizontalLayout_26.addWidget(self.label_21)
-
 
         self.verticalLayout_33.addWidget(self.frame_46)
 
@@ -1854,19 +1800,18 @@ class Ui_MainWindow(object):
         self.label_24 = QLabel(self.frame_48)
         self.label_24.setObjectName(u"label_24")
         self.label_24.setMaximumSize(QSize(190, 16777215))
-        self.label_24.setFont(font21)
+        self.label_24.setFont(font22)
 
         self.horizontalLayout_27.addWidget(self.label_24)
 
         self.student_gender = QLabel(self.frame_48)
         self.student_gender.setObjectName(u"student_gender")
-        font22 = QFont()
-        font22.setFamily(u"JetBrains Mono Medium")
-        font22.setPointSize(11)
-        self.student_gender.setFont(font22)
+        font23 = QFont()
+        font23.setFamily(u"JetBrains Mono Medium")
+        font23.setPointSize(11)
+        self.student_gender.setFont(font23)
 
         self.horizontalLayout_27.addWidget(self.student_gender)
-
 
         self.verticalLayout_33.addWidget(self.frame_48)
 
@@ -1879,16 +1824,15 @@ class Ui_MainWindow(object):
         self.label_25 = QLabel(self.frame_47)
         self.label_25.setObjectName(u"label_25")
         self.label_25.setMaximumSize(QSize(190, 16777215))
-        self.label_25.setFont(font21)
+        self.label_25.setFont(font22)
 
         self.horizontalLayout_28.addWidget(self.label_25)
 
         self.date_of_birth_label = QLabel(self.frame_47)
         self.date_of_birth_label.setObjectName(u"date_of_birth_label")
-        self.date_of_birth_label.setFont(font22)
+        self.date_of_birth_label.setFont(font23)
 
         self.horizontalLayout_28.addWidget(self.date_of_birth_label)
-
 
         self.verticalLayout_33.addWidget(self.frame_47)
 
@@ -1901,16 +1845,15 @@ class Ui_MainWindow(object):
         self.label_26 = QLabel(self.frame_50)
         self.label_26.setObjectName(u"label_26")
         self.label_26.setMaximumSize(QSize(190, 16777215))
-        self.label_26.setFont(font21)
+        self.label_26.setFont(font22)
 
         self.horizontalLayout_29.addWidget(self.label_26)
 
         self.parent_contact = QLabel(self.frame_50)
         self.parent_contact.setObjectName(u"parent_contact")
-        self.parent_contact.setFont(font22)
+        self.parent_contact.setFont(font23)
 
         self.horizontalLayout_29.addWidget(self.parent_contact)
-
 
         self.verticalLayout_33.addWidget(self.frame_50)
 
@@ -1923,19 +1866,17 @@ class Ui_MainWindow(object):
         self.label_27 = QLabel(self.frame_49)
         self.label_27.setObjectName(u"label_27")
         self.label_27.setMaximumSize(QSize(190, 16777215))
-        self.label_27.setFont(font21)
+        self.label_27.setFont(font22)
 
         self.horizontalLayout_30.addWidget(self.label_27)
 
         self.index_number_bece = QLabel(self.frame_49)
         self.index_number_bece.setObjectName(u"index_number_bece")
-        self.index_number_bece.setFont(font22)
+        self.index_number_bece.setFont(font23)
 
         self.horizontalLayout_30.addWidget(self.index_number_bece)
 
-
         self.verticalLayout_33.addWidget(self.frame_49)
-
 
         self.horizontalLayout_25.addWidget(self.frame_44)
 
@@ -1948,40 +1889,37 @@ class Ui_MainWindow(object):
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.label_28 = QLabel(self.frame_45)
         self.label_28.setObjectName(u"label_28")
-        self.label_28.setFont(font21)
+        self.label_28.setFont(font22)
 
         self.verticalLayout_34.addWidget(self.label_28)
 
         self.elective_1 = QLabel(self.frame_45)
         self.elective_1.setObjectName(u"elective_1")
-        self.elective_1.setFont(font22)
+        self.elective_1.setFont(font23)
 
         self.verticalLayout_34.addWidget(self.elective_1)
 
         self.elective_2 = QLabel(self.frame_45)
         self.elective_2.setObjectName(u"elective_2")
-        self.elective_2.setFont(font22)
+        self.elective_2.setFont(font23)
 
         self.verticalLayout_34.addWidget(self.elective_2)
 
         self.elective_3 = QLabel(self.frame_45)
         self.elective_3.setObjectName(u"elective_3")
-        self.elective_3.setFont(font22)
+        self.elective_3.setFont(font23)
 
         self.verticalLayout_34.addWidget(self.elective_3)
 
         self.elective_4 = QLabel(self.frame_45)
         self.elective_4.setObjectName(u"elective_4")
-        self.elective_4.setFont(font22)
+        self.elective_4.setFont(font23)
 
         self.verticalLayout_34.addWidget(self.elective_4)
 
-
         self.horizontalLayout_25.addWidget(self.frame_45)
 
-
         self.verticalLayout_28.addWidget(self.frame_42)
-
 
         self.verticalLayout_23.addWidget(self.frame_40)
 
@@ -2015,30 +1953,31 @@ class Ui_MainWindow(object):
         sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.edit_student_button.sizePolicy().hasHeightForWidth())
+        sizePolicy3.setHeightForWidth(
+            self.edit_student_button.sizePolicy().hasHeightForWidth())
         self.edit_student_button.setSizePolicy(sizePolicy3)
         self.edit_student_button.setMaximumSize(QSize(16777215, 16777215))
         self.edit_student_button.setFont(font18)
         self.edit_student_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.edit_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(107, 107, 107);\n"
-"border-top-left-radius: 20px;")
+                                               "background-color: rgb(107, 107, 107);\n"
+                                               "border-top-left-radius: 20px;")
 
         self.horizontalLayout_34.addWidget(self.edit_student_button)
 
         self.delete_student_button = QPushButton(self.frame_39)
         self.delete_student_button.setObjectName(u"delete_student_button")
-        sizePolicy3.setHeightForWidth(self.delete_student_button.sizePolicy().hasHeightForWidth())
+        sizePolicy3.setHeightForWidth(
+            self.delete_student_button.sizePolicy().hasHeightForWidth())
         self.delete_student_button.setSizePolicy(sizePolicy3)
         self.delete_student_button.setMaximumSize(QSize(16777215, 16777215))
         self.delete_student_button.setFont(font18)
         self.delete_student_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.delete_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(107, 107, 107);\n"
-"border-top-right-radius: 20px;")
+                                                 "background-color: rgb(107, 107, 107);\n"
+                                                 "border-top-right-radius: 20px;")
 
         self.horizontalLayout_34.addWidget(self.delete_student_button)
-
 
         self.verticalLayout_37.addWidget(self.frame_39)
 
@@ -2048,9 +1987,9 @@ class Ui_MainWindow(object):
         self.add_student_button.setFont(font18)
         self.add_student_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.add_student_button.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(213, 93, 33);\n"
-"border-bottom-left-radius: 20px; \n"
-"border-bottom-right-radius: 20px; ")
+                                              "background-color: rgb(213, 93, 33);\n"
+                                              "border-bottom-left-radius: 20px; \n"
+                                              "border-bottom-right-radius: 20px; ")
 
         self.verticalLayout_37.addWidget(self.add_student_button)
 
@@ -2061,30 +2000,29 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_37.addWidget(self.frame_78)
 
-
         self.verticalLayout_23.addWidget(self.frame_37)
-
 
         self.horizontalLayout_20.addWidget(self.frame_31)
 
         self.next_data_button = QPushButton(self.frame_29)
         self.next_data_button.setObjectName(u"next_data_button")
-        sizePolicy3.setHeightForWidth(self.next_data_button.sizePolicy().hasHeightForWidth())
+        sizePolicy3.setHeightForWidth(
+            self.next_data_button.sizePolicy().hasHeightForWidth())
         self.next_data_button.setSizePolicy(sizePolicy3)
         self.next_data_button.setMinimumSize(QSize(80, 800))
         self.next_data_button.setMaximumSize(QSize(80, 16777215))
         self.next_data_button.setFont(font16)
         self.next_data_button.setStyleSheet(u"QPushButton {\n"
-"color: #ffffff;\n"
-"background-color: rgb(112, 112, 112);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(168, 168, 168);\n"
-"}")
+                                            "color: #ffffff;\n"
+                                            "background-color: rgb(112, 112, 112);\n"
+                                            "}\n"
+                                            "\n"
+                                            "QPushButton:hover {\n"
+                                            "	background-color: rgb(168, 168, 168);\n"
+                                            "}")
 
-        self.horizontalLayout_20.addWidget(self.next_data_button, 0, Qt.AlignVCenter)
-
+        self.horizontalLayout_20.addWidget(
+            self.next_data_button, 0, Qt.AlignVCenter)
 
         self.verticalLayout_22.addWidget(self.frame_29)
 
@@ -2108,7 +2046,7 @@ class Ui_MainWindow(object):
         self.SchoolNameBorder_9.setObjectName(u"SchoolNameBorder_9")
         self.SchoolNameBorder_9.setMaximumSize(QSize(600, 35))
         self.SchoolNameBorder_9.setStyleSheet(u"background-color: #414844;\n"
-"border-radius:8px;")
+                                              "border-radius:8px;")
         self.SchoolNameBorder_9.setFrameShape(QFrame.StyledPanel)
         self.SchoolNameBorder_9.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_39 = QHBoxLayout(self.SchoolNameBorder_9)
@@ -2119,7 +2057,7 @@ class Ui_MainWindow(object):
         self.frame_57.setObjectName(u"frame_57")
         self.frame_57.setMaximumSize(QSize(600, 35))
         self.frame_57.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"border-radius: 8px;")
+                                    "border-radius: 8px;")
         self.frame_57.setFrameShape(QFrame.StyledPanel)
         self.frame_57.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_40 = QHBoxLayout(self.frame_57)
@@ -2128,7 +2066,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_40.setContentsMargins(5, 5, 5, 5)
         self.searchbar_main = QLineEdit(self.frame_57)
         self.searchbar_main.setObjectName(u"searchbar_main")
-        sizePolicy.setHeightForWidth(self.searchbar_main.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.searchbar_main.sizePolicy().hasHeightForWidth())
         self.searchbar_main.setSizePolicy(sizePolicy)
         self.searchbar_main.setFont(font6)
         self.searchbar_main.setCursor(QCursor(Qt.IBeamCursor))
@@ -2140,21 +2079,18 @@ class Ui_MainWindow(object):
         self.close_search.setObjectName(u"close_search")
         self.close_search.setMinimumSize(QSize(25, 25))
         self.close_search.setMaximumSize(QSize(25, 25))
-        font23 = QFont()
-        font23.setFamily(u"Arial")
-        font23.setPointSize(11)
-        font23.setBold(True)
-        font23.setWeight(75)
-        self.close_search.setFont(font23)
+        font24 = QFont()
+        font24.setFamily(u"Arial")
+        font24.setPointSize(11)
+        font24.setBold(True)
+        font24.setWeight(75)
+        self.close_search.setFont(font24)
 
         self.horizontalLayout_40.addWidget(self.close_search)
 
-
         self.horizontalLayout_39.addWidget(self.frame_57)
 
-
         self.horizontalLayout_38.addWidget(self.SchoolNameBorder_9)
-
 
         self.verticalLayout_38.addWidget(self.search_frame_2)
 
@@ -2167,14 +2103,13 @@ class Ui_MainWindow(object):
         self.listWidget = QListWidget(self.frame_58)
         QListWidgetItem(self.listWidget)
         self.listWidget.setObjectName(u"listWidget")
-        font24 = QFont()
-        font24.setFamily(u"JetBrains Mono NL SemiBold")
-        font24.setPointSize(16)
-        self.listWidget.setFont(font24)
+        font25 = QFont()
+        font25.setFamily(u"JetBrains Mono NL SemiBold")
+        font25.setPointSize(16)
+        self.listWidget.setFont(font25)
         self.listWidget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
         self.verticalLayout_39.addWidget(self.listWidget)
-
 
         self.verticalLayout_38.addWidget(self.frame_58)
 
@@ -2211,11 +2146,10 @@ class Ui_MainWindow(object):
         self.plainTextEdit.setEnabled(True)
         self.plainTextEdit.setMaximumSize(QSize(16777215, 30))
         self.plainTextEdit.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                         "border-radius: 4px;")
         self.plainTextEdit.setBackgroundVisible(False)
 
         self.horizontalLayout_17.addWidget(self.plainTextEdit)
-
 
         self.verticalLayout_40.addWidget(self.frame_62)
 
@@ -2237,10 +2171,9 @@ class Ui_MainWindow(object):
         self.plainTextEdit_2 = QPlainTextEdit(self.frame_63)
         self.plainTextEdit_2.setObjectName(u"plainTextEdit_2")
         self.plainTextEdit_2.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                           "border-radius: 4px;")
 
         self.horizontalLayout_22.addWidget(self.plainTextEdit_2)
-
 
         self.verticalLayout_40.addWidget(self.frame_63)
 
@@ -2262,10 +2195,9 @@ class Ui_MainWindow(object):
         self.plainTextEdit_3 = QPlainTextEdit(self.frame_64)
         self.plainTextEdit_3.setObjectName(u"plainTextEdit_3")
         self.plainTextEdit_3.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                           "border-radius: 4px;")
 
         self.horizontalLayout_41.addWidget(self.plainTextEdit_3)
-
 
         self.verticalLayout_40.addWidget(self.frame_64)
 
@@ -2286,7 +2218,8 @@ class Ui_MainWindow(object):
 
         self.dateEdit = QDateEdit(self.frame_65)
         self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setCorrectionMode(QAbstractSpinBox.CorrectToPreviousValue)
+        self.dateEdit.setCorrectionMode(
+            QAbstractSpinBox.CorrectToPreviousValue)
         self.dateEdit.setMaximumDate(QDate(2080, 12, 31))
         self.dateEdit.setMinimumDate(QDate(1980, 1, 1))
         self.dateEdit.setCalendarPopup(True)
@@ -2294,7 +2227,6 @@ class Ui_MainWindow(object):
         self.dateEdit.setTimeSpec(Qt.LocalTime)
 
         self.horizontalLayout_42.addWidget(self.dateEdit)
-
 
         self.verticalLayout_40.addWidget(self.frame_65)
 
@@ -2321,10 +2253,9 @@ class Ui_MainWindow(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.setObjectName(u"comboBox_2")
         self.comboBox_2.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                      "border-radius: 4px;")
 
         self.horizontalLayout_43.addWidget(self.comboBox_2)
-
 
         self.verticalLayout_40.addWidget(self.frame_66)
 
@@ -2345,10 +2276,9 @@ class Ui_MainWindow(object):
         self.textEdit = QTextEdit(self.frame_67)
         self.textEdit.setObjectName(u"textEdit")
         self.textEdit.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                    "border-radius: 4px;")
 
         self.horizontalLayout_44.addWidget(self.textEdit)
-
 
         self.verticalLayout_40.addWidget(self.frame_67)
 
@@ -2370,10 +2300,9 @@ class Ui_MainWindow(object):
         self.plainTextEdit_4.setObjectName(u"plainTextEdit_4")
         self.plainTextEdit_4.setMaximumSize(QSize(16777215, 30))
         self.plainTextEdit_4.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                           "border-radius: 4px;")
 
         self.horizontalLayout_45.addWidget(self.plainTextEdit_4)
-
 
         self.verticalLayout_40.addWidget(self.frame_68)
 
@@ -2395,11 +2324,10 @@ class Ui_MainWindow(object):
         self.dateEdit_2 = QDateEdit(self.frame_69)
         self.dateEdit_2.setObjectName(u"dateEdit_2")
         self.dateEdit_2.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                      "border-radius: 4px;")
         self.dateEdit_2.setDate(QDate(2019, 1, 1))
 
         self.horizontalLayout_46.addWidget(self.dateEdit_2)
-
 
         self.verticalLayout_40.addWidget(self.frame_69)
 
@@ -2545,9 +2473,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.checkBox_15, 14, 4, 1, 1)
 
-
         self.horizontalLayout_47.addWidget(self.frame_71)
-
 
         self.verticalLayout_40.addWidget(self.frame_70)
 
@@ -2577,7 +2503,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_48.addWidget(self.radioButton_2)
 
-
         self.verticalLayout_40.addWidget(self.frame_72)
 
         self.frame_73 = QFrame(self.frame_59)
@@ -2601,10 +2526,9 @@ class Ui_MainWindow(object):
         self.plainTextEdit_5.setMinimumSize(QSize(0, 25))
         self.plainTextEdit_5.setMaximumSize(QSize(16777215, 25))
         self.plainTextEdit_5.setStyleSheet(u"border-bottom: 1px solid #333333;\n"
-"border-radius: 4px;")
+                                           "border-radius: 4px;")
 
         self.horizontalLayout_49.addWidget(self.plainTextEdit_5)
-
 
         self.verticalLayout_40.addWidget(self.frame_73)
 
@@ -2627,8 +2551,8 @@ class Ui_MainWindow(object):
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setMaximumSize(QSize(200, 16777215))
         self.pushButton_2.setStyleSheet(u"padding: 20px;\n"
-"background-color: rgb(119, 119, 119);\n"
-"color: white;")
+                                        "background-color: rgb(119, 119, 119);\n"
+                                        "color: white;")
 
         self.horizontalLayout_50.addWidget(self.pushButton_2)
 
@@ -2646,7 +2570,6 @@ class Ui_MainWindow(object):
         self.frame_76.setFrameShadow(QFrame.Raised)
 
         self.horizontalLayout_50.addWidget(self.frame_76)
-
 
         self.verticalLayout_40.addWidget(self.frame_74)
 
@@ -2667,22 +2590,20 @@ class Ui_MainWindow(object):
         self.pushButton_3 = QPushButton(self.frame_75)
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setStyleSheet(u"padding: 20px;\n"
-"background-color: rgb(119, 119, 119);\n"
-"color: white;")
+                                        "background-color: rgb(119, 119, 119);\n"
+                                        "color: white;")
 
         self.horizontalLayout_51.addWidget(self.pushButton_3)
 
         self.pushButton_4 = QPushButton(self.frame_75)
         self.pushButton_4.setObjectName(u"pushButton_4")
         self.pushButton_4.setStyleSheet(u"padding: 20px;\n"
-"background-color: rgb(119, 119, 119);\n"
-"color: white;")
+                                        "background-color: rgb(119, 119, 119);\n"
+                                        "color: white;")
 
         self.horizontalLayout_51.addWidget(self.pushButton_4)
 
-
         self.verticalLayout_40.addWidget(self.frame_75)
-
 
         self.verticalLayout_43.addWidget(self.frame_59)
 
@@ -2696,19 +2617,18 @@ class Ui_MainWindow(object):
         self.save_edit = QPushButton(self.frame_77)
         self.save_edit.setObjectName(u"save_edit")
         self.save_edit.setStyleSheet(u"padding: 20px;\n"
-"background-color: rgb(119, 119, 119);\n"
-"color: white;")
+                                     "background-color: rgb(119, 119, 119);\n"
+                                     "color: white;")
 
         self.horizontalLayout_52.addWidget(self.save_edit)
 
         self.cancel_edit = QPushButton(self.frame_77)
         self.cancel_edit.setObjectName(u"cancel_edit")
         self.cancel_edit.setStyleSheet(u"padding: 20px;\n"
-"background-color: rgb(161, 79, 80);\n"
-"color: white;")
+                                       "background-color: rgb(161, 79, 80);\n"
+                                       "color: white;")
 
         self.horizontalLayout_52.addWidget(self.cancel_edit)
-
 
         self.verticalLayout_43.addWidget(self.frame_77)
 
@@ -2741,14 +2661,12 @@ class Ui_MainWindow(object):
         self.pushButton.setMinimumSize(QSize(0, 80))
         self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(213, 93, 33);\n"
-"border-radius: 20px;")
+                                      "background-color: rgb(213, 93, 33);\n"
+                                      "border-radius: 20px;")
 
         self.verticalLayout_42.addWidget(self.pushButton)
 
-
         self.verticalLayout_41.addWidget(self.frame_61, 0, Qt.AlignTop)
-
 
         self.verticalLayout_24.addWidget(self.frame_60)
 
@@ -2757,7 +2675,7 @@ class Ui_MainWindow(object):
         self.centralWidgetLaayout.addWidget(self.stackedWidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
-#if QT_CONFIG(shortcut)
+# if QT_CONFIG(shortcut)
         self.label_2.setBuddy(self.SignUpButton)
         self.label_7.setBuddy(self.SignUpButton_2)
 #endif // QT_CONFIG(shortcut)
@@ -2766,174 +2684,307 @@ class Ui_MainWindow(object):
         self.btn_close.clicked.connect(MainWindow.close)
         self.btn_minimize.clicked.connect(MainWindow.showMinimized)
 
-        self.stackedWidget.setCurrentIndex(5)
-
+        self.stackedWidget.setCurrentIndex(4)
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#414844;\">WASSCEVERSE.COM</span></p></body></html>", None))
-#if QT_CONFIG(tooltip)
-        self.btn_minimize.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Minimize</p></body></html>", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate(
+            "MainWindow", u"MainWindow", None))
+        self.label_4.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; color:#414844;\">WASSCEVERSE.COM</span></p></body></html>", None))
+# if QT_CONFIG(tooltip)
+        self.btn_minimize.setToolTip(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p>Minimize</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.btn_minimize.setText("")
-#if QT_CONFIG(tooltip)
-        self.btn_close.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Close</p></body></html>", None))
+# if QT_CONFIG(tooltip)
+        self.btn_close.setToolTip(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p>Close</p></body></html>", None))
 #endif // QT_CONFIG(tooltip)
         self.btn_close.setText("")
-        self.SignInInfoTop.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt; color:#414844;\">WELOME BACK!</span></p></body></html>", None))
+        self.SignInInfoTop.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt; color:#414844;\">WELOME BACK!</span></p></body></html>", None))
         self.SignInInfoBottom.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; color:#000000;\">To keep connected with us</span><span style=\" font-size:12pt;\"><br/></span><span style=\" font-size:12pt; color:#000000;\">Please sign in with your</span><span style=\" font-size:12pt;\"><br/></span><span style=\" font-size:12pt; color:#000000;\">personal info</span><span style=\" font-size:12pt;\"/></p></body></html>", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
-        self.SchoolNameSignInLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Email:</span></p></body></html>", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Password:</span></p></body></html>", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"New User?", None))
-        self.SignUpButton.setText(QCoreApplication.translate("MainWindow", u"Create an Account", None))
-        self.SignInSubmit.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
-        self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"Import Students Data", None))
-        self.pushButton_9.setText(QCoreApplication.translate("MainWindow", u"Generate Student Keys", None))
-        self.label_41.setText(QCoreApplication.translate("MainWindow", u"Select Year Group:", None))
-        self.year_group.setItemText(0, QCoreApplication.translate("MainWindow", u"2019", None))
+        self.label_10.setText(QCoreApplication.translate(
+            "MainWindow", u"Sign In", None))
+        self.SchoolNameSignInLabel.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
+        self.label_3.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Email:</span></p></body></html>", None))
+        self.label.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Password:</span></p></body></html>", None))
+        self.label_2.setText(QCoreApplication.translate(
+            "MainWindow", u"New User?", None))
+        self.SignUpButton.setText(QCoreApplication.translate(
+            "MainWindow", u"Create an Account", None))
+        self.SignInSubmit.setText(
+            QCoreApplication.translate("MainWindow", u"Sign In", None))
+        self.pushButton_7.setText(
+            QCoreApplication.translate("MainWindow", u"Logout", None))
+        self.pushButton_6.setText(QCoreApplication.translate(
+            "MainWindow", u"Import Students Data", None))
+        self.pushButton_9.setText(QCoreApplication.translate(
+            "MainWindow", u"Generate Student Keys", None))
+        self.label_41.setText(QCoreApplication.translate(
+            "MainWindow", u"Select Year Group:", None))
+        self.year_group.setItemText(
+            0, QCoreApplication.translate("MainWindow", u"2019", None))
 
-        self.label_40.setText(QCoreApplication.translate("MainWindow", u"Number of Students: ", None))
-        self.label_43.setText(QCoreApplication.translate("MainWindow", u"Number of Students Registered:", None))
-        self.label_44.setText(QCoreApplication.translate("MainWindow", u"Number of Students Cleared:", None))
+        self.label_40.setText(QCoreApplication.translate(
+            "MainWindow", u"Number of Students: ", None))
+        self.label_43.setText(QCoreApplication.translate(
+            "MainWindow", u"Number of Students Registered:", None))
+        self.label_44.setText(QCoreApplication.translate(
+            "MainWindow", u"Number of Students Cleared:", None))
         self.label_46.setText("")
         self.label_45.setText("")
         self.label_47.setText("")
-        self.view_data.setText(QCoreApplication.translate("MainWindow", u"View Students' Data", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; color:#414844;\">Create Account</span></p></body></html>", None))
-        self.SchoolNameSignInLabel_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
-        self.school_name_error.setText(QCoreApplication.translate("MainWindow", u"This school already exists", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Email:</span></p></body></html>", None))
-        self.email_error.setText(QCoreApplication.translate("MainWindow", u"This email has been used", None))
-        self.label_42.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Password:</span></p></body></html>", None))
-        self.password_error.setText(QCoreApplication.translate("MainWindow", u"Try a stronger password", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Location:</span></p></body></html>", None))
-        self.locationSignUp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Region, City", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Country:</span></p></body></html>", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Already A User?", None))
-        self.SignUpButton_2.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
-        self.SignInSubmit_2.setText(QCoreApplication.translate("MainWindow", u"Next", None))
-        self.SignInInfoTop_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">HELLO</span></p></body></html>", None))
+        self.view_data.setText(QCoreApplication.translate(
+            "MainWindow", u"View Students' Data", None))
+        self.label_9.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; color:#414844;\">Create Account</span></p></body></html>", None))
+        self.SchoolNameSignInLabel_2.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">School Name:</span></p></body></html>", None))
+        self.school_name_error.setText(QCoreApplication.translate(
+            "MainWindow", u"This school already exists", None))
+        self.label_5.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Email:</span></p></body></html>", None))
+        self.email_error.setText(QCoreApplication.translate(
+            "MainWindow", u"This email has been used", None))
+        self.label_42.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">Password:</span></p></body></html>", None))
+        self.password_error.setText(QCoreApplication.translate(
+            "MainWindow", u"Try a stronger password", None))
+        self.label_6.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Location:</span></p></body></html>", None))
+        self.locationSignUp.setPlaceholderText(
+            QCoreApplication.translate("MainWindow", u"Region, City", None))
+        self.label_8.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#414844;\">Country:</span></p></body></html>", None))
+        self.label_7.setText(QCoreApplication.translate(
+            "MainWindow", u"Already A User?", None))
+        self.SignUpButton_2.setText(
+            QCoreApplication.translate("MainWindow", u"Sign In", None))
+        self.SignInSubmit_2.setText(
+            QCoreApplication.translate("MainWindow", u"Next", None))
+        self.SignInInfoTop_2.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" color:#414844;\">HELLO</span></p></body></html>", None))
         self.SignInInfoBottom_2.setText(QCoreApplication.translate("MainWindow", u"<html>\n"
-"<head/>\n"
-"<body>\n"
-"<p  style=\"line-height: 1\">\n"
-"<span align=\"center\" style=\" color:black;\">Enter school details to start</span><br>\n"
-"<span align=\"center\" style=\" color:black;\">your journey with us</span>\n"
-"</p>\n"
-"</body>\n"
-"</html>", None))
-        self.close_camera.setText(QCoreApplication.translate("MainWindow", u"x", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Select Your Camera", None))
-        self.capture.setText(QCoreApplication.translate("MainWindow", u"8", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"Back", None))
-        self.search_student_button.setText(QCoreApplication.translate("MainWindow", u"Search Student", None))
-        self.previous_data_button.setText(QCoreApplication.translate("MainWindow", u"<", None))
+                                                                   "<head/>\n"
+                                                                   "<body>\n"
+                                                                   "<p  style=\"line-height: 1\">\n"
+                                                                   "<span align=\"center\" style=\" color:black;\">Enter school details to start</span><br>\n"
+                                                                   "<span align=\"center\" style=\" color:black;\">your journey with us</span>\n"
+                                                                   "</p>\n"
+                                                                   "</body>\n"
+                                                                   "</html>", None))
+        self.close_camera.setText(
+            QCoreApplication.translate("MainWindow", u"x", None))
+        self.label_11.setText(QCoreApplication.translate(
+            "MainWindow", u"Select Your Camera", None))
+        self.capture.setText(
+            QCoreApplication.translate("MainWindow", u"8", None))
+        self.pushButton_5.setText(
+            QCoreApplication.translate("MainWindow", u"Back", None))
+        self.search_student_button.setText(
+            QCoreApplication.translate("MainWindow", u"Search Student", None))
+        self.previous_data_button.setText(
+            QCoreApplication.translate("MainWindow", u"<", None))
         self.label_12.setText("")
-        self.label_48.setText(QCoreApplication.translate("MainWindow", u"Registered: ", None))
-        self.pushButton_8.setText(QCoreApplication.translate("MainWindow", u"Register", None))
-        self.take_photo.setText(QCoreApplication.translate("MainWindow", u"Take A Picture", None))
-        self.import_file.setText(QCoreApplication.translate("MainWindow", u"Import File", None))
-        self.label71.setText(QCoreApplication.translate("MainWindow", u"Signature:", None))
+        self.label_48.setText(QCoreApplication.translate(
+            "MainWindow", u"Registered: ", None))
+        self.pushButton_8.setText(QCoreApplication.translate(
+            "MainWindow", u"Register", None))
+        self.individual_student_key.setText(QCoreApplication.translate(
+            "MainWindow", u"Generate Student Key", None))
+        self.take_photo.setText(QCoreApplication.translate(
+            "MainWindow", u"Take A Picture", None))
+        self.import_file.setText(QCoreApplication.translate(
+            "MainWindow", u"Import File", None))
+        self.label71.setText(QCoreApplication.translate(
+            "MainWindow", u"Signature:", None))
         self.signature.setText("")
-        self.label_29.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#646464;\">Fingerprint</span></p></body></html>", None))
+        self.label_29.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#646464;\">Fingerprint</span></p></body></html>", None))
         self.left_thumb.setText("")
         self.right_thumb.setText("")
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Name:</span></p></body></html>", None))
-        self.student_name.setText(QCoreApplication.translate("MainWindow", u"Flash Barry Allen", None))
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">School:</span></p></body></html>", None))
-        self.student_school.setText(QCoreApplication.translate("MainWindow", u"Presbyterian Boys' Secondary School", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Class:</span></p></body></html>", None))
-        self.student_class.setText(QCoreApplication.translate("MainWindow", u"3 Science 2", None))
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Course:</span></p></body></html>", None))
-        self.student_course.setText(QCoreApplication.translate("MainWindow", u"General Science", None))
-        self.label_23.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#707070;\">Details</span></p></body></html>", None))
-        self.label_21.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#646464;\">Basic Information</span></p></body></html>", None))
-        self.label_24.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Gender:</span></p></body></html>", None))
-        self.student_gender.setText(QCoreApplication.translate("MainWindow", u"Male", None))
-        self.label_25.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Date of Birth:</span></p></body></html>", None))
-        self.date_of_birth_label.setText(QCoreApplication.translate("MainWindow", u"3rd April 2003", None))
-        self.label_26.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Parent's Contact:</span></p></body></html>", None))
-        self.parent_contact.setText(QCoreApplication.translate("MainWindow", u"+233 XXX XXX XXXX", None))
-        self.label_27.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">BECE Index Number:</span></p></body></html>", None))
-        self.index_number_bece.setText(QCoreApplication.translate("MainWindow", u"XXXXXXXXXX", None))
-        self.label_28.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#646464;\">Electives</span></p></body></html>", None))
-        self.elective_1.setText(QCoreApplication.translate("MainWindow", u"Elective ICT", None))
-        self.elective_2.setText(QCoreApplication.translate("MainWindow", u"Elective Mathematics", None))
-        self.elective_3.setText(QCoreApplication.translate("MainWindow", u"Chemistry", None))
-        self.elective_4.setText(QCoreApplication.translate("MainWindow", u"Physics", None))
-        self.edit_student_button.setText(QCoreApplication.translate("MainWindow", u"Edit Student Record", None))
-        self.delete_student_button.setText(QCoreApplication.translate("MainWindow", u"Delete Student Record", None))
-        self.add_student_button.setText(QCoreApplication.translate("MainWindow", u"Add Student Record", None))
-        self.next_data_button.setText(QCoreApplication.translate("MainWindow", u">", None))
-        self.searchbar_main.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search Student", None))
-        self.close_search.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.label_18.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Name:</span></p></body></html>", None))
+        self.student_name.setText(QCoreApplication.translate(
+            "MainWindow", u"Flash Barry Allen", None))
+        self.label_19.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">School:</span></p></body></html>", None))
+        self.student_school.setText(QCoreApplication.translate(
+            "MainWindow", u"Presbyterian Boys' Secondary School", None))
+        self.label_20.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Class:</span></p></body></html>", None))
+        self.student_class.setText(QCoreApplication.translate(
+            "MainWindow", u"3 Science 2", None))
+        self.label_22.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Course:</span></p></body></html>", None))
+        self.student_course.setText(QCoreApplication.translate(
+            "MainWindow", u"General Science", None))
+        self.label_23.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#707070;\">Details</span></p></body></html>", None))
+        self.label_21.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#646464;\">Basic Information</span></p></body></html>", None))
+        self.label_24.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Gender:</span></p></body></html>", None))
+        self.student_gender.setText(
+            QCoreApplication.translate("MainWindow", u"Male", None))
+        self.label_25.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Date of Birth:</span></p></body></html>", None))
+        self.date_of_birth_label.setText(
+            QCoreApplication.translate("MainWindow", u"3rd April 2003", None))
+        self.label_26.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">Parent's Contact:</span></p></body></html>", None))
+        self.parent_contact.setText(QCoreApplication.translate(
+            "MainWindow", u"+233 XXX XXX XXXX", None))
+        self.label_27.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#414844;\">BECE Index Number:</span></p></body></html>", None))
+        self.index_number_bece.setText(
+            QCoreApplication.translate("MainWindow", u"XXXXXXXXXX", None))
+        self.label_28.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#646464;\">Electives</span></p></body></html>", None))
+        self.elective_1.setText(QCoreApplication.translate(
+            "MainWindow", u"Elective ICT", None))
+        self.elective_2.setText(QCoreApplication.translate(
+            "MainWindow", u"Elective Mathematics", None))
+        self.elective_3.setText(QCoreApplication.translate(
+            "MainWindow", u"Chemistry", None))
+        self.elective_4.setText(QCoreApplication.translate(
+            "MainWindow", u"Physics", None))
+        self.edit_student_button.setText(QCoreApplication.translate(
+            "MainWindow", u"Edit Student Record", None))
+        self.delete_student_button.setText(QCoreApplication.translate(
+            "MainWindow", u"Delete Student Record", None))
+        self.add_student_button.setText(QCoreApplication.translate(
+            "MainWindow", u"Add Student Record", None))
+        self.next_data_button.setText(
+            QCoreApplication.translate("MainWindow", u">", None))
+        self.searchbar_main.setPlaceholderText(
+            QCoreApplication.translate("MainWindow", u"Search Student", None))
+        self.close_search.setText(
+            QCoreApplication.translate("MainWindow", u"X", None))
 
         __sortingEnabled = self.listWidget.isSortingEnabled()
         self.listWidget.setSortingEnabled(False)
         ___qlistwidgetitem = self.listWidget.item(0)
-        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qlistwidgetitem.setText(
+            QCoreApplication.translate("MainWindow", u"Name", None))
         self.listWidget.setSortingEnabled(__sortingEnabled)
 
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Surname:                   ", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"First Name:                ", None))
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Other Names:            ", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Date of Birth:", None))
-        self.dateEdit.setDisplayFormat(QCoreApplication.translate("MainWindow", u"dd/MM/yyyy", None))
-        self.label_30.setText(QCoreApplication.translate("MainWindow", u"Course:", None))
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("MainWindow", u"General Science", None))
-        self.comboBox_2.setItemText(1, QCoreApplication.translate("MainWindow", u"Business", None))
-        self.comboBox_2.setItemText(2, QCoreApplication.translate("MainWindow", u"Home Economics", None))
-        self.comboBox_2.setItemText(3, QCoreApplication.translate("MainWindow", u"General Arts", None))
-        self.comboBox_2.setItemText(4, QCoreApplication.translate("MainWindow", u"Visual Arts", None))
+        self.label_14.setText(QCoreApplication.translate(
+            "MainWindow", u"Surname:                   ", None))
+        self.label_15.setText(QCoreApplication.translate(
+            "MainWindow", u"First Name:                ", None))
+        self.label_16.setText(QCoreApplication.translate(
+            "MainWindow", u"Other Names:            ", None))
+        self.label_17.setText(QCoreApplication.translate(
+            "MainWindow", u"Date of Birth:", None))
+        self.dateEdit.setDisplayFormat(
+            QCoreApplication.translate("MainWindow", u"dd/MM/yyyy", None))
+        self.label_30.setText(QCoreApplication.translate(
+            "MainWindow", u"Course:", None))
+        self.comboBox_2.setItemText(0, QCoreApplication.translate(
+            "MainWindow", u"General Science", None))
+        self.comboBox_2.setItemText(
+            1, QCoreApplication.translate("MainWindow", u"Business", None))
+        self.comboBox_2.setItemText(2, QCoreApplication.translate(
+            "MainWindow", u"Home Economics", None))
+        self.comboBox_2.setItemText(3, QCoreApplication.translate(
+            "MainWindow", u"General Arts", None))
+        self.comboBox_2.setItemText(4, QCoreApplication.translate(
+            "MainWindow", u"Visual Arts", None))
 
-        self.label_31.setText(QCoreApplication.translate("MainWindow", u"Class:", None))
-        self.label_32.setText(QCoreApplication.translate("MainWindow", u"BECE Index Number:", None))
-        self.label_33.setText(QCoreApplication.translate("MainWindow", u"Year Completed:", None))
-        self.dateEdit_2.setDisplayFormat(QCoreApplication.translate("MainWindow", u"yyyy", None))
-        self.label_34.setText(QCoreApplication.translate("MainWindow", u"Electives", None))
-        self.checkBox_24.setText(QCoreApplication.translate("MainWindow", u"Textile", None))
-        self.checkBox_5.setText(QCoreApplication.translate("MainWindow", u"Geography", None))
-        self.checkBox_12.setText(QCoreApplication.translate("MainWindow", u"Ceramics and Sculpture", None))
-        self.checkBox_21.setText(QCoreApplication.translate("MainWindow", u"Financial Accounting", None))
-        self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"Chemistry", None))
-        self.checkBox_17.setText(QCoreApplication.translate("MainWindow", u"French", None))
-        self.checkBox_22.setText(QCoreApplication.translate("MainWindow", u"Government", None))
-        self.checkBox_11.setText(QCoreApplication.translate("MainWindow", u"Picture Making", None))
-        self.checkBox_14.setText(QCoreApplication.translate("MainWindow", u"Food and Nutrition", None))
-        self.checkBox_4.setText(QCoreApplication.translate("MainWindow", u"Literature in English", None))
-        self.checkBox_23.setText(QCoreApplication.translate("MainWindow", u"Religious Studies", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"Biology", None))
-        self.checkBox_20.setText(QCoreApplication.translate("MainWindow", u"Leather Works", None))
-        self.checkBox_9.setText(QCoreApplication.translate("MainWindow", u"Graphic Design", None))
-        self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"Physics", None))
-        self.checkBox_6.setText(QCoreApplication.translate("MainWindow", u"History", None))
-        self.checkBox_19.setText(QCoreApplication.translate("MainWindow", u"Basketry", None))
-        self.checkBox_13.setText(QCoreApplication.translate("MainWindow", u"Management in Living", None))
-        self.checkBox_8.setText(QCoreApplication.translate("MainWindow", u"Principles of Costing", None))
-        self.checkBox_7.setText(QCoreApplication.translate("MainWindow", u"Business Management", None))
-        self.checkBox_18.setText(QCoreApplication.translate("MainWindow", u"Economics", None))
-        self.checkBox_16.setText(QCoreApplication.translate("MainWindow", u"Elective Mathematics", None))
-        self.checkBox_10.setText(QCoreApplication.translate("MainWindow", u"General Knowledge in Arts", None))
-        self.checkBox_15.setText(QCoreApplication.translate("MainWindow", u"Elective ICT", None))
-        self.label_35.setText(QCoreApplication.translate("MainWindow", u"Gender:", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Male", None))
-        self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"Female", None))
-        self.label_36.setText(QCoreApplication.translate("MainWindow", u"Parent's Contact:", None))
-        self.plainTextEdit_5.setPlainText(QCoreApplication.translate("MainWindow", u"+233 (0) ", None))
-        self.label_37.setText(QCoreApplication.translate("MainWindow", u"Signature:", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Record Signature", None))
-        self.label_38.setText(QCoreApplication.translate("MainWindow", u"image path", None))
-        self.label_39.setText(QCoreApplication.translate("MainWindow", u"Fingerprint:", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Take Left Thumb", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Take Right Thumb", None))
-        self.save_edit.setText(QCoreApplication.translate("MainWindow", u"Save", None))
-        self.cancel_edit.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#b45f4e;\">You do not have any data on your students, please click the button to continue </span></p></body></html>", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Add Student", None))
+        self.label_31.setText(QCoreApplication.translate(
+            "MainWindow", u"Class:", None))
+        self.label_32.setText(QCoreApplication.translate(
+            "MainWindow", u"BECE Index Number:", None))
+        self.label_33.setText(QCoreApplication.translate(
+            "MainWindow", u"Year Completed:", None))
+        self.dateEdit_2.setDisplayFormat(
+            QCoreApplication.translate("MainWindow", u"yyyy", None))
+        self.label_34.setText(QCoreApplication.translate(
+            "MainWindow", u"Electives", None))
+        self.checkBox_24.setText(QCoreApplication.translate(
+            "MainWindow", u"Textile", None))
+        self.checkBox_5.setText(QCoreApplication.translate(
+            "MainWindow", u"Geography", None))
+        self.checkBox_12.setText(QCoreApplication.translate(
+            "MainWindow", u"Ceramics and Sculpture", None))
+        self.checkBox_21.setText(QCoreApplication.translate(
+            "MainWindow", u"Financial Accounting", None))
+        self.checkBox_2.setText(QCoreApplication.translate(
+            "MainWindow", u"Chemistry", None))
+        self.checkBox_17.setText(
+            QCoreApplication.translate("MainWindow", u"French", None))
+        self.checkBox_22.setText(QCoreApplication.translate(
+            "MainWindow", u"Government", None))
+        self.checkBox_11.setText(QCoreApplication.translate(
+            "MainWindow", u"Picture Making", None))
+        self.checkBox_14.setText(QCoreApplication.translate(
+            "MainWindow", u"Food and Nutrition", None))
+        self.checkBox_4.setText(QCoreApplication.translate(
+            "MainWindow", u"Literature in English", None))
+        self.checkBox_23.setText(QCoreApplication.translate(
+            "MainWindow", u"Religious Studies", None))
+        self.checkBox.setText(QCoreApplication.translate(
+            "MainWindow", u"Biology", None))
+        self.checkBox_20.setText(QCoreApplication.translate(
+            "MainWindow", u"Leather Works", None))
+        self.checkBox_9.setText(QCoreApplication.translate(
+            "MainWindow", u"Graphic Design", None))
+        self.checkBox_3.setText(QCoreApplication.translate(
+            "MainWindow", u"Physics", None))
+        self.checkBox_6.setText(QCoreApplication.translate(
+            "MainWindow", u"History", None))
+        self.checkBox_19.setText(QCoreApplication.translate(
+            "MainWindow", u"Basketry", None))
+        self.checkBox_13.setText(QCoreApplication.translate(
+            "MainWindow", u"Management in Living", None))
+        self.checkBox_8.setText(QCoreApplication.translate(
+            "MainWindow", u"Principles of Costing", None))
+        self.checkBox_7.setText(QCoreApplication.translate(
+            "MainWindow", u"Business Management", None))
+        self.checkBox_18.setText(QCoreApplication.translate(
+            "MainWindow", u"Economics", None))
+        self.checkBox_16.setText(QCoreApplication.translate(
+            "MainWindow", u"Elective Mathematics", None))
+        self.checkBox_10.setText(QCoreApplication.translate(
+            "MainWindow", u"General Knowledge in Arts", None))
+        self.checkBox_15.setText(QCoreApplication.translate(
+            "MainWindow", u"Elective ICT", None))
+        self.label_35.setText(QCoreApplication.translate(
+            "MainWindow", u"Gender:", None))
+        self.radioButton.setText(
+            QCoreApplication.translate("MainWindow", u"Male", None))
+        self.radioButton_2.setText(
+            QCoreApplication.translate("MainWindow", u"Female", None))
+        self.label_36.setText(QCoreApplication.translate(
+            "MainWindow", u"Parent's Contact:", None))
+        self.plainTextEdit_5.setPlainText(
+            QCoreApplication.translate("MainWindow", u"+233", None))
+        self.label_37.setText(QCoreApplication.translate(
+            "MainWindow", u"Signature:", None))
+        self.pushButton_2.setText(QCoreApplication.translate(
+            "MainWindow", u"Record Signature", None))
+        self.label_38.setText(QCoreApplication.translate(
+            "MainWindow", u"image path", None))
+        self.label_39.setText(QCoreApplication.translate(
+            "MainWindow", u"Fingerprint:", None))
+        self.pushButton_3.setText(QCoreApplication.translate(
+            "MainWindow", u"Take Left Thumb", None))
+        self.pushButton_4.setText(QCoreApplication.translate(
+            "MainWindow", u"Take Right Thumb", None))
+        self.save_edit.setText(
+            QCoreApplication.translate("MainWindow", u"Save", None))
+        self.cancel_edit.setText(
+            QCoreApplication.translate("MainWindow", u"Cancel", None))
+        self.label_13.setText(QCoreApplication.translate(
+            "MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; color:#b45f4e;\">You do not have any data on your students, please click the button to continue </span></p></body></html>", None))
+        self.pushButton.setText(QCoreApplication.translate(
+            "MainWindow", u"Add Student", None))
     # retranslateUi

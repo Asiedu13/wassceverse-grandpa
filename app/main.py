@@ -73,7 +73,7 @@ class MainWindow(QMainWindow):
         self.bece_year = 2019
         self.students = []
         self.studentData = []
-        self.registered_sudents_list = []
+        self.registered_students_list = []
         self.currentStudentId = 0
         self.studentsNo = 0
         self.ui.stackedWidget.setCurrentIndex(0)
@@ -97,6 +97,13 @@ class MainWindow(QMainWindow):
         def camera_screen():
             self.selectCamera(0)
             self.ui.stackedWidget.setCurrentIndex(3)
+
+        def generate_key_ind():
+            sql = "UPDATE student_details SET student_key = ? WHERE index_number = ?"
+            letters = string.ascii_lowercase
+            code = ''.join(random.choice(letters) for i in range(6))
+            CURSOR.execute(sql, (code, self.studentData[6]))
+            CONNECTION.commit()
 
         def generate_key():
             index_numbers = []
@@ -153,7 +160,7 @@ class MainWindow(QMainWindow):
                     sql = "SELECT * from registered_students"
                     CURSOR.execute(sql)
                     for data in CURSOR:
-                        self.registered_sudents_list.append(data[1])
+                        self.registered_students_list.append(data[1])
 
                     self.ui.label_40.setText(f"Number of Students: {num_of_students}")
                     self.ui.label_43.setText(f"Number of Students Registered: {num_registered}")
@@ -519,6 +526,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_7.clicked.connect(lambda: self.logout())
         self.ui.pushButton_8.clicked.connect(lambda: edit_student_function("register"))
         self.ui.pushButton_6.clicked.connect(lambda: self.add_students())
+        self.ui.individual_student_key.clicked.connect(lambda: generate_key_ind())
 
         def bece_year_update():
             self.bece_year = self.ui.year_group.currentText()
@@ -612,18 +620,121 @@ class MainWindow(QMainWindow):
                     gender = 1
 
                 parent_contact = row[11]
-                do_b = row[12].split()
-                do_b = do_b[0].split("-")
-                dob = f"{do_b[2]}/{do_b[1]}/{do_b[0]}"
+                dob = row[12].strftime("%d/%m/%Y")
                 sql = "SELECT COUNT(*) FROM student_details WHERE index_number = ?"
                 CURSOR.execute(sql, (index_number,))
                 data = []
                 for d in CURSOR:
-                    data.append(d)
+                    data.append(d[0])
+                print(data)
                 if data[0] == 0:
                     sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                     CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, self.bece_year))
                     CONNECTION.commit()
+                    print("Hello")
+            year_group = int(self.ui.year_group.currentText())
+
+            sql = "SELECT COUNT(*) AS count_students FROM student_details WHERE bece_year = ? and school = ?"
+            CURSOR.execute(sql, (year_group, self.school_id))
+            for data in CURSOR:
+                num_of_students = data[0]
+
+            sql = "SELECT COUNT(*) AS count_students FROM registered_students INNER JOIN student_details ON registered_students.student = student_details.id WHERE bece_year = ? and school = ?"
+            CURSOR.execute(sql, (year_group, self.school_id))
+            for data in CURSOR:
+                num_registered = data[0]
+
+            sql = "SELECT COUNT(*) AS count_students FROM registered_students INNER JOIN student_details ON registered_students.student = student_details.id WHERE bece_year = ? and school = ? and cleared = 1"
+            CURSOR.execute(sql, (year_group, self.school_id))
+            for data in CURSOR:
+                num_cleared = data[0]
+
+            sql = "SELECT * from registered_students"
+            CURSOR.execute(sql)
+            for data in CURSOR:
+                self.registered_students_list.append(data[1])
+
+            self.ui.label_40.setText(
+                f"Number of Students: {num_of_students}")
+            self.ui.label_43.setText(
+                f"Number of Students Registered: {num_registered}")
+            self.ui.label_44.setText(
+                f"Number of Students Cleared: {num_cleared}")
+
+            sql = "SELECT * FROM student_details WHERE school = ?"
+            CURSOR.execute(sql, (self.school_id,))
+            data = []
+            for d in CURSOR:
+                data.append(d)
+            self.studentsNo = len(data)
+            self.bece_year = self.ui.year_group.currentText()
+            sql = "SELECT bece_year FROM student_details where school = ?"
+            CURSOR.execute(sql, (self.school_id,))
+            years = []
+            for d in CURSOR:
+                years.append(d[0])
+            years.sort()
+
+            total_num = []
+            for year in years:
+                sql = "SELECT COUNT(*) FROM student_details WHERE student_details.bece_year = ? AND student_details.school = ?"
+                CURSOR.execute(sql, (year, self.school_id))
+                for d in CURSOR:
+                    total_num.append(d[0])
+
+            reg_list = []
+            for year in years:
+                sql = "SELECT COUNT(*) FROM registered_students JOIN student_details ON student_details.id = registered_students.student WHERE student_details.bece_year = ? AND student_details.school = ?"
+                CURSOR.execute(sql, (year, self.school_id))
+                for d in CURSOR:
+                    reg_list.append(d[0])
+
+            clear_list = []
+            for year in years:
+                sql = "SELECT COUNT(*) FROM registered_students JOIN student_details ON student_details.id = registered_students.student WHERE student_details.bece_year = ? AND student_details.school = ? AND cleared = 1"
+                CURSOR.execute(sql, (year, self.school_id))
+                for d in CURSOR:
+                    clear_list.append(d[0])
+
+            self.ui.widget_2.setHtml(f"""
+                <html>
+                    <head>
+                        <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
+                    </head>
+                    <body>
+                        <div id="graph" style="height: 400px;"></div>
+                        <script>
+                            var trace1 = {{
+                                x: {years},
+                                y: {total_num},
+                                name: 'Total Number of Students',
+                                type: 'bar'
+                            }};
+
+                            var trace2 = {{
+                                x: {years},
+                                y: {reg_list},
+                                name: 'Registered Students',
+                                type: 'bar'
+                            }};
+
+                            var trace3 = {{
+                                x: {years},
+                                y: {clear_list},
+                                name: 'Students Cleared',
+                                type: 'bar'
+                            }};
+
+                            var data = [trace1, trace2, trace3];
+
+                            var layout = {{barmode: 'group'}};
+
+                            Plotly.newPlot('graph', data, layout);
+
+                        </script>
+                    </body>
+                </html>
+            """)
 
 
     def getStudent(self, id=0):
@@ -702,7 +813,7 @@ class MainWindow(QMainWindow):
             self.ui.student_school.setText(data[id][10])
             self.ui.student_class.setText(data[id][5])
             self.ui.student_course.setText(data[id][4])
-            if data[id][0] in self.registered_sudents_list:
+            if data[id][0] in self.registered_students_list:
                 self.ui.label_48.setText("Registered: Yes")
                 self.ui.pushButton_8.setHidden(True)
             else:
