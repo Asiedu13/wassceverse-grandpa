@@ -8,7 +8,7 @@
     {% block title %}
     <title>WASSCEVerse</title>
     {% endblock title %}
-    <link rel="stylesheet" href="../static/css/input.css" />
+    <link rel="stylesheet" href="{% url 'css/input.css' %}" />
   </head>
   <body>
     <header class="main-header">
@@ -22,7 +22,11 @@
     {% block content %} {% endblock content %}
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js"
+      crossorigin
+    ></script>
     {% comment %}
     <script src="../static/main.js"></script>
     <script type="module" src="../static/router.js"></script>
