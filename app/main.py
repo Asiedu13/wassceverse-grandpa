@@ -626,12 +626,10 @@ class MainWindow(QMainWindow):
                 data = []
                 for d in CURSOR:
                     data.append(d[0])
-                print(data)
                 if data[0] == 0:
                     sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                     CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, self.bece_year))
                     CONNECTION.commit()
-                    print("Hello")
             year_group = int(self.ui.year_group.currentText())
 
             sql = "SELECT COUNT(*) AS count_students FROM student_details WHERE bece_year = ? and school = ?"
@@ -735,6 +733,7 @@ class MainWindow(QMainWindow):
                     </body>
                 </html>
             """)
+            self.getStudent()
 
 
     def getStudent(self, id=0):
@@ -819,6 +818,16 @@ class MainWindow(QMainWindow):
             else:
                 self.ui.label_48.setText("Registered: No")
                 self.ui.pushButton_8.setHidden(False)
+
+            key = data[id][16]
+            
+            if key == "":
+                self.ui.individual_student_key.setHidden(False)
+                self.ui.student_key_label.setHidden(True)
+            else:
+                self.ui.individual_student_key.setHidden(True)
+                self.ui.student_key_label.setHidden(False)
+                self.ui.student_key_label.setText(f"Student Key: {key}")
 
             if data[id][8] == 0:
                 self.ui.student_gender.setText("Male")

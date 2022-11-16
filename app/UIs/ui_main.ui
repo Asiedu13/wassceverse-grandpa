@@ -3260,6 +3260,19 @@ background-color: rgb(213, 93, 33);</string>
                      </widget>
                     </item>
                     <item>
+                     <widget class="QLabel" name="student_key_label">
+                      <property name="font">
+                       <font>
+                        <family>JetBrains Mono NL SemiBold</family>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Student Key:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
                      <widget class="QFrame" name="frame_32">
                       <property name="maximumSize">
                        <size>
