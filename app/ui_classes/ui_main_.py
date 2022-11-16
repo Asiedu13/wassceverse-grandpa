@@ -1456,8 +1456,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_27.setContentsMargins(0, 0, 0, 0)
         self.label_12 = QLabel(self.frame_7)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setMinimumSize(QSize(180, 240))
-        self.label_12.setMaximumSize(QSize(180, 240))
+        self.label_12.setMinimumSize(QSize(150, 200))
+        self.label_12.setMaximumSize(QSize(150, 200))
         self.label_12.setScaledContents(True)
 
         self.verticalLayout_27.addWidget(self.label_12)

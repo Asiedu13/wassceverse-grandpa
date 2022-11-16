@@ -280,6 +280,12 @@ class MainWindow(QMainWindow):
                     CURSOR.execute(
                         sql, (school_name, location, country, email, password,))
                     CONNECTION.commit()
+                    sql = "SELECT * FROM registered_schools"
+                    CURSOR.execute(sql)
+                    for data in CURSOR:
+                        self.schools.append(data[1])
+                        self.codes.append(data[4])
+                        self.emails.append(data[6])
                     switch_screen(0)
 
         def nextStudent():
@@ -584,6 +590,7 @@ class MainWindow(QMainWindow):
         self.codes = []
         self.emails = []
         self.edit_add = ""
+        self.school_name = ""
         self.ui.passwordSignIn.setText("")
 
     def get_image_file(self):
@@ -621,6 +628,7 @@ class MainWindow(QMainWindow):
 
                 parent_contact = row[11]
                 dob = row[12].strftime("%d/%m/%Y")
+                year_comp = row[13]
                 sql = "SELECT COUNT(*) FROM student_details WHERE index_number = ?"
                 CURSOR.execute(sql, (index_number,))
                 data = []
@@ -628,7 +636,7 @@ class MainWindow(QMainWindow):
                     data.append(d[0])
                 if data[0] == 0:
                     sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, self.bece_year))
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_comp))
                     CONNECTION.commit()
             year_group = int(self.ui.year_group.currentText())
 
@@ -749,7 +757,8 @@ class MainWindow(QMainWindow):
             student_details.gender,
             student_details.parent_contact,
             student_details.date_of_birth,
-            registered_schools.school_name 
+            registered_schools.school_name,
+            student_details.student_key
             FROM student_details JOIN registered_schools
             ON student_details.school = registered_schools.id
             WHERE student_details.school = ? AND student_details.bece_year = ?"""
@@ -760,6 +769,7 @@ class MainWindow(QMainWindow):
         self.studentsNo = len(data)
         self.currentStudentId = id
         self.studentData = data[id]
+        self.school_name = data[id][11]
 
         def previous_block():
             if self.currentStudentId == 0:
@@ -809,7 +819,7 @@ class MainWindow(QMainWindow):
         if len(data) != 0:
             name = f"{data[id][1]} {data[id][2]} {data[id][3]}"
             self.ui.student_name.setText(name.strip())
-            self.ui.student_school.setText(data[id][10])
+            self.ui.student_school.setText(data[id][11])
             self.ui.student_class.setText(data[id][5])
             self.ui.student_course.setText(data[id][4])
             if data[id][0] in self.registered_students_list:
@@ -819,7 +829,7 @@ class MainWindow(QMainWindow):
                 self.ui.label_48.setText("Registered: No")
                 self.ui.pushButton_8.setHidden(False)
 
-            key = data[id][16]
+            key = data[id][12]
             
             if key == "":
                 self.ui.individual_student_key.setHidden(False)
@@ -853,12 +863,13 @@ class MainWindow(QMainWindow):
             self.ui.parent_contact.setText(data[id][9])
             self.ui.index_number_bece.setText(data[id][6])
             electives_array = data[id][7].split(",")
+            print(electives_array)
             self.ui.elective_1.setText(electives_array[0])
             self.ui.elective_2.setText(electives_array[1])
             self.ui.elective_3.setText(electives_array[2])
             self.ui.elective_4.setText(electives_array[3])
 
-            saveDir = SAVE_PATH / self.studentData[10]
+            saveDir = SAVE_PATH / self.school_name
             saveFolder = saveDir / self.studentData[5]
             fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}'.strip(
             ) + '.jpg'
@@ -898,7 +909,7 @@ class MainWindow(QMainWindow):
     def clickPhoto(self):
         fileName = f'{self.studentData[1]} {self.studentData[2]} {self.studentData[3]}'.strip(
         ) + '.jpg'
-        saveDir = SAVE_PATH / self.studentData[9]
+        saveDir = SAVE_PATH / self.school_name
         saveDir.mkdir(exist_ok=True, parents=True)
         saveFolder = saveDir / self.studentData[5]
         saveFolder.mkdir(exist_ok=True, parents=True)
@@ -937,10 +948,10 @@ class MainWindow(QMainWindow):
                     CONNECTION.commit()
                 self.savePath = None
                 self.getStudent(self.currentStudentId)
-                self.ui.stackedWidget.setCurrentIndex(3)
+                self.ui.stackedWidget.setCurrentIndex(4)
             except TypeError:
                 self.savePath = None
-                self.ui.stackedWidget.setCurrentIndex(3)
+                self.ui.stackedWidget.setCurrentIndex(4)
 
     def saveImage(self, savePath: str):
         self.capture.capture(savePath)
