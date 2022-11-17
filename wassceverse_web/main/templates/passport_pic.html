@@ -89,7 +89,7 @@
     cameraContainer = document.querySelector("#camera--output-container"),
     cameraSave = document.querySelector("#save"),
     blobForm = document.querySelector("#image"),
-    blobData = document.querySelector("#blobData")
+    blobData = document.querySelector("#blobData");
   // Access the device camera and stream to cameraView
   function cameraStart() {
     navigator.mediaDevices
@@ -117,16 +117,7 @@
       .then((res) => res.blob())
       .then((myBlob) => {
         console.log(myBlob);
-        var tracker = new tracking.ObjectTracker(['face', 'eye', 'mouth']);
-        tracker.setStepSize(1.7);
-
-        tracking.track('#camera--output', tracker);
-
-        tracker.on('track', function(event) {
-            event.data.forEach(function(rect) {
-            window.plot(rect.x, rect.y, rect.width, rect.height);
-            });
-        });
+        
       });
   };
   // Start the video stream when the window loads
