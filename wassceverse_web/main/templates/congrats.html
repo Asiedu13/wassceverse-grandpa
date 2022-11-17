@@ -1,8 +1,9 @@
-{% extends '__base.html' %}
-
-{% block content %}
+{% extends '__base.html' %} {% block content %}
 <section id="success-main">
-  <img src="/static/media/happy_feeling.svg" />
+  <section>
+    <img id='success-img' src="/static/media/happy_feeling.svg" />
+  </section>
+
   <section>
     <h1>You have been registered!</h1>
     <a href="/" data-link
@@ -11,6 +12,3 @@
   </section>
 </section>
 {% endblock content %}
-
-
-
