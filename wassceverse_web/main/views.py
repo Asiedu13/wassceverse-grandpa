@@ -14,6 +14,7 @@ def login(request):
         form = StudentCred(request.POST)
         if form.is_valid:
             state = False
+            duplicate = False
             try:
                 studentData = models.StudentDetails.objects.get(index_number = request.POST['index_number'])
             except ObjectDoesNotExist:
