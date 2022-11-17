@@ -118,9 +118,10 @@
         .then((myBlob) => {
             console.log(myBlob);
             dataUrl = URL.createObjectURL(myBlob);
+            console.log(dataUrl)
             
             blobData.setAttribute("value", dataUrl)
-            blobForm.submit()
+            //blobForm.submit()
         });
     };
     // Start the video stream when the window loads
