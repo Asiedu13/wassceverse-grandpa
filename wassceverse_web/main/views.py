@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from . import models
 from .forms import StudentCred
 
-import base64
+import PIL
 
 # Create your views here.
 def login(request):
@@ -107,7 +107,8 @@ def camera(request):
         form = StudentCred(request.POST)
         if form.is_valid:
             with open("imageToSave.png", "wb") as fh:
-                fh.write(base64.decodebytes(request.POST['blobData']))
+                print(request.POST['blobData'])
+                # fh.write(base64.decodebytes(request.POST['blobData']))
     return render(request, 'passport_pic.html')
 
 def fingerprint(request):
