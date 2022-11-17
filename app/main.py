@@ -38,7 +38,7 @@ SAVE_PATH.mkdir(exist_ok=True, parents=True)
 
 CONNECTION = mariadb.connect(
     host="localhost",
-    user="root",
+    user="admin_user",
     passwd="rootadmin",
     database="wassceverse",
     port=3306

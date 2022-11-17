@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'wassceverse',
-    'USER':'root',
+    'USER':'admin_user',
     'PASSWORD':'rootadmin',
     'HOST':'localhost',
     'PORT':'3306',
