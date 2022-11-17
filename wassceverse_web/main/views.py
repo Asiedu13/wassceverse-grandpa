@@ -5,9 +5,16 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from . import models
 from .forms import StudentCred
 
-import urllib.request
+import base64
+import io
+from PIL import Image
+from autocrop import Cropper
+import os
+import mariadb
 
 # Create your views here.
+
+
 def login(request):
     context = {'error': ""}
     if request.method == "POST":
@@ -16,10 +23,11 @@ def login(request):
             state = False
             duplicate = False
             try:
-                studentData = models.StudentDetails.objects.get(index_number = request.POST['index_number'])
+                studentData = models.StudentDetails.objects.get(
+                    index_number=request.POST['index_number'])
             except ObjectDoesNotExist:
                 state = True
-            
+
             except MultipleObjectsReturned:
                 duplicate = True
 
@@ -28,10 +36,11 @@ def login(request):
 
             elif duplicate:
                 context['error'] = "Your index number appears to be duplicate on our system.Please contact your school administration"
-            elif studentData.student_key == "": # type: ignore
-                context['error'] = "You do not have a key. Please contact your school administration" 
-            elif studentData.student_key == request.POST['student_key']: # type: ignore
-                request.session['student'] = studentData.id # type: ignore
+            elif studentData.student_key == "":  # type: ignore
+                context['error'] = "You do not have a key. Please contact your school administration"
+            # type: ignore
+            elif studentData.student_key == request.POST['student_key']:
+                request.session['student'] = studentData.id  # type: ignore
                 return redirect("conversation")
             else:
                 context['error'] = "Your key is incorrect. Please contact your school administration if you have recieved the wrong key"
@@ -41,6 +50,7 @@ def login(request):
     context['form'] = form  # type: ignore
     return render(request, 'login.html', context)
 
+
 def conversation(request):
     if 'student' not in request.session:
         return redirect('login')
@@ -48,7 +58,8 @@ def conversation(request):
     if request.method == "POST":
         form = StudentCred(request.POST)
         if form.is_valid:
-            studentData = models.StudentDetails.objects.get(id = request.session['student'])
+            studentData = models.StudentDetails.objects.get(
+                id=request.session['student'])
             studentData.surname = request.POST['surname_final']
             studentData.first_name = request.POST['first_name_final']
             studentData.other_names = request.POST['other_names_final']
@@ -64,18 +75,20 @@ def conversation(request):
             studentData.save()
 
             try:
-                studentReg = models.RegisteredStudents.objects.get(student = request.session['student'])
+                studentReg = models.RegisteredStudents.objects.get(
+                    student=request.session['student'])
             except ObjectDoesNotExist:
-                record = models.RegisteredStudents(student = request.session['student'])
+                record = models.RegisteredStudents(
+                    student=request.session['student'])
                 record.save()
             print(request.POST['has_camera'])
             if request.POST['has_camera'] == "no":
                 return redirect('congrats')
             elif request.POST['has_camera'] == 'yes':
                 return redirect('camera')
-    
+
     student = request.session['student']
-    studentData = models.StudentDetails.objects.get(id = student)
+    studentData = models.StudentDetails.objects.get(id=student)
     school = studentData.school
     other_names = ""
     if studentData.other_names != "undefined":
@@ -96,22 +109,44 @@ def conversation(request):
     }
     return render(request, 'conversation.html', context)
 
+
 def congrats(request):
     return render(request, 'congrats.html')
 
+
 def camera(request):
+    context = {}
     if 'student' not in request.session:
         return redirect('login')
 
     if request.method == "POST":
-        form = StudentCred(request.POST)
-        if form.is_valid:
-            with open("imageToSave.png", "wb") as fh:
-                print(request.POST['blobData'])
-                data = urllib.request.urlretrieve(
-                    request.POST['blobData'], "gfg.png")
-                fh.write(data)
+        url = str.encode(request.POST['blobData'])
+        z = url[url.find(b'/9'):]
+        im = Image.open(io.BytesIO(base64.b64decode(z)))
+        path_url = "main/test.jpg"
+        im.save(path_url)
+        cropper = Cropper(
+            width=150,
+            height=200,
+            face_percent=40
+        )
+        cropped_array = cropper.crop(path_url)
+
+        # Save the cropped image with PIL if a face was detected:
+        try:
+            if len(cropped_array) != 0:
+                print("Ok")
+                cropped_image = Image.fromarray(cropped_array).open
+                cropped_image.save("main/test_test.jpg")
+
+        return redirect('congrats')
+
+        except TypeError:
+            print("Try Again")
+            context["error"] = "Try Again"
+
     return render(request, 'passport_pic.html')
+
 
 def fingerprint(request):
     return render(request, "fingerprint.html")

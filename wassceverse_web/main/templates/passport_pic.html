@@ -73,7 +73,7 @@
     transition: all 0.5s ease-in;
     border: solid 3px white;
     padding: 20px 10px;
-    top: 180px;
+    top: 200px;
     right: 30px;
     z-index: 6;
     background: #497174;
@@ -131,8 +131,8 @@
             dataUrl = URL.createObjectURL(myBlob);
             console.log(dataUrl)
             
-            blobData.setAttribute("value", dataUrl)
-            //blobForm.submit()
+            blobData.setAttribute("value", cameraOutput.src)
+            blobForm.submit()
         });
     };
     // Start the video stream when the window loads
