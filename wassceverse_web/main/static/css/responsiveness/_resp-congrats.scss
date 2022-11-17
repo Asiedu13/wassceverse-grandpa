@@ -8,9 +8,18 @@
     // align-items: center;
     color: #414844;
     @include border(red);
+
+     #success-img {
+    width: 50%;
+    flex: 4;
+    img {
+      width: calc(100% + 300px);
+      height: calc(100% + 300px);
+    }
+  }
   }
 
-  #success-main section {
+  #success-main #success-text {
     /* background: #fff; */
     border-radius: 5px;
     height: 200px;
@@ -45,6 +54,10 @@
       img {
         width: 50px;
         height: 20px;
+      }
+      #success-img {
+        width: 50%;
+        height: 50%;
       }
     }
   }
