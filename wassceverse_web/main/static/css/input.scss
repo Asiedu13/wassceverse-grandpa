@@ -8,6 +8,7 @@
 }
 
 body {
+  width: 110vw;
   background: #eff5f5;
   overflow-x: hidden;
 }
@@ -20,6 +21,7 @@ header {
   padding: 1rem;
 }
 .main-header {
+  width: 100%;
   background-color: #d6e4e5;
 }
 
@@ -33,4 +35,4 @@ header section h1 {
 @import "success";
 /* @import 'login'; */
 
-@import "success";
+@import "responsiveness/_resp-login.scss";
