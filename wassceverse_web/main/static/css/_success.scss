@@ -1,36 +1,23 @@
 #success-main {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #414844;
   @include border(red);
-
-  #success-img {
-    width: 50%;
-    flex: 1;
-    img {
-      width: calc(90% );
-      height: calc(90%);
-      position: relative;
-      right: 30px;
-    }
-  }
 }
 
-#success-main #success-text {
-  background: #fff;
-  z-index: 1;
+#success-main section {
+  /* background: #fff; */
   border-radius: 5px;
   height: 300px;
-  width: 50%;
+  width: 400px;
   padding: 1rem;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   @include border(blue);
 
   h1 {
