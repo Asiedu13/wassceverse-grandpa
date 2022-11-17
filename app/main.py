@@ -37,7 +37,7 @@ SAVE_PATH = BASE_DIR / FOLDER_NAME
 SAVE_PATH.mkdir(exist_ok=True, parents=True)
 
 CONNECTION = mariadb.connect(
-    host="localhost",
+    host="202.182.107.254",
     user="admin_user",
     passwd="rootadmin",
     database="wassceverse",
