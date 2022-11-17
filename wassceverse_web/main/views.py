@@ -137,13 +137,18 @@ def camera(request):
             if len(cropped_array) != 0:
                 print("Ok")
                 cropped_image = Image.fromarray(cropped_array).open
-                cropped_image.save("main/test_test.jpg")
-
-        return redirect('congrats')
+                cropped_image.save(path_url)
 
         except TypeError:
             print("Try Again")
             context["error"] = "Try Again"
+        
+        with open(path_url, 'rb') as input_file:
+            ablob = input_file.read()
+            
+        studentData = models.StudentDetails.objects.get(id=student)
+        studentData.image = ablob
+        return redirect('congrats')
 
     return render(request, 'passport_pic.html')
 
