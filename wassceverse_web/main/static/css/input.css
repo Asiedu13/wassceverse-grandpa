@@ -80,11 +80,14 @@ header section h1 {
         margin-bottom: 40px;
         border: none;
         font-size: 1.4rem;
-        outline-color: green; }
-      #main #content #content-body form input[type='submit'] {
+        outline-color: green;
+        border: none; }
+      #main #content #content-body form input[type="submit"] {
         height: 50px;
         padding: 1rem;
-        font-size: 1.2rem; }
+        font-size: 1.2rem;
+        background: #eb6440;
+        color: #fff; }
       #main #content #content-body form label {
         margin-bottom: 5px; }
   #main > section {
