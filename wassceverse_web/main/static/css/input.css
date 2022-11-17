@@ -417,25 +417,36 @@ text
   overflow: hidden; }
 
 #success-main {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #414844;
   border: 1px solid red; }
+  #success-main #success-img {
+    width: 50%;
+    flex: 1; }
+    #success-main #success-img img {
+      width: calc(90%);
+      height: calc(90%);
+      position: relative;
+      right: 30px; }
 
-#success-main section {
-  /* background: #fff; */
+#success-main #success-text {
+  background: #fff;
+  z-index: 1;
   border-radius: 5px;
   height: 300px;
-  width: 400px;
+  width: 50%;
   padding: 1rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   border: 1px solid blue; }
-  #success-main section h1 {
+  #success-main #success-text h1 {
     font-size: 2rem;
     width: fit-content;
     border: 1px solid yellow;
@@ -443,7 +454,7 @@ text
     justify-content: center;
     align-items: center;
     margin: 20px 0; }
-  #success-main section a {
+  #success-main #success-text a {
     text-decoration: none;
     background: #fff;
     color: #414844;
@@ -454,7 +465,7 @@ text
     justify-content: center;
     align-items: center;
     border: 1px solid yellow; }
-    #success-main section a img {
+    #success-main #success-text a img {
       width: 50px;
       height: 30px; }
 
@@ -540,7 +551,13 @@ text
     display: flex;
     color: #414844;
     border: 1px solid red; }
-  #success-main section {
+    #success-main #success-img {
+      width: 50%;
+      flex: 4; }
+      #success-main #success-img img {
+        width: calc(100% + 300px);
+        height: calc(100% + 300px); }
+  #success-main #success-text {
     /* background: #fff; */
     border-radius: 5px;
     height: 200px;
@@ -551,7 +568,7 @@ text
     justify-content: flex-start;
     align-items: center;
     border: 1px solid blue; }
-    #success-main section h1 {
+    #success-main #success-text h1 {
       font-size: 2rem;
       width: fit-content;
       border: 1px solid yellow;
@@ -559,7 +576,7 @@ text
       justify-content: center;
       align-items: center;
       margin: 20px 0; }
-    #success-main section a {
+    #success-main #success-text a {
       text-decoration: none;
       background: #fff;
       color: #414844;
@@ -570,9 +587,12 @@ text
       justify-content: center;
       align-items: center;
       border: 1px solid yellow; }
-      #success-main section a img {
+      #success-main #success-text a img {
         width: 50px;
-        height: 20px; } }
+        height: 20px; }
+      #success-main #success-text a #success-img {
+        width: 50%;
+        height: 50%; } }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 /* Medium devices (landscape tablets, 768px and up) */
