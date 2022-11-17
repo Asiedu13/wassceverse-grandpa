@@ -15,11 +15,11 @@
 
     .content-header,
     #content-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       align-items: center;
-      @include border(cyan);
+      @include border(rebeccapurple);
     }
     .content-header {
       height: 100px;
@@ -27,18 +27,19 @@
       @include border(red);
 
       h2 {
-        width: fit-content;
-        @include border(cyan);
-        font-size: 2.5rem;
-        color: #eb6440;
-        margin: 0px 0px 0 0;
-        font-weight: 100;
-        text-align: right;
-      }
+          width: fit-content;
+          @include border(cyan);
+          font-size: 2.5rem;
+          color: #eb6440;
+          margin: 0px 0px 0 0;
+          font-weight: 100;
+          text-align: right;
+        }
     }
-
+    
     #content-body {
-      width: 100vw;
+        // width: 100vw;
+        width: 100%;
       #err {
         color: red;
         border-radius: 5px;

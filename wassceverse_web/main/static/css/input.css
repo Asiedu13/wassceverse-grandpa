@@ -25,13 +25,13 @@ header section h1 {
   font-size: 2rem; }
 
 #main {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  border: 1px solid blue; }
+  border: 1px solid transparent; }
   #main #content {
-    width: 95vw;
+    width: 100%;
     height: 80vh;
-    border: 1px solid blue;
+    border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -46,10 +46,10 @@ header section h1 {
       align-items: center; }
     #main #content .content-header {
       height: 100px;
-      border: 1px solid red; }
+      border: 1px solid transparent; }
       #main #content .content-header h2 {
         width: fit-content;
-        border: 1px solid cyan;
+        border: 1px solid transparent;
         font-size: 2.5rem;
         color: #eb6440;
         margin: 0px 0px 0 0;
@@ -70,7 +70,7 @@ header section h1 {
       background: #fff;
       box-shadow: 1px 1px 15px 5px #b6b3b3;
       border-radius: 10px;
-      border: 1px solid green; }
+      border: 1px solid transparent; }
       #main #content #content-body form input[type="text"] {
         width: 95%;
         height: 60px;
@@ -92,20 +92,20 @@ header section h1 {
     width: inherit;
     display: flex;
     flex-direction: column;
-    border: 1px solid orange; }
+    border: 1px solid transparent; }
     #main > section a {
       color: #d55d21;
       font-size: 1.5rem;
       text-align: center;
       margin: 45%;
-      border: 1px solid blue; }
+      border: 1px solid transparent; }
     #main > section .search-bar {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100px;
       width: inherit;
-      border: 1px solid pink;
+      border: 1px solid transparent;
       color: #497174; }
       #main > section .search-bar p {
         font-size: 3rem; }
@@ -120,7 +120,7 @@ header section h1 {
         padding: 0.5rem;
         background: #d6e4e5; }
     #main > section .index_number_input {
-      border: 1px solid orange;
+      border: 1px solid transparent;
       display: flex;
       /* flex-direction: column; */
       justify-content: center;
@@ -149,7 +149,7 @@ header section h1 {
         font-size: 1.5rem;
         cursor: pointer; }
     #main > section .results {
-      border: 1px solid blue;
+      border: 1px solid transparent;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -158,7 +158,7 @@ header section h1 {
       /* background-color: #fff; */ }
       #main > section .results #search_desc {
         width: 820px;
-        border: 1px solid orange;
+        border: 1px solid transparent;
         color: grey;
         padding: 5px 0; }
       #main > section .results #search_results {
@@ -171,7 +171,7 @@ header section h1 {
         align-items: center;
         border-radius: 5px;
         overflow-y: scroll;
-        border: 1px solid red; }
+        border: 1px solid transparent; }
         #main > section .results #search_results .school {
           margin: 1rem;
           width: 80%;
@@ -198,7 +198,7 @@ header section h1 {
   flex-direction: row;
   justify-content: space-between;
   position: relative;
-  border: 1px solid green; }
+  border: 1px solid transparent; }
   #question-time #might-interest-tips {
     display: flex;
     flex-direction: row;
@@ -211,11 +211,11 @@ header section h1 {
       padding: 1.5rem;
       border-radius: 5px;
       color: #eb6440;
-      border: 1px solid white; }
+      border: 1px solid transparent; }
   #question-time #my-form-element {
     width: 0px;
     height: 0px;
-    border: 1px solid Red;
+    border: 1px solid transparent;
     visibility: hidden; }
 
 #cf-context {
@@ -230,7 +230,7 @@ header section h1 {
   position: relative;
   left: -45vw;
   top: 70vh;
-  border: 1px solid blue; }
+  border: 1px solid transparent; }
 
 :root {
   --anim-easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -423,7 +423,7 @@ text
   justify-content: center;
   align-items: center;
   color: #414844;
-  border: 1px solid red; }
+  border: 1px solid transparent; }
 
 #success-main section {
   /* background: #fff; */
@@ -434,11 +434,11 @@ text
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid blue; }
+  border: 1px solid transparent; }
   #success-main section h1 {
     font-size: 2rem;
     width: fit-content;
-    border: 1px solid yellow;
+    border: 1px solid transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -453,7 +453,7 @@ text
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid yellow; }
+    border: 1px solid transparent; }
     #success-main section a img {
       width: 50px;
       height: 30px; }
@@ -464,7 +464,7 @@ text
   #content {
     width: 100vw;
     height: 80vh;
-    border: 1px solid cyan;
+    border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -477,21 +477,21 @@ text
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      border: 1px solid cyan; }
+      border: 1px solid transparent; }
     #content .content-header {
       height: 100px;
       font-size: 4.5rem;
-      border: 1px solid red; }
+      border: 1px solid transparent; }
       #content .content-header h2 {
         width: fit-content;
-        border: 1px solid cyan;
+        border: 1px solid transparent;
         font-size: 2.5rem;
         color: #eb6440;
         margin: 0px 0px 0 0;
         font-weight: 100;
         text-align: right; }
     #content #content-body {
-      width: 100vw; }
+      width: 100%; }
       #content #content-body #err {
         color: red;
         border-radius: 5px;
@@ -508,7 +508,7 @@ text
         box-shadow: 1px 1px 15px 5px #b6b3b3;
         border-radius: 10px;
         margin: 0 auto;
-        border: 1px solid green; }
+        border: 1px solid transparent; }
         #content #content-body form input {
           width: 95%; }
         #content #content-body form input[type="text"] {
