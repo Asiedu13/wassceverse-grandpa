@@ -1,0 +1,39 @@
+@import "util";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+  /* background: #F2F4EE; */
+}
+
+body {
+  width: 110vw;
+  background: #eff5f5;
+  overflow-x: hidden;
+}
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  padding: 1rem;
+}
+.main-header {
+  width: 100%;
+  background-color: #d6e4e5;
+}
+
+header section h1 {
+  color: #497174;
+  font-size: 2rem;
+}
+@import "school_search";
+@import "conversation";
+@import "form";
+@import "success";
+/* @import 'login'; */
+
+@import "responsiveness/_resp-login.scss";
+@import "responsiveness/_resp-congrats.scss";
