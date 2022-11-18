@@ -37,14 +37,15 @@ SAVE_PATH = BASE_DIR / FOLDER_NAME
 SAVE_PATH.mkdir(exist_ok=True, parents=True)
 
 CONNECTION = mariadb.connect(
-    host="202.182.107.254",
-    user="admin_user",
-    passwd="rootadmin",
+    host="localhost",
+    user="root",
+    passwd="",
     database="wassceverse",
     port=3306
 )
 
 CURSOR = CONNECTION.cursor()
+
 
 class PasswordIncorrectDialog(QDialog):
     def __init__(self, parent=None):
@@ -111,16 +112,16 @@ class MainWindow(QMainWindow):
             CURSOR.execute(sql, (self.school_id, self.bece_year))
             for d in CURSOR:
                 index_numbers.append(d[0])
-            
+
             for index_number in index_numbers:
                 sql = "UPDATE student_details SET student_key = ? WHERE index_number = ?"
                 letters = string.ascii_lowercase
                 code = ''.join(random.choice(letters) for i in range(6))
-                CURSOR.execute(sql,(code, index_number))
+                CURSOR.execute(sql, (code, index_number))
                 CONNECTION.commit()
 
-
         # CHECK INFO
+
         def signIn():
             schoolName = self.ui.schoolNameSignIn.text()
             email = self.ui.emailSignIn.text()
@@ -151,7 +152,7 @@ class MainWindow(QMainWindow):
                     CURSOR.execute(sql, (year_group, self.school_id))
                     for data in CURSOR:
                         num_registered = data[0]
-                    
+
                     sql = "SELECT COUNT(*) AS count_students FROM registered_students INNER JOIN student_details ON registered_students.student = student_details.id WHERE bece_year = ? and school = ? and cleared = 1"
                     CURSOR.execute(sql, (year_group, self.school_id))
                     for data in CURSOR:
@@ -162,11 +163,12 @@ class MainWindow(QMainWindow):
                     for data in CURSOR:
                         self.registered_students_list.append(data[1])
 
-                    self.ui.label_40.setText(f"Number of Students: {num_of_students}")
-                    self.ui.label_43.setText(f"Number of Students Registered: {num_registered}")
-                    self.ui.label_44.setText(f"Number of Students Cleared: {num_cleared}")
-
-                    
+                    self.ui.label_40.setText(
+                        f"Number of Students: {num_of_students}")
+                    self.ui.label_43.setText(
+                        f"Number of Students Registered: {num_registered}")
+                    self.ui.label_44.setText(
+                        f"Number of Students Cleared: {num_cleared}")
 
                     sql = "SELECT * FROM student_details WHERE school = ?"
                     CURSOR.execute(sql, (self.school_id,))
@@ -188,7 +190,7 @@ class MainWindow(QMainWindow):
                         CURSOR.execute(sql, (year, self.school_id))
                         for d in CURSOR:
                             total_num.append(d[0])
-                    
+
                     reg_list = []
                     for year in years:
                         sql = "SELECT COUNT(*) FROM registered_students JOIN student_details ON student_details.id = registered_students.student WHERE student_details.bece_year = ? AND student_details.school = ?"
@@ -245,9 +247,11 @@ class MainWindow(QMainWindow):
 
                     if self.studentsNo > 0:
                         self.getStudent(0)
-                        self.ui.view_data.clicked.connect(lambda: switch_screen(4))
+                        self.ui.view_data.clicked.connect(
+                            lambda: switch_screen(4))
                     else:
-                        self.ui.view_data.clicked.connect(lambda: switch_screen(7))
+                        self.ui.view_data.clicked.connect(
+                            lambda: switch_screen(7))
             else:
                 dialog = FailDialogOne(self)
                 dialog.exec()
@@ -357,7 +361,7 @@ class MainWindow(QMainWindow):
             for radio in radios:
                 if radio.isChecked():
                     gender = radio.text()
-            
+
             if gender.lower() == "male":
                 gender = 0
             elif gender.lower() == "female":
@@ -370,34 +374,38 @@ class MainWindow(QMainWindow):
                 electives = f'{elective[0]},{elective[1]},{elective[2]},{elective[3]}'
             else:
                 electives = ""
-            
+
             if self.edit_add == "add":
                 if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
                     sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed))
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course,
+                                   class_, index_number, electives, gender, parent_contact, dob, year_completed))
                     CONNECTION.commit()
 
                     sql = "SELECT * FROM student_details WHERE surname = ? AND first_name = ? AND other_names = ? AND index_number = ?"
-                    CURSOR.execute(sql, (surname, first_name, other_names, index_number,))
+                    CURSOR.execute(sql, (surname, first_name,
+                                   other_names, index_number,))
                     data = []
                     for d in CURSOR:
                         data.append(d)
                         student = data[0][0]
-                    
+
                     sql = "INSERT INTO registered_students (student) VALUES (?)"
                     CURSOR.execute(sql, (student,))
                     CONNECTION.commit()
-            
+
             elif self.edit_add == "edit":
                 if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
                     sql = "UPDATE student_details SET school = ?, surname = ?, first_name = ?, other_names = ?, course = ?, class = ?, index_number = ?, electives = ?, gender = ?, parent_contact = ?, date_of_birth = ?, bece_year = ? WHERE id = ?"
-                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed, self.studentData[0]))
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_,
+                                   index_number, electives, gender, parent_contact, dob, year_completed, self.studentData[0]))
                     CONNECTION.commit()
 
             elif self.edit_add == "register":
                 if surname != "" or first_name != "" or other_names != "" or index_number != "" or class_ != "" or gender != "" or electives != "":
                     sql = "UPDATE student_details SET school = ?, surname = ?, first_name = ?, other_names = ?, course = ?, class = ?, index_number = ?, electives = ?, gender = ?, parent_contact = ?, date_of_birth = ?, bece_year = ? WHERE id = ?"
-                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_completed, self.studentData[0]))
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_,
+                                   index_number, electives, gender, parent_contact, dob, year_completed, self.studentData[0]))
                     CONNECTION.commit()
 
                     sql = "SELECT COUNT(*) FROM registered_students WHERE student = ?"
@@ -406,12 +414,12 @@ class MainWindow(QMainWindow):
                     for d in CURSOR:
                         data.append(d)
                         student = data[0]
-                    
+
                     if student == 0:
                         sql = "INSERT INTO registered_students (student) VALUES (?)"
                         CURSOR.execute(sql, (self.studentData[0],))
                         CONNECTION.commit()
-            
+
             self.edit_add = ""
             switch_screen(4)
 
@@ -476,8 +484,9 @@ class MainWindow(QMainWindow):
             self.ui.plainTextEdit_5.setPlainText(data[10])
             self.ui.comboBox_2.setCurrentText(data[5])
             date = data[11].split("/")
-            self.ui.dateEdit.setDate(QDate(int(date[2]), int(date[1]), int(date[0])))
-            
+            self.ui.dateEdit.setDate(
+                QDate(int(date[2]), int(date[1]), int(date[0])))
+
         def getImageFromFile():
             src = self.get_image_file()
             saveDir = SAVE_PATH / self.studentData[9]
@@ -518,8 +527,10 @@ class MainWindow(QMainWindow):
         self.ui.SignUpButton_2.clicked.connect(lambda: switch_screen(0))
         self.ui.close_camera.clicked.connect(lambda: self.closeCamera())
         self.ui.SignInSubmit.clicked.connect(lambda: signIn())
-        self.ui.edit_student_button.clicked.connect(lambda: edit_student_function("edit"))
-        self.ui.add_student_button.clicked.connect(lambda: switch_screen(6, "add"))
+        self.ui.edit_student_button.clicked.connect(
+            lambda: edit_student_function("edit"))
+        self.ui.add_student_button.clicked.connect(
+            lambda: switch_screen(6, "add"))
         self.ui.pushButton.clicked.connect(lambda: switch_screen(6, "add"))
         self.ui.delete_student_button.clicked.connect(lambda: delete_student())
         self.ui.import_file.clicked.connect(lambda: getImageFromFile())
@@ -530,9 +541,11 @@ class MainWindow(QMainWindow):
         self.ui.year_group.activated.connect(lambda: bece_year_update())
         self.ui.pushButton_5.clicked.connect(lambda: switch_screen(1))
         self.ui.pushButton_7.clicked.connect(lambda: self.logout())
-        self.ui.pushButton_8.clicked.connect(lambda: edit_student_function("register"))
+        self.ui.pushButton_8.clicked.connect(
+            lambda: edit_student_function("register"))
         self.ui.pushButton_6.clicked.connect(lambda: self.add_students())
-        self.ui.individual_student_key.clicked.connect(lambda: generate_key_ind())
+        self.ui.individual_student_key.clicked.connect(
+            lambda: generate_key_ind())
 
         def bece_year_update():
             self.bece_year = self.ui.year_group.currentText()
@@ -603,7 +616,8 @@ class MainWindow(QMainWindow):
     def add_students(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","Excel Spreadsheet (*.xlsx)", options=options)
+        fileName, _ = QFileDialog.getOpenFileName(
+            self, "QFileDialog.getOpenFileName()", "", "Excel Spreadsheet (*.xlsx)", options=options)
         if fileName:
             workbook = load_workbook(filename=fileName)
             sheet = workbook.active
@@ -615,11 +629,12 @@ class MainWindow(QMainWindow):
                 course = row[4]
                 class_ = row[3]
                 index_number = row[5]
-                e_1 = row[6]
-                e_2 = row[7]
-                e_3 = row[8]
-                e_4 = row[9]
-                electives = f"{e_1,e_2,e_3,e_4}".replace("'", "").replace("(", "").replace(")", "")
+                e_1 = row[6].strip()
+                e_2 = row[7].strip()
+                e_3 = row[8].strip()
+                e_4 = row[9].strip()
+                electives = f"{e_1,e_2,e_3,e_4}".replace(
+                    "'", "").replace("(", "").replace(")", "")
                 gender = 0
                 if row[10].lower == "male":
                     gender = 0
@@ -636,7 +651,8 @@ class MainWindow(QMainWindow):
                     data.append(d[0])
                 if data[0] == 0:
                     sql = "INSERT INTO student_details (school, surname, first_name, other_names, course, class, index_number, electives, gender, parent_contact, date_of_birth, bece_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course, class_, index_number, electives, gender, parent_contact, dob, year_comp))
+                    CURSOR.execute(sql, (self.school_id, surname, first_name, other_names, course,
+                                   class_, index_number, electives, gender, parent_contact, dob, year_comp))
                     CONNECTION.commit()
             year_group = int(self.ui.year_group.currentText())
 
@@ -743,7 +759,6 @@ class MainWindow(QMainWindow):
             """)
             self.getStudent()
 
-
     def getStudent(self, id=0):
         sql = """SELECT
             student_details.id,
@@ -830,7 +845,7 @@ class MainWindow(QMainWindow):
                 self.ui.pushButton_8.setHidden(False)
 
             key = data[id][12]
-            
+
             if key == "":
                 self.ui.individual_student_key.setHidden(False)
                 self.ui.student_key_label.setHidden(True)

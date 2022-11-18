@@ -78,6 +78,17 @@ WSGI_APPLICATION = 'wassceverse_web.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'wassceverse',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+''' DATABASES = {
+    'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'wassceverse',
     'USER':'admin_user',
@@ -85,7 +96,7 @@ DATABASES = {
     'HOST':'localhost',
     'PORT':'3306',
     }
-}
+} '''
 
 
 # Password validation
