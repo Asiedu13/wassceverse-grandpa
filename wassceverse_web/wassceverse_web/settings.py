@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'wassceverse_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wassceverse',
@@ -85,18 +85,18 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     }
-}
+}'''
 
-''' DATABASES = {
+DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'wassceverse',
-    'USER':'admin_user',
-    'PASSWORD':'rootadmin',
-    'HOST':'localhost',
-    'PORT':'3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'wassceverse',
+        'USER': 'admin_user',
+        'PASSWORD': 'rootadmin',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
-} '''
+}
 
 
 # Password validation
