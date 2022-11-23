@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -125,11 +125,7 @@ class RegisteredSchools(models.Model):
     password = models.TextField()
     verified = models.IntegerField()
 
-    def __str__(self):
-        return self.school_name
-
     class Meta:
-        managed = False
         db_table = 'registered_schools'
 
 
@@ -140,7 +136,6 @@ class RegisteredStudents(models.Model):
     cleared = models.IntegerField()
 
     class Meta:
-        managed = False
         db_table = 'registered_students'
 
 
@@ -157,15 +152,14 @@ class StudentDetails(models.Model):
     parent_contact = models.TextField(blank=True, null=True)
     date_of_birth = models.TextField()
     signature = models.TextField(blank=True, null=True)
-    image = models.TextField(blank=True, null=True)
+    image = CloudinaryField("Student Image", overwrite = True, format="jpg")
     fingerprint = models.TextField(blank=True, null=True)
     bece_year = models.IntegerField()
     student_key = models.CharField(max_length=6, blank=True, null=True)
 
+    class Meta:
+        ordering = ['surname', 'first_name', 'other_names', 'index_number']
+        db_table = 'student_details'
+
     def __str__(self):
         return self.index_number
-    
-
-    class Meta:
-        managed = False
-        db_table = 'student_details'

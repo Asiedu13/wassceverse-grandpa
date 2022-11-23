@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import cloudinary
+
+cloudinary.config( 
+  cloud_name = "djh57eugp", 
+  api_key = "198716615944695", 
+  api_secret = "yW3BTBhtvNHsmepTHb7pNhQypbE" 
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vyscjimxxc@a3r#e-c9g*y2*!07hds-#73lh-m=dcjgrnz5r7%'
+SECRET_KEY = 'django-insecure-uiqh9r!&n$rppf8$!^+*&@v5=k*_c2gnxqtiiko8xrcr+j%4#o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,10 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # CUSTOM APPS
-    'api.apps.ApiConfig',
+    'rest_framework',
 
-    # Additional Libraries
-    'rest_framework'
+    'main',
 ]
 
 MIDDLEWARE = [
