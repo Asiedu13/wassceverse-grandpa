@@ -159,7 +159,7 @@ class StudentDetails(models.Model):
     parent_contact = models.TextField(blank=True, null=True)
     date_of_birth = models.TextField()
     signature = models.TextField(blank=True, null=True)
-    image = models.TextField(blank=True, null=True)
+    image = CloudinaryField("Student Image", overwrite = True, format="jpg")
     fingerprint = models.TextField(blank=True, null=True)
     bece_year = models.IntegerField()
     student_key = models.CharField(max_length=6, blank=True, null=True)
